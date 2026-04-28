@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<particles>
+
+    <texture>art/textures/particles/fairy_glow_red.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="1500.0"/>
+    <uniform name="lifetime" min="0.1" max="0.2"/>
+
+
+    <uniform name="velocity.x" min="-0.1" max="0.1"/>
+    <uniform name="velocity.y" min="0.1" max="0.1"/>
+    <uniform name="velocity.z" min="-0.1" max="0.10"/>
+    <uniform name="velocity.angle" min="-0.1" max="0.1"/>
+
+    <uniform name="size" min="0.3" max="0.3"/>
+	
+    <uniform name="color.b" min="9.8" max="10.0"/>
+    <copy name="color.g" from="color.b"/>
+    <copy name="color.r" from="color.b"/>
+
+</particles>

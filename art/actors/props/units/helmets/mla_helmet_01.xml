@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="helmet">
+      <mesh>props/helmet_armor_01.dae</mesh>
+      <textures>
+	      <texture file="skeletal/mla_01_01.png" name="baseTex"/>
+<!--         <texture file="props/units/terran/spec/spacesuit_helmet.png" name="specTex"/>
+        <texture file="props/units/terran/norm/spacesuit_helmet.png" name="normTex"/> -->
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

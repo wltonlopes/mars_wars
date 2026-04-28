@@ -1,0 +1,12 @@
+<variant name="relax">
+  <animations>
+    <animation file="biped/assault_rifle/relax/idle_a_1.dae" name="Idle" id="idle1" speed="30"/>
+    <animation file="biped/assault_rifle/relax/idle_b_1.dae" name="Idle" id="idle2" speed="31"/>
+    <animation file="biped/assault_rifle/relax/idle_c_1.dae" name="Idle" id="idle3" speed="32"/>
+    <animation file="biped/assault_rifle/relax/idle_a_1.dae" name="Idle" id="idle4" speed="30"/>
+    <animation file="biped/assault_rifle/relax/idle_b_1.dae" name="Idle" id="idle5" speed="31"/>
+    <animation event="0.35" file="biped/assault_rifle/shooting/xeno/duple_rifle_walk.dae" load="0.75" name="Walk" speed="30"/>
+    <animation event="0.35" file="biped/assault_rifle/shooting/xeno/duple_rifle_walk.dae" load="0.75" name="Walk" speed="32"/>
+    <animation event="0.35" file="biped/assault_rifle/shooting/xeno/duple_rifle_walk.dae" load="0.75" name="Run" speed="5"/>
+  </animations>
+</variant>

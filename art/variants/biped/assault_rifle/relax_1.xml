@@ -1,0 +1,13 @@
+<variant name="relax">
+  <animations>
+    <animation file="biped/assault_rifle/relax/idle_a_1.dae" name="Idle" id="idle1" speed="30"/>
+    <animation file="biped/assault_rifle/relax/idle_b_1.dae" name="Idle" id="idle2" speed="31"/>
+    <animation file="biped/assault_rifle/relax/idle_c_1.dae" name="Idle" id="idle3" speed="32"/>
+    <animation file="biped/assault_rifle/relax/idle_a_1.dae" name="Idle" id="idle4" speed="30"/>
+    <animation file="biped/assault_rifle/relax/idle_b_1.dae" name="Idle" id="idle5" speed="31"/>
+    <animation file="biped/infantry/spearman/walk_relax_shield.dae" name="Walk" id="walk1" speed="30"/>
+    <animation file="biped/infantry/spearman/walk_relax_shield.dae" name="Walk" id="walk2" speed="32"/>
+    <animation file="biped/assault_rifle/ready/run_1.dae" name="Run" id="run1" speed="5"/>
+    <animation event="0.35" file="biped/assault_rifle/shooting/stand_1.dae" load="0.75" name="attack_ranged" speed="200"/>
+  </animations>
+</variant>

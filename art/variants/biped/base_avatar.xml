@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<variant name="Base">
+  <animations>
+    <animation file="biped/avatar_attack_1.dae" event="0.5" name="attack_melee" id="attack1" speed="60"/>
+    <animation file="biped/avatar_attack_2.dae" event="0.5" name="attack_melee" id="attack2" speed="60"/>
+    <animation file="biped/avatar_idle_2.dae" name="Idle" id="idle1" speed="40"/>
+    <animation file="biped/avatar_walk_1.dae" name="Walk" speed="30"/>
+    <animation file="biped/avatar_death_1.dae" name="Run" speed="3"/>
+  </animations>
+</variant>

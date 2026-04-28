@@ -1,0 +1,5 @@
+<variant name="attack_ranged">
+  <props>
+    <prop actor="particle/sword_laser.xml" attachpoint="shoot"/>
+  </props>
+</variant>

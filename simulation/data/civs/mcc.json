@@ -1,0 +1,37 @@
+﻿{
+    "Code": "mcc",
+    "Culture": "Earth",
+    "Music": [
+        {
+            "File": "red_dawn.ogg",
+            "Type": "peace"
+        },
+        {
+            "File": "hill_of_sorrows.ogg",
+            "Type": "peace"
+        }
+    ],
+    "CivBonuses": [],
+    "TeamBonuses": [],
+    "WallSets": [
+        "structures/wallset_palisade",
+        "structures/mcc/wallset_stone"
+    ],
+    "StartEntities": [
+        {
+            "Template": "structures/mcc/civil_centre"
+        },
+        {
+            "Template": "units/mcc/support_civilian",
+            "Count": 4
+        }
+    ],
+    "AINames": [
+        "Player1",
+        "Player2"
+    ],
+    "SkirmishReplacements": {
+        "skirmish/units/special_starting_unit": "units/mcc/support_civilian"
+    },
+    "SelectableInGameSetup": true
+}

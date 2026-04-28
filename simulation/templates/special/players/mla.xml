@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_player">
+  <!-- <Auras datatype="tokens">
+    teambonuses/cart_player_teambonus
+  </Auras> -->
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Martian Liberty Alliance</GenericName>
+    <History>The MLA was a fictional entity created for the purpose of this simulation. It represented a multi-cultural alliance that operated in the Martian colonies, engaging in diplomacy, trade, and exploration.</History>
+    <Icon>emblems/mla.png</Icon>
+  </Identity>
+  <Player>
+    <!-- <Formations datatype="tokens">
+      special/formations/phalanx
+    </Formations> -->
+  </Player>
+</Entity>

@@ -1,0 +1,37 @@
+﻿{
+    "Code": "mla",
+    "Culture": "Earth",
+    "Music": [
+        {
+            "File": "red_dawn.ogg",
+            "Type": "peace"
+        },
+        {
+            "File": "hill_of_sorrows.ogg",
+            "Type": "peace"
+        }
+    ],
+    "CivBonuses": [],
+    "TeamBonuses": [],
+    "WallSets": [
+        "structures/wallset_palisade",
+        "structures/mla/wallset_stone"
+    ],
+    "StartEntities": [
+        {
+            "Template": "structures/mla/civil_centre"
+        },
+        {
+            "Template": "units/mla/support_civilian",
+            "Count": 4
+        }
+    ],
+    "AINames": [
+        "Player1",
+        "Player2"
+    ],
+    "SkirmishReplacements": {
+        "skirmish/units/special_starting_unit": "units/mla/support_civilian"
+    },
+    "SelectableInGameSetup": true
+}

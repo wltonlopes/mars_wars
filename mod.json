@@ -1,0 +1,9 @@
+{
+  "name": "mars_wars",
+  "label": "Mars Wars",
+  "version": "0.28.0",
+  "url": "https://github.com",
+  "description": "0 A.D - F. War",
+	"dependencies": ["0ad>=0.27.0"],
+  "type": "Factions"
+}

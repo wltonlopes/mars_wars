@@ -1,0 +1,8 @@
+<variant name="attack_ranged">
+  <animations>
+    <animation event="0.01" file="biped/pistol/unsheath_r.dae" load="0.45" name="attack_ranged" speed="200"/>
+  </animations>
+<!--   <props>
+    <prop actor="props/units/weapons/ammo/7_62x39_head.xml" attachpoint="projectile"/>
+  </props> -->
+</variant>

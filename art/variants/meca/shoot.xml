@@ -1,0 +1,6 @@
+<variant name="attack_ranged">
+  <props>
+    <prop actor="particle/muzzleflash_1.xml" attachpoint="s1"/>
+    <prop actor="particle/muzzleflash_1.xml" attachpoint="s2"/>
+  </props>
+</variant>

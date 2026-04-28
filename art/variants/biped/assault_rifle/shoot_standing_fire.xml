@@ -1,0 +1,9 @@
+<variant name="attack_ranged">
+  <animations>
+    <animation event="0.35" file="biped/assault_rifle/shooting/stand_1.dae" load="0.75" name="attack_ranged" speed="200"/>
+  </animations>
+  <props>
+     <prop actor="props/units/weapons/rifle_1.xml" attachpoint="weapon_R"/>
+     <prop actor="particle/flame_pig.xml" attachpoint="projectile"/>
+  </props>
+</variant>
