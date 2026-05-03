@@ -9,9 +9,9 @@
     <History>The Mart Colonial Company was a fictional entity created for the purpose of this simulation. It represented a colonial trading company that operated in the Martian colonies, engaging in commerce and exploration.</History>
     <Icon>emblems/mcc.png</Icon>
   </Identity>
-  <Player>
-    <!-- <Formations datatype="tokens">
-      special/formations/phalanx
-    </Formations> -->
-  </Player>
+	  <Player>
+	    <Formations datatype="tokens">
+	      special/formations/suppression_line
+	    </Formations>
+	  </Player>
 </Entity>

@@ -9,9 +9,9 @@
     <History>The MLA was a fictional entity created for the purpose of this simulation. It represented a multi-cultural alliance that operated in the Martian colonies, engaging in diplomacy, trade, and exploration.</History>
     <Icon>emblems/mla.png</Icon>
   </Identity>
-  <Player>
-    <!-- <Formations datatype="tokens">
-      special/formations/phalanx
-    </Formations> -->
-  </Player>
+	  <Player>
+	    <Formations datatype="tokens">
+      special/formations/suppression_line
+	    </Formations>
+	  </Player>
 </Entity>

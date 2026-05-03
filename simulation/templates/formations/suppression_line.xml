@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Formation>
+  <Identity>
+    <GenericName>Suppression Line</GenericName>
+    <Icon>formations/line.png</Icon>
+  </Identity>
+
+  <Formation>
+    <RequiredMemberCount>4</RequiredMemberCount>
+    <DisabledTooltip>Infantry only, requires at least 4.</DisabledTooltip>
+    <SortingClasses>Hero Champion Elite Advanced Basic</SortingClasses>
+    <FormationShape>square</FormationShape>
+    <UnitSeparationWidthMultiplier>0.86</UnitSeparationWidthMultiplier>
+    <UnitSeparationDepthMultiplier>0.55</UnitSeparationDepthMultiplier>
+    <WidthDepthRatio>1</WidthDepthRatio>
+    <ShiftRows>true</ShiftRows>
+    <MinColumns>2</MinColumns>
+    <MaxColumns>8</MaxColumns>
+    <MaxRows>3</MaxRows>
+    <AnimationVariants>
+      1..2,1..-1: suppression_stance;
+      3..3,1..-1: suppression_kneel;
+      4..4,1..-1: suppression_prone
+    </AnimationVariants>
+    <Sloppiness>0.50</Sloppiness>
+  </Formation>
+  <FormationAttack>
+    <CanAttackAsFormation>true</CanAttackAsFormation>
+  </FormationAttack>
+  <!-- <SpeedMultiplier>0.6</SpeedMultiplier>
+
+  <RequiredMemberCount>6</RequiredMemberCount> -->
+</Formation>

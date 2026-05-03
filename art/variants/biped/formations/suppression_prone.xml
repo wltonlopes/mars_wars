@@ -1,0 +1,12 @@
+<variant name="Base" frequency="1">
+  <animations>
+    <animation file="biped/assault_rifle/crouched/idle_1.dae" name="Idle" id="idle1" speed="30"/>
+    <animation file="biped/assault_rifle/crouched/idle_1.dae" name="Idle" id="idle2" speed="31"/>
+    <animation file="biped/assault_rifle/crouched/idle_1.dae" name="Idle" id="idle3" speed="32"/>
+    <animation file="biped/assault_rifle/crouched/walk_1.dae" name="Walk" id="walk1" speed="10"/>
+    <animation file="biped/assault_rifle/crouched/walk_1.dae" name="Walk" id="walk2" speed="8"/>
+    <animation file="biped/assault_rifle/ready/run_1.dae" name="Run" id="run1" speed="5"/>
+    <animation file="biped/infantry/promotion.dae" name="promotion" speed="80"/>
+    <animation event="0.35" file="biped/assault_rifle/shooting/crouched_1.dae" load="0.75" name="attack_ranged" speed="200"/>
+  </animations>
+</variant>

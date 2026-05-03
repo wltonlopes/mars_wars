@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<SoundGroup>
+	<Gain>1</Gain>
+	<Priority>50</Priority>
+	<ConeGain>1</ConeGain>
+	<Looping>0</Looping>
+	<RandOrder>1</RandOrder>
+	<RandGain>1</RandGain>
+	<RandPitch>1</RandPitch>
+	<Threshold>1</Threshold>
+	<Path>audio/attack/weapon/</Path>
+	<Sound>machine_gun.ogg</Sound>
+	<Sound>machine_gun.ogg</Sound>
+	<Sound>machine_gun.ogg</Sound>
+</SoundGroup>
