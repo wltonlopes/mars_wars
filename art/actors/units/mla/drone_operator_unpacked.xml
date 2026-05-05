@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="biped/assault_rifle/crouched_1.xml">
+      <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
+      <props>
+        <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/armor/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
+        <prop actor="props/units/armor/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
+      </props>
+    </variant>
+  </group>
+    <group>
+    <variant frequency="1" name="tunic_01_01">
+      <textures>
+	    <texture file="skeletal/mla_02_01.png" name="baseTex"/>
+	  </textures>
+    </variant>
+   </group>
+    <group>
+    <variant file="biped/base_crossbowman_relax.xml"/>
+    <variant file="biped/carry_food_han.xml"/>
+    <variant file="biped/carry_meat.xml"/>
+    <variant file="biped/carry_wood.xml"/>
+    <variant file="biped/carry_stone.xml"/>
+    <variant file="biped/carry_metal.xml"/>
+    <variant file="biped/approach_tree.xml"/>
+    <variant file="biped/approach_grain_han.xml"/>
+    <variant file="biped/approach_fruit.xml"/>
+    <variant file="biped/approach_meat.xml"/>
+    <variant file="biped/approach_rock.xml"/>
+    <variant file="biped/approach_ore.xml"/>
+    <variant file="biped/approach_ruins.xml"/>
+    <variant file="biped/approach_praise.xml"/>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant file="biped/assault_rifle/shoot_standing_1.xml" name="Attack_Ranged"/>
+    <variant file="biped/assault_rifle/ready_1.xml" name="ready"/>
+    <variant file="biped/attack_capture.xml"/>
+    <variant file="biped/formations/suppression_stance.xml"/>
+    <variant file="biped/formations/suppression_kneel.xml"/>
+    <variant file="biped/formations/suppression_prone.xml"/>
+    <variant file="biped/build.xml"/>
+    <variant file="biped/build_farm.xml"/>
+    <variant file="biped/death_infantry.xml"/>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

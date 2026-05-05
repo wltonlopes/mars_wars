@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <textures>
+	      <texture file="skeletal/mla_02_01.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="ds">
+      <mesh>props/weapons/rifles/rifle_sniper.dae</mesh>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant file="meca/shootr.xml" name="Attack_Ranged"/>
+  </group>
+  <material>objectcolor.xml</material>
+</actor>
