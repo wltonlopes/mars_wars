@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="units/mla/missile_infantry_packed">
+   <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Missile Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+  </Identity>
+  <Pack>
+    <Entity>units/mla/missile_infantry_packed</Entity>
+    <State>unpacked</State>
+    <Time>5000</Time>
+  </Pack>
+  <UnitMotion>
+    <WalkSpeed>0.001</WalkSpeed>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mla/missile_infantry_unpacked.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -7,9 +7,7 @@
       <props>
         <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
         <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
-        <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
-        <prop actor="props/units/armor/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
-        <prop actor="props/units/armor/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
+        <prop actor="props/units/weapons/lm_mla.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
   </group>
@@ -20,25 +18,8 @@
         </textures>
       </variant>
    </group>
-    <group>
-    <variant file="biped/base_crossbowman_relax.xml"/>
-    <variant file="biped/carry_food_han.xml"/>
-    <variant file="biped/carry_meat.xml"/>
-    <variant file="biped/carry_wood.xml"/>
-    <variant file="biped/carry_stone.xml"/>
-    <variant file="biped/carry_metal.xml"/>
-    <variant file="biped/approach_tree.xml"/>
-    <variant file="biped/approach_grain_han.xml"/>
-    <variant file="biped/approach_fruit.xml"/>
-    <variant file="biped/approach_meat.xml"/>
-    <variant file="biped/approach_rock.xml"/>
-    <variant file="biped/approach_ore.xml"/>
-    <variant file="biped/approach_ruins.xml"/>
-    <variant file="biped/approach_praise.xml"/>
-  </group>
   <group>
     <variant frequency="1" name="Idle"/>
-    <variant file="biped/assault_rifle/shoot_standing_1.xml" name="Attack_Ranged"/>
     <variant file="biped/assault_rifle/ready_1.xml" name="ready"/>
     <variant file="biped/attack_capture.xml"/>
     <variant file="biped/formations/suppression_stance.xml"/>

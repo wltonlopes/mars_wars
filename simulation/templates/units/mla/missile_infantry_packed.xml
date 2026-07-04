@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_siege_missile_infantry">
+  <Identity>
+    <Civ>mla</Civ>
+    <SpecificName>Archer</SpecificName>
+    <Icon>units/south_america/cavalry_javelineer.png</Icon>
+  </Identity>
+  <Pack>
+    <Entity>units/mla/missile_infantry_unpacked</Entity>
+    <State>packed</State>
+    <Time>5000</Time>
+  </Pack>
+  <VisualActor>
+    <Actor>units/mla/missile_infantry_packed.xml</Actor>
+  </VisualActor>
+</Entity>
