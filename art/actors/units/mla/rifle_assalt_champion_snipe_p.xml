@@ -6,7 +6,8 @@
       <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
       <props>
         <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
-        <prop actor="props/units/weapons/sniper_rifle.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/weapons/sniper_energy.xml" attachpoint="weapon_R"/>
+        <prop actor="particle/simple_ray.xml" attachpoint="projectile"/>
       </props>
     </variant>
   </group>

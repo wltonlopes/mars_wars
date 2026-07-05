@@ -7,9 +7,7 @@
       <props>
         <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
         <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
-        <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
-        <prop actor="props/units/armor/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
-        <prop actor="props/units/armor/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
+        <prop actor="props/units/weapons/lm_mla.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
   </group>
