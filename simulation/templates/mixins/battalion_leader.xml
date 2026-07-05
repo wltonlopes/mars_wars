@@ -1,0 +1,11 @@
+<Entity>
+
+    <Promotion disable=""/>
+
+    <Identity>
+        <Classes datatype="tokens">
+            BattalionLeader
+        </Classes>
+    </Identity>
+
+</Entity>

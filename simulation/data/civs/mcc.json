@@ -22,8 +22,8 @@
             "Template": "structures/mcc/civil_centre"
         },
         {
-            "Template": "units/mcc/rifleman",
-            "Count": 4
+            "Template": "units/mcc/battalion_infantry_rifleman",
+            "Count": 2
         }
     ],
     "AINames": [
@@ -31,9 +31,7 @@
         "Player2"
     ],
     "SkirmishReplacements": {
-        "skirmish/units/default_infantry_melee_b": "units/mcc/rifleman",
-        "skirmish/units/default_infantry_ranged_b": "units/mcc/rifleman",
-        "skirmish/units/special_starting_unit": "units/mcc/rifleman"
+        "skirmish/units/default_infantry_melee_b": "units/mcc/battalion_infantry_rifleman"
     },
     "SelectableInGameSetup": true
 }

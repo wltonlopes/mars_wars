@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Entity>
+
+    <BattalionLeader>
+        <Size>20</Size>
+        <Columns>5</Columns>
+        <Spacing>2</Spacing>
+    </BattalionLeader>
+
+    <Identity>
+        <Classes datatype="tokens">
+            Battalion
+        </Classes>
+    </Identity>
+</Entity>

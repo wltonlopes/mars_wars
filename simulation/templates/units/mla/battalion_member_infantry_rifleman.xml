@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_member|units/mla/rifleman">
+    <Identity>
+        <GenericName>Soldado do Batalhão</GenericName>
+        <SelectionGroupName>units/mla/battalion_rifleman</SelectionGroupName>
+    </Identity>
+</Entity>

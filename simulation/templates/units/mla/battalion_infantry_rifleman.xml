@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_medium|battalion_leader|units/mla/rifleman">
+    <BattalionLeader>
+        <MemberTemplates>units/mla/battalion_member_infantry_rifleman:5 units/mla/battalion_member_infantry_antiair:2</MemberTemplates>
+        <Columns>3</Columns>
+        <Spacing>3</Spacing>
+    </BattalionLeader>
+    <Identity>
+        <GenericName>Batalhão de Infantaria</GenericName>
+        <SelectionGroupName/>
+    </Identity>
+</Entity>

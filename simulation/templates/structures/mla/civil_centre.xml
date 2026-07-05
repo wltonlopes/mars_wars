@@ -13,7 +13,7 @@
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens">
-      units/{civ}/rifleman
+      units/{civ}/battalion_member_infantry_rifleman
     </Entities>
   </Trainer>
   <VisualActor>

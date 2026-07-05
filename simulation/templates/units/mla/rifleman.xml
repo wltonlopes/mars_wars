@@ -5,12 +5,7 @@
     <GenericName>Commandos Ceberus</GenericName>
     <Icon>units/athen/champion_ranged.png</Icon>
   </Identity>
-  <UnitAI>
-    <Formations datatype="tokens">
-      special/formations/suppression_line
-    </Formations>
-  </UnitAI>
   <VisualActor>
-    <Actor>units/mla/rifle_assalt_male.xml</Actor>
+    <Actor>units/mla/rifle_assalt.xml</Actor>
   </VisualActor>
 </Entity>

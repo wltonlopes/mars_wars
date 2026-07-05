@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="rifle_Infantry|template_unit_champion_infantry_archer">
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Grenadier</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+  </Identity>
+  <VisualActor>
+    <Actor>units/mla/rifle_assalt_guerrilla.xml</Actor>
+  </VisualActor>
+</Entity>
