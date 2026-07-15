@@ -13,9 +13,5 @@
       <mesh>props/weapons/lm_mla.dae</mesh>
     </variant>
   </group>
-  <group>
-    <variant frequency="1" name="Idle"/>
-    <variant file="meca/shootr.xml" name="Attack_Ranged"/>
-  </group>
   <material>objectcolor.xml</material>
 </actor>

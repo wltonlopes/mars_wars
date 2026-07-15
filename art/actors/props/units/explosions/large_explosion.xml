@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="rock">
+      <mesh>props/onager_projectile.dae</mesh>
+      <props>
+	    <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
+		<prop actor="particle/explosion_fire_blastA.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_dustA.xml" attachpoint="root"/>
+		<prop actor="particle/explosion_dustB.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="gaia/stone_temperate_granite.dds" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+</actor>

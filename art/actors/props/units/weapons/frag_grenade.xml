@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <textures>
+	      <texture file="props/mla_props_01.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="ds">
+      <mesh>props/weapons/frag_grenade.dae</mesh>
+    </variant>
+  </group>
+  <material>objectcolor.xml</material>
+</actor>

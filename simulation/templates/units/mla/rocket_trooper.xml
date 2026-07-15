@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_infantry">
+  <Attack>
+    <Ranged>
+      <AttackName>Rocket</AttackName>
+      <Damage>
+        <Crush>100.0</Crush>
+        <Fire>100.0</Fire>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>100.0</MaxRange>
+      <MinRange>45.0</MinRange>
+      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
+      <PrepareTime>2000</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>0</Gravity>
+        <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
+        <LaunchPoint y="3"/>
+        <Speed>45.0</Speed>
+        <Spread>3.0</Spread>
+      </Projectile>
+      <RepeatTime>6000</RepeatTime>
+      <Splash>
+        <Damage>
+          <Crush>40.0</Crush>
+          <Fire>40.0</Fire>
+        </Damage>
+        <FriendlyFire>false</FriendlyFire>
+        <Range>6</Range>
+        <Shape>Circular</Shape>
+      </Splash>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>200</metal>
+    </Resources>
+  </Cost>
+  <Identity>
+    <Civ>mla</Civ>
+    <SpecificName>Explosivos Ceberus</SpecificName>
+    <GenericName>Medium Artillery Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+    <Tooltip>MMedium Artillery unit armed with a rocket launcher.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Artillery</VisibleClasses>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Crush>4.0</Crush>
+        <Hack>3.0</Hack>
+        <Pierce>4.0</Pierce>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <VisualActor>
+    <Actor>units/mla/rocket_trooper.xml</Actor>
+  </VisualActor>
+</Entity>

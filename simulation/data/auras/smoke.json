@@ -1,0 +1,12 @@
+{
+	"type": "range",
+	"radius": 30,
+	"affects": ["Unit"],
+	"affectedPlayers": ["Enemy"],
+	"modifications": [
+		{ "value": "Attack/Ranged/Spread", "multiply": 2.00 },
+		{ "value": "Vision/Range", "replace": 0 }
+	],
+	"auraName": "Shrouding Smoke",
+	"auraDescription": "0% vision range, -100% Enemy Ranged Attack Accuracy - All enemy targets"
+}

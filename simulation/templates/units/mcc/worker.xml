@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_support_civilian">
+  <Attack>
+    <Ranged>
+      <AttackName>Pistol</AttackName>
+      <Damage>
+        <Pierce>5.0</Pierce>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>35</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>1000</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>1000.0</Speed>
+        <Spread>1.5</Spread>
+      </Projectile>
+      <RepeatTime>2000</RepeatTime>
+    </Ranged>
+  </Attack>
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>Worker</GenericName>
+    <SpecificName>Employee</SpecificName>
+    <Icon>units/achae/support_civilian.png</Icon>
+  </Identity>
+  <VisualActor>
+    <Actor>units/mcc/worker.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="biped/assault_rifle/crouched_1.xml">
+      <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
+      <props>
+        <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/weapons/lm_mla.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="root"/>
+        <prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
+      </props>
+    </variant>
+  </group>
+    <group>
+      <variant frequency="1" name="tunic_02_01">
+        <textures>
+          <texture file="skeletal/mla/suit_02_01.png" name="baseTex"/>
+        </textures>
+      </variant>
+   </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant file="biped/assault_rifle/shoot_standing_1.xml" name="attack_ranged"/>
+    <variant file="biped/assault_rifle/ready_1.xml" name="ready"/>
+    <variant file="biped/attack_capture.xml"/>
+    <variant file="biped/formations/suppression_stance.xml"/>
+    <variant file="biped/formations/suppression_kneel.xml"/>
+    <variant file="biped/formations/suppression_prone.xml"/>
+    <variant file="biped/build.xml"/>
+    <variant file="biped/build_farm.xml"/>
+    <variant file="biped/death_infantry.xml"/>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

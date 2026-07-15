@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="helmet">
+      <mesh>props/armor/mla_bag_01_01.dae</mesh>
+      <textures>
+	      <texture file="props/armor/mcc_bag.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

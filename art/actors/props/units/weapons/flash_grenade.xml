@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="stun_baton">
+      <mesh>props/weapons/flash_grenade.dae</mesh>
+      <textures>
+	      <texture file="props/mcc_shield_police.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>objectcolor.xml</material>
+</actor>

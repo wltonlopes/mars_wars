@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_infantry">
+  <Attack>
+    <Ranged>
+      <AttackName>LMG</AttackName>
+      <Damage>
+        <Pierce>18.0</Pierce>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>80</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>1600</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>1000.0</Speed>
+        <Spread>1.5</Spread>
+      </Projectile>
+      <RepeatTime>2400</RepeatTime>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>200</metal>
+    </Resources>
+  </Cost>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Corporate Storm Trooper</SpecificName>
+    <GenericName>Heavy Assault Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+    <Tooltip>Heavy Ranged unit armed with a LMG.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Assault</VisibleClasses>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Crush>5.0</Crush>
+        <Hack>3.0</Hack>
+        <Pierce>5.0</Pierce>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <VisualActor>
+    <Actor>units/mcc/heavy_rifle_assault.xml</Actor>
+  </VisualActor>
+</Entity>

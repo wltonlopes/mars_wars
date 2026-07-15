@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_infantry">
+  <Attack>
+    <Ranged>
+      <AttackName>Tear Gas</AttackName>
+      <Damage>
+        <Crush>5.0</Crush>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>35.0</MaxRange>
+      <MinRange>10.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>2000</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.83</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>25.0</Speed>
+        <Spread>3.0</Spread>
+      </Projectile>
+      <RepeatTime>5000</RepeatTime>
+      <Splash>
+        <Damage>
+          <Crush>0.0</Crush>
+        </Damage>
+        <FriendlyFire>false</FriendlyFire>
+        <Range>15</Range>
+        <Shape>Circular</Shape>
+        <Stun>
+          <Chance>100</Chance>
+          <Time>5000</Time>
+        </Stun>
+      </Splash>
+      <SpawnEntityOnImpact>
+        <Template>gaia/teargas</Template>
+        <SpawnNumberMin>1</SpawnNumberMin>
+        <SpawnNumberMax>1</SpawnNumberMax>
+        <SpawnOnHit>
+          <Chance>100</Chance>
+        </SpawnOnHit>
+        <SpawnOnImpact>
+          <Chance>100</Chance>
+        </SpawnOnImpact>
+      </SpawnEntityOnImpact>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>50</metal>
+    </Resources>
+  </Cost>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Corporate Police</SpecificName>
+    <GenericName>Medium Artillery Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+    <Tooltip>Ranged unit that Stuns enemy units and obscures their vision with gas.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Artillery</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>units/mcc/teargas_police.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -5,9 +5,9 @@
     <variant file="biped/assault_rifle/crouched_1.xml">
       <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
       <props>
-        <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
-        <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
-        <prop actor="props/units/weapons/lm_mla.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/helmets/mcc_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/mcc_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/weapons/lm_mcc.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
   </group>

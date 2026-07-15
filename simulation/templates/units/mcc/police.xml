@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_infantry">
+  <Attack>
+    <Melee>
+      <AttackName>Stun Batton</AttackName>
+      <Damage>
+        <Pierce>12.0</Pierce>
+      </Damage>
+      <MaxRange>5</MaxRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>2000</RepeatTime>
+      <Stun>
+        <Chance>100</Chance>
+        <Time>2500</Time>
+      </Stun>
+    </Melee>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>50</metal>
+    </Resources>
+  </Cost>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Corporate Police</SpecificName>
+    <GenericName>Medium Domestic Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+    <Tooltip>Melee unit that has a 75% chance to Block incoming ranged attacks. Stuns enemy units.</Tooltip>
+    <VisibleClasses datatype="tokens">Melee Domestic</VisibleClasses>
+  </Identity>
+  <Resistance>
+    <BlockRating>75</BlockRating>
+  </Resistance>
+  <VisualActor>
+    <Actor>units/mcc/infantry_police.xml</Actor>
+  </VisualActor>
+</Entity>

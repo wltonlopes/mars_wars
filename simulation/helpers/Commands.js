@@ -1818,8 +1818,8 @@ function GetFormationUnitAIs(
 			}
 
 
-			warn("CREATING FORMATION " + formationTemplate);
-			warn("CLUSTER SIZE = " + cluster.length);
+			//warn("CREATING FORMATION " + formationTemplate);
+			//warn("CLUSTER SIZE = " + cluster.length);
 
 			for (let ent of cluster)
 			{
