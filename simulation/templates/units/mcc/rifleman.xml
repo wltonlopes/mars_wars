@@ -6,6 +6,6 @@
     <Icon>units/athen/champion_ranged.png</Icon>
   </Identity>
   <VisualActor>
-    <Actor>units/mcc/rifle_assalt_male.xml</Actor>
+    <Actor>units/mcc/rifle_assalt.xml</Actor>
   </VisualActor>
 </Entity>
