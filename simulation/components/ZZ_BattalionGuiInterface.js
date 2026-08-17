@@ -3,6 +3,12 @@
 
 	GuiInterface.prototype.GetEntityState = function(player, ent)
 	{
+		// Some attack components supplied by older saved games or template
+		// variants do not expose this method.  The current GUI expects it.
+		const cmpAttack = Engine.QueryInterface(ent, IID_Attack);
+		if (cmpAttack && typeof cmpAttack.GetProjectileCount != "function")
+			cmpAttack.GetProjectileCount = () => 1;
+
 		const ret = cmpGuiInterfaceGetEntityState.call(this, player, ent);
 		if (!ret)
 			return ret;

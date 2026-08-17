@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="worker_01" frequency="1">
+      <mesh>skeletal/worker_glass.dae</mesh>
+      <props>
+      </props>
+    </variant>
+  </group>
+    <group>
+  <variant frequency="1" name="tunic_01_01">
+    <textures>
+	    <texture file="skeletal/mcc_worker.png" name="baseTex"/>
+      <texture file="skeletal/mcc_worker_spec.png" name="specTex"/>
+      <texture file="skeletal/mcc_worker_norm.png" name="normTex"/>
+	  </textures>
+  </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+  </group>
+  <material>basic_trans_parallax_spec.xml</material>
+</actor>

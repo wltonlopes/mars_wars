@@ -6,8 +6,10 @@
       <mesh>props/weapons/stun_baton.dae</mesh>
       <textures>
 	      <texture file="props/mcc_shield_police.png" name="baseTex"/>
+	      <texture file="props/mcc_shield_police_spec.png" name="specTex"/>
+        <texture file="props/mcc_shield_police_norm.png" name="normTex"/>
       </textures>
     </variant>
   </group>
-  <material>objectcolor.xml</material>
+  <material>basic_glow_norm_spec.xml</material>
 </actor>

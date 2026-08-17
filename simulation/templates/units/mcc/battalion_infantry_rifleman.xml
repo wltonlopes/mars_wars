@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="battalion_medium|battalion_leader|units/mcc/rifleman">
     <BattalionLeader>
-        <MemberTemplates>units/mcc/battalion_member_infantry_rifleman:7 units/mcc/battalion_member_infantry_antiair:2</MemberTemplates>
+        <MemberTemplates>units/mcc/battalion_member_infantry_rifleman:3 units/mcc/battalion_member_infantry_antiair:1</MemberTemplates>
         <Columns>10</Columns>
         <Spacing>3</Spacing>
     </BattalionLeader>

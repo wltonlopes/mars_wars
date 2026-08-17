@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_unit_support_civilian">
-  <Attack>
+  <!-- <Attack>
     <Ranged>
       <AttackName>Pistol</AttackName>
       <Damage>
@@ -20,13 +20,20 @@
       </Projectile>
       <RepeatTime>2000</RepeatTime>
     </Ranged>
-  </Attack>
+  </Attack> -->
   <Identity>
     <Civ>mcc</Civ>
     <GenericName>Worker</GenericName>
     <SpecificName>Employee</SpecificName>
     <Icon>units/achae/support_civilian.png</Icon>
   </Identity>
+  <Builder>
+    <Entities datatype="tokens" replace="">
+      structures/{civ}/civil_centre
+      structures/{civ}/house
+      structures/{civ}/barracks
+    </Entities>
+  </Builder>
   <VisualActor>
     <Actor>units/mcc/worker.xml</Actor>
   </VisualActor>

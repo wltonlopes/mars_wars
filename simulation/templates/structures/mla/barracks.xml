@@ -15,10 +15,9 @@
     <Static width="22.0" depth="23.0"/>
   </Obstruction>
   <Trainer>
-    <Entities datatype="tokens">
-      units/{civ}/infantry_pikeman_b
-      units/{civ}/champion_infantry_swordsman
-      units/{civ}/champion_infantry_axeman
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_member_infantry_rifleman
+      units/{civ}/battalion_member_infantry_antiair
     </Entities>
   </Trainer>
   <VisualActor>

@@ -7,7 +7,9 @@
       <props>
         <prop actor="props/units/helmets/mcc_helmet_01.xml" attachpoint="helmet"/>
         <prop actor="props/units/armor/mcc_bag_01_01.xml" attachpoint="back"/>
-        <prop actor="props/units/weapons/lm_mcc.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/weapons/lm_mla.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="root"/>
+        <prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
       </props>
     </variant>
   </group>

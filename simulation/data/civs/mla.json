@@ -22,6 +22,10 @@
             "Template": "structures/mla/civil_centre"
         },
         {
+            "Template": "units/mla/worker",
+            "Count": 3
+        },
+        {
             "Template": "units/mla/battalion_infantry_rifleman",
             "Count": 2
         }
@@ -31,7 +35,8 @@
         "Player2"
     ],
     "SkirmishReplacements": {
-        "skirmish/units/default_infantry_melee_b": "units/mla/battalion_infantry_rifleman"
+        "skirmish/units/default_support_civilian": "units/mla/worker",
+        "skirmish/units/default_infantry_ranged_b": "units/mla/battalion_infantry_rifleman"
     },
     "SelectableInGameSetup": true
 }

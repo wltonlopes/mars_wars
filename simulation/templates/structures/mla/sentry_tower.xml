@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Compatibility placeholder until the MLA sentry-tower asset is implemented. -->
+<Entity parent="structures/mla/house">
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Sentry Tower</GenericName>
+  </Identity>
+</Entity>

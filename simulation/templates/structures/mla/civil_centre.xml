@@ -12,7 +12,8 @@
     <Static width="25.5" depth="25.5"/>
   </Obstruction>
   <Trainer>
-    <Entities datatype="tokens">
+    <Entities datatype="tokens" replace="">
+      units/{civ}/worker
       units/{civ}/battalion_member_infantry_rifleman
     </Entities>
   </Trainer>

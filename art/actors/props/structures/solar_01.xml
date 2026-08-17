@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/solar_01.dae</mesh>
+			<textures>
+				<texture file="structural/mars_generic.png" name="baseTex"/>
+				<texture file="structural/mars_generic_spec.png" name="specTex"/>
+				<texture file="structural/mars_generic_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+	<!-- <group>
+		<variant frequency="100" name="Idle"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_large.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_large.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_large_gray.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group> -->
+	<material>player_trans_parallax_spec.xml</material>
+</actor>
