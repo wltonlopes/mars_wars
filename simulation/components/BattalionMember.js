@@ -45,13 +45,13 @@ function()
 BattalionMember.prototype.CanBeSelected =
 function()
 {
-    return false;
+    return true;
 };
 
 BattalionMember.prototype.IsControllable =
 function()
 {
-    return false;
+    return true;
 };
 
 Engine.RegisterComponentType(

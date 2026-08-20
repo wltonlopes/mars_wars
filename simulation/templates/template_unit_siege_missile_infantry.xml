@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="template_unit_siege">
+<Entity parent="template_unit">
   <Attack>
     <Ranged>
       <AttackName>Stone</AttackName>
@@ -36,93 +36,66 @@
     </Ranged>
   </Attack>
   <Cost>
-    <Population>3</Population>
+    <BuildTime>10</BuildTime>
+    <Resources>
+      <food>50</food>
+    </Resources>
   </Cost>
-  <Decay>
-    <DelayTime>0.0</DelayTime>
-    <SinkProb>1.0</SinkProb>
-    <SinkRate>0.0</SinkRate>
-    <SinkAccel>2.0</SinkAccel>
-  </Decay>
   <Health>
-    <Unhealable>true</Unhealable>
+    <Max>100</Max>
   </Health>
   <Identity>
     <GenericName>Infantry</GenericName>
     <Classes datatype="tokens">Human CitizenSoldier</Classes>
     <VisibleClasses datatype="tokens">Citizen Worker Soldier Infantry Siege Ranged StoneThrower</VisibleClasses>
     <GenericName>Missile Infantry</GenericName>
-    <Requirements>
-      <Techs datatype="tokens">phase_city</Techs>
-    </Requirements>
   </Identity>
+  <Loot>
+    <xp>100</xp>
+    <food>0</food>
+    <wood>0</wood>
+    <stone>0</stone>
+    <metal>0</metal>
+  </Loot>
   <Position>
-    <Anchor>pitch-roll</Anchor>
-    <TurnRate>4</TurnRate>
+    <Anchor>upright</Anchor>
   </Position>
-  <Repairable disable=""/>
   <Resistance>
     <Entity>
-      <ApplyStatus>
-        <Poisoned>
-          <Duration>0.0</Duration>
-          <BlockChance>1</BlockChance>
-        </Poisoned>
-      </ApplyStatus>
       <Damage>
-        <Hack>6</Hack>
-        <Pierce>25</Pierce>
-        <Crush>5</Crush>
+        <Crush>3.0</Crush>
+        <Hack>2.0</Hack>
+        <Pierce>2.0</Pierce>
       </Damage>
     </Entity>
   </Resistance>
-  <Selectable>
-    <Overlay>
-      <Texture>
-        <MainTexture>128x256/rounded_rectangle.png</MainTexture>
-        <MainTextureMask>128x256/rounded_rectangle_mask.png</MainTextureMask>
-      </Texture>
-    </Overlay>
-  </Selectable>
+  <StatusBars>
+    <HeightOffset>7.0</HeightOffset>
+  </StatusBars>
   <Sound>
     <SoundGroups>
-      <attack_impact_ranged>attack/impact/siegeprojectilehit.xml</attack_impact_ranged>
-      <attack_ranged>attack/siege/ballist_attack.xml</attack_ranged>
+      <attack>attack/weapon/machine_gun.xml</attack>
       <attack_slaughter>attack/weapon/knife_attack.xml</attack_slaughter>
+      <death>actor/human/death/{phenotype}_death.xml</death>
       <order_attack>voice/{lang}/civ/civ_{phenotype}_attack.xml</order_attack>
       <order_attack_move>voice/{lang}/civ/civ_{phenotype}_attack.xml</order_attack_move>
-      <order_build>voice/{lang}/civ/civ_{phenotype}_build.xml</order_build>
       <order_garrison>voice/{lang}/civ/civ_{phenotype}_garrison.xml</order_garrison>
-      <order_gather>voice/{lang}/civ/civ_{phenotype}_gather.xml</order_gather>
-      <order_repair>voice/{lang}/civ/civ_{phenotype}_repair.xml</order_repair>
       <order_walk>voice/{lang}/civ/civ_{phenotype}_walk.xml</order_walk>
+      <run>actor/human/movement/walk.xml</run>
       <select>voice/{lang}/civ/civ_{phenotype}_select.xml</select>
-      <walk>actor/human/movement/walk.xml</walk>
-      <run>actor/human/movement/run.xml</run>
-      <death>actor/human/death/{phenotype}_death.xml</death>
-      <build>resource/construction/con_wood.xml</build>
-      <gather_fruit>resource/foraging/forage_leaves.xml</gather_fruit>
-      <gather_grain>resource/farming/farm.xml</gather_grain>
-      <gather_meat>resource/gathering/gather_meat.xml</gather_meat>
-      <gather_tree>resource/lumbering/lumbering.xml</gather_tree>
-      <gather_rock>resource/mining/pickaxe.xml</gather_rock>
-      <gather_ore>resource/mining/mining.xml</gather_ore>
-      <gather_ruins>resource/mining/mining.xml</gather_ruins>
       <trained>interface/alarm/alarm_create_infantry.xml</trained>
-      <invalid_building_placement>interface/alarm/alarm_invalid_building_placement.xml</invalid_building_placement>
+      <walk>actor/human/movement/walk.xml</walk>
     </SoundGroups>
   </Sound>
-  <StatusBars>
-    <BarWidth>4.0</BarWidth>
-    <BarHeight>0.5</BarHeight>
-  </StatusBars>
-  <TreasureCollector disable=""/>
-  <UnitAI>
-    <DefaultStance>standground</DefaultStance>
-  </UnitAI>
+  <Turretable/>
   <UnitMotion>
-    <PassabilityClass>large</PassabilityClass>
-    <RunMultiplier>1</RunMultiplier>
-    <InstantTurnAngle>0.75</InstantTurnAngle>
+    <RunMultiplier>1.1</RunMultiplier>
+    <WalkSpeed>8.4235</WalkSpeed>
   </UnitMotion>
+  <Vision>
+    <Range>80</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>units/mla/rifle_assault.xml</Actor>
+  </VisualActor>
 </Entity>

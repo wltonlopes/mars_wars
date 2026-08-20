@@ -173,9 +173,11 @@ var g_Commands = {
 
 	"attack": function(player, cmd, data)
 	{
-		GetFormationUnitAIs(data.entities, player, cmd, data.formation).forEach(cmpUnitAI =>
+		GetBattalionOrderEntities(data.entities).forEach(ent =>
 		{
-			cmpUnitAI.Attack(cmd.target, cmd.allowCapture, cmd.queued, cmd.pushFront);
+			const cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+			if (cmpUnitAI)
+				cmpUnitAI.Attack(cmd.target, cmd.allowCapture, cmd.queued, cmd.pushFront);
 		});
 	},
 
@@ -1615,6 +1617,34 @@ function CollapseBattalionEntities(ents)
 	}
 
 	return collapsed;
+}
+
+// A member remains selectable, but an attack/capture command must be executed
+// by every soldier in its battalion.  Movement continues to be controlled by
+// the leader so the squad keeps its arranged positions.
+function GetBattalionOrderEntities(ents)
+{
+	const result = [];
+	const seen = {};
+
+	for (const ent of ents)
+	{
+		const leader = GetBattalionLeaderEntity(ent);
+		const cmpLeader = leader != INVALID_ENTITY &&
+			Engine.QueryInterface(leader, IID_BattalionLeader);
+		const orderEnts = cmpLeader ? cmpLeader.GetBattalionEntities() : [ent];
+
+		for (const orderEnt of orderEnts)
+		{
+			if (seen[orderEnt])
+				continue;
+
+			seen[orderEnt] = true;
+			result.push(orderEnt);
+		}
+	}
+
+	return result;
 }
 
 /**

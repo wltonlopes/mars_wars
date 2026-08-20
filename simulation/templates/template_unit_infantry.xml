@@ -6,7 +6,7 @@
       <Capture>2.5</Capture>
       <MaxRange>4</MaxRange>
       <RepeatTime>1000</RepeatTime>
-      <RestrictedClasses datatype="tokens">Field Palisade Wall</RestrictedClasses>
+      <RestrictedClasses datatype="tokens">Palisade Wall</RestrictedClasses>
     </Capture>
   </Attack>
   <Cost>

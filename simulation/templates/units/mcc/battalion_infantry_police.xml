@@ -3,7 +3,7 @@
     <BattalionLeader>
         <MemberTemplates>units/mcc/battalion_member_infantry_police:3 units/mcc/battalion_member_infantry_teargas_police:2</MemberTemplates>
         <Columns>6</Columns>
-        <Spacing>2</Spacing>
+        <Spacing>3</Spacing>
     </BattalionLeader>
     <Identity>
         <GenericName>Police</GenericName>

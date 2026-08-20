@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="battalion_member|units/mla/grenadier">
+<Entity parent="battalion_member|units/mla/rocket_trooper">
     <Identity>
         <GenericName>Soldado do Batlahão</GenericName>
-        <SelectionGroupName>units/mla/grenadier</SelectionGroupName>
+        <SelectionGroupName>units/mla/rocket_trooper</SelectionGroupName>
     </Identity>
 </Entity>

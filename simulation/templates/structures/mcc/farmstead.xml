@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_structure_economic_farmstead|template_structure_resource_field">
+  <Footprint>
+    <Square width="18.0" depth="13.0"/>
+  </Footprint>
+  <Health>
+    <SpawnEntityOnDeath>decay|rubble/rubble_stone_4x2</SpawnEntityOnDeath>
+  </Health>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Food Industry</SpecificName>
+  </Identity>
+  <Obstruction>
+    <Static width="16.0" depth="11.0"/>
+  </Obstruction>
+  <VisualActor>
+    <Actor>structures/mcc/bio_field.xml</Actor>
+  </VisualActor>
+</Entity>
+

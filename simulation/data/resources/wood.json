@@ -1,0 +1,13 @@
+{
+	"code": "wood",
+	"name": "Energy",
+	"description": "Harvest from solar panels, wind turbines, or nuclear reactors.",
+	"order": 2,
+	"subtypes": {
+		"tree": "Tree",
+		"ruins": "Ruins"
+	},
+	"properties": ["barterable", "tradable", "tributable"],
+	"truePrice": 100,
+	"aiAnalysisInfluenceGroup": "abundant"
+}

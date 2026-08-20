@@ -35,7 +35,7 @@
         "Player2"
     ],
     "SkirmishReplacements": {
-        "skirmish/units/default_support_civilian": "units/mla/worker",
+        "skirmish/units/default_support_civilian": "units/mcc/worker",
         "skirmish/units/default_infantry_ranged_b": "units/mcc/battalion_infantry_rifleman"
     },
     "SelectableInGameSetup": true

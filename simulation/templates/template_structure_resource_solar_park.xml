@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_structure_resource">
+    <Capturable>
+        <CapturePoints>2000</CapturePoints>
+        <RegenRate>0</RegenRate>
+    </Capturable>
+  <Cost>
+    <BuildTime>50</BuildTime>
+    <Resources>
+      <wood>100</wood>
+    </Resources>
+  </Cost>
+  <Footprint>
+    <Square width="28.0" depth="28.0"/>
+    <Height>2.0</Height>
+  </Footprint>
+  <Health disable=""/>
+  <Identity>
+    <GenericName>Solar Park</GenericName>
+    <SelectionGroupName>template_structure_resource_solar_park</SelectionGroupName>
+    <VisibleClasses datatype="tokens">SolarPark</VisibleClasses>
+    <Tooltip>Solar Park</Tooltip>
+    <Icon>structures/field.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Loot>
+    <food>50</food>
+  </Loot>
+  <Minimap>
+    <Color r="119" g="82" b="46"/>
+  </Minimap>
+  <Obstruction>
+    <Static width="22.0" depth="22.0"/>
+    <BlockMovement>false</BlockMovement>
+    <BlockPathfinding>false</BlockPathfinding>
+  </Obstruction>
+  <RallyPoint disable=""/>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>15</Hack>
+        <Pierce>40</Pierce>
+        <Crush>5</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <ResourceTrickle>
+    <Rates>
+      <wood>1.0</wood>
+    </Rates>
+    <Interval>1000</Interval>
+  </ResourceTrickle>
+  <Sound>
+    <SoundGroups>
+      <select>interface/select/building/sel_field.xml</select>
+      <constructed>interface/complete/building/complete_field.xml</constructed>
+    </SoundGroups>
+  </Sound>
+  <StatusBars>
+    <HeightOffset>8.0</HeightOffset>
+  </StatusBars>
+  <Vision>
+    <Range>0</Range>
+  </Vision>
+  <TerritoryDecay disable=""/>
+  <TerritoryInfluence disable=""/>
+  <VisualActor>
+    <FoundationActor>structures/plot_field_found.xml</FoundationActor>
+    <SelectionShape>
+      <Footprint/>
+    </SelectionShape>
+  </VisualActor>
+</Entity>

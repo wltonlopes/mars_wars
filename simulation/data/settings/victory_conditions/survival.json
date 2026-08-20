@@ -1,0 +1,14 @@
+{
+    "TranslatedKeys": ["Title", "Description"],
+    "Data":
+    {
+        "Title": "Survival",
+        "Description": "As the defender (Player 1), you must protect your initial Civic Center for 20 minutes. This mode is for random maps only.",
+        "Scripts":
+        [
+            "scripts/TriggerHelper.js",
+            "scripts/SurvivalVictory.js"
+        ],
+        "GUIOrder": 13
+    }
+}

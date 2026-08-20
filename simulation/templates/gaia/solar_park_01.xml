@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_structure_resource_solar_park">
+  <Footprint>
+    <Square width="30.0" depth="30.0"/>
+    <Height>5.0</Height>
+  </Footprint>
+  <Identity>
+    <SpecificName>Solar Park</SpecificName>
+  </Identity>
+  <VisualActor>
+    <Actor>structures/solar_park_01.xml</Actor>
+    <FoundationActor>structures/plot_field_new.xml</FoundationActor>
+  </VisualActor>
+</Entity>

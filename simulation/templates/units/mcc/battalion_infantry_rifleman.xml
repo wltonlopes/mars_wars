@@ -2,8 +2,8 @@
 <Entity parent="battalion_medium|battalion_leader|units/mcc/rifleman">
     <BattalionLeader>
         <MemberTemplates>units/mcc/battalion_member_infantry_rifleman:3 units/mcc/battalion_member_infantry_antiair:1</MemberTemplates>
-        <Columns>10</Columns>
-        <Spacing>3</Spacing>
+        <Columns>3</Columns>
+        <Spacing>5</Spacing>
     </BattalionLeader>
     <Identity>
         <GenericName>Batalhão de Infantaria</GenericName>

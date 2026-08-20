@@ -1,0 +1,14 @@
+{
+    "TranslatedKeys": ["Title", "Description"],
+    "Data":
+    {
+        "Title": "King of the Hill",
+        "Description": "Capture and hold the central fortress for ten minutes to win.",
+        "Scripts":
+        [
+            "scripts/TriggerHelper.js",
+            "scripts/KingOfTheHillVictory.js"
+        ],
+        "GUIOrder": 11
+    }
+}

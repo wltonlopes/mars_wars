@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Entity parent="template_control_point">
+
+    <Identity>
+
+        <GenericName>Control Point</GenericName>
+
+        <SpecificName>Strategic Objective</SpecificName>
+
+    </Identity>
+
+    <VisualActor>
+
+        <Actor>structures/strategic_satellite_dish.xml</Actor>
+
+    </VisualActor>
+
+</Entity>

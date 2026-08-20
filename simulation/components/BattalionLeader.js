@@ -64,7 +64,7 @@ BattalionLeader.prototype.Init = function()
 
 	this.leaderTemplate =
 		this.template.LeaderTemplate ||
-		"units/battalions/battalion_spearman_leader";
+		this.memberTemplate;
 	this.currentXp = 0;
 	this.requiredXp =
 		+(this.template.RequiredXp || 100);
@@ -668,6 +668,14 @@ function()
                 IID_UnitAI);
 
         if (!cmpMemberPos || !cmpUnitAI)
+            continue;
+
+        // Combat and capture orders belong to the soldier itself.  Do not
+        // replace them with a formation-walk order while they are active.
+        if (cmpUnitAI.order &&
+            (cmpUnitAI.order.type == "Attack" ||
+             cmpUnitAI.order.type == "WalkAndFight" ||
+             cmpUnitAI.order.type == "Patrol"))
             continue;
 
         let row =

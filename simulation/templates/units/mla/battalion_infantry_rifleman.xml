@@ -3,7 +3,7 @@
     <BattalionLeader>
         <MemberTemplates>units/mla/battalion_member_infantry_rifleman:3 units/mla/battalion_member_infantry_antiair:1</MemberTemplates>
         <Columns>3</Columns>
-        <Spacing>3</Spacing>
+        <Spacing>6</Spacing>
     </BattalionLeader>
     <Identity>
         <GenericName>Batalhão de Infantaria</GenericName>
