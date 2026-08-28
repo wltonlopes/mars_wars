@@ -1,0 +1,23 @@
+{
+	"genericName": "Exoskeleton Systems",
+	"specificName": {},
+	"description": "Industrial exoskeletons let workers build, mine, and carry resources more efficiently.",
+	"cost": {
+		"food": 150,
+		"metal": 250
+	},
+	"requirements": { "tech": "phase_town" },
+	"requirementsTooltip": "Unlocked in Town Phase.",
+	"icon": "exoskeleton_systems.png",
+	"researchTime": 60,
+	"tooltip": "Workers +15% construction rate and +5 resource capacity.",
+	"modifications": [
+		{ "value": "Builder/Rate", "multiply": 1.15 },
+		{ "value": "ResourceGatherer/Capacities/food", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/wood", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/stone", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/metal", "add": 5 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

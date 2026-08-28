@@ -1,0 +1,29 @@
+{
+	"genericName": "AI-Assisted Command",
+	"specificName": {},
+	"description": "Advanced artificial intelligence analyzes battlefield data and supports faster, more precise decisions.",
+	"cost": {
+		"food": 250,
+		"metal": 300
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "satellite_network" },
+			{ "tech": "reconnaissance_systems" },
+			{ "tech": "battlefield_network" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Satellite Network, Reconnaissance Systems, Battlefield Network, and City Phase.",
+	"icon": "ai_assisted_command.png",
+	"researchTime": 80,
+	"tooltip": "Citizen-Soldiers +1 ranged attack, +1 ranged range, +1 vision range, and 10% faster ranged attacks.",
+	"modifications": [
+		{ "value": "Attack/Ranged/Damage/Pierce", "add": 1 },
+		{ "value": "Attack/Ranged/MaxRange", "add": 1 },
+		{ "value": "Vision/Range", "add": 1 },
+		{ "value": "Attack/Ranged/RepeatTime", "multiply": 0.9 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared secondary close-combat weapon and magazine for MLA/MCC ranged soldiers. -->
+<Entity>
+  <Ammo>
+    <CurrAmmo>30</CurrAmmo>
+    <MaxAmmo>30</MaxAmmo>
+    <SwitchToMeleeRange>12</SwitchToMeleeRange>
+  </Ammo>
+  <Attack>
+    <Melee>
+      <AttackName>Combat knife</AttackName>
+      <Damage>
+        <Hack>8</Hack>
+        <Pierce>0</Pierce>
+        <Crush>0</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <PrepareTime>500</PrepareTime>
+      <RepeatTime>900</RepeatTime>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+    </Melee>
+  </Attack>
+</Entity>

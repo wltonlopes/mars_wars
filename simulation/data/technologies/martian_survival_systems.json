@@ -1,0 +1,20 @@
+{
+	"genericName": "Martian Survival Systems",
+	"specificName": {},
+	"description": "Foundational systems make long-term life and work on Mars possible.",
+	"cost": {
+		"food": 100,
+		"wood": 100
+	},
+	"requirements": { "tech": "phase_village" },
+	"requirementsTooltip": "Unlocked in Village Phase.",
+	"icon": "martian_survival_systems.png",
+	"researchTime": 40,
+	"tooltip": "Workers +10% maximum health and +5% movement speed.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.1 },
+		{ "value": "UnitMotion/WalkSpeed", "multiply": 1.05 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

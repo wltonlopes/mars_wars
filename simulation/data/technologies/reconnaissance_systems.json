@@ -1,0 +1,19 @@
+{
+	"genericName": "Reconnaissance Systems",
+	"specificName": {},
+	"description": "Improved sensors help military units identify threats before they enter combat range.",
+	"cost": {
+		"food": 100,
+		"metal": 150
+	},
+	"requirements": { "tech": "communication_network" },
+	"requirementsTooltip": "Requires Communication Network.",
+	"icon": "reconnaissance_systems.png",
+	"researchTime": 45,
+	"tooltip": "Citizen-Soldiers +2 vision range.",
+	"modifications": [
+		{ "value": "Vision/Range", "add": 2 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

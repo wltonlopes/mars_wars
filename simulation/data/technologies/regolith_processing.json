@@ -1,0 +1,25 @@
+{
+	"genericName": "Regolith Processing",
+	"specificName": {},
+	"description": "Processing Martian regolith turns local material into useful construction supplies.",
+	"cost": {
+		"food": 100,
+		"metal": 150
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "martian_survival_systems" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Martian Survival Systems and Town Phase.",
+	"icon": "regolith_processing.png",
+	"researchTime": 50,
+	"tooltip": "Workers +10% stone and metal gathering rate.",
+	"modifications": [
+		{ "value": "ResourceGatherer/Rates/stone", "multiply": 1.1 },
+		{ "value": "ResourceGatherer/Rates/metal", "multiply": 1.1 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

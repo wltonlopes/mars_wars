@@ -21,7 +21,7 @@
     </Entities>
   </Trainer>
   <VisualActor>
-    <Actor>structures/mcc/barracks.xml</Actor>
+    <Actor>structures/mcc/bunker.xml</Actor>
     <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
   </VisualActor>
 </Entity>

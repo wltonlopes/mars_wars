@@ -3,7 +3,7 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>structural/mcc/stable.dae</mesh>
+			<mesh>structural/common_mars/stable.dae</mesh>
 			<props>
 			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>

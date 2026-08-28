@@ -14,7 +14,8 @@
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/worker
-      units/{civ}/battalion_member_infantry_rifleman
+      units/{civ}/battalion_infantry_rifleman
+      units/{civ}/battalion_infantry_police
     </Entities>
   </Trainer>
   <VisualActor>

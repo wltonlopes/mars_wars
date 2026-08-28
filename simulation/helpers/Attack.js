@@ -255,8 +255,12 @@ AttackHelper.prototype.CauseDamageOverArea = function(data)
 			damageMultiplier = 1 - distance * distance / (data.radius * data.radius);
 		else if (data.shape == 'Linear') // linear effect with quadratic falloff in two directions (only used for certain missiles)
 		{
-			// The entity has a position here since it was returned by the range manager.
-			const entityPosition = Engine.QueryInterface(ent, IID_Position).GetPosition2D();
+			const cmpPosition = Engine.QueryInterface(ent, IID_Position);
+			// An entity may leave the world after the range query (for example by
+			// entering a garrison) before delayed splash damage is processed.
+			if (!cmpPosition || !cmpPosition.IsInWorld())
+				continue;
+			const entityPosition = cmpPosition.GetPosition2D();
 			const relativePos = entityPosition.sub(data.origin).normalize().mult(distance);
 
 			// Get the position relative to the missile direction.
@@ -313,8 +317,14 @@ AttackHelper.prototype.HandleAttackEffects = function(target, data, bonusMultipl
         
     // HC-Code
     // check whether this unit has blocked the "Ranged" attack
-    if (cmpResistance.HasBlocked(data.type) == true)
+	if (cmpResistance.HasBlocked && cmpResistance.HasBlocked(data.type) == true)
         return false;
+
+	if (data.Knockback && data.origin && cmpResistance.ApplyKnockback)
+		cmpResistance.ApplyKnockback(
+			data.origin,
+			data.Knockback.distance,
+			data.Knockback.chance);
     // HC-End
     
     // HC-Code
@@ -331,17 +341,22 @@ AttackHelper.prototype.HandleAttackEffects = function(target, data, bonusMultipl
 
             // spawn the new entity(ies) at the location of the target by default, unless the attacker location is specified
             let pos = { "x": data.position.x, "y": data.position.z };
-            if (entityImpact.spawnOnHit.spawnAtTarget == false)
-                pos = Engine.QueryInterface(data.attacker, IID_Position).GetPosition2D();
+			if (entityImpact.spawnOnHit.spawnAtTarget == false)
+			{
+				let cmpAttackerPosition = Engine.QueryInterface(data.attacker, IID_Position);
+				if (cmpAttackerPosition && cmpAttackerPosition.IsInWorld())
+					pos = cmpAttackerPosition.GetPosition2D();
+			}
 
-            cmpResistance.SpawnImpactUnits(entityImpact, pos, entityImpact.spawnOnHit.chance, data.attackerOwner);
+			if (cmpResistance.SpawnImpactUnits)
+				cmpResistance.SpawnImpactUnits(entityImpact, pos, entityImpact.spawnOnHit.chance, data.attackerOwner);
         }
     }
     // HC-End
 
 	//HC-Code
 	let Stun = data.Stun;
-    if (Stun && cmpResistance.knockbackTimer == undefined) // dont stun if there is a knockback in effect for this entity
+	if (Stun && cmpResistance.StunEntity && cmpResistance.GetStunResistance && cmpResistance.knockbackTimer == undefined) // dont stun if there is a knockback in effect for this entity
     {
         // Check resistanceModifier for regular stuns only, not for knockback stuns
         let resistanceModifier = (+100 - cmpResistance.GetStunResistance()) * 0.01; // percentage modifier for stunning, (0 resistance = 1, 20 resistance = 0.8, 100 resistance = 0)

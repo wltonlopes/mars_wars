@@ -1,0 +1,26 @@
+{
+	"genericName": "Environmental Combat Systems",
+	"specificName": {},
+	"description": "Specialized Martian equipment protects combat units from heat, dust, and hostile conditions.",
+	"cost": {
+		"food": 150,
+		"metal": 200
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "standard_equipment" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Standard Equipment and Town Phase.",
+	"icon": "environmental_combat_systems.png",
+	"researchTime": 55,
+	"tooltip": "Citizen-Soldiers +1 fire and poison resistance and +10% stun resistance.",
+	"modifications": [
+		{ "value": "Resistance/Entity/Damage/Fire", "add": 1 },
+		{ "value": "Resistance/Entity/Damage/Poison", "add": 1 },
+		{ "value": "Resistance/StunResistance", "multiply": 1.1 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

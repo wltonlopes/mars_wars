@@ -15,6 +15,6 @@
   </Obstruction>
   <VisualActor>
     <Actor>structures/mcc/house.xml</Actor>
-    <FoundationActor>structures/fndn_3x3_round.xml</FoundationActor>
+    <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
   </VisualActor>
 </Entity>

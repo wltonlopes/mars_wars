@@ -1,0 +1,25 @@
+{
+	"genericName": "Advanced Power Systems",
+	"specificName": {},
+	"description": "Compact reactors and advanced generators provide dependable high-output power.",
+	"cost": {
+		"food": 200,
+		"metal": 300
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "energy_storage" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Energy Storage and City Phase.",
+	"icon": "advanced_power_systems.png",
+	"researchTime": 70,
+	"tooltip": "Solar Parks +25% resource production and +20% maximum health.",
+	"modifications": [
+		{ "value": "ResourceTrickle/Rates/wood", "multiply": 1.25 },
+		{ "value": "Health/Max", "multiply": 1.2 }
+	],
+	"affects": ["SolarPark"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

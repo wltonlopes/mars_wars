@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="rifle_Infantry|template_unit_champion_infantry_archer">
+<Entity parent="ranged_combat|rifle_Infantry|template_unit_champion_infantry_archer">
   <Identity>
     <Civ>mla</Civ>
     <GenericName>Commandos Ceberus</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/battalion_member.png</Icon>
   </Identity>
     <TurretHolder>
     <TurretPoints>

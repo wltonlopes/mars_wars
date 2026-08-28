@@ -1,0 +1,25 @@
+{
+	"genericName": "Thermal Regulation",
+	"specificName": {},
+	"description": "Thermal control systems protect colonists and equipment from extreme temperatures.",
+	"cost": {
+		"food": 150,
+		"metal": 200
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "martian_survival_systems" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Martian Survival Systems and Town Phase.",
+	"icon": "thermal_regulation.png",
+	"researchTime": 55,
+	"tooltip": "Workers +15% maximum health and +5% movement speed.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.15 },
+		{ "value": "UnitMotion/WalkSpeed", "multiply": 1.05 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

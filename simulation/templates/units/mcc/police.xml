@@ -25,7 +25,7 @@
     <Civ>mcc</Civ>
     <SpecificName>Corporate Police</SpecificName>
     <GenericName>Medium Domestic Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/battalion_member.png</Icon>
     <Tooltip>Melee unit that has a 75% chance to Block incoming ranged attacks. Stuns enemy units.</Tooltip>
     <VisibleClasses datatype="tokens">Melee Domestic</VisibleClasses>
   </Identity>

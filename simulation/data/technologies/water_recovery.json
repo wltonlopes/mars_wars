@@ -1,0 +1,27 @@
+{
+	"genericName": "Water Recovery",
+	"specificName": {},
+	"description": "Efficient recovery systems reduce the colony's dependence on new water supplies.",
+	"cost": {
+		"food": 150,
+		"metal": 200
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "atmospheric_recycling" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Atmospheric Recycling and City Phase.",
+	"icon": "water_recovery.png",
+	"researchTime": 60,
+	"tooltip": "Workers +15% resource capacity.",
+	"modifications": [
+		{ "value": "ResourceGatherer/Capacities/food", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/wood", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/stone", "add": 5 },
+		{ "value": "ResourceGatherer/Capacities/metal", "add": 5 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

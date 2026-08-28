@@ -23,13 +23,17 @@ Resistance.prototype.StunEntity = function (entity, miliseconds, playAnimation =
 
     let cmpUnitMotion = Engine.QueryInterface(entity, IID_UnitMotion);
     if (!cmpUnitMotion)
+    {
+        this.isStunned = false;
         return;
+    }
 
     cmpUnitMotion.SetSpeedMultiplier(+0.001); // the unit cant move when its stunned
 
     if (playAnimation == true) {
         let visualCmp = Engine.QueryInterface(entity, IID_Visual);
-        visualCmp.SelectAnimation("idle", false, 0.1);
+        if (visualCmp)
+            visualCmp.SelectAnimation("idle", false, 0.1);
     }
     let cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
     let data = {};
@@ -64,6 +68,8 @@ Resistance.prototype.ResetStun = function (data, lateness)
 
     cmpUnitMotion.SetSpeedMultiplier(+1); // reset speed multiplier to 1
     let cmpPos = Engine.QueryInterface(this.entity, IID_Position);
+    if (!cmpPos || !cmpPos.IsInWorld())
+        return;
     let pos = cmpPos.GetPosition2D();
     cmpUnitAI.Walk(pos.x + +1, pos.y, false); // for now, run a generic move command after to reset the orientation, TODO: make the entity attack the previous entity if it exists
 }
@@ -88,6 +94,35 @@ Resistance.prototype.HasBlocked = function (type)
         //visualCmp.SelectAnimation("block", true, 1.0);
         return true;
     }
+}
+
+Resistance.prototype.ApplyKnockback = function(origin, distance, chance)
+{
+    let cmpIdentity = Engine.QueryInterface(this.entity, IID_Identity);
+    if (!cmpIdentity || !cmpIdentity.HasClass("Unit"))
+        return;
+
+    if (randFloat(0, 100) > chance)
+        return;
+
+    let cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
+    if (!cmpPosition || !cmpPosition.IsInWorld())
+        return;
+
+    let target = cmpPosition.GetPosition2D();
+    let dx = target.x - origin.x;
+    let dz = target.y - origin.y;
+    let length = Math.sqrt(dx * dx + dz * dz);
+    if (length < 0.001)
+    {
+        dx = 1;
+        dz = 0;
+        length = 1;
+    }
+
+    cmpPosition.JumpTo(
+        target.x + dx / length * distance,
+        target.y + dz / length * distance);
 }
 
 Resistance.prototype.GetBlockRating = function ()
@@ -128,13 +163,21 @@ Resistance.prototype.SpawnImpactUnits = function (EntityImpact, pos, chance, Att
     for (let i = 0; i < randSpawns; i++)
     {
         var spawnedUnit = Engine.AddEntity(EntityImpact.template);
+		if (spawnedUnit == INVALID_ENTITY)
+			continue;
 
         // A unit spawned that way needs to be marked as free and shall not take up a slot in the battalion count
         let cmpHealth = Engine.QueryInterface(spawnedUnit, IID_Health);
-        cmpHealth.freeUnit = true;
+		if (cmpHealth)
+			cmpHealth.freeUnit = true;
 
         // set spawned unit location
         var spawnedUnitPosCmp = Engine.QueryInterface(spawnedUnit, IID_Position);
+		if (!spawnedUnitPosCmp)
+		{
+			Engine.DestroyEntity(spawnedUnit);
+			continue;
+		}
         spawnedUnitPosCmp.JumpTo(pos.x, pos.y);
 
         // set spawned unit rotation
@@ -144,14 +187,15 @@ Resistance.prototype.SpawnImpactUnits = function (EntityImpact, pos, chance, Att
         // set spawned unit ownership
         var spawnedUnitOwnershipCmp = Engine.QueryInterface(spawnedUnit, IID_Ownership);
         let ownerID = EntityImpact.ownerID;
-        if (ownerID != undefined)
+		if (spawnedUnitOwnershipCmp && ownerID != undefined)
             spawnedUnitOwnershipCmp.SetOwner(+ownerID);
-        else
+		else if (spawnedUnitOwnershipCmp)
             spawnedUnitOwnershipCmp.SetOwner(AttackOwner);
             
         // play spawn animation if present
         var spawnedUnitVisualCmp = Engine.QueryInterface(spawnedUnit, IID_Visual);
-        spawnedUnitVisualCmp.SelectAnimation("spawn", true, 1.0);
+		if (spawnedUnitVisualCmp)
+			spawnedUnitVisualCmp.SelectAnimation("spawn", true, 1.0);
 
         //play sound if present
         PlaySound("spawn", spawnedUnit);

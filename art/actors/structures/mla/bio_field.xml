@@ -3,7 +3,7 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>structural/mcc/bio_field.dae</mesh>
+			<mesh>structural/common_mars/bio_field.dae</mesh>
 			<props>
 			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="structures/mla/bio_field_cupula.xml" attachpoint="root"/>

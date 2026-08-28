@@ -1,0 +1,27 @@
+{
+	"genericName": "Powered Armor",
+	"specificName": {},
+	"description": "Powered armor turns elite soldiers into tougher and more capable combatants.",
+	"cost": {
+		"food": 200,
+		"metal": 300
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "advanced_combat_gear" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Advanced Combat Gear and City Phase.",
+	"icon": "powered_armor.png",
+	"researchTime": 70,
+	"tooltip": "Citizen-Soldiers +15% maximum health, +1 crush and pierce armor, and +5% movement speed.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.15 },
+		{ "value": "Resistance/Entity/Damage/Crush", "add": 1 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "add": 1 },
+		{ "value": "UnitMotion/WalkSpeed", "multiply": 1.05 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

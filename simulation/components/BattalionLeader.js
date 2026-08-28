@@ -82,10 +82,6 @@ BattalionLeader.prototype.Init = function()
 
 	if (g_PromotedBattalions[this.entity])
 	{
-		warn(
-			"RESTORING BATTALION " +
-			this.entity);
-
 		this.members =
 			g_PromotedBattalions[this.entity];
 
@@ -106,13 +102,6 @@ BattalionLeader.prototype.Init = function()
 		500,
 		500);
 
-	cmpTimer.SetInterval(
-		this.entity,
-		IID_BattalionLeader,
-		"DebugOrders",
-		1000,
-		1000);
-
 };
 
 BattalionLeader.prototype.OnOwnershipChanged =
@@ -126,15 +115,11 @@ function(msg)
 
     this.spawned = true;
 
-    warn("BATTALION READY");
-
     this.SpawnMembers();
 };
 
 BattalionLeader.prototype.SpawnMembers =function()
 {
-
-	warn("SPAWNING MEMBERS FOR " + this.entity);
 
     let cmpLeaderPos =
         Engine.QueryInterface(
@@ -143,13 +128,11 @@ BattalionLeader.prototype.SpawnMembers =function()
 
     if (!cmpLeaderPos || !cmpLeaderPos.IsInWorld())
     {
-        warn("LEADER NOT IN WORLD");
         return;
     }
 
     let pos =
         cmpLeaderPos.GetPosition2D();
-	warn("LEADER IN WORLD");
 
 	let offsets = [];
 
@@ -186,11 +169,8 @@ BattalionLeader.prototype.SpawnMembers =function()
 
 		if (ent == INVALID_ENTITY)
 		{
-			warn("FAILED TO CREATE BATTALION MEMBER " + memberTemplates[i]);
 			continue;
 		}
-
-        warn("CREATED MEMBER " + ent);
 
         let cmpMemberPos =
             Engine.QueryInterface(
@@ -254,27 +234,99 @@ function()
 	return alive;
 };
 
+// A battalion is replenished by training the normal battalion-member units in
+// a barracks. An unassigned trained member is claimed by an under-strength
+// battalion that has a matching slot for its template.
+BattalionLeader.prototype.GetMissingMemberTemplate =
+function()
+{
+	let counts = {};
+
+	for (let ent of this.GetAliveMembers())
+	{
+		let template = Engine.QueryInterface(
+			SYSTEM_ENTITY,
+			IID_TemplateManager).GetCurrentTemplateName(ent);
+		counts[template] = (counts[template] || 0) + 1;
+	}
+
+	for (let member of this.memberTemplates)
+	{
+		let count = counts[member.template] || 0;
+		if (count < member.count)
+			return member.template;
+	}
+
+	return undefined;
+};
+
+BattalionLeader.prototype.FindReinforcement =
+function()
+{
+	let requiredTemplate = this.GetMissingMemberTemplate();
+	if (!requiredTemplate)
+		return INVALID_ENTITY;
+
+	let cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	let cmpLeaderPos = Engine.QueryInterface(this.entity, IID_Position);
+	if (!cmpOwnership || !cmpLeaderPos || !cmpLeaderPos.IsInWorld())
+		return INVALID_ENTITY;
+
+	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	let cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
+	if (!cmpRangeManager || !cmpTemplateManager)
+		return INVALID_ENTITY;
+
+	let leaderPos = cmpLeaderPos.GetPosition2D();
+	let candidate = INVALID_ENTITY;
+	let nearestDistance = Infinity;
+
+	for (let ent of cmpRangeManager.GetEntitiesByPlayer(cmpOwnership.GetOwner()))
+	{
+		let cmpMember = Engine.QueryInterface(ent, IID_BattalionMember);
+		let cmpMemberPos = Engine.QueryInterface(ent, IID_Position);
+		if (!cmpMember || cmpMember.GetLeader() != INVALID_ENTITY ||
+			!cmpMemberPos || !cmpMemberPos.IsInWorld() ||
+			cmpTemplateManager.GetCurrentTemplateName(ent) != requiredTemplate)
+			continue;
+
+		let memberPos = cmpMemberPos.GetPosition2D();
+		let dx = memberPos.x - leaderPos.x;
+		let dz = memberPos.y - leaderPos.y;
+		let distance = dx * dx + dz * dz;
+		if (distance < nearestDistance)
+		{
+			candidate = ent;
+			nearestDistance = distance;
+		}
+	}
+
+	return candidate;
+};
+
+BattalionLeader.prototype.Reinforce =
+function()
+{
+	this.CleanupMembers();
+	let member = this.FindReinforcement();
+	if (member == INVALID_ENTITY)
+		return;
+
+	let cmpMember = Engine.QueryInterface(member, IID_BattalionMember);
+	if (!cmpMember)
+		return;
+
+	cmpMember.SetLeader(this.entity);
+	this.members.push(member);
+};
+
 BattalionLeader.prototype.OnDestroy = function(msg)
 {
-	warn(
-		"LEADER DIED " +
-		this.entity);
-
-	warn(
-		"MEMBER COUNT " +
-		this.members.length);
-
-	for (let ent of this.members)
-		warn("CHECK " + ent);
-
 	let alive =
 		this.GetAliveMembers();
 
 	if (!alive.length)
 	{
-		warn(
-			"BATTALION DESTROYED");
-
 		return;
 	}
 	this.CleanupMembers();
@@ -317,10 +369,6 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 			return rb - ra;
 		})[0];
 
-	warn(
-		"SUCCESSOR " +
-		successor);
-
 	let remainingMembers =
 		alive.filter(
 			ent => ent != successor);
@@ -332,17 +380,8 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 
 	if (!newLeader)
 	{
-		warn(
-			"FAILED TO CREATE LEADER");
-
 		return;
 	}
-
-	warn(
-		"SUCCESSOR = " +
-		successor +
-		" NEWLEADER = " +
-		newLeader);
 
 	// Obtém componente do novo líder
 	let cmpLeader =
@@ -352,9 +391,6 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 
 	if (!cmpLeader)
 	{
-		warn(
-			"NO BATTALION COMPONENT");
-
 		return;
 	}
 
@@ -362,6 +398,7 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 	// impede SpawnMembers quando o owner for aplicado
 	cmpLeader.spawned = true;
 	cmpLeader.promoted = true;
+	cmpLeader.currentXp = this.currentXp;
 
 	// Copia posição do sucessor
 	let cmpOldPos =
@@ -374,8 +411,7 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 			newLeader,
 			IID_Position);
 
-	if (cmpOldPos &&
-		cmpNewPos)
+	if (cmpOldPos && cmpNewPos && cmpOldPos.IsInWorld())
 	{
 		let pos =
 			cmpOldPos.GetPosition2D();
@@ -390,9 +426,6 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 		Engine.QueryInterface(
 			successor,
 			IID_Ownership);
-	warn(
-		"NEW LEADER OWNER = " +
-		cmpOwner.GetOwner());
 	let cmpNewOwner =
 		Engine.QueryInterface(
 			newLeader,
@@ -403,6 +436,19 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 	{
 		cmpNewOwner.SetOwner(
 			cmpOwner.GetOwner());
+	}
+
+	// The promoted soldier becomes the new leader.  Preserve the proportion of
+	// health it had before the promotion so it cannot be healed by the swap.
+	let cmpSuccessorHealth = Engine.QueryInterface(successor, IID_Health);
+	let cmpNewLeaderHealth = Engine.QueryInterface(newLeader, IID_Health);
+	if (cmpSuccessorHealth && cmpNewLeaderHealth)
+	{
+		let max = cmpSuccessorHealth.GetMaxHitpoints();
+		if (max > 0)
+			cmpNewLeaderHealth.SetHitpoints(
+				cmpNewLeaderHealth.GetMaxHitpoints() *
+				cmpSuccessorHealth.GetHitpoints() / max);
 	}
 
 	// Transfere membros
@@ -423,10 +469,6 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 			cmpMember.SetLeader(
 				newLeader);
 	}
-
-	warn(
-		"PROMOTED " +
-		newLeader);
 
 	// Remove o sucessor antigo
 	Engine.DestroyEntity(
@@ -504,13 +546,6 @@ function()
 			this.entity,
 			IID_UnitAI);
 
-	warn(
-		"LEADER UNITAI = " +
-		!!cmpUnitAI);
-
-	warn(
-		"FORMATION = " +
-		!!cmpFormation);
 };
 
 BattalionLeader.prototype.GetBattalionSize =
@@ -568,7 +603,6 @@ function()
 
 		if (parts.length != 2)
 		{
-			warn("INVALID BATTALION MEMBER TEMPLATE ENTRY " + entry);
 			continue;
 		}
 
@@ -615,28 +649,6 @@ function()
 BattalionLeader.prototype.DebugOrders =
 function()
 {
-    warn(
-        "BATTALION " +
-        this.entity +
-        " MEMBERS " +
-        this.members.length);
-
-    let cmpUnitAI =
-        Engine.QueryInterface(
-            this.entity,
-            IID_UnitAI);
-
-    if (!cmpUnitAI)
-        return;
-
-    warn(
-        "FORMATION CONTROLLER = " +
-        cmpUnitAI.GetFormationController());
-
-    warn(
-        "ORDER = " +
-        uneval(
-            cmpUnitAI.order));
 };
 
 BattalionLeader.prototype.UpdateBattalion =
@@ -647,8 +659,12 @@ function()
             this.entity,
             IID_Position);
 
-    if (!cmpLeaderPos)
+    // A leader may be garrisoned, dead, or not yet spawned. Those entities
+    // still expose Position, but GetPosition2D is invalid outside the world.
+    if (!cmpLeaderPos || !cmpLeaderPos.IsInWorld())
         return;
+
+    this.Reinforce();
 
     let pos =
         cmpLeaderPos.GetPosition2D();
@@ -667,7 +683,7 @@ function()
                 ent,
                 IID_UnitAI);
 
-        if (!cmpMemberPos || !cmpUnitAI)
+        if (!cmpMemberPos || !cmpMemberPos.IsInWorld() || !cmpUnitAI)
             continue;
 
         // Combat and capture orders belong to the soldier itself.  Do not

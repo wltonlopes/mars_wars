@@ -9,9 +9,9 @@
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props> -->
 			<textures>
-				<texture file="mechanical/mla_a.png" name="baseTex"/>
-				<texture file="mechanical/mla_a_spec.png" name="specTex"/>
-				<texture file="mechanical/mla_a_norm.png" name="normTex"/>
+				<texture file="mechanical/mcc_aero.png" name="baseTex"/>
+				<texture file="mechanical/mcc_aero_spec.png" name="specTex"/>
+				<texture file="mechanical/mcc_aero_norm.png" name="normTex"/>
 			</textures>
 		</variant>
 	</group>

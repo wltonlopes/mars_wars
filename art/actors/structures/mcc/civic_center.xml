@@ -3,12 +3,12 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>structural/mcc/cc.dae</mesh>
+			<mesh>structural/common_mars/cc.dae</mesh>
 			<props>
 			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
-		        <prop actor="props/special/commun/mcc_waypoint_flag.xml" attachpoint="01"/>
-				<prop actor="props/special/commun/mcc_waypoint_flag.xml" attachpoint="02"/>
+		        <prop actor="props/special/common/mcc_waypoint_flag.xml" attachpoint="01"/>
+				<prop actor="props/special/common/mcc_waypoint_flag.xml" attachpoint="02"/>
 			</props>
 			<textures>
 				<texture file="structural/mcc_struct.png" name="baseTex"/>
@@ -21,8 +21,8 @@
 		<variant frequency="100" name="Idle"/>
 		<variant name="garrisoned">
 			<props>
-				<prop actor="props/special/commun/garrison_flag_mcc.xml" attachpoint="garrisoned_01"/>
-				<prop actor="props/special/commun/garrison_flag_mcc.xml" attachpoint="garrisoned_02"/>
+				<prop actor="props/special/common/garrison_flag_mcc.xml" attachpoint="garrisoned_01"/>
+				<prop actor="props/special/common/garrison_flag_mcc.xml" attachpoint="garrisoned_02"/>
 			</props>
 		</variant>
 		<variant name="death">

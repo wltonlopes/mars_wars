@@ -1851,16 +1851,6 @@ function GetFormationUnitAIs(
 			//warn("CREATING FORMATION " + formationTemplate);
 			//warn("CLUSTER SIZE = " + cluster.length);
 
-			for (let ent of cluster)
-			{
-				if (
-					Engine.QueryInterface(ent, IID_BattalionLeader) ||
-					Engine.QueryInterface(ent, IID_BattalionMember)
-				)
-				{
-					warn("ERROR: BATTALION ENTERED FORMATION PIPELINE");
-				}
-			}
 			// Create the new controller.
 			const formationEnt = Engine.AddEntity(formationTemplate);
 			const cmpFormation = Engine.QueryInterface(formationEnt, IID_Formation);
@@ -1885,6 +1875,13 @@ function GetFormationUnitAIs(
  */
 function ClusterEntities(ents, separationDistance)
 {
+	// Garrisoned/dead entities have no valid 2D position and must not enter
+	// the formation clustering calculation.
+	ents = ents.filter(ent => {
+		const cmpPosition = Engine.QueryInterface(ent, IID_Position);
+		return cmpPosition && cmpPosition.IsInWorld();
+	});
+
 	const clusters = [];
 	if (!ents.length)
 		return clusters;

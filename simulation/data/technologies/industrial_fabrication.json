@@ -1,0 +1,25 @@
+{
+	"genericName": "Industrial Fabrication",
+	"specificName": {},
+	"description": "Industrial fabrication produces complex components for the growing Martian colony.",
+	"cost": {
+		"food": 150,
+		"metal": 250
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "regolith_processing" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Regolith Processing and City Phase.",
+	"icon": "industrial_fabrication.png",
+	"researchTime": 60,
+	"tooltip": "Workers +15% construction rate and +10% metal gathering rate.",
+	"modifications": [
+		{ "value": "Builder/Rate", "multiply": 1.15 },
+		{ "value": "ResourceGatherer/Rates/metal", "multiply": 1.1 }
+	],
+	"affects": ["Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

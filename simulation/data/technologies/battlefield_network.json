@@ -1,0 +1,25 @@
+{
+	"genericName": "Battlefield Network",
+	"specificName": {},
+	"description": "Battlefield data links help nearby soldiers respond and fight together.",
+	"cost": {
+		"food": 150,
+		"metal": 150
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "communication_network" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Communication Network and Town Phase.",
+	"icon": "battlefield_network.png",
+	"researchTime": 50,
+	"tooltip": "Citizen-Soldiers +1 ranged attack and +5% movement speed.",
+	"modifications": [
+		{ "value": "Attack/Ranged/Damage/Pierce", "add": 1 },
+		{ "value": "UnitMotion/WalkSpeed", "multiply": 1.05 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

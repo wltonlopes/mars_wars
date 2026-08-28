@@ -3,15 +3,15 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>structural/mcc/bio_field.dae</mesh>
+			<mesh>structural/common_mars/bio_field.dae</mesh>
 			<props>
 			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="structures/mla/bio_field_cupula.xml" attachpoint="root"/>
 			</props>
 			<textures>
-				<texture file="structural/mla_struct.png" name="baseTex"/>
-				<texture file="structural/mla_struct_spec.png" name="specTex"/>
-				<texture file="structural/mla_struct_norm.png" name="normTex"/>
+				<texture file="structural/mcc_struct.png" name="baseTex"/>
+				<texture file="structural/mcc_struct_spec.png" name="specTex"/>
+				<texture file="structural/mcc_struct_norm.png" name="normTex"/>
 			</textures>
 		</variant>
 	</group>

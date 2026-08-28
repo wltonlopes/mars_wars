@@ -1,4 +1,4 @@
-<Entity>
+<Entity parent="ranged_combat">
 
     <Promotion disable=""/>
 
@@ -6,6 +6,7 @@
         <Classes datatype="tokens">
             BattalionLeader
         </Classes>
+        <Icon>units/battalion_leader.png</Icon>
     </Identity>
 
 </Entity>

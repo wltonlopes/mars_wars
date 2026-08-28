@@ -1,0 +1,24 @@
+{
+	"genericName": "Satellite Network",
+	"specificName": {},
+	"description": "Orbital satellites extend the colony's view and keep military units informed.",
+	"cost": {
+		"food": 150,
+		"metal": 200
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "communication_network" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Communication Network and Town Phase.",
+	"icon": "satellite_network.png",
+	"researchTime": 55,
+	"tooltip": "Citizen-Soldiers +2 vision range.",
+	"modifications": [
+		{ "value": "Vision/Range", "add": 2 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

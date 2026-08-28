@@ -53,8 +53,9 @@ DelayedDamage.prototype.Hit = function(data, lateness)
 			"direction": data.direction,
 			"friendlyFire": data.splash.friendlyFire,
 			//HC-Code
-            		"Stun": data.splash.Knockback,
-            		"isSplash": true,
+				"Stun": data.splash.Stun,
+				"Knockback": data.splash.Knockback,
+				"isSplash": true,
 			//HC-End
 		});
 
@@ -114,7 +115,8 @@ DelayedDamage.prototype.Hit = function(data, lateness)
                 return;
 
             let pos = { "x": data.position.x, "y": data.position.z };
-            cmpResistance.SpawnImpactUnits(entityImpact, pos, entityImpact.spawnOnImpact.chance, data.attackerOwner);
+			if (cmpResistance.SpawnImpactUnits)
+				cmpResistance.SpawnImpactUnits(entityImpact, pos, entityImpact.spawnOnImpact.chance, data.attackerOwner);
         }
     }
     // HC-End

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="template_unit_siege_missile_infantry">
+<Entity parent="ranged_combat|template_unit_siege_missile_infantry">
   <Attack>
     <Ranged>
       <AttackName>Rocket</AttackName>
@@ -14,22 +14,26 @@
       <PrepareTime>2000</PrepareTime>
       <Projectile>
         <FriendlyFire>false</FriendlyFire>
-        <Gravity>0</Gravity>
+        <Gravity>9.81</Gravity>
         <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
         <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
         <LaunchPoint y="3"/>
         <Speed>45.0</Speed>
         <Spread>3.0</Spread>
       </Projectile>
-      <RepeatTime>6000</RepeatTime>
+      <RepeatTime>10000</RepeatTime>
       <Splash>
         <Damage>
-          <Crush>40.0</Crush>
-          <Fire>40.0</Fire>
+          <Crush>30.0</Crush>
+          <Fire>30.0</Fire>
         </Damage>
-        <FriendlyFire>false</FriendlyFire>
+        <FriendlyFire>true</FriendlyFire>
         <Range>6</Range>
         <Shape>Circular</Shape>
+        <Knockback>
+          <Distance>4</Distance>
+          <Chance>100</Chance>
+        </Knockback>
       </Splash>
     </Ranged>
   </Attack>

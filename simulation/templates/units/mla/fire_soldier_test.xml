@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="ranged_combat|template_unit_infantry">
+  <Attack>
+    <Ranged>
+      <AttackName>SMG</AttackName>
+      <Damage>
+        <Pierce>6.0</Pierce>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>55</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>1200</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>1000.0</Speed>
+        <Spread>0.1</Spread>
+      </Projectile>
+      <RepeatTime>12000</RepeatTime>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>50</metal>
+    </Resources>
+  </Cost>
+  <Identity>
+    <Civ>mla</Civ>
+    <SpecificName>Light Ceberus</SpecificName>
+    <GenericName>Light Assault Infantry</GenericName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+    <Tooltip>Light Ranged unit armed with a SMG.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Assault</VisibleClasses>
+  </Identity>
+  <UnitMotion>
+    <WalkSpeed>8.5</WalkSpeed>
+    <RunMultiplier>1.5</RunMultiplier>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mla/fire_man.xml</Actor>
+  </VisualActor>
+</Entity>

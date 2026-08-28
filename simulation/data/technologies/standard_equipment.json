@@ -1,0 +1,21 @@
+{
+	"genericName": "Standard Equipment",
+	"specificName": {},
+	"description": "Standardized weapons and protection improve the survivability of combat units.",
+	"cost": {
+		"food": 100,
+		"metal": 100
+	},
+	"requirements": { "tech": "phase_village" },
+	"requirementsTooltip": "Unlocked in Village Phase.",
+	"icon": "standard_equipment.png",
+	"researchTime": 40,
+	"tooltip": "Citizen-Soldiers +1 ranged attack, +1 pierce armor, and +10% maximum health.",
+	"modifications": [
+		{ "value": "Attack/Ranged/Damage/Pierce", "add": 1 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "add": 1 },
+		{ "value": "Health/Max", "multiply": 1.1 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

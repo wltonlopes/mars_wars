@@ -13,6 +13,15 @@
 		if (!ret)
 			return ret;
 
+		// Expose the same current/max ammunition state used by Grapejuice. This
+		// lets session UI extensions display a counter without querying sim state.
+		const cmpAmmo = Engine.QueryInterface(ent, IID_Ammo);
+		if (cmpAmmo)
+			ret.ammo = {
+				"currAmmo": cmpAmmo.GetAmmo(),
+				"maxAmmo": cmpAmmo.GetMaxAmmo()
+			};
+
 		const cmpLeader = Engine.QueryInterface(ent, IID_BattalionLeader);
 		if (cmpLeader)
 		{

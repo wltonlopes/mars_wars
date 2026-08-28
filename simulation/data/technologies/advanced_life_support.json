@@ -1,0 +1,25 @@
+{
+	"genericName": "Advanced Life Support",
+	"specificName": {},
+	"description": "Advanced life-support infrastructure increases the population a habitat can sustain.",
+	"cost": {
+		"food": 250,
+		"metal": 300
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "water_recovery" },
+			{ "tech": "radiation_shielding" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Water Recovery, Radiation Shielding, and City Phase.",
+	"icon": "advanced_life_support.png",
+	"researchTime": 80,
+	"tooltip": "Structures +25% maximum health.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.25 }
+	],
+	"affects": ["Structure"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

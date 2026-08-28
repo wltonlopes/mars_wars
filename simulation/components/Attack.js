@@ -13,6 +13,16 @@ Attack.prototype.stunBonusSchema =
             "</interleave>" +
         "</element>" +
     "</optional>";
+
+Attack.prototype.knockbackSchema =
+	"<optional>" +
+		"<element name='Knockback' a:help='Afastar unidades atingidas pela explosao'>" +
+			"<interleave>" +
+				"<element name='Distance'><ref name='nonNegativeDecimal'/></element>" +
+				"<optional><element name='Chance'><ref name='nonNegativeDecimal'/></element></optional>" +
+			"</interleave>" +
+		"</element>" +
+	"</optional>";
 // HC-End
 
 Attack.prototype.preferredClassesSchema =
@@ -205,7 +215,8 @@ Attack.prototype.Schema =
 							"<element name='Shape' a:help='Shape of the splash damage, can be circular or linear'><text/></element>" +
 							"<element name='Range' a:help='Size of the area affected by the splash'><ref name='nonNegativeDecimal'/></element>" +
 							"<element name='FriendlyFire' a:help='Whether the splash damage can hurt non enemy units'><data type='boolean'/></element>" +
-                            				Attack.prototype.stunBonusSchema +	//HC-Code
+											Attack.prototype.stunBonusSchema +	//HC-Code
+											Attack.prototype.knockbackSchema +	//HC-Code
 							AttackHelper.BuildAttackEffectsSchema() +
 						"</interleave>" +
 					"</element>" +
@@ -245,6 +256,7 @@ Attack.prototype.Schema =
 					"</element>" +
 				"</optional>" +
 				Attack.prototype.stunBonusSchema +	// HC-Code
+				Attack.prototype.knockbackSchema +	// HC-Code
 				Attack.prototype.preferredClassesSchema +
 				Attack.prototype.restrictedClassesSchema +
 			"</interleave>" +
@@ -406,6 +418,22 @@ Attack.prototype.GetAttackEffectsData = function(type, splash)
 };
 
 /**
+ * A garrisoned/dead entity has a Position component but no world position.
+ * Do not ask PositionHelper for its 2D coordinates in that state.
+ */
+Attack.prototype.IsTargetWithinWeaponSwitchRange = function(target, cmpAmmo)
+{
+	const cmpThisPosition = Engine.QueryInterface(this.entity, IID_Position);
+	const cmpTargetPosition = Engine.QueryInterface(target, IID_Position);
+	if (!cmpThisPosition || !cmpTargetPosition ||
+		!cmpThisPosition.IsInWorld() || !cmpTargetPosition.IsInWorld())
+		return false;
+
+	return PositionHelper.DistanceBetweenEntities(this.entity, target) <=
+		cmpAmmo.GetSwitchToMeleeRange();
+};
+
+/**
  * Find the best attack against a target.
  * @param {number} target - The entity-ID of the target.
  * @param {boolean} allowCapture - Whether capturing is allowed.
@@ -425,6 +453,18 @@ Attack.prototype.GetBestAttackAgainst = function(target, allowCapture)
 	// Always slaughter domestic animals instead of using a normal attack
 	if (this.template.Slaughter && cmpIdentity.HasClass("Domestic"))
 		return "Slaughter";
+
+	// Battalion/squad units carry an Ammo component.  Like Grapejuice's
+	// secondary-weapon logic, they use the melee weapon when an enemy is too
+	// close or the magazine is empty.  Other mod units retain vanilla choice.
+	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
+	if (cmpAmmo && this.template.Ranged && this.template.Melee)
+	{
+		if (!cmpAmmo.HasAmmo() || this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
+			return this.CanAttack(target, ["Melee"]) ? "Melee" : undefined;
+		if (this.CanAttack(target, ["Ranged"]))
+			return "Ranged";
+	}
 
 	const targetClasses = cmpIdentity.GetClassesList();
 	const getPreferrence = attackType => {
@@ -491,7 +531,28 @@ Attack.prototype.GetSplashData = function(type)
 		"friendlyFire": this.template[type].Splash.FriendlyFire == "true",
 		"radius": ApplyValueModificationsToEntity("Attack/" + type + "/Splash/Range", +this.template[type].Splash.Range, this.entity),
 		"shape": this.template[type].Splash.Shape,
-		"Stun": this.GetStun(type, true) // HC-Code
+		"Stun": this.GetStun(type, true), // HC-Code
+		"Knockback": this.GetKnockback(type, true) // HC-Code
+	};
+};
+
+Attack.prototype.GetKnockback = function(type, isSplash)
+{
+	const attack = this.template[type];
+	const effect = attack && (isSplash ? attack.Splash : attack);
+	const knockback = effect && effect.Knockback;
+	if (!knockback)
+		return null;
+
+	return {
+		"distance": ApplyValueModificationsToEntity(
+			"Attack/" + type + (isSplash ? "/Splash" : "") + "/Knockback/Distance",
+			+knockback.Distance,
+			this.entity),
+		"chance": ApplyValueModificationsToEntity(
+			"Attack/" + type + (isSplash ? "/Splash" : "") + "/Knockback/Chance",
+			+(knockback.Chance || 100),
+			this.entity)
 	};
 };
 
@@ -692,6 +753,21 @@ Attack.prototype.Attack = function(type, lateness)
  */
 Attack.prototype.PerformAttack = function(type, target)
 {
+	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
+	if (type == "Ranged" && cmpAmmo)
+	{
+		if (!cmpAmmo.HasAmmo() || this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
+		{
+			// Re-evaluate immediately when a target closes the gap, rather than
+			// completing another ranged animation/shot.
+			const cmpUnitAI = Engine.QueryInterface(this.entity, IID_UnitAI);
+			if (cmpUnitAI)
+				cmpUnitAI.RespondToTargetedEntities([target]);
+			return;
+		}
+		cmpAmmo.Reduce(1);
+	}
+
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	if (!cmpPosition || !cmpPosition.IsInWorld())
 		return;
@@ -715,7 +791,8 @@ Attack.prototype.PerformAttack = function(type, target)
 		"attacker": this.entity,
 		"attackerOwner": attackerOwner,
 		"target": target,
-        	"Stun": this.GetStun(type, isSplash)		//HC-Code
+			"Stun": this.GetStun(type, false),		//HC-Code
+			"Knockback": this.GetKnockback(type, isSplash)		//HC-Code
 	};
 
 	//HC-Code

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit">
+  <Attack>
+    <Ranged>
+      <AttackName context=".">Machine Guns</AttackName>
+      <Damage>
+        <Pierce>100</Pierce>
+        <Crush>227</Crush>
+      </Damage>
+      <MaxRange>120</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>0</PrepareTime>
+      <RepeatTime>10000</RepeatTime>
+      <Projectile>
+        <Speed>75</Speed>
+        <Spread>1</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="3"/>
+      </Projectile>
+    </Ranged>
+  </Attack>
+  <BuildingAI>
+    <DefaultArrowCount>3</DefaultArrowCount>
+    <GarrisonArrowMultiplier>1</GarrisonArrowMultiplier>
+    <GarrisonArrowClasses>Infantry</GarrisonArrowClasses>
+  </BuildingAI>
+  <Decay>
+    <SinkingAnim>true</SinkingAnim>
+    <DelayTime>0.0</DelayTime>
+    <SinkRate>3.0</SinkRate>
+    <SinkAccel>7.0</SinkAccel>
+  </Decay>
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>100</Max>
+    <Unhealable>true</Unhealable>
+  </Health>
+  <Identity>
+    <SpecificName></SpecificName>
+    <Tooltip>.</Tooltip>
+    <Icon>units/global/mustang.png</Icon>
+  </Identity>
+  <Obstruction disable=""/>
+  <Position>
+    <Anchor>upright</Anchor>
+    <Floating>false</Floating>
+    <FloatDepth>0</FloatDepth>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <Repairable>
+    <RepairTimeRatio>3.0</RepairTimeRatio>
+  </Repairable>
+  <UnitAI>
+    <Formations datatype="tokens" replace=""/>
+  </UnitAI>
+  <UnitMotion disable=""/>
+  <UnitMotionFlying>
+    <!-- Perfil de helicóptero: baixo, ágil e capaz de parar junto ao alvo. -->
+    <MaxSpeed>25.0</MaxSpeed>
+    <TakeoffSpeed>8.0</TakeoffSpeed>
+    <LandingSpeed>7.0</LandingSpeed>
+    <AccelRate>14.0</AccelRate>
+    <SlowingRate>10.0</SlowingRate>
+    <BrakingRate>24.0</BrakingRate>
+    <TurnRate>6.0</TurnRate>
+    <OvershootTime>0.35</OvershootTime>
+    <FlyingHeight>16.0</FlyingHeight>
+    <ClimbRate>10.0</ClimbRate>
+    <DiesInWater>true</DiesInWater>
+    <PassabilityClass>unrestricted</PassabilityClass>
+  </UnitMotionFlying>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>structures/mcc/aero_01.xml</Actor>
+  </VisualActor>
+</Entity>

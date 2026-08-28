@@ -1,0 +1,25 @@
+{
+	"genericName": "Automated Construction",
+	"specificName": {},
+	"description": "Automated construction systems accelerate the expansion of Martian infrastructure.",
+	"cost": {
+		"food": 200,
+		"metal": 300
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "industrial_fabrication" },
+			{ "tech": "phase_city" }
+		]
+	},
+	"requirementsTooltip": "Requires Industrial Fabrication and City Phase.",
+	"icon": "automated_construction.png",
+	"researchTime": 75,
+	"tooltip": "Structures -20% construction time and Workers +20% construction rate.",
+	"modifications": [
+		{ "value": "Cost/BuildTime", "multiply": 0.8 },
+		{ "value": "Builder/Rate", "multiply": 1.2 }
+	],
+	"affects": ["Structure", "Worker"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

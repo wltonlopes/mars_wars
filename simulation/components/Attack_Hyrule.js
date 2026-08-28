@@ -1,5 +1,8 @@
 Attack.prototype.GetStun = function (type, isSplash)
 {
+	if (!this.template[type])
+		return null;
+
     if (!isSplash)
     {
         let Stun = this.template[type].Stun;
@@ -12,7 +15,8 @@ Attack.prototype.GetStun = function (type, isSplash)
     }
     else
     {
-        let Stun = this.template[type]["Splash"].Stun;
+        let Stun = this.template[type].Splash &&
+            this.template[type].Splash.Stun;
         if (Stun)
         {
             let time = ApplyValueModificationsToEntity("Attack/" + type + "/Splash/Stun/Time", +Stun.Time, this.entity);
@@ -24,7 +28,7 @@ Attack.prototype.GetStun = function (type, isSplash)
     return null;
 }
 Attack.prototype.GetEntityOnImpact = function (type) {
-    if (this.template[type].SpawnEntityOnImpact)
+    if (this.template[type] && this.template[type].SpawnEntityOnImpact)
     {
         let numberMin = ApplyValueModificationsToEntity("Attack/"+ type +"/SpawnEntityOnImpact/SpawnNumberMin", +this.template[type].SpawnEntityOnImpact.SpawnNumberMin, this.entity);
         let numberMax = ApplyValueModificationsToEntity("Attack/"+ type +"/SpawnEntityOnImpact/SpawnNumberMax", +this.template[type].SpawnEntityOnImpact.SpawnNumberMax, this.entity);

@@ -1,0 +1,26 @@
+{
+	"genericName": "Advanced Combat Gear",
+	"description": "Advanced armor and weapons help soldiers withstand punishment and strike accurately.",
+	"cost": {
+		"food": 150,
+		"metal": 150
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "standard_equipment" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Standard Equipment and Town Phase.",
+	"icon": "advanced_combat_gear.png",
+	"researchTime": 50,
+	"tooltip": "Citizen-Soldiers +1 ranged accuracy and +1 hack, crush, and pierce armor.",
+	"modifications": [
+		{ "value": "Attack/Ranged/Projectile/Spread", "multiply": 0.9 },
+		{ "value": "Resistance/Entity/Damage/Hack", "add": 1 },
+		{ "value": "Resistance/Entity/Damage/Crush", "add": 1 },
+		{ "value": "Resistance/Entity/Damage/Pierce", "add": 1 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

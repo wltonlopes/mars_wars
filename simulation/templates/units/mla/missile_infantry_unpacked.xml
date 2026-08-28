@@ -3,7 +3,7 @@
    <Identity>
     <Civ>mla</Civ>
     <GenericName>Missile Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/battalion_member.png</Icon>
   </Identity>
   <Pack>
     <Entity>units/mla/missile_infantry_packed</Entity>

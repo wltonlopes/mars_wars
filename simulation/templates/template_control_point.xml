@@ -9,50 +9,32 @@
     <Obstruction>
         <Static width="4.0" depth="4.0"/>
     </Obstruction>
-
-    <Health>
-        <!-- Grande quantidade de vida apenas para impedir destruição acidental -->
-        <Max>100000</Max>
-        <Initial>100000</Initial>
-
-        <!-- Não regenera -->
-        <RegenRate>0</RegenRate>
-    </Health>
-
+    <Health disable=""/>
     <Capturable>
         <CapturePoints>2000</CapturePoints>
         <RegenRate>0</RegenRate>
     </Capturable>
-
     <Identity>
-
         <GenericName>Control Point</GenericName>
-
         <SpecificName>Strategic Objective</SpecificName>
-
         <Classes datatype="tokens">
             ControlPoint
             Wonder
         </Classes>
-
         <VisibleClasses datatype="tokens">
             ControlPoint
             Wonder
         </VisibleClasses>
-
         <Tooltip>
             Capture and hold this strategic position.
         </Tooltip>
-
+        <Undeletable>true</Undeletable>
         <Icon>gaia/special_obelisk.png</Icon>
-
     </Identity>
 
     <ControlPoint>
         <Weight>1</Weight>
-
         <Region>Unknown</Region>
-
         <DisplayName>Strategic Point</DisplayName>
     </ControlPoint>
 
@@ -60,5 +42,6 @@
     <Researcher disable=""/>
     <Trainer disable=""/>
     <TerritoryDecay disable=""/>
+    <TerritoryInfluence disable=""/>
 
 </Entity>

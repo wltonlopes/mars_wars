@@ -32,6 +32,10 @@
       structures/{civ}/civil_centre
       structures/{civ}/house
       structures/{civ}/barracks
+      structures/{civ}/stable
+      structures/{civ}/field
+      structures/{civ}/storehouse
+      structures/{civ}/forge
     </Entities>
   </Builder>
   <VisualActor>

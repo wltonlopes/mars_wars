@@ -1,0 +1,19 @@
+{
+	"genericName": "Communication Network",
+	"specificName": {},
+	"description": "Reliable ground communications improve coordination across the colony.",
+	"cost": {
+		"food": 100,
+		"wood": 100
+	},
+	"requirements": { "tech": "phase_village" },
+	"requirementsTooltip": "Unlocked in Village Phase.",
+	"icon": "communication_network.png",
+	"researchTime": 40,
+	"tooltip": "Citizen-Soldiers +1 vision range.",
+	"modifications": [
+		{ "value": "Vision/Range", "add": 1 }
+	],
+	"affects": ["Soldier"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

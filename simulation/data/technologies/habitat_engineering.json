@@ -1,0 +1,25 @@
+{
+	"genericName": "Habitat Engineering",
+	"specificName": {},
+	"description": "Improved habitat designs withstand the harsh Martian environment.",
+	"cost": {
+		"food": 150,
+		"wood": 150,
+		"metal": 150
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "martian_survival_systems" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Martian Survival Systems and Town Phase.",
+	"icon": "habitat_engineering.png",
+	"researchTime": 55,
+	"tooltip": "Structures +15% maximum health.",
+	"modifications": [
+		{ "value": "Health/Max", "multiply": 1.15 }
+	],
+	"affects": ["Structure"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="template_unit_infantry">
+<Entity parent="ranged_combat|template_unit_infantry">
   <Attack>
     <Ranged>
       <AttackName>SMG</AttackName>
@@ -30,7 +30,7 @@
     <Civ>mla</Civ>
     <SpecificName>Light Ceberus</SpecificName>
     <GenericName>Light Assault Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/battalion_member.png</Icon>
     <Tooltip>Light Ranged unit armed with a SMG.</Tooltip>
     <VisibleClasses datatype="tokens">Ranged Assault</VisibleClasses>
   </Identity>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="template_unit_infantry">
+<Entity parent="ranged_combat|template_unit_infantry">
   <Attack>
     <Ranged>
       <AttackName>Tear Gas</AttackName>
@@ -53,7 +53,7 @@
     <Civ>mcc</Civ>
     <SpecificName>Corporate Police</SpecificName>
     <GenericName>Medium Artillery Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/battalion_member.png</Icon>
     <Tooltip>Ranged unit that Stuns enemy units and obscures their vision with gas.</Tooltip>
     <VisibleClasses datatype="tokens">Ranged Artillery</VisibleClasses>
   </Identity>

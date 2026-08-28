@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Entity>
+<Entity parent="ranged_combat">
     <BattalionMember/>
+
+    <Cost>
+        <BuildTime>5</BuildTime>
+        <Resources>
+            <metal>50</metal>
+        </Resources>
+    </Cost>
 
     <Identity>
         <Classes datatype="tokens">
             BattalionMember
         </Classes>
+        <Tooltip>Treine esta unidade no quartel para repor automaticamente um membro perdido de um batalhão.</Tooltip>
     </Identity>
 </Entity>

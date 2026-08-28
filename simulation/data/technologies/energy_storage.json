@@ -1,0 +1,25 @@
+{
+	"genericName": "Energy Storage",
+	"specificName": {},
+	"description": "Batteries and accumulators stabilize the colony's power infrastructure.",
+	"cost": {
+		"food": 150,
+		"metal": 200
+	},
+	"requirements": {
+		"all": [
+			{ "tech": "solar_power" },
+			{ "tech": "phase_town" }
+		]
+	},
+	"requirementsTooltip": "Requires Solar Power and Town Phase.",
+	"icon": "energy_storage.png",
+	"researchTime": 55,
+	"tooltip": "Solar Parks +15% resource production and +10% maximum health.",
+	"modifications": [
+		{ "value": "ResourceTrickle/Rates/wood", "multiply": 1.15 },
+		{ "value": "Health/Max", "multiply": 1.1 }
+	],
+	"affects": ["SolarPark"],
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml"
+}

@@ -4,13 +4,13 @@
     <Square width="15.0" depth="16.0"/>
   </Footprint>
   <Identity>
-    <Civ>franc</Civ>
+    <Civ>mcc</Civ>
     <SpecificName>Depot</SpecificName>
   </Identity>
   <Obstruction>
     <Static width="13.0" depth="14.0"/>
   </Obstruction>
   <VisualActor>
-    <Actor>structures/ww1/depot.xml</Actor>
+    <Actor>structures/mcc/storehouse.xml</Actor>
   </VisualActor>
 </Entity>
