@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_champion_infantry_archer">
+  <DeathDamage>
+    <Shape>Circular</Shape>
+    <Range>2</Range>
+    <FriendlyFire>false</FriendlyFire>
+    <Damage>
+      <Fire>100</Fire>
+    </Damage>
+  </DeathDamage>
+  <Decay>
+    <SinkingAnim>false</SinkingAnim>
+    <DelayTime>0.1</DelayTime>
+    <SinkRate>50.0</SinkRate>
+    <SinkAccel>50.0</SinkAccel>
+  </Decay>
+  <Health>
+    <Max>200</Max>
+  </Health>
+  <Identity>
+    <GenericName>automatic torret</GenericName>
+    <SpecificName></SpecificName>
+    <Icon>units/athen/champion_ranged.png</Icon>
+  </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/explosion.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
+  <VisualActor>
+    <Actor>structures/mcc/sentry_gun.xml</Actor>
+  </VisualActor>
+</Entity>

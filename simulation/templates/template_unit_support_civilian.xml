@@ -81,6 +81,13 @@
     <CanPatrol>false</CanPatrol>
     <Formations disable=""/>
   </UnitAI>
+
+  <UnitMotion>
+    <PassabilityClass>large</PassabilityClass>
+    <Acceleration op="mul">0.1</Acceleration>
+    <Weight op="mul">5.0</Weight>
+  </UnitMotion>
+
   <Vision>
     <Range>32</Range>
   </Vision>

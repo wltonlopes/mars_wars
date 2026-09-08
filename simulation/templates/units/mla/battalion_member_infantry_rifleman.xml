@@ -3,5 +3,8 @@
     <Identity>
         <GenericName>Soldado do Batalhão</GenericName>
         <SelectionGroupName>units/mla/battalion_rifleman</SelectionGroupName>
+        <Requirements>
+            <Techs datatype="tokens">-phase_city phase_village</Techs>
+        </Requirements>
     </Identity>
 </Entity>

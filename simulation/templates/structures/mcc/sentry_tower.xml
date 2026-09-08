@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_structure_defensive_tower_sentry">
+  <Identity>
+    <Civ>mcc</Civ>
+  </Identity>
+  <TurretHolder>
+    <TurretPoints>
+      <One>
+          <X>0.0</X>
+          <Y>0.5</Y>
+          <Z>0.0</Z>
+          <Template>structures/mcc/sentry_tower_autogun</Template>
+          <Angle>1.54</Angle>
+      <Ejectable>false</Ejectable>
+      </One>
+    </TurretPoints>
+  </TurretHolder>
+  <VisualActor>
+    <Actor>structures/mcc/auto_defense_tower.xml</Actor>
+  </VisualActor>
+</Entity>

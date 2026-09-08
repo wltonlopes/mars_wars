@@ -39,6 +39,12 @@ BattalionLeader.prototype.Schema =
 		"<element name='MemberTemplates'>" +
 			"<text/>" +
 		"</element>" +
+	"</optional>" +
+
+	"<optional>" +
+		"<element name='ReinforcementRange'>" +
+			"<data type='decimal'/>" +
+		"</element>" +
 	"</optional>";
 
 BattalionLeader.prototype.Init = function()
@@ -68,8 +74,11 @@ BattalionLeader.prototype.Init = function()
 	this.currentXp = 0;
 	this.requiredXp =
 		+(this.template.RequiredXp || 100);
+	this.reinforcementRange =
+		+(this.template.ReinforcementRange || 50);
 	this.memberTemplates =
 		this.GetMemberTemplateCounts();
+	this.pendingReinforcement = false;
     this.spawned = false;
     this.promoted = false;
 
@@ -257,7 +266,30 @@ function()
 			return member.template;
 	}
 
+	// Extra slots granted by barracks and technology use the battalion's
+	// standard infantry template. The original specialist composition is kept.
+	if (this.GetAliveMembers().length < this.GetMemberCapacity())
+		return this.GetDefaultMemberTemplate();
+
 	return undefined;
+};
+
+BattalionLeader.prototype.GetMemberCapacity =
+function()
+{
+	let baseCapacity = this.memberTemplates.reduce((total, member) => total + member.count, 0);
+	let cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	let barracks = 0;
+
+	if (cmpOwnership && cmpRangeManager)
+		for (let ent of cmpRangeManager.GetEntitiesByPlayer(cmpOwnership.GetOwner()))
+			if (Engine.QueryInterface(ent, IID_Identity)?.HasClass("BattalionBarracks"))
+				++barracks;
+
+	let technologyBonus = ApplyValueModificationsToEntity(
+		"BattalionLeader/AdditionalCapacity", 0, this.entity);
+	return baseCapacity + 2 * barracks + technologyBonus;
 };
 
 BattalionLeader.prototype.FindReinforcement =
@@ -304,10 +336,51 @@ function()
 	return candidate;
 };
 
+// Replacements are only assigned while the battalion is at one of the
+// player's supply locations.  The class is deliberately shared by civic
+// centres, barracks and capturable strategic points, which keeps the rule
+// independent of a faction's template names.
+BattalionLeader.prototype.IsNearReinforcementPoint =
+function()
+{
+	let cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	let cmpLeaderPos = Engine.QueryInterface(this.entity, IID_Position);
+	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	if (!cmpOwnership || !cmpLeaderPos || !cmpLeaderPos.IsInWorld() || !cmpRangeManager)
+		return false;
+
+	let leaderPos = cmpLeaderPos.GetPosition2D();
+	let maxDistanceSquared = this.reinforcementRange * this.reinforcementRange;
+	let owner = cmpOwnership.GetOwner();
+
+	for (let ent of cmpRangeManager.GetEntitiesByPlayer(owner))
+	{
+		let cmpIdentity = Engine.QueryInterface(ent, IID_Identity);
+		let cmpPos = Engine.QueryInterface(ent, IID_Position);
+		if (!cmpIdentity || !cmpIdentity.HasClass("BattalionResupplyPoint") ||
+			!cmpPos || !cmpPos.IsInWorld())
+			continue;
+
+		let pos = cmpPos.GetPosition2D();
+		let dx = pos.x - leaderPos.x;
+		let dz = pos.y - leaderPos.y;
+		if (dx * dx + dz * dz <= maxDistanceSquared)
+			return true;
+	}
+
+	return false;
+};
+
 BattalionLeader.prototype.Reinforce =
 function()
 {
 	this.CleanupMembers();
+	if (!this.pendingReinforcement)
+		return;
+
+	if (!this.IsNearReinforcementPoint())
+		return;
+
 	let member = this.FindReinforcement();
 	if (member == INVALID_ENTITY)
 		return;
@@ -318,6 +391,70 @@ function()
 
 	cmpMember.SetLeader(this.entity);
 	this.members.push(member);
+	this.pendingReinforcement = false;
+};
+
+BattalionLeader.prototype.RequestReinforcement =
+function()
+{
+	this.CleanupMembers();
+	if (this.pendingReinforcement || !this.IsNearReinforcementPoint())
+		return false;
+
+	let template = this.GetMissingMemberTemplate();
+	if (!template)
+		return false;
+
+	let cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	let cmpLeaderPos = Engine.QueryInterface(this.entity, IID_Position);
+	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	if (!cmpOwnership || !cmpLeaderPos || !cmpRangeManager)
+		return false;
+
+	let leaderPos = cmpLeaderPos.GetPosition2D();
+	let queue = undefined;
+	let nearest = Infinity;
+	for (let ent of cmpRangeManager.GetEntitiesByPlayer(cmpOwnership.GetOwner()))
+	{
+		let identity = Engine.QueryInterface(ent, IID_Identity);
+		let position = Engine.QueryInterface(ent, IID_Position);
+		let production = Engine.QueryInterface(ent, IID_ProductionQueue);
+		if (!identity || !identity.HasClass("BattalionResupplyPoint") ||
+			!position || !position.IsInWorld() || !production)
+			continue;
+
+		let pos = position.GetPosition2D();
+		let dx = pos.x - leaderPos.x;
+		let dz = pos.y - leaderPos.y;
+		let distance = dx * dx + dz * dz;
+		if (distance <= this.reinforcementRange * this.reinforcementRange && distance < nearest)
+		{
+			queue = production;
+			nearest = distance;
+		}
+	}
+
+	if (!queue || !queue.AddItem(template, "unit", 1, { "battalion": this.entity }))
+		return false;
+
+	this.pendingReinforcement = true;
+	return true;
+};
+
+BattalionLeader.prototype.QueueReinforcement =
+function(template)
+{
+	this.CleanupMembers();
+	if (this.pendingReinforcement || !this.IsNearReinforcementPoint() ||
+		template != this.GetMissingMemberTemplate())
+		return false;
+
+	let cmpQueue = Engine.QueryInterface(this.entity, IID_ProductionQueue);
+	if (!cmpQueue || !cmpQueue.AddItem(template, "unit", 1, { "battalion": this.entity }))
+		return false;
+
+	this.pendingReinforcement = true;
+	return true;
 };
 
 BattalionLeader.prototype.OnDestroy = function(msg)

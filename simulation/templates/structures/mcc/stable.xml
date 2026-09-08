@@ -11,6 +11,11 @@
   <Obstruction>
     <Static width="24.0" depth="17.0"/>
   </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/mcc/vehicle_heavy
+    </Entities>
+  </Trainer>
   <VisualActor>
     <Actor>structures/mcc/stable.xml</Actor>
   </VisualActor>

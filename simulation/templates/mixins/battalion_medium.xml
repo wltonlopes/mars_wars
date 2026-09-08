@@ -6,6 +6,7 @@
         <Size>20</Size>
         <Columns>5</Columns>
         <Spacing>2</Spacing>
+        <ReinforcementRange>50</ReinforcementRange>
     </BattalionLeader>
 
     <Identity>

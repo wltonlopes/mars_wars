@@ -4,7 +4,7 @@
   <group>
     <variant name="Base">
       <animations>
-        <animation event=".01" file="meca/muzzleflash.dae" load="0" name="attack_ranged" speed="200"/>
+        <animation event="0.01" file="meca/muzzleflash.dae" load="0" name="attack_ranged" speed="200"/>
         <animation event="0" file="meca/muzzleflash.dae" load="0" name="idle" speed="30"/>
       </animations>
       <mesh>skeletal/muzzleflash.dae</mesh>

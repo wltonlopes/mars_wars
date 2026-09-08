@@ -8,6 +8,7 @@
     <SpawnEntityOnDeath>decay|rubble/rubble_stone_5x5</SpawnEntityOnDeath>
   </Health>
   <Identity>
+    <Classes datatype="tokens">BattalionResupplyPoint BattalionBarracks</Classes>
     <Civ>mcc</Civ>
     <GenericName>Barracks</GenericName>
   </Identity>

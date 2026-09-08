@@ -3,14 +3,14 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>structural/mla/bunker.dae</mesh>
+			<mesh>structural/common_mars/bunker.dae</mesh>
 			<props>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
-				<texture file="structural/mcc_struct.png" name="baseTex"/>
-				<texture file="structural/mcc_struct_spec.png" name="specTex"/>
-				<texture file="structural/mcc_struct_norm.png" name="normTex"/>
+				<texture file="structural/mla_struct.png" name="baseTex"/>
+				<texture file="structural/mla_struct_spec.png" name="specTex"/>
+				<texture file="structural/mla_struct_norm.png" name="normTex"/>
 			</textures>
 		</variant>
 	</group>
@@ -18,8 +18,8 @@
 		<variant frequency="100" name="Idle"/>
 		<variant name="garrisoned">
 			<props>
-				<prop actor="props/special/commun/garrison_flag_mcc.xml" attachpoint="garrisoned"/>
-				<prop actor="props/special/commun/garrison_flag_mcc.xml" attachpoint="projectile"/>
+				<prop actor="props/special/commun/garrison_flag_mla.xml" attachpoint="garrisoned"/>
+				<prop actor="props/special/commun/garrison_flag_mla.xml" attachpoint="projectile"/>
 			</props>
 		</variant>
 		<variant name="death">

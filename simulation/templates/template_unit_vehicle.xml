@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit">
+  <Cost>
+    <Population>3</Population>
+  </Cost>
+  <Decay>
+    <DelayTime>0.0</DelayTime>
+    <SinkRate>0.0</SinkRate>
+    <SinkAccel>2.0</SinkAccel>
+  </Decay>
+  <Footprint replace="">
+    <Square width="5.0" depth="10.0"/>
+    <Height>10.0</Height>
+    <MaxSpawnDistance>10</MaxSpawnDistance>
+  </Footprint>
+  <Health>
+    <Unhealable>true</Unhealable>
+  </Health>
+  <GarrisonHolder>
+    <Max>10</Max>
+    <List datatype="tokens">FemaleCitizen Infantry Healer Dog</List>
+    <EjectHealth>0</EjectHealth>
+    <EjectClassesOnDestroy datatype="tokens">FemaleCitizen Infantry Healer Dog</EjectClassesOnDestroy>
+    <BuffHeal>0</BuffHeal>
+    <LoadingRange>10</LoadingRange>
+    <Pickup>true</Pickup>
+  </GarrisonHolder>
+  <Identity>
+    <Classes datatype="tokens">FastMoving</Classes>
+    <VisibleClasses datatype="tokens">Cavalry</VisibleClasses>
+    <GenericName>Siege</GenericName>
+    <!-- <Requirements>
+      <Techs datatype="tokens">phase_city</Techs>
+    </Requirements> -->
+  </Identity>
+  <Position>
+    <Anchor>pitch-roll</Anchor>
+    <TurnRate>4</TurnRate>
+  </Position>
+  <Repairable>
+    <RepairTimeRatio>4.0</RepairTimeRatio>
+  </Repairable>
+  <Resistance>
+    <Entity>
+      <ApplyStatus>
+        <Poisoned>
+          <Duration>0.0</Duration>
+          <BlockChance>1</BlockChance>
+        </Poisoned>
+      </ApplyStatus>
+      <Damage>
+        <Hack>1</Hack>
+        <Pierce>25</Pierce>
+        <Crush>5</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Selectable>
+    <Overlay>
+      <Texture>
+        <MainTexture>128x256/rounded_rectangle.png</MainTexture>
+        <MainTextureMask>128x256/rounded_rectangle_mask.png</MainTextureMask>
+      </Texture>
+    </Overlay>
+  </Selectable>
+  <Sound>
+    <SoundGroups>
+      <!-- <attack_ranged>attack/weapon/rifle_attack.xml</attack_ranged>
+      <select>engine_heavy.xml</select>
+      <order_walk>engine_heavy.xml</order_walk>
+      <order_attack>attack/weapon/rifle_attack.xml</order_attack>
+      <order_attack_move>engine_heavy.xml</order_attack_move>
+      <trained>engine_heavy.xml</trained> -->
+    </SoundGroups>
+  </Sound>
+  <StatusBars>
+    <BarWidth>4.0</BarWidth>
+    <BarHeight>0.5</BarHeight>
+  </StatusBars>
+  <TreasureCollector disable=""/>
+  <UnitAI>
+    <CanGuard>false</CanGuard>
+    <Formations disable=""/>
+  </UnitAI>
+  <UnitMotion>
+    <PassabilityClass>large</PassabilityClass>
+    <RunMultiplier>1</RunMultiplier>
+    <InstantTurnAngle>0.75</InstantTurnAngle>
+    <Acceleration op="mul">0.15</Acceleration>
+    <Weight op="mul">5.0</Weight>
+  </UnitMotion>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
+</Entity>

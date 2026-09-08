@@ -5,6 +5,10 @@
         <Columns>6</Columns>
         <Spacing>3</Spacing>
     </BattalionLeader>
+    <Trainer>
+        <Entities datatype="tokens">units/mcc/battalion_member_infantry_police units/mcc/battalion_member_infantry_teargas_police</Entities>
+    </Trainer>
+    <ProductionQueue/>
     <Identity>
         <GenericName>Police</GenericName>
         <SelectionGroupName/>

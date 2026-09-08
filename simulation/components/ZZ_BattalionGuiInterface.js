@@ -28,6 +28,8 @@
 			ret.battalion = {
 				"leader": ent,
 				"members": cmpLeader.GetBattalionEntities(),
+				"pending": cmpLeader.pendingReinforcement,
+				"nearReinforcementPoint": cmpLeader.IsNearReinforcementPoint(),
 				"xp": cmpLeader.GetCurrentXp(),
 				"requiredXp": cmpLeader.GetRequiredXp()
 			};

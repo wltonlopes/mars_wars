@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_vehicle_landvehicle">
+  <Attack>
+    <Ranged>
+      <AttackName>Rocket</AttackName>
+      <Damage>
+        <Crush>100.0</Crush>
+        <Fire>100.0</Fire>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>100.0</MaxRange>
+      <MinRange>45.0</MinRange>
+      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
+      <PrepareTime>2000</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
+        <LaunchPoint y="3"/>
+        <Speed>45.0</Speed>
+        <Spread>3.0</Spread>
+      </Projectile>
+      <RepeatTime>10000</RepeatTime>
+      <Splash>
+        <Damage>
+          <Crush>30.0</Crush>
+          <Fire>30.0</Fire>
+        </Damage>
+        <FriendlyFire>true</FriendlyFire>
+        <Range>6</Range>
+        <Shape>Circular</Shape>
+        <Knockback>
+          <Distance>4</Distance>
+          <Chance>100</Chance>
+        </Knockback>
+      </Splash>
+    </Ranged>
+  </Attack>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Heavy Vehicle Mammoth</SpecificName>
+    <Icon>units/hele/siege_tower.png</Icon>
+  </Identity>
+    <Health>
+    <Max>500</Max>
+  </Health>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/rifle_attack.xml</attack_ranged>
+      <walk>actor/human/movement/walk.xml</walk>
+      <run>actor/human/movement/run.xml</run>
+    </SoundGroups>
+  </Sound>
+  <TurretHolder>
+    <TurretPoints>
+      <One>
+          <X>0.0</X>
+          <!-- lado -->
+          <Y>0.0</Y>
+          <!-- emcima -->
+          <Z>0.0</Z>
+          <!-- frente -->
+          <Template>units/mcc/vehicle_heavy_tower</Template>
+          <Angle>180.00</Angle>
+      <Ejectable>false</Ejectable>
+      </One>
+    </TurretPoints>
+  </TurretHolder>
+  <VisualActor>
+    <Actor>vehicle/mcc/mammoth.xml</Actor>
+  </VisualActor>
+</Entity>

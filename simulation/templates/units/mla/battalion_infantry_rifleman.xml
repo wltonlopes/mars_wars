@@ -5,6 +5,10 @@
         <Columns>3</Columns>
         <Spacing>6</Spacing>
     </BattalionLeader>
+    <Trainer>
+        <Entities datatype="tokens">units/mla/battalion_member_infantry_rifleman units/mla/battalion_member_infantry_antiair</Entities>
+    </Trainer>
+    <ProductionQueue/>
     <Identity>
         <GenericName>Batalhão de Infantaria</GenericName>
         <SelectionGroupName/>

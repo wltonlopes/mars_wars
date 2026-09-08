@@ -33,6 +33,10 @@
       structures/{civ}/house
       structures/{civ}/barracks
       structures/{civ}/forge
+      structures/{civ}/storehouse
+      structures/{civ}/stable
+      structures/{civ}/farmstead
+      structures/{civ}/sentry_tower
     </Entities>
   </Builder>
   <VisualActor>

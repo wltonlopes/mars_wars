@@ -4,11 +4,18 @@
 
     <Identity>
 
+        <Classes datatype="tokens">
+            BattalionResupplyPoint
+        </Classes>
+
         <GenericName>Control Point</GenericName>
 
         <SpecificName>Strategic Objective</SpecificName>
 
     </Identity>
+
+    <Trainer/>
+    <ProductionQueue/>
 
     <VisualActor>
 

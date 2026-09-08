@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="ranged_combat|template_unit_infantry">
+<Entity parent="battalion_member|ranged_combat|template_unit_infantry">
   <Attack>
     <Ranged>
       <AttackName>LMG</AttackName>

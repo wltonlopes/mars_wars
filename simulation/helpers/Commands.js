@@ -4,6 +4,12 @@ var g_DebugCommands = false;
 
 var g_Commands = {
 
+	"battalion-reinforce": function(player, cmd, data)
+	{
+		for (const ent of data.entities)
+			Engine.QueryInterface(ent, IID_BattalionLeader)?.RequestReinforcement();
+	},
+
 	"aichat": function(player, cmd, data)
 	{
 		var cmpGuiInterface = Engine.QueryInterface(SYSTEM_ENTITY, IID_GuiInterface);
