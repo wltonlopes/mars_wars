@@ -11,6 +11,7 @@
     <Classes datatype="tokens">BattalionResupplyPoint BattalionBarracks</Classes>
     <Civ>mcc</Civ>
     <GenericName>Barracks</GenericName>
+    <Icon>structures/barracks_bunker.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="22.0" depth="23.0"/>
@@ -19,6 +20,9 @@
     <Entities datatype="tokens" replace="">
       units/{civ}/battalion_member_infantry_rifleman
       units/{civ}/battalion_member_infantry_antiair
+      units/{civ}/battalion_infantry_rifleman
+      units/{civ}/battalion_infantry_lmg
+      units/{civ}/battalion_infantry_police
     </Entities>
   </Trainer>
   <VisualActor>

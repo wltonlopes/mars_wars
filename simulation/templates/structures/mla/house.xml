@@ -9,6 +9,7 @@
     <Phenotype datatype="tokens">
       house
     </Phenotype>
+    <Icon>structures/house_bunker.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="10.0" depth="10.0"/>

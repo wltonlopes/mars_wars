@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_variant_base">
+    <BattalionLeader>
+        <Role>assault</Role>
+        <Columns>3</Columns>
+        <Spacing>5.0</Spacing>
+    </BattalionLeader>
+</Entity>

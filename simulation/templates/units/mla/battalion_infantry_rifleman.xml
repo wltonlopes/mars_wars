@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="battalion_medium|battalion_leader|units/mla/rifleman">
+<Entity parent="battalion_profile_assault|units/mla/rifleman">
     <BattalionLeader>
         <MemberTemplates>units/mla/battalion_member_infantry_rifleman:3 units/mla/battalion_member_infantry_antiair:1</MemberTemplates>
-        <Columns>3</Columns>
+        <MemberRoles>units/mla/battalion_member_infantry_rifleman:3:front units/mla/battalion_member_infantry_antiair:1:anti_air</MemberRoles>
         <Spacing>6</Spacing>
     </BattalionLeader>
     <Trainer>
         <Entities datatype="tokens">units/mla/battalion_member_infantry_rifleman units/mla/battalion_member_infantry_antiair</Entities>
     </Trainer>
-    <ProductionQueue/>
     <Identity>
         <GenericName>Batalhão de Infantaria</GenericName>
         <SelectionGroupName/>

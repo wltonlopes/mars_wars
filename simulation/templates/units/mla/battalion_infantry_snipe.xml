@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="battalion_medium|battalion_leader|units/mla/rifleman">
+<Entity parent="battalion_profile_skirmisher|units/mla/rifleman">
     <BattalionLeader>
         <MemberTemplates>units/mla/snipe_sup:1 units/mla/sniper_oper:1</MemberTemplates>
-        <Columns>2</Columns>
-        <Spacing>6</Spacing>
+        <MemberRoles>units/mla/snipe_sup:1:flank units/mla/sniper_oper:1:support</MemberRoles>
     </BattalionLeader>
     <Trainer>
         <Entities datatype="tokens">units/mla/snipe_sup units/mla/sniper_oper</Entities>
     </Trainer>
-    <ProductionQueue/>
     <Identity>
         <GenericName>Silent Reapers</GenericName>
         <SelectionGroupName/>

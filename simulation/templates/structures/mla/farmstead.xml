@@ -9,6 +9,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName>Food Industry</SpecificName>
+    <Icon>structures/bio.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="16.0" depth="11.0"/>

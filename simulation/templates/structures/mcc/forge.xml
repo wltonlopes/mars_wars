@@ -7,6 +7,7 @@
   <Identity>
     <Civ>mcc</Civ>
     <SpecificName>Lab</SpecificName>
+    <Icon>structures/lab.png</Icon>
     <Requirements>
       <Techs datatype="tokens">-phase_town phase_village</Techs>
     </Requirements>

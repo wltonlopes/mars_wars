@@ -6,6 +6,7 @@
   </Footprint>
   <Identity>
     <Civ>mcc</Civ>
+    <Icon>structures/house_bunker.png</Icon>
     <Phenotype datatype="tokens">
       house
     </Phenotype>

@@ -6,6 +6,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName>Depot</SpecificName>
+    <Icon>structures/storehouse.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="13.0" depth="14.0"/>

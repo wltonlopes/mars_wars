@@ -112,6 +112,17 @@ var g_Commands = {
 
 	"walk": function(player, cmd, data)
 	{
+		if (HasBattalionActiveCombatOrder(data.entities))
+		{
+			GetBattalionOrderEntities(data.entities).forEach(ent =>
+			{
+				const cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+				if (cmpUnitAI)
+					cmpUnitAI.Walk(cmd.x, cmd.z, cmd.queued, cmd.pushFront);
+			});
+			return;
+		}
+
 		const ents = data.entities.length;
 		const uais = GetFormationUnitAIs(data.entities, player, cmd, data.formation);
 		if (uais.length === 1 || uais.length !== ents)
@@ -131,6 +142,17 @@ var g_Commands = {
 
 	"walk-custom": function(player, cmd, data)
 	{
+		if (HasBattalionActiveCombatOrder(data.entities))
+		{
+			for (const ent in data.entities)
+			{
+				const cmpUnitAI = Engine.QueryInterface(data.entities[ent], IID_UnitAI);
+				if (cmpUnitAI)
+					cmpUnitAI.Walk(cmd.targetPositions[ent].x, cmd.targetPositions[ent].y, cmd.queued, cmd.pushFront);
+			}
+			return;
+		}
+
 		for (const ent in data.entities)
 			GetFormationUnitAIs([data.entities[ent]], player, cmd, data.formation).forEach(cmpUnitAI =>
 			{
@@ -1651,6 +1673,21 @@ function GetBattalionOrderEntities(ents)
 	}
 
 	return result;
+}
+
+function HasBattalionActiveCombatOrder(ents)
+{
+	for (const ent of GetBattalionOrderEntities(ents))
+	{
+		const cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+		if (!cmpUnitAI || !cmpUnitAI.order)
+			continue;
+
+		if (["Attack", "WalkAndFight", "Patrol"].includes(cmpUnitAI.order.type))
+			return true;
+	}
+
+	return false;
 }
 
 /**

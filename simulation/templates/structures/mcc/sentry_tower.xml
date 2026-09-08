@@ -2,6 +2,7 @@
 <Entity parent="template_structure_defensive_tower_sentry">
   <Identity>
     <Civ>mcc</Civ>
+    <Icon>structures/sentry_gun.png</Icon>
   </Identity>
   <TurretHolder>
     <TurretPoints>

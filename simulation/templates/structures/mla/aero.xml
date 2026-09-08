@@ -6,7 +6,8 @@
   </Footprint>
   <Identity>
     <Civ>mla</Civ>
-    <SpecificName>Garage</SpecificName>
+    <SpecificName>Aeroport</SpecificName>
+    <Icon>structures/aero.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="24.0" depth="17.0"/>

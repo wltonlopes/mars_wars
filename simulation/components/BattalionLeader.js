@@ -42,6 +42,18 @@ BattalionLeader.prototype.Schema =
 	"</optional>" +
 
 	"<optional>" +
+		"<element name='MemberRoles'>" +
+			"<text/>" +
+		"</element>" +
+	"</optional>" +
+
+	"<optional>" +
+		"<element name='Role'>" +
+			"<text/>" +
+		"</element>" +
+	"</optional>" +
+
+	"<optional>" +
 		"<element name='ReinforcementRange'>" +
 			"<data type='decimal'/>" +
 		"</element>" +
@@ -78,7 +90,10 @@ BattalionLeader.prototype.Init = function()
 		+(this.template.ReinforcementRange || 50);
 	this.memberTemplates =
 		this.GetMemberTemplateCounts();
+	this.memberRoles = this.GetMemberRoles();
+	this.role = (this.template.Role || "assault").toLowerCase();
 	this.pendingReinforcement = false;
+	this.state = "idle";
     this.spawned = false;
     this.promoted = false;
 
@@ -143,32 +158,12 @@ BattalionLeader.prototype.SpawnMembers =function()
     let pos =
         cmpLeaderPos.GetPosition2D();
 
-	let offsets = [];
-
-	for (
-		let i = 0;
-		i < this.size - 1;
-		++i)
-	{
-		let row =
-			Math.floor(
-				i / this.columns);
-
-		let col =
-			i % this.columns;
-
-		offsets.push([
-			(col -
-			(this.columns - 1) / 2)
-			* this.spacing,
-
-			-(row + 1)
-			* this.spacing
-		]);
-	}
+	let offsets = this.GetFormationOffsets();
 
 	let memberTemplates =
 		this.GetSpawnMemberTemplates();
+
+	this.state = "deploying";
 
 	for (let i = 0; i < memberTemplates.length; ++i)
     {
@@ -217,11 +212,161 @@ BattalionLeader.prototype.SpawnMembers =function()
 
         this.members.push(ent);
     }
+	this.state = "formation";
 	// this.CreateFormation();
 };
 
+BattalionLeader.prototype.GetFormationProfile =
+function()
+{
+	switch (this.role)
+	{
+		case "defense":
+			return {
+				columnsModifier: 1,
+				spacingScale: 0.85,
+				supportOffset: 0.5,
+				flankOffset: 0.9
+			};
+		case "skirmisher":
+			return {
+				columnsModifier: 1,
+				spacingScale: 1.2,
+				supportOffset: 0.7,
+				flankOffset: 1.25
+			};
+		case "anti_air":
+			return {
+				columnsModifier: 0,
+				spacingScale: 1.15,
+				supportOffset: 0.65,
+				flankOffset: 1.35
+			};
+		case "assault":
+		default:
+			return {
+				columnsModifier: 0,
+				spacingScale: 1.0,
+				supportOffset: 0.4,
+				flankOffset: 1.0
+			};
+	}
+};
 
+BattalionLeader.prototype.GetMemberRoles =
+function()
+{
+	if (!this.template.MemberRoles)
+		return [];
 
+	let result = [];
+	let entries = String(this.template.MemberRoles).split(/\s+/);
+
+	for (let entry of entries)
+	{
+		if (!entry)
+			continue;
+
+		let parts = entry.split(":");
+		if (parts.length != 3)
+			continue;
+
+		let count = +parts[1];
+		if (!count)
+			continue;
+
+		result.push({
+			template: parts[0],
+			count: count,
+			role: String(parts[2]).toLowerCase()
+		});
+	}
+
+	return result;
+};
+
+BattalionLeader.prototype.GetMemberRole =
+function(ent)
+{
+	let templateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
+	if (!templateManager)
+		return "front";
+
+	let template = templateManager.GetCurrentTemplateName(ent);
+	for (let entry of this.memberRoles)
+		if (entry.template == template)
+			return entry.role;
+
+	return this.role == "defense" ? "front" : this.role == "skirmisher" ? "flank" : "front";
+};
+
+BattalionLeader.prototype.GetFormationOffsets =
+function()
+{
+	let profile = this.GetFormationProfile();
+	let columns = Math.max(1, this.columns + profile.columnsModifier);
+	let offsets = [];
+
+	for (let i = 0; i < this.size - 1; ++i)
+	{
+		let row = Math.floor(i / columns);
+		let col = i % columns;
+		let spacing = this.spacing * profile.spacingScale;
+		let roleBias = this.role == "defense" ? 0.2 : 0.5;
+
+		offsets.push([
+			(col - (columns - 1) / 2) * spacing + (col % 2 == 0 ? -roleBias * spacing : roleBias * spacing),
+			-(row + 1) * spacing - (row > 0 ? profile.supportOffset * spacing : 0)
+		]);
+	}
+
+	return offsets;
+};
+
+BattalionLeader.prototype.GetMemberFormationPosition =
+function(leaderPos, index, ent)
+{
+	let profile = this.GetFormationProfile();
+	let columns = Math.max(1, this.columns + profile.columnsModifier);
+	let row = Math.floor(index / columns);
+	let col = index % columns;
+	let spacing = this.spacing * profile.spacingScale;
+	let role = ent ? this.GetMemberRole(ent) : "front";
+	let xBias = 0;
+	let yBias = 0;
+
+	if (role == "support")
+	{
+		xBias = (col % 2 == 0 ? -1 : 1) * profile.supportOffset * spacing;
+		yBias = profile.supportOffset * spacing;
+	}
+	else if (role == "flank")
+	{
+		xBias = (col % 2 == 0 ? -1 : 1) * profile.flankOffset * spacing;
+		yBias = profile.flankOffset * spacing * 0.5;
+	}
+	else if (role == "anti_air")
+	{
+		xBias = (col % 2 == 0 ? -1 : 1) * profile.flankOffset * spacing * 0.75;
+		yBias = profile.supportOffset * spacing * 1.2;
+	}
+
+	return {
+		x: leaderPos.x + (col - (columns - 1) / 2) * spacing + xBias,
+		y: leaderPos.y - ((row + 1) * spacing) - yBias
+	};
+};
+
+BattalionLeader.prototype.ShouldSkipMemberOrder =
+function(cmpUnitAI)
+{
+	if (!cmpUnitAI || !cmpUnitAI.order)
+		return false;
+
+	return cmpUnitAI.order.type == "Attack" ||
+		cmpUnitAI.order.type == "WalkAndFight" ||
+		cmpUnitAI.order.type == "Patrol";
+};
 
 BattalionLeader.prototype.GetAliveMembers =
 function()
@@ -379,8 +524,12 @@ function()
 		return;
 
 	if (!this.IsNearReinforcementPoint())
+	{
+		this.state = "repositioning";
 		return;
+	}
 
+	this.state = "replenishing";
 	let member = this.FindReinforcement();
 	if (member == INVALID_ENTITY)
 		return;
@@ -400,7 +549,7 @@ function()
 	this.CleanupMembers();
 	if (this.pendingReinforcement || !this.IsNearReinforcementPoint())
 		return false;
-
+	this.state = "replenishing";
 	let template = this.GetMissingMemberTemplate();
 	if (!template)
 		return false;
@@ -448,6 +597,8 @@ function(template)
 	if (this.pendingReinforcement || !this.IsNearReinforcementPoint() ||
 		template != this.GetMissingMemberTemplate())
 		return false;
+
+	this.state = "replenishing";
 
 	let cmpQueue = Engine.QueryInterface(this.entity, IID_ProductionQueue);
 	if (!cmpQueue || !cmpQueue.AddItem(template, "unit", 1, { "battalion": this.entity }))
@@ -791,6 +942,8 @@ function()
 BattalionLeader.prototype.UpdateBattalion =
 function()
 {
+	this.CleanupMembers();
+
     let cmpLeaderPos =
         Engine.QueryInterface(
             this.entity,
@@ -802,6 +955,13 @@ function()
         return;
 
     this.Reinforce();
+
+    if (this.GetMissingMemberTemplate())
+        this.state = "replenishing";
+    else if (this.pendingReinforcement)
+        this.state = "repositioning";
+    else
+        this.state = "formation";
 
     let pos =
         cmpLeaderPos.GetPosition2D();
@@ -825,35 +985,20 @@ function()
 
         // Combat and capture orders belong to the soldier itself.  Do not
         // replace them with a formation-walk order while they are active.
-        if (cmpUnitAI.order &&
-            (cmpUnitAI.order.type == "Attack" ||
-             cmpUnitAI.order.type == "WalkAndFight" ||
-             cmpUnitAI.order.type == "Patrol"))
+        if (this.ShouldSkipMemberOrder(cmpUnitAI))
             continue;
 
-        let row =
-            Math.floor(index / this.columns);
-
-        let col =
-            index % this.columns;
-
-        let tx =
-            pos.x +
-            (col - (this.columns - 1) / 2)
-            * this.spacing;
-
-        let tz =
-            pos.y -
-            ((row + 1) * this.spacing);
+        let target =
+            this.GetMemberFormationPosition(pos, index, ent);
 
         let memberPos =
             cmpMemberPos.GetPosition2D();
 
-        let dx = memberPos.x - tx;
-        let dz = memberPos.y - tz;
+        let dx = memberPos.x - target.x;
+        let dz = memberPos.y - target.y;
 
-        // Evita reemitir ordens de movimentação se o membro já estiver
-        // praticamente na posição final desejada.
+        // Avoid reissuing movement orders when the member is already near the
+        // desired formation position.
         if (dx * dx + dz * dz < 0.25)
         {
             ++index;
@@ -861,8 +1006,8 @@ function()
         }
 
         cmpUnitAI.Walk(
-            tx,
-            tz,
+            target.x,
+            target.y,
             false,
             false);
 

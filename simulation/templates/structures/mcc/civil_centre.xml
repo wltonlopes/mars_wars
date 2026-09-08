@@ -7,7 +7,7 @@
   <Identity>
     <Classes datatype="tokens">BattalionResupplyPoint</Classes>
     <Civ>mcc</Civ>
-    <SpecificName/>
+    <Icon>structures/cc.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="25.5" depth="25.5"/>
@@ -16,6 +16,7 @@
     <Entities datatype="tokens" replace="">
       units/{civ}/worker
       units/{civ}/battalion_infantry_rifleman
+      units/{civ}/battalion_infantry_lmg
       units/{civ}/battalion_infantry_police
     </Entities>
   </Trainer>

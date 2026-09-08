@@ -7,6 +7,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName></SpecificName>
+    <Icon>structures/lab.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="19.5" depth="19.5"/>

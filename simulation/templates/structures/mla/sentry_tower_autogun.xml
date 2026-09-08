@@ -20,7 +20,7 @@
   <Identity>
     <GenericName>automatic torret</GenericName>
     <SpecificName></SpecificName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>structures/sentry_gun.png</Icon>
   </Identity>
   <Sound>
     <SoundGroups>

@@ -6,6 +6,7 @@
   <Identity>
     <Civ>mcc</Civ>
     <SpecificName>Field</SpecificName>
+    <Icon>structures/bio.png</Icon>
   </Identity>
   <Obstruction>
     <Static width="25.5" depth="25.5"/>

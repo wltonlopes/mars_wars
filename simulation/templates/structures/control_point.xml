@@ -7,9 +7,8 @@
         <Classes datatype="tokens">
             BattalionResupplyPoint
         </Classes>
-
+        <Icon>structures/control_point.png</Icon>
         <GenericName>Control Point</GenericName>
-
         <SpecificName>Strategic Objective</SpecificName>
 
     </Identity>
