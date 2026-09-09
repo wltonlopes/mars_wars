@@ -18,8 +18,6 @@
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens" replace="">
-      units/{civ}/battalion_member_infantry_rifleman
-      units/{civ}/battalion_member_infantry_antiair
       units/{civ}/battalion_infantry_rifleman
       units/{civ}/battalion_infantry_lmg
       units/{civ}/battalion_infantry_police

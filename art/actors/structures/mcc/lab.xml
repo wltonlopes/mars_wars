@@ -6,6 +6,7 @@
 			<mesh>structural/common_mars/lab.dae</mesh>
 			<props>
 			    <prop actor="structures/mcc/lab_cupula.xml" attachpoint="root"/>
+				<prop actor="structures/mcc/prop_lab.xml" attachpoint="root"/>
 			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props>

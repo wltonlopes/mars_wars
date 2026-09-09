@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/common_mars/prop_lab.dae</mesh>
+			<textures>
+				<texture file="structural/mars_generic.png" name="baseTex"/>
+				<texture file="structural/mars_generic_spec.png" name="specTex"/>
+				<texture file="structural/mars_generic_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+	<material>player_trans_parallax_spec.xml</material>
+</actor>

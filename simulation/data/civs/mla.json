@@ -14,8 +14,7 @@
     "CivBonuses": [],
     "TeamBonuses": [],
     "WallSets": [
-        "structures/wallset_palisade",
-        "structures/mla/wallset_stone"
+        "structures/wallset_palisade"
     ],
     "StartEntities": [
         {

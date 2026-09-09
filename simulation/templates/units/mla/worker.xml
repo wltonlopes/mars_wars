@@ -25,7 +25,7 @@
     <Civ>mla</Civ>
     <GenericName>Worker</GenericName>
     <SpecificName>Employee</SpecificName>
-    <Icon>units/achae/support_civilian.png</Icon>
+    <Icon>units/worker.png</Icon>
   </Identity>
   <Builder>
     <Entities datatype="tokens" replace="">

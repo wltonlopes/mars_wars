@@ -15,6 +15,7 @@
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/mcc/vehicle_heavy
+      units/mcc/vehicle_special
     </Entities>
   </Trainer>
   <VisualActor>

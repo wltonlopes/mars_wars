@@ -19,7 +19,7 @@
   </Health>
   <Identity>
     <GenericName>automatic torret</GenericName>
-    <SpecificName></SpecificName>
+    <SpecificName>automatic torret</SpecificName>
     <Icon>structures/sentry_gun.png</Icon>
   </Identity>
   <Sound>

@@ -7,7 +7,6 @@
   <Identity>
     <Classes datatype="tokens">BattalionResupplyPoint</Classes>
     <Civ>mla</Civ>
-    <SpecificName/>    
     <Icon>structures/cc.png</Icon>  
     </Identity>
   <Obstruction>

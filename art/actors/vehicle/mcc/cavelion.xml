@@ -16,7 +16,15 @@
 		</variant>
 	</group>
 	<group>
-		<variant frequency="100" name="Idle"/>
+		<variant frequency="1" name="Idle"/>
+		<!-- <variant file="shoot_mark_iv.xml" name="attack_ranged"/> -->
+		<variant name="Walk">
+			<props>
+				<prop actor="particle/dust_cav.xml" attachpoint="w_01"/>
+				<prop actor="particle/dust_cav.xml" attachpoint="w_02"/>
+			</props>
+		</variant>
+		<variant frequency="1" name="alive"/>
 		<variant name="death">
 			<props>
 				<prop actor="particle/destruction_smoke_large.xml" attachpoint="root"/>

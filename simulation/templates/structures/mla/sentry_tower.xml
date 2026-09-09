@@ -2,6 +2,8 @@
 <Entity parent="template_structure_defensive_tower_sentry">
   <Identity>
     <Civ>mla</Civ>
+    <GenericName>automatic torret</GenericName>
+    <SpecificName>automatic torret</SpecificName>
     <Icon>structures/sentry_gun.png</Icon>
   </Identity>
   <TurretHolder>

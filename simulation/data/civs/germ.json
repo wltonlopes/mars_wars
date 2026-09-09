@@ -82,7 +82,7 @@
 		"skirmish/units/default_infantry_ranged_b": "units/germ/infantry_slinger_b",
 		"skirmish/units/special_starting_unit": "units/germ/support_wagon",
 		"skirmish/structures/default_house_10": "structures/germ/house",
-		"skirmish/structures/default_defense_tower": "structures/{civ}/defense_tower"
+		"skirmish/structures/default_defense_tower": "structures/{civ}/sentry_tower"
 	},
 	"SelectableInGameSetup": false
 }

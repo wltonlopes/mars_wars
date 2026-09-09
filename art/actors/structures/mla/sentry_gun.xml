@@ -4,6 +4,9 @@
 	<group>
 		<variant frequency="1" name="Base">
 			<mesh>structural/common_mars/sentry_gun.dae</mesh>
+			<props>
+			    <prop actor="props/units/siege_artillery/stone_projectile_med.xml" attachpoint="projectile"/>
+			</props>
 			<textures>
 				<texture file="structural/mla_struct.png" name="baseTex"/>
 				<texture file="structural/mla_struct_spec.png" name="specTex"/>

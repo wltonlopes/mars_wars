@@ -12,6 +12,11 @@
   <Obstruction>
     <Static width="24.0" depth="17.0"/>
   </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/vehicle_medium
+    </Entities>
+  </Trainer>
   <VisualActor>
     <Actor>structures/mla/stable.xml</Actor>
   </VisualActor>
