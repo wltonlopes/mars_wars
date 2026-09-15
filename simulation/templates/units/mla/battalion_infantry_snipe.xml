@@ -2,7 +2,6 @@
 <Entity parent="battalion_profile_skirmisher|units/mla/rifleman">
     <BattalionLeader>
         <MemberTemplates>units/mla/snipe_sup:1 units/mla/sniper_oper:1</MemberTemplates>
-        <MemberRoles>units/mla/snipe_sup:1:flank units/mla/sniper_oper:1:support</MemberRoles>
     </BattalionLeader>
     <Trainer>
         <Entities datatype="tokens">units/mla/snipe_sup units/mla/sniper_oper</Entities>

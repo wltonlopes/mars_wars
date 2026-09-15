@@ -8,4 +8,8 @@
     <animation file="biped/assault_rifle/ready/run_1.dae" name="Run" id="run1" speed="5"/>
     <animation event="0.35" file="biped/assault_rifle/shooting/crouched_1.dae" load="0.75" name="attack_ranged" speed="200"/>
   </animations>
+  <props>
+    <prop actor="particle/streaks_light.xml" attachpoint="shoot"/>
+    <prop actor="props/bullet.xml" attachpoint="projectile"/>
+  </props>
 </variant>

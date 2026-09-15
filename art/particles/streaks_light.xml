@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<particles>
+    <texture>art/textures/particles/raindrop.png</texture>
+    <blend mode="add"/>
+
+    <!-- This emitter is attached to the projectile actor.  Keep the particles
+         in its local space so the streak always follows the shot direction. -->
+    <use_local_space/>
+
+    <!-- A short-lived, dense emission produces one compact tracer instead of
+         the five-second beam that used to remain at the weapon muzzle. -->
+    <constant name="emissionrate" value="80.0"/>
+    <uniform name="lifetime" min="0.035" max="0.055"/>
+
+    <constant name="angle" value="1.57079"/>
+
+    <uniform name="velocity.y" min="2.0" max="2.0"/>
+    <uniform name="velocity.z" min="0.0" max="0.0"/>
+    <uniform name="velocity.angle" min="0.0" max="0.0"/>
+
+    <uniform name="size" min="0.35" max="0.50"/>
+
+    <particle>
+        <fixed_orientation name="axisX" mode="relative" z="1.0"/>
+    </particle>
+</particles>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>props/bullet.dae</mesh>
+			<props>
+			    <prop actor="particle/streaks_light.xml" attachpoint="root"/>
+			</props>
+			<textures>
+				<texture file="props/light_red.png" name="baseTex"/>
+				<texture file="props/light_spec.dds" name="specTex"/>
+				<texture file="props/light_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+   <material>basic_glow_norm_spec.xml</material>
+</actor>
