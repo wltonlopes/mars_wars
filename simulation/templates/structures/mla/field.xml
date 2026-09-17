@@ -12,6 +12,6 @@
     <Static width="25.5" depth="25.5"/>
   </Obstruction>
   <VisualActor>
-    <Actor>structures/mla/bio_field.xml</Actor>
+    <Actor>structures/mla/greenhouse.xml</Actor>
   </VisualActor>
 </Entity>

@@ -9,8 +9,6 @@
         <prop actor="props/units/weapons/sniper_rifle.xml" attachpoint="weapon_R"/>
         <prop actor="props/units/armor/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
         <prop actor="props/units/armor/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
-        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="root"/>
-        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="projectile"/>
       </props>
     </variant>
   </group>
