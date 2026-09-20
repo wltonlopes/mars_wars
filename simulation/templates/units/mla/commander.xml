@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="ranged_combat|template_unit_hero_infantry_archer">
+    <Auras datatype="tokens">
+    </Auras>
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Rebel Commander</GenericName>
+    <SpecificName>Rebel Commander</SpecificName>
+    <SelectionGroupName>units/mla/commander</SelectionGroupName>
+    <Icon>units/battalion_member.png</Icon>
+  </Identity>
+  <UnitMotion>
+    <WalkSpeed op="mul">1.2</WalkSpeed>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mla/rifle_assalt.xml</Actor>
+  </VisualActor>
+</Entity>

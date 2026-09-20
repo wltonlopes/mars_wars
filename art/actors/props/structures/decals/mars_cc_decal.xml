@@ -2,7 +2,7 @@
 <actor version="1">
   <group>
     <variant>
-      <decal angle="0" depth="30" offsetx="0" offsetz="0" width="30"/>
+      <decal angle="0" depth="20" offsetx="0" offsetz="0" width="20"/>
       <textures>
         <texture file="structural/decal_cc_mcc.png" name="baseTex"/>
         <texture file="structural/decal_cc_mcc_norm.png" name="normTex"/>

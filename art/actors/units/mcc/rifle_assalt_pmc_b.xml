@@ -29,6 +29,7 @@
     <variant file="biped/build.xml"/>
     <variant file="biped/build_farm.xml"/>
     <variant file="biped/death_infantry.xml"/>
+    <variant file="biped/jump_infantry.xml"/>
   </group>
   <material>player_trans.xml</material>
 </actor>

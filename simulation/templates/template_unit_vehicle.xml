@@ -26,7 +26,7 @@
     <Pickup>true</Pickup>
   </GarrisonHolder>
   <Identity>
-    <Classes datatype="tokens">FastMoving</Classes>
+    <Classes datatype="tokens">FastMoving Vehicle</Classes>
     <VisibleClasses datatype="tokens">Cavalry</VisibleClasses>
     <GenericName>Siege</GenericName>
     <!-- <Requirements>

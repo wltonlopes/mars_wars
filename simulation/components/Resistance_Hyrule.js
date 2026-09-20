@@ -1,6 +1,7 @@
 Resistance.prototype.InitHyrule = function()
 {
     this.isStunned = false;
+    this.isKnockedBack = false;
 }
 
 Resistance.prototype.PostInit = function ()
@@ -102,6 +103,11 @@ Resistance.prototype.ApplyKnockback = function(origin, distance, chance)
     if (!cmpIdentity || !cmpIdentity.HasClass("Unit"))
         return;
 
+    // Vehicles still receive the splash damage through AttackHelper, but their
+    // mass makes them immune to the positional impulse.
+    if (cmpIdentity.HasClass("Vehicle"))
+        return;
+
     if (randFloat(0, 100) > chance)
         return;
 
@@ -120,9 +126,38 @@ Resistance.prototype.ApplyKnockback = function(origin, distance, chance)
         length = 1;
     }
 
+    // Move first, then start the reaction. Position changes may cause UnitAI
+    // to refresh its animation, so the fall must be selected afterwards.
     cmpPosition.JumpTo(
         target.x + dx / length * distance,
         target.y + dz / length * distance);
+
+    // Human actors already provide the skeletal "death" animation. Play it
+    // once as a fall animation while the explosion pushes the unit away.
+    // Keep UnitAI from immediately replacing it with walk/idle.
+    if (cmpIdentity.HasClass("Human"))
+    {
+        let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
+        if (cmpVisual)
+            cmpVisual.SelectAnimation("Jump", true, 1.35);
+
+        this.isKnockedBack = true;
+        let cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
+        if (this.knockbackTimer != undefined)
+            cmpTimer.CancelTimer(this.knockbackTimer);
+        this.knockbackTimer = cmpTimer.SetTimeout(
+            this.entity, IID_Resistance, "ResetKnockback", 700, {});
+    }
+}
+
+Resistance.prototype.ResetKnockback = function()
+{
+    this.isKnockedBack = false;
+    this.knockbackTimer = undefined;
+
+    let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
+    if (cmpVisual)
+        cmpVisual.SelectAnimation("idle", false, 1.0);
 }
 
 Resistance.prototype.GetBlockRating = function ()

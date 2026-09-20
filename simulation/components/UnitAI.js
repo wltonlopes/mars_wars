@@ -4650,9 +4650,9 @@ UnitAI.prototype.SetDefaultAnimationVariant = function()
 
 UnitAI.prototype.ResetAnimation = function()
 {
-    //HC-code, stunned or airborne units should not be receiving animation updates
+    //HC-code, stunned or knocked-back units should not receive animation updates
     let cmpResistance = Engine.QueryInterface(this.entity, IID_Resistance);
-    if (cmpResistance && cmpResistance.isStunned == true)
+    if (cmpResistance && (cmpResistance.isStunned == true || cmpResistance.isKnockedBack == true))
         return false;
 
 	let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
@@ -4664,9 +4664,9 @@ UnitAI.prototype.ResetAnimation = function()
 
 UnitAI.prototype.SelectAnimation = function(name, once = false, speed = 1.0)
 {
-    //HC-code, stunned or airborne units should not be receiving animation updates
+    //HC-code, stunned or knocked-back units should not receive animation updates
     let cmpResistance = Engine.QueryInterface(this.entity, IID_Resistance);
-    if (cmpResistance && cmpResistance.isStunned == true)
+    if (cmpResistance && (cmpResistance.isStunned == true || cmpResistance.isKnockedBack == true))
         return false;
         
 	let cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
