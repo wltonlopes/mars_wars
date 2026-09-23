@@ -9,6 +9,8 @@
   <Builder>
     <Entities datatype="tokens" replace="">
       structures/{civ}/civil_centre
+      structures/{civ}/silos
+      structures/{civ}/aero
       structures/{civ}/house
       structures/{civ}/barracks
       structures/{civ}/stable

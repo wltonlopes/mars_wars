@@ -3,15 +3,15 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/mammoth_tower.dae</mesh>
+			<mesh>vehicle/drone_kamikaze_01.dae</mesh>
 			<props>
-        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="root"/>
-        <prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
+				<prop actor="props/units/weapons/muzzleflash.xml" attachpoint="back"/>
+				<prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
-				<texture file="vehicle/mcc_veh_01.png" name="baseTex"/>
-				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
-				<texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
+				<texture file="mechanical/mla_v.png" name="baseTex"/>
+				<texture file="mechanical/mla_v_spec.png" name="specTex"/>
+				<texture file="mechanical/mla_v_norm.png" name="normTex"/>
 			</textures>
 		</variant>
 	</group>
@@ -20,7 +20,6 @@
 		<variant name="death">
 			<props>
 				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
-				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
 				<prop actor="particle/flame_med.xml" attachpoint="root"/>
 			</props>
 		</variant>

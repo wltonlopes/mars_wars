@@ -16,6 +16,7 @@
     <Entities datatype="tokens" replace="">
       units/{civ}/vehicle_medium
       units/{civ}/vehicle_light
+      units/{civ}/vehicle_special
     </Entities>
   </Trainer>
   <VisualActor>

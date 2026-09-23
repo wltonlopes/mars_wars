@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit">
+  <Attack>
+    <Melee>
+      <AttackName context=".">Gun</AttackName>
+      <Damage>
+        <Pierce>100</Pierce>
+        <Crush>107</Crush>
+      </Damage>
+      <MaxRange>10</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>0</PrepareTime>
+      <RepeatTime>1000</RepeatTime>
+      <Kamikaze>true</Kamikaze>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>5</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>50</Pierce>
+          <Crush>113</Crush>
+        </Damage>
+      </Splash>
+    </Melee>
+  </Attack>
+  <!-- <BuildingAI>
+    <DefaultArrowCount>3</DefaultArrowCount>
+    <GarrisonArrowMultiplier>1</GarrisonArrowMultiplier>
+    <GarrisonArrowClasses>Infantry</GarrisonArrowClasses>
+  </BuildingAI> -->
+  <Decay>
+    <SinkingAnim>true</SinkingAnim>
+    <DelayTime>0.0</DelayTime>
+    <SinkRate>3.0</SinkRate>
+    <SinkAccel>7.0</SinkAccel>
+  </Decay>
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>100</Max>
+    <Unhealable>true</Unhealable>
+  </Health>
+  <Kamikaze/>
+    <Identity>
+        <GenericName>Drone Kamikaze</GenericName>
+        <SelectionGroupName>units/mla/swarm_drone_kamikaze</SelectionGroupName>
+        <Icon>units/global/mustang.png</Icon>
+  </Identity>
+  <Obstruction disable=""/>
+  <Position>
+    <Anchor>upright</Anchor>
+    <Floating>false</Floating>
+    <FloatDepth>0</FloatDepth>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <Repairable disable=""/>
+  <UnitAI>
+    <DefaultStance>violent</DefaultStance>
+    <Formations datatype="tokens" replace=""/>
+  </UnitAI>
+  <UnitMotion disable=""/>
+  <UnitMotionFlying>
+    <MaxSpeed>21.0</MaxSpeed>
+    <TakeoffSpeed>8.0</TakeoffSpeed>
+    <LandingSpeed>7.0</LandingSpeed>
+    <AccelRate>14.0</AccelRate>
+    <SlowingRate>10.0</SlowingRate>
+    <BrakingRate>24.0</BrakingRate>
+    <TurnRate>6.0</TurnRate>
+    <OvershootTime>0.35</OvershootTime>
+    <FlyingHeight>9.0</FlyingHeight>
+    <ClimbRate>7.0</ClimbRate>
+    <DiesInWater>true</DiesInWater>
+    <PassabilityClass>unrestricted</PassabilityClass>
+  </UnitMotionFlying>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/mla/drone_kamikaze.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_champion_infantry_archer">
+  <Attack>
+    <Ranged>
+      <AttackName>Cannon</AttackName>
+      <Damage>
+        <Crush>30.0</Crush>
+        <Fire>30.0</Fire>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>60.0</MaxRange>
+      <MinRange>5.0</MinRange>
+      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
+      <PrepareTime>500</PrepareTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <ImpactActorName>props/units/explosions/small_explosion.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
+        <LaunchPoint y="3"/>
+        <Speed>45.0</Speed>
+        <Spread>3.0</Spread>
+      </Projectile>
+      <RepeatTime>1000</RepeatTime>
+      <Splash disable="true"/>
+    </Ranged>
+  </Attack>
+  <DeathDamage>
+    <Shape>Circular</Shape>
+    <Range>2</Range>
+    <FriendlyFire>true</FriendlyFire>
+    <Damage>
+      <Fire>500</Fire>
+    </Damage>
+  </DeathDamage>
+  <Decay>
+    <SinkingAnim>false</SinkingAnim>
+    <DelayTime>0.1</DelayTime>
+    <SinkRate>50.0</SinkRate>
+    <SinkAccel>50.0</SinkAccel>
+  </Decay>
+  <Health>
+    <Max>1000</Max>
+    <RegenRate>-0.25</RegenRate>
+    <Unhealable>true</Unhealable>
+  </Health>
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Cannon Tower 105mm</GenericName>
+    <SpecificName>Cannon Tower 105mm</SpecificName>
+      <Icon>structures/sentry_tower.png</Icon>
+  </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/explosion.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
+  <VisualActor>
+    <Actor>vehicle/mla/light_tower.xml</Actor>
+  </VisualActor>
+</Entity>

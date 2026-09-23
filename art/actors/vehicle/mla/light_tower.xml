@@ -3,28 +3,20 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/glyptodon.dae</mesh>
-			<!-- <props>
-			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
-				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
-			</props> -->
+			<mesh>vehicle/light_tower.dae</mesh>
+			<props>
+				<prop actor="props/units/weapons/muzzleflash.xml" attachpoint="shoot"/>
+				<prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
+			</props>
 			<textures>
-				<texture file="vehicle/mcc_veh_01.png" name="baseTex"/>
+				<texture file="vehicle/mla_veh_01.png" name="baseTex"/>
 				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
 				<texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
 			</textures>
 		</variant>
 	</group>
 	<group>
-		<variant frequency="1" name="Idle"/>
-		<!-- <variant file="shoot_mark_iv.xml" name="attack_ranged"/> -->
-		<variant name="Walk">
-			<props>
-				<prop actor="particle/dust_cav.xml" attachpoint="w_01"/>
-				<prop actor="particle/dust_cav.xml" attachpoint="w_02"/>
-			</props>
-		</variant>
-		<variant frequency="1" name="alive"/>
+		<variant frequency="100" name="Idle"/>
 		<variant name="death">
 			<props>
 				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>

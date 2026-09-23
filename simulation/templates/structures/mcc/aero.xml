@@ -12,6 +12,12 @@
   <Obstruction>
     <Static width="24.0" depth="17.0"/>
   </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/aero_02
+      units/{civ}/aero_01
+    </Entities>
+  </Trainer>
   <VisualActor>
     <Actor>structures/mcc/aeroport.xml</Actor>
   </VisualActor>

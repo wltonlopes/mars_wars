@@ -3,13 +3,12 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/glyptodon.dae</mesh>
-			<!-- <props>
-			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
-				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
-			</props> -->
+			<mesh>vehicle/coyote.dae</mesh>
+			<props>
+			    <prop actor="vehicle/mla/lanc_drone.xml" attachpoint="root"/>
+			</props>
 			<textures>
-				<texture file="vehicle/mcc_veh_01.png" name="baseTex"/>
+				<texture file="vehicle/mla_veh_01.png" name="baseTex"/>
 				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
 				<texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
 			</textures>
@@ -17,7 +16,6 @@
 	</group>
 	<group>
 		<variant frequency="1" name="Idle"/>
-		<!-- <variant file="shoot_mark_iv.xml" name="attack_ranged"/> -->
 		<variant name="Walk">
 			<props>
 				<prop actor="particle/dust_cav.xml" attachpoint="w_01"/>

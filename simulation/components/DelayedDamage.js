@@ -14,6 +14,12 @@ DelayedDamage.prototype.Init = function()
  */
 DelayedDamage.prototype.MISSILE_HIT_RADIUS = 2;
 
+DelayedDamage.prototype.DestroyKamikaze = function(data)
+{
+	if (data.kamikaze)
+		Engine.DestroyEntity(data.attacker);
+};
+
 /**
  * Handles hit logic (after a delay has passed).
  * @param {Object}   data - The data sent by the caller.
@@ -68,6 +74,7 @@ DelayedDamage.prototype.Hit = function(data, lateness)
 	if (!data.projectileId)
 	{
 		AttackHelper.HandleAttackEffects(target, data);
+		this.DestroyKamikaze(data);
 		return;
 	}
 
@@ -78,6 +85,7 @@ DelayedDamage.prototype.Hit = function(data, lateness)
 	if (PositionHelper.TestCollision(target, data.position, lateness) &&
 		AttackHelper.HandleAttackEffects(target, data))
 	{
+		this.DestroyKamikaze(data);
 		cmpProjectileManager.RemoveProjectile(data.projectileId);
 		return;
 	}
@@ -95,6 +103,7 @@ DelayedDamage.prototype.Hit = function(data, lateness)
 			continue;
 
 		hitAnEnemy = true; //HC-Code
+		this.DestroyKamikaze(data);
 		cmpProjectileManager.RemoveProjectile(data.projectileId);
 		break;
 	}

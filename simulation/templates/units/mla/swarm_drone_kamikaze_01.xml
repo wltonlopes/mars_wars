@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_profile_assault|units/mla/drone_kamikaze">
+    <BattalionLeader>
+        <MemberTemplates>units/mla/swarm_member_kamikaze:2</MemberTemplates>
+        <MemberRoles>units/mla/swarm_member_kamikaze:2:front</MemberRoles>
+        <Spacing>6</Spacing>
+    </BattalionLeader>
+    <Trainer>
+        <Entities datatype="tokens">units/mla/swarm_member_kamikaze</Entities>
+    </Trainer>
+    <Identity>
+        <GenericName>Enxame de Drones Kamikaze</GenericName>
+        <SelectionGroupName/>
+    </Identity>
+</Entity>

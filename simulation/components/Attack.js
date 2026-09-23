@@ -142,6 +142,9 @@ Attack.prototype.Schema =
 					"<text/>" +
 				"</element>" +
 				AttackHelper.BuildAttackEffectsSchema() +
+				"<optional>" +
+					"<element name='Kamikaze'><data type='boolean'/></element>" +
+				"</optional>" +
 		//HC-Code
                 "<optional>" +
 		            "<element name='SpawnEntityOnImpact'>" +
@@ -787,6 +790,7 @@ Attack.prototype.PerformAttack = function(type, target)
 	const data = {
 		"type": type,
 		"attackData": this.GetAttackEffectsData(type),
+		"kamikaze": this.template[type].Kamikaze == "true",
 		"splash": this.GetSplashData(type),
 		"attacker": this.entity,
 		"attackerOwner": attackerOwner,

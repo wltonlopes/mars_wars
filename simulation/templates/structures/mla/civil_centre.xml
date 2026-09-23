@@ -14,6 +14,7 @@
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens" replace="">
+      units/{civ}/swarm_drone_kamikaze_01
       units/{civ}/worker
       units/{civ}/battalion_infantry_rifleman
       units/{civ}/battalion_infantry_snipe
