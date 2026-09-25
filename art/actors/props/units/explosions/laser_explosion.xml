@@ -5,7 +5,7 @@
     <variant frequency="1" name="rock">
       <mesh>props/onager_projectile.dae</mesh>
       <props>
-        <prop actor="props/special/eyecandy/campfire_decal.xml" attachpoint="root"/>
+        <prop actor="particle/orbital_laser_red.xml" attachpoint="root"/>
         <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
         <prop actor="particle/explosion_fire_blastA.xml" attachpoint="root"/>
         <prop actor="particle/explosion_dustA.xml" attachpoint="root"/>
@@ -18,12 +18,16 @@
         <texture file="gaia/stone_temperate_granite.dds" name="baseTex"/>
       </textures>
     </variant>
-  </group>
+   </group>
   <group>
     <variant frequency="1" name="alive"/>
     <variant file="structures/destruction_large.xml">
       <props>
         <prop actor="props/units/weapons/tower_artillery_projectile_impact.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_fire_blastA.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_dustA.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_dustB.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>

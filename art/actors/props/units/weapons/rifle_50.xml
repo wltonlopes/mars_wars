@@ -4,7 +4,7 @@
   <group>
     <variant name="Base">
       <textures>
-	      <texture file="skeletal/mla_02_01.png" name="baseTex"/>
+	      <texture file="props/weapons/rifles_01.png" name="baseTex"/>
       </textures>
     </variant>
   </group>

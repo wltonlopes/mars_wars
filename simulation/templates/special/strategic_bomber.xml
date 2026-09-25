@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aeronave temporária criada pelo AirSupportManager. Não é selecionável
+     nem pode ser atacada; é removida ao sair do mapa. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>gaia</Civ>
+    <GenericName>Strategic Bomber</GenericName>
+    <Icon>units/global/mustang.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Position>
+    <Floating>true</Floating>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <StrategicBomber>
+    <Speed>30</Speed>
+    <FlightAltitude>40</FlightAltitude>
+    <Bomb>
+      <Damage>
+        <Crush>250</Crush>
+        <Fire>50</Fire>
+      </Damage>
+      <Radius>12</Radius>
+      <FriendlyFire>false</FriendlyFire>
+      <ActorName>props/units/weapons/tower_artillery_projectile.xml</ActorName>
+      <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+      <ImpactAnimationLifetime>3</ImpactAnimationLifetime>
+    </Bomb>
+  </StrategicBomber>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>60</Range>
+  </Vision>
+  <VisualActor>
+    <!-- Placeholder: P-51 do mod público. Trocar pelo actor do bombardeiro. -->
+    <Actor>units/global/plane.xml</Actor>
+  </VisualActor>
+</Entity>

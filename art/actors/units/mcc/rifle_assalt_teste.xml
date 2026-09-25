@@ -5,7 +5,8 @@
     <variant file="biped/assault_rifle/crouched_1.xml">
       <mesh>skeletal/new/m_mod_01.dae</mesh>
       <props>
-        <prop actor="props/units/helmets/mcc_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/helmets/helmet_stahlhelm.xml" attachpoint="helmet"/>
+        <prop actor="props/units/heads/new/head_hele_b.xml" attachpoint="head"/>
         <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
@@ -13,7 +14,7 @@
     <group>
   <variant frequency="1" name="tunic_01_01">
     <textures>
-	    <texture file="skeletal/body1.png" name="baseTex"/>
+	    <texture file="skeletal/modern_01.png" name="baseTex"/>
 	  </textures>
   </variant>
    </group>
