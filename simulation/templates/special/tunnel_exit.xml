@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Saída de túnel do quartel mla (AirSupportProvider tipo tunnel).
+     É escavada no ponto escolhido e, depois de DeployTime, libera o batalhão. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Tunnel Exit</GenericName>
+    <Icon>structures/barracks_bunker.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <ReinforcementDelivery>
+    <Mode>tunnel</Mode>
+    <DeployTime>8</DeployTime>
+    <LingerTime>30</LingerTime>
+    <ExitDistance>3</ExitDistance>
+  </ReinforcementDelivery>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>20</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/special/tunnel_exit.xml</Actor>
+  </VisualActor>
+</Entity>

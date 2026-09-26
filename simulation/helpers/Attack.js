@@ -287,6 +287,9 @@ AttackHelper.prototype.CauseDamageOverArea = function(data)
 		// so the multiplier can end up below 0.
 		damageMultiplier = Math.max(0, damageMultiplier);
 
+		// Batalhões em postura "cobertura" sofrem menos dano de área.
+		damageMultiplier *= GetBattalionSplashMultiplier(ent);
+
 		data.type += ".Splash";
 		this.HandleAttackEffects(ent, data, damageMultiplier);
 	}

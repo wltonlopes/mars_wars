@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chapéu do cogumelo: nuvem larga e densa no topo da coluna, que se
+     espalha para os lados e sobe devagar. -->
+<particles>
+    <texture>art/textures/particles/smoke_256a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="45.0"/>
+    <uniform name="lifetime" min="9.0" max="13.0"/>
+
+    <uniform name="position.x" min="-12.0" max="12.0"/>
+    <uniform name="position.z" min="-12.0" max="12.0"/>
+    <uniform name="position.y" min="82.0" max="98.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-6.0" max="6.0"/>
+    <uniform name="velocity.y" min="0.5" max="2.5"/>
+    <uniform name="velocity.z" min="-6.0" max="6.0"/>
+    <uniform name="velocity.angle" min="-0.4" max="0.4"/>
+
+    <uniform name="size" min="26.0" max="40.0"/>
+    <constant name="size.growthRate" value="2.5"/>
+
+    <uniform name="color.r" min="0.36" max="0.5"/>
+    <uniform name="color.g" min="0.3" max="0.42"/>
+    <uniform name="color.b" min="0.27" max="0.36"/>
+</particles>

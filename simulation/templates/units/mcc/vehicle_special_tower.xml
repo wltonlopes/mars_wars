@@ -2,39 +2,26 @@
 <Entity parent="template_unit_champion_infantry_archer">
   <Attack>
     <Ranged>
-      <AttackName>Rocket</AttackName>
+      <AttackName>Laser beam</AttackName>
       <Damage>
-        <Crush>100.0</Crush>
-        <Fire>100.0</Fire>
+        <Pierce>10.0</Pierce>
+        <Fire>20.0</Fire>
       </Damage>
       <EffectDelay>0</EffectDelay>
       <MaxRange>100.0</MaxRange>
-      <MinRange>45.0</MinRange>
-      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
-      <PrepareTime>2000</PrepareTime>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry Unit</PreferredClasses>
+      <PrepareTime>400</PrepareTime>
+      <!-- Com LaserBeam, o Projectile só define o alcance/elevação e o
+           ponto de disparo (LaunchPoint); nenhum projétil é lançado. -->
       <Projectile>
         <FriendlyFire>false</FriendlyFire>
-        <Gravity>9.81</Gravity>
-        <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
-        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
-        <LaunchPoint y="3"/>
-        <Speed>45.0</Speed>
-        <Spread>3.0</Spread>
+        <Gravity>0.01</Gravity>
+        <LaunchPoint y="7"/>
+        <Speed>1000.0</Speed>
+        <Spread>0.0</Spread>
       </Projectile>
-      <RepeatTime>10000</RepeatTime>
-      <Splash>
-        <Damage>
-          <Crush>30.0</Crush>
-          <Fire>30.0</Fire>
-        </Damage>
-        <FriendlyFire>true</FriendlyFire>
-        <Range>6</Range>
-        <Shape>Circular</Shape>
-        <Knockback>
-          <Distance>4</Distance>
-          <Chance>100</Chance>
-        </Knockback>
-      </Splash>
+      <RepeatTime>1500</RepeatTime>
     </Ranged>
   </Attack>
   <DeathDamage>
@@ -51,8 +38,16 @@
     <SinkRate>50.0</SinkRate>
     <SinkAccel>50.0</SinkAccel>
   </Decay>
+  <LaserBeam>
+    <BeamActorPrefix>props/units/weapons/laser_beam/beam_</BeamActorPrefix>
+    <BeamStep>5</BeamStep>
+    <MaxBeamLength>200</MaxBeamLength>
+    <Duration>0.4</Duration>
+    <TargetHeight>1.2</TargetHeight>
+    <ImpactActor>props/units/weapons/laser_beam/impact.xml</ImpactActor>
+  </LaserBeam>
   <Health>
-    <Max>1000</Max>
+    <Max>400</Max>
   </Health>
   <Identity>
     <Civ>mcc</Civ>
@@ -68,4 +63,8 @@
   <VisualActor>
     <Actor>vehicle/mcc/cavelion_tower.xml</Actor>
   </VisualActor>
+  <!-- Torre montada no veículo: quem entra em formação é o veículo. -->
+  <UnitAI>
+    <Formations disable=""/>
+  </UnitAI>
 </Entity>

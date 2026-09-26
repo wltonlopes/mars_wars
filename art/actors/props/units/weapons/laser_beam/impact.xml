@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impacto do feixe laser: brilho e faíscas. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="laser_impact_glow.xml"/>
+      <props>
+        <prop actor="particle/laser_impact_sparks.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

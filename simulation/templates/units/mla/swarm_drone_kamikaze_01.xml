@@ -5,11 +5,18 @@
         <MemberRoles>units/mla/swarm_member_kamikaze:2:front</MemberRoles>
         <Spacing>6</Spacing>
     </BattalionLeader>
+    <!-- Drones kamikaze não sofrem supressão nem recuam. -->
+    <BattalionTactics disable=""/>
     <Trainer>
         <Entities datatype="tokens">units/mla/swarm_member_kamikaze</Entities>
     </Trainer>
     <Identity>
         <GenericName>Enxame de Drones Kamikaze</GenericName>
         <SelectionGroupName/>
+        <Icon>units/swarm_drone_kamikaze.png</Icon>
     </Identity>
+  <!-- Enxame é batalhão: não usa as formações do 0AD. -->
+  <UnitAI>
+    <Formations disable=""/>
+  </UnitAI>
 </Entity>

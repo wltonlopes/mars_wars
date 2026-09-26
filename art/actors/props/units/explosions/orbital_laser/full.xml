@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Laser orbital, fase 2: força total (núcleo, halo, plasma, faíscas e fumaça). -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="orbital_laser_red.xml"/>
+      <props>
+        <prop actor="particle/orbital_laser_glow.xml" attachpoint="root"/>
+        <prop actor="particle/orbital_laser_ground.xml" attachpoint="root"/>
+        <prop actor="particle/orbital_laser_sparks.xml" attachpoint="root"/>
+        <prop actor="particle/orbital_laser_smoke.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

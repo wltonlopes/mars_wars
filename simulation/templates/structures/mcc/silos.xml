@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_defensive_tower_sentry">
-  <Attack>
+  <!-- <Attack>
     <Ranged>
       <AttackName>ICBN</AttackName>
       <Damage>
@@ -36,12 +36,12 @@
         </Knockback>
       </Splash>
     </Ranged>
-  </Attack>
+  </Attack> -->
   <Identity>
     <Civ>mcc</Civ>
     <GenericName>ICBM silos</GenericName>
     <SpecificName>ICBM silos</SpecificName>
-    <Icon>structures/sentry_gun.png</Icon>
+    <Icon>structures/silo.png</Icon>
   </Identity>
   <VisualActor>
     <Actor>structures/mcc/silos.xml</Actor>

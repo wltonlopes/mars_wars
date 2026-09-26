@@ -51,9 +51,6 @@
   <Repairable>
     <RepairTimeRatio>3.0</RepairTimeRatio>
   </Repairable>
-  <UnitAI>
-    <Formations datatype="tokens" replace=""/>
-  </UnitAI>
   <UnitMotion disable=""/>
   <UnitMotionFlying>
     <!-- Perfil de helicóptero: baixo, ágil e capaz de parar junto ao alvo. -->

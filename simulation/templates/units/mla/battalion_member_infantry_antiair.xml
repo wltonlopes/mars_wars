@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="battalion_member|units/mla/rocket_trooper">
+    <!-- Anti-aéreo: prioriza drones e aeronaves inimigas. -->
+    <Attack>
+        <Ranged>
+            <PreferredClasses datatype="tokens" replace="">Drone Aircraft Structure</PreferredClasses>
+        </Ranged>
+    </Attack>
     <Identity>
         <GenericName>Soldado do Batlahão</GenericName>
         <SelectionGroupName>units/mla/rocket_trooper</SelectionGroupName>

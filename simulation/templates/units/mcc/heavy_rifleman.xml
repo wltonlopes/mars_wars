@@ -27,6 +27,8 @@
     </Resources>
   </Cost>
   <Identity>
+    <!-- Fogo supressivo: pesa mais no moral de batalhões inimigos. -->
+    <Classes datatype="tokens">Suppressive</Classes>
     <Civ>mcc</Civ>
     <SpecificName>Corporate Storm Trooper</SpecificName>
     <GenericName>Heavy Assault Infantry</GenericName>

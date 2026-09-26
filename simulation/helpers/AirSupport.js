@@ -75,4 +75,62 @@ AirSupportHelper.prototype.CreateFlightPath = function(target, direction, margin
 	};
 };
 
+/**
+ * Se o ponto está dentro da área jogável do mapa (quadrado ou circular).
+ */
+AirSupportHelper.prototype.IsInsideMap = function(point, margin)
+{
+	const mapSize = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain).GetMapSize();
+	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager).GetLosCircular())
+		return Math.hypot(point.x - mapSize / 2, point.z - mapSize / 2) <= mapSize / 2 - margin;
+
+	return point.x >= margin && point.z >= margin && point.x <= mapSize - margin && point.z <= mapSize - margin;
+};
+
+/**
+ * Se o ponto está em terra firme (acima do nível da água).
+ */
+AirSupportHelper.prototype.IsOnLand = function(point)
+{
+	const ground = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain).GetGroundLevel(point.x, point.z);
+	const cmpWaterManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_WaterManager);
+	return !cmpWaterManager || ground > cmpWaterManager.GetWaterLevel(point.x, point.z);
+};
+
+/**
+ * População total de um batalhão (líder + membros), lida dos templates
+ * do mesmo jeito que BattalionLeader.GetMemberTemplateCounts.
+ */
+AirSupportHelper.prototype.GetBattalionPopCost = function(templateName)
+{
+	const cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
+	const popOf = name => {
+		const template = cmpTemplateManager.GetTemplate(name);
+		return template && template.Cost ? +(template.Cost.Population || 0) : 0;
+	};
+
+	const leader = cmpTemplateManager.GetTemplate(templateName);
+	if (!leader)
+		return 0;
+
+	let total = popOf(templateName);
+	const battalion = leader.BattalionLeader;
+	if (!battalion)
+		return total;
+
+	const members = [];
+	for (const entry of String(battalion.MemberTemplates || "").split(/\s+/))
+	{
+		const parts = entry.split(":");
+		if (parts.length == 2 && +parts[1])
+			members.push({ "template": parts[0], "count": +parts[1] });
+	}
+	if (!members.length)
+		members.push({ "template": templateName.replace("battalion_", "battalion_member_"), "count": +(battalion.Size || 20) - 1 });
+
+	for (const member of members)
+		total += popOf(member.template) * member.count;
+	return total;
+};
+
 Engine.RegisterGlobal("AirSupport", new AirSupportHelper());

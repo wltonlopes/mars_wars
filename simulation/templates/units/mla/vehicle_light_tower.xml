@@ -58,4 +58,8 @@
   <VisualActor>
     <Actor>vehicle/mla/light_tower.xml</Actor>
   </VisualActor>
+  <!-- Torre montada no veículo: quem entra em formação é o veículo. -->
+  <UnitAI>
+    <Formations disable=""/>
+  </UnitAI>
 </Entity>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bola de fogo que se expande e sobe logo após o clarão. -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="140.0"/>
+    <uniform name="lifetime" min="1.5" max="3.0"/>
+
+    <uniform name="position.x" min="-10.0" max="10.0"/>
+    <uniform name="position.z" min="-10.0" max="10.0"/>
+    <uniform name="position.y" min="2.0" max="16.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-5.0" max="5.0"/>
+    <uniform name="velocity.y" min="4.0" max="12.0"/>
+    <uniform name="velocity.z" min="-5.0" max="5.0"/>
+    <uniform name="velocity.angle" min="-1.0" max="1.0"/>
+
+    <uniform name="size" min="20.0" max="32.0"/>
+    <constant name="size.growthRate" value="5.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.45" max="0.7"/>
+    <uniform name="color.b" min="0.1" max="0.2"/>
+</particles>

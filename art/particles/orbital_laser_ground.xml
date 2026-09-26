@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Laser orbital, fase 2: plasma incandescente no ponto de impacto. -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="120.0"/>
+    <uniform name="lifetime" min="0.4" max="0.9"/>
+
+    <uniform name="position.x" min="-3.0" max="3.0"/>
+    <uniform name="position.z" min="-3.0" max="3.0"/>
+    <uniform name="position.y" min="0.0" max="2.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-6.0" max="6.0"/>
+    <uniform name="velocity.y" min="1.0" max="5.0"/>
+    <uniform name="velocity.z" min="-6.0" max="6.0"/>
+    <uniform name="velocity.angle" min="-2.0" max="2.0"/>
+
+    <uniform name="size" min="7.0" max="12.0"/>
+    <constant name="size.growthRate" value="4.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.35" max="0.55"/>
+    <uniform name="color.b" min="0.25" max="0.4"/>
+</particles>

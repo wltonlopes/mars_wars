@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_civic_civil_centre">
+  <AirSupportProvider>
+    <nuke>
+      <Cooldown>300</Cooldown>
+      <Template>special/nuclear_missile</Template>
+    </nuke>
+  </AirSupportProvider>
   <Footprint replace="">
     <Circle radius="25.0"/>
     <Height>18.0</Height>
@@ -14,7 +20,7 @@
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens" replace="">
-      units/{civ}/swarm_drone_kamikaze_01
+      units/{civ}/drone_kamikaze
       units/{civ}/worker
       units/{civ}/battalion_infantry_rifleman
       units/{civ}/battalion_infantry_snipe

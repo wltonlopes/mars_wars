@@ -80,7 +80,6 @@
   <TreasureCollector disable=""/>
   <UnitAI>
     <CanGuard>false</CanGuard>
-    <Formations disable=""/>
   </UnitAI>
   <UnitMotion>
     <PassabilityClass>large</PassabilityClass>

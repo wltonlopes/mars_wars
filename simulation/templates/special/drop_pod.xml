@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cápsula suborbital do quartel mcc (AirSupportProvider tipo drop_pod).
+     Cai do céu, causa dano em volta e libera o batalhão. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>Drop Pod</GenericName>
+    <Icon>structures/barracks_bunker.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Position>
+    <Floating>true</Floating>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <ReinforcementDelivery>
+    <Mode>orbital</Mode>
+    <DeployTime>1.5</DeployTime>
+    <LingerTime>20</LingerTime>
+    <ExitDistance>6</ExitDistance>
+    <Descent>
+      <StartHeight>300</StartHeight>
+      <FallSpeed>120</FallSpeed>
+      <BrakeHeight>40</BrakeHeight>
+      <BrakeSpeed>20</BrakeSpeed>
+    </Descent>
+    <Impact>
+      <Damage>
+        <Crush>60</Crush>
+        <Fire>20</Fire>
+      </Damage>
+      <Radius>10</Radius>
+      <FriendlyFire>false</FriendlyFire>
+      <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+      <ImpactAnimationLifetime>3</ImpactAnimationLifetime>
+    </Impact>
+  </ReinforcementDelivery>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>30</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/special/drop_pod.xml</Actor>
+  </VisualActor>
+</Entity>

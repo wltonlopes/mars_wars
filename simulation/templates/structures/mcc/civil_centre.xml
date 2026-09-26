@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_civic_civil_centre">
   <AirSupportProvider>
-    <Cooldown>180</Cooldown>
-    <BomberTemplate>units/mcc/drone_v_01</BomberTemplate>
-    <BombCount>8</BombCount>
-    <BombingLength>60</BombingLength>
+    <strategic_bomber>
+      <Cooldown>180</Cooldown>
+      <Template>units/mcc/drone_v_01</Template>
+      <BombCount>8</BombCount>
+      <BombingLength>60</BombingLength>
+    </strategic_bomber>
+    <nuke>
+      <Cooldown>300</Cooldown>
+      <Template>special/nuclear_missile</Template>
+    </nuke>
   </AirSupportProvider>
   <!-- <Attack>
     <Ranged>

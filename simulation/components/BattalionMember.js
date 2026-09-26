@@ -42,6 +42,15 @@ function()
 	return this.leader;
 };
 
+// Tiros recebidos por um soldado afetam o moral do batalhão inteiro.
+BattalionMember.prototype.OnAttacked = function(msg)
+{
+	let cmpTactics = this.leader != INVALID_ENTITY &&
+		Engine.QueryInterface(this.leader, IID_BattalionTactics);
+	if (cmpTactics)
+		cmpTactics.SoldierAttacked(msg);
+};
+
 BattalionMember.prototype.CanBeSelected =
 function()
 {

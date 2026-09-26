@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Feixe laser de 65 m, gerado. Linha de brilhos ao longo do eixo local -Z
+     da entidade (use_local_space; a frente dos modelos no 0 A.D. é -Z): a
+     entidade é girada/inclinada na direção do alvo e o feixe vai de z=0
+     (boca da arma) até z=-65. -->
+<particles>
+    <texture>art/textures/particles/fairy_glow_red.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+    <use_local_space/>
+
+    <constant name="emissionrate" value="1354.0"/>
+    <uniform name="lifetime" min="0.08" max="0.12"/>
+
+    <uniform name="position.x" min="-0.05" max="0.05"/>
+    <uniform name="position.y" min="-0.05" max="0.05"/>
+    <uniform name="position.z" min="-65.0" max="0.0"/>
+
+    <constant name="velocity.x" value="0.0"/>
+    <constant name="velocity.y" value="0.0"/>
+    <constant name="velocity.z" value="0.0"/>
+
+    <uniform name="size" min="0.9" max="1.4"/>
+
+    <uniform name="color.r" min="2.5" max="3.0"/>
+    <uniform name="color.g" min="0.9" max="1.3"/>
+    <copy name="color.b" from="color.g"/>
+</particles>

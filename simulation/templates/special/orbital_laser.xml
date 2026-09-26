@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Laser orbital do laboratório mcc (AirSupportProvider tipo orbital_laser).
+     Entidade invisível no alvo que conduz as fases do feixe e o dano. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>Orbital Laser</GenericName>
+    <Icon>special/orbital.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <OrbitalStrike>
+    <!-- Fases, tocadas pela ordem de Order (o engine não guarda a ordem do XML).
+         DamageMultiplier é a fração de Damage aplicada a cada tick. -->
+    <Phases>
+      <Targeting>
+        <Order>1</Order>
+        <Actor>props/units/explosions/orbital_laser/targeting.xml</Actor>
+        <Duration>1.5</Duration>
+        <DamageMultiplier>0.2</DamageMultiplier>
+      </Targeting>
+      <FullPower>
+        <Order>2</Order>
+        <Actor>props/units/explosions/orbital_laser/full.xml</Actor>
+        <Duration>6</Duration>
+        <DamageMultiplier>1</DamageMultiplier>
+      </FullPower>
+      <Fading>
+        <Order>3</Order>
+        <Actor>props/units/explosions/orbital_laser/fade.xml</Actor>
+        <Duration>1.5</Duration>
+        <DamageMultiplier>0.4</DamageMultiplier>
+      </Fading>
+      <Vanishing>
+        <Order>4</Order>
+        <Actor>props/units/explosions/orbital_laser/vanish.xml</Actor>
+        <Duration>1</Duration>
+        <DamageMultiplier>0</DamageMultiplier>
+      </Vanishing>
+    </Phases>
+    <Damage>
+      <Crush>30</Crush>
+      <Fire>60</Fire>
+    </Damage>
+    <Radius>12</Radius>
+    <TickInterval>0.5</TickInterval>
+    <FriendlyFire>false</FriendlyFire>
+    <LingerActor>props/units/explosions/orbital_laser/scorch.xml</LingerActor>
+    <LingerTime>30</LingerTime>
+  </OrbitalStrike>
+  <Ownership/>
+  <Vision>
+    <Range>25</Range>
+  </Vision>
+  <VisualActor disable=""/>
+</Entity>

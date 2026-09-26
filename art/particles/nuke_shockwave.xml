@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onda de choque: anel de poeira rasteira que corre para fora. -->
+<particles>
+    <texture>art/textures/particles/dust_256a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="450.0"/>
+    <uniform name="lifetime" min="1.5" max="2.5"/>
+
+    <uniform name="position.x" min="-4.0" max="4.0"/>
+    <uniform name="position.z" min="-4.0" max="4.0"/>
+    <constant name="position.y" value="1.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-70.0" max="70.0"/>
+    <uniform name="velocity.y" min="0.0" max="2.0"/>
+    <uniform name="velocity.z" min="-70.0" max="70.0"/>
+    <uniform name="velocity.angle" min="-1.5" max="1.5"/>
+
+    <uniform name="size" min="10.0" max="16.0"/>
+    <constant name="size.growthRate" value="6.0"/>
+
+    <uniform name="color.r" min="0.62" max="0.72"/>
+    <uniform name="color.g" min="0.52" max="0.6"/>
+    <uniform name="color.b" min="0.42" max="0.48"/>
+</particles>

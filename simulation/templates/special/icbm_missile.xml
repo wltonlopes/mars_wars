@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Míssil temporário criado pelo AirSupportManager quando um silo dispara.
+     Não é selecionável nem pode ser abatido; é removido na detonação. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>gaia</Civ>
+    <GenericName>ICBM</GenericName>
+    <Icon>structures/sentry_gun.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <IcbmMissile>
+    <Speed>40</Speed>
+    <MinFlightTime>15</MinFlightTime>
+    <ApexHeight>200</ApexHeight>
+    <Warhead>
+      <Damage>
+        <Crush>1500</Crush>
+        <Fire>500</Fire>
+      </Damage>
+      <Radius>1</Radius>
+      <FriendlyFire>true</FriendlyFire>
+      <ImpactActorName>props/units/explosions/icbm_explosion.xml</ImpactActorName>
+      <ImpactAnimationLifetime>5</ImpactAnimationLifetime>
+    </Warhead>
+  </IcbmMissile>
+  <Ownership/>
+  <Position>
+    <Floating>true</Floating>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>30</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/units/weapons/icbm.xml</Actor>
+  </VisualActor>
+</Entity>

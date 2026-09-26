@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Míssil nuclear dos centros cívicos (AirSupportProvider tipo nuke).
+     Entra pela borda do mapa e mergulha no alvo; todos os jogadores veem
+     a contagem regressiva. Explosão enorme, com fogo amigo. -->
+<Entity parent="special/icbm_missile">
+  <Identity>
+    <GenericName>Nuclear Missile</GenericName>
+  </Identity>
+  <IcbmMissile>
+    <Profile>reentry</Profile>
+    <Speed>20</Speed>
+    <MinFlightTime>30</MinFlightTime>
+    <ApexHeight>200</ApexHeight>
+    <Warhead>
+      <Damage>
+        <Crush>4000</Crush>
+        <Fire>2000</Fire>
+      </Damage>
+      <Radius>60</Radius>
+      <FriendlyFire>true</FriendlyFire>
+      <!-- Em vez da explosão do ICBM, o cogumelo em estágios. Delay e Lifetime
+           em segundos; as partículas continuam alguns segundos após Lifetime. -->
+      <ImpactActorName disable=""/>
+      <ImpactAnimationLifetime disable=""/>
+      <ImpactEffects>
+        <Flash>
+          <Actor>props/units/explosions/nuke/flash.xml</Actor>
+          <Delay>0</Delay>
+          <Lifetime>0.5</Lifetime>
+        </Flash>
+        <Fireball>
+          <Actor>props/units/explosions/nuke/fireball.xml</Actor>
+          <Delay>0</Delay>
+          <Lifetime>3</Lifetime>
+        </Fireball>
+        <Crater>
+          <Actor>props/units/explosions/nuke/crater.xml</Actor>
+          <Delay>0</Delay>
+          <Lifetime>60</Lifetime>
+        </Crater>
+        <Shockwave>
+          <Actor>props/units/explosions/nuke/shockwave.xml</Actor>
+          <Delay>0.2</Delay>
+          <Lifetime>1.2</Lifetime>
+        </Shockwave>
+        <BaseDust>
+          <Actor>props/units/explosions/nuke/base_dust.xml</Actor>
+          <Delay>0.3</Delay>
+          <Lifetime>10</Lifetime>
+        </BaseDust>
+        <Stem>
+          <Actor>props/units/explosions/nuke/stem.xml</Actor>
+          <Delay>0.6</Delay>
+          <Lifetime>10</Lifetime>
+        </Stem>
+        <Cap>
+          <Actor>props/units/explosions/nuke/cap.xml</Actor>
+          <Delay>3.5</Delay>
+          <Lifetime>10</Lifetime>
+        </Cap>
+      </ImpactEffects>
+      <ImpactSound>attack/destruction/explode_debris.xml</ImpactSound>
+    </Warhead>
+  </IcbmMissile>
+  <Vision>
+    <Range>40</Range>
+  </Vision>
+</Entity>

@@ -91,6 +91,7 @@ BattalionLeader.prototype.Init = function()
 	this.memberTemplates =
 		this.GetMemberTemplateCounts();
 	this.memberRoles = this.GetMemberRoles();
+	this.roleByTemplate = this.BuildRoleByTemplate();
 	this.role = (this.template.Role || "assault").toLowerCase();
 	this.pendingReinforcement = false;
 	this.state = "idle";
@@ -285,6 +286,18 @@ function()
 	return result;
 };
 
+// Papel de cada template de membro, montado uma vez (antes era procurado na
+// lista MemberRoles para cada membro a cada atualização).
+BattalionLeader.prototype.BuildRoleByTemplate =
+function()
+{
+	let roles = {};
+	for (let entry of this.memberRoles)
+		if (roles[entry.template] === undefined)
+			roles[entry.template] = entry.role;
+	return roles;
+};
+
 BattalionLeader.prototype.GetMemberRole =
 function(ent)
 {
@@ -292,10 +305,13 @@ function(ent)
 	if (!templateManager)
 		return "front";
 
-	let template = templateManager.GetCurrentTemplateName(ent);
-	for (let entry of this.memberRoles)
-		if (entry.template == template)
-			return entry.role;
+	// Jogos salvos antes do cache existir.
+	if (!this.roleByTemplate)
+		this.roleByTemplate = this.BuildRoleByTemplate();
+
+	let role = this.roleByTemplate[templateManager.GetCurrentTemplateName(ent)];
+	if (role !== undefined)
+		return role;
 
 	return this.role == "defense" ? "front" : this.role == "skirmisher" ? "flank" : "front";
 };
@@ -324,13 +340,12 @@ function()
 };
 
 BattalionLeader.prototype.GetMemberFormationPosition =
-function(leaderPos, index, ent)
+function(leaderPos, index, ent, profile = this.GetFormationProfile(), override = this.GetFormationOverride())
 {
-	let profile = this.GetFormationProfile();
-	let columns = Math.max(1, this.columns + profile.columnsModifier);
+	let columns = Math.max(1, override.columns || this.columns + profile.columnsModifier);
 	let row = Math.floor(index / columns);
 	let col = index % columns;
-	let spacing = this.spacing * profile.spacingScale;
+	let spacing = this.spacing * profile.spacingScale * override.spacingScale;
 	let role = ent ? this.GetMemberRole(ent) : "front";
 	let xBias = 0;
 	let yBias = 0;
@@ -355,6 +370,16 @@ function(leaderPos, index, ent)
 		x: leaderPos.x + (col - (columns - 1) / 2) * spacing + xBias,
 		y: leaderPos.y - ((row + 1) * spacing) - yBias
 	};
+};
+
+// Postura do batalhão (BattalionTactics): colunas e espaçamento.
+BattalionLeader.prototype.GetFormationOverride =
+function()
+{
+	let cmpTactics = Engine.QueryInterface(this.entity, IID_BattalionTactics);
+	return cmpTactics ?
+		cmpTactics.GetFormationOverride(this.members.length) :
+		{ "columns": null, "spacingScale": 1 };
 };
 
 BattalionLeader.prototype.ShouldSkipMemberOrder =
@@ -395,8 +420,9 @@ BattalionLeader.prototype.GetMissingMemberTemplate =
 function()
 {
 	let counts = {};
+	let alive = this.GetAliveMembers();
 
-	for (let ent of this.GetAliveMembers())
+	for (let ent of alive)
 	{
 		let template = Engine.QueryInterface(
 			SYSTEM_ENTITY,
@@ -413,7 +439,7 @@ function()
 
 	// Extra slots granted by barracks and technology use the battalion's
 	// standard infantry template. The original specialist composition is kept.
-	if (this.GetAliveMembers().length < this.GetMemberCapacity())
+	if (alive.length < this.GetMemberCapacity())
 		return this.GetDefaultMemberTemplate();
 
 	return undefined;
@@ -424,13 +450,9 @@ function()
 {
 	let baseCapacity = this.memberTemplates.reduce((total, member) => total + member.count, 0);
 	let cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
-	let cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
-	let barracks = 0;
-
-	if (cmpOwnership && cmpRangeManager)
-		for (let ent of cmpRangeManager.GetEntitiesByPlayer(cmpOwnership.GetOwner()))
-			if (Engine.QueryInterface(ent, IID_Identity)?.HasClass("BattalionBarracks"))
-				++barracks;
+	// Contagem compartilhada por todos os batalhões do jogador no turno
+	// (helpers/Battalion.js), em vez de percorrer todas as entidades aqui.
+	let barracks = cmpOwnership ? CountBattalionBarracks(cmpOwnership.GetOwner()) : 0;
 
 	let technologyBonus = ApplyValueModificationsToEntity(
 		"BattalionLeader/AdditionalCapacity", 0, this.entity);
@@ -494,34 +516,21 @@ function()
 	if (!cmpOwnership || !cmpLeaderPos || !cmpLeaderPos.IsInWorld() || !cmpRangeManager)
 		return false;
 
-	let leaderPos = cmpLeaderPos.GetPosition2D();
-	let maxDistanceSquared = this.reinforcementRange * this.reinforcementRange;
-	let owner = cmpOwnership.GetOwner();
-
-	for (let ent of cmpRangeManager.GetEntitiesByPlayer(owner))
-	{
-		let cmpIdentity = Engine.QueryInterface(ent, IID_Identity);
-		let cmpPos = Engine.QueryInterface(ent, IID_Position);
-		if (!cmpIdentity || !cmpIdentity.HasClass("BattalionResupplyPoint") ||
-			!cmpPos || !cmpPos.IsInWorld())
-			continue;
-
-		let pos = cmpPos.GetPosition2D();
-		let dx = pos.x - leaderPos.x;
-		let dz = pos.y - leaderPos.y;
-		if (dx * dx + dz * dz <= maxDistanceSquared)
-			return true;
-	}
-
-	return false;
+	// Consulta espacial do RangeManager: só entidades do jogador dentro do
+	// raio (distância entre centros, como antes), sem varrer o jogador todo.
+	return cmpRangeManager.ExecuteQueryAroundPos(
+		cmpLeaderPos.GetPosition2D(), 0, this.reinforcementRange,
+		[cmpOwnership.GetOwner()], IID_Identity, false
+	).some(ent => Engine.QueryInterface(ent, IID_Identity).HasClass("BattalionResupplyPoint"));
 };
 
 BattalionLeader.prototype.Reinforce =
-function()
+function(membersAlreadyCleaned = false)
 {
-	this.CleanupMembers();
 	if (!this.pendingReinforcement)
 		return;
+	if (!membersAlreadyCleaned)
+		this.CleanupMembers();
 
 	if (!this.IsNearReinforcementPoint())
 	{
@@ -563,7 +572,8 @@ function()
 	let leaderPos = cmpLeaderPos.GetPosition2D();
 	let queue = undefined;
 	let nearest = Infinity;
-	for (let ent of cmpRangeManager.GetEntitiesByPlayer(cmpOwnership.GetOwner()))
+	for (let ent of cmpRangeManager.ExecuteQueryAroundPos(
+		leaderPos, 0, this.reinforcementRange, [cmpOwnership.GetOwner()], IID_ProductionQueue, false))
 	{
 		let identity = Engine.QueryInterface(ent, IID_Identity);
 		let position = Engine.QueryInterface(ent, IID_Position);
@@ -758,6 +768,12 @@ BattalionLeader.prototype.OnDestroy = function(msg)
 				newLeader);
 	}
 
+	// Postura, reforço automático e moral (com a penalidade pela perda do líder).
+	let cmpOldTactics = Engine.QueryInterface(this.entity, IID_BattalionTactics);
+	let cmpNewTactics = Engine.QueryInterface(newLeader, IID_BattalionTactics);
+	if (cmpOldTactics && cmpNewTactics)
+		cmpNewTactics.InheritFrom(cmpOldTactics, this.entity);
+
 	// Remove o sucessor antigo
 	Engine.DestroyEntity(
 		successor);
@@ -806,34 +822,6 @@ function()
 		entities.push(ent);
 
 	return entities;
-};
-
-BattalionLeader.prototype.CreateFormation =
-function()
-{
-    let formation =
-        Engine.AddEntity(
-            "special/formations/box");
-
-    let cmpFormation =
-        Engine.QueryInterface(
-            formation,
-            IID_Formation);
-
-    if (!cmpFormation)
-        return;
-
-    let members =
-    [
-        this.entity,
-        ...this.members
-    ];
-
-	let cmpUnitAI =
-		Engine.QueryInterface(
-			this.entity,
-			IID_UnitAI);
-
 };
 
 BattalionLeader.prototype.GetBattalionSize =
@@ -934,11 +922,6 @@ function()
 	return templates;
 };
 
-BattalionLeader.prototype.DebugOrders =
-function()
-{
-};
-
 BattalionLeader.prototype.UpdateBattalion =
 function()
 {
@@ -954,7 +937,11 @@ function()
     if (!cmpLeaderPos || !cmpLeaderPos.IsInWorld())
         return;
 
-    this.Reinforce();
+    this.Reinforce(true);
+
+    let cmpTactics = Engine.QueryInterface(this.entity, IID_BattalionTactics);
+    if (cmpTactics)
+        cmpTactics.Update(0.5);
 
     if (this.GetMissingMemberTemplate())
         this.state = "replenishing";
@@ -966,6 +953,8 @@ function()
     let pos =
         cmpLeaderPos.GetPosition2D();
 
+    let profile = this.GetFormationProfile();
+    let override = this.GetFormationOverride();
     let index = 0;
 
     for (let ent of this.members)
@@ -989,7 +978,7 @@ function()
             continue;
 
         let target =
-            this.GetMemberFormationPosition(pos, index, ent);
+            this.GetMemberFormationPosition(pos, index, ent, profile, override);
 
         let memberPos =
             cmpMemberPos.GetPosition2D();
@@ -1005,6 +994,14 @@ function()
             continue;
         }
 
+        // Já está indo para (quase) o mesmo lugar: reenviar a mesma ordem só
+        // obrigaria o UnitMotion a recalcular o caminho a cada 0,5 s.
+        if (this.IsAlreadyWalkingTo(cmpUnitAI, target))
+        {
+            ++index;
+            continue;
+        }
+
         cmpUnitAI.Walk(
             target.x,
             target.y,
@@ -1015,76 +1012,19 @@ function()
     }
 };
 
-BattalionLeader.prototype.OrderAttack =
-function(target)
+// Tolerância (m) para considerar que a ordem Walk atual já leva ao destino.
+BattalionLeader.prototype.REORDER_TOLERANCE = 1.0;
+
+BattalionLeader.prototype.IsAlreadyWalkingTo =
+function(cmpUnitAI, target)
 {
-	for (let ent of this.members)
-	{
-		let cmpUnitAI =
-			Engine.QueryInterface(
-				ent,
-				IID_UnitAI);
+	let order = cmpUnitAI.order;
+	if (!order || order.type != "Walk" || !order.data || cmpUnitAI.orderQueue.length > 1)
+		return false;
 
-		if (!cmpUnitAI)
-			continue;
-
-		cmpUnitAI.PushOrderFront(
-			"Attack",
-			{
-				"target": target,
-				"force": false
-			}
-		);
-	}
-};
-
-BattalionLeader.prototype.OrderWalk =
-function(x, z)
-{
-	for (let ent of this.members)
-	{
-		let cmpUnitAI =
-			Engine.QueryInterface(
-				ent,
-				IID_UnitAI);
-
-		if (!cmpUnitAI)
-			continue;
-
-		cmpUnitAI.WalkToPoint(
-			x,
-			z,
-			false
-		);
-	}
-};
-
-BattalionLeader.prototype.OrderPatrol =
-function(x, z)
-{
-	for (let ent of this.members)
-	{
-		let cmpUnitAI =
-			Engine.QueryInterface(
-				ent,
-				IID_UnitAI);
-
-		if (!cmpUnitAI)
-			continue;
-
-		cmpUnitAI.PushOrderFront(
-			"Patrol",
-			{
-				"x": x,
-				"z": z,
-				"targetClasses":
-				{
-					"attack":
-						["Unit","Structure"]
-				}
-			}
-		);
-	}
+	let dx = order.data.x - target.x;
+	let dz = order.data.z - target.y;
+	return dx * dx + dz * dz < this.REORDER_TOLERANCE * this.REORDER_TOLERANCE;
 };
 
 BattalionLeader.prototype.OnGlobalEntityRenamed =

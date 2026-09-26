@@ -3,5 +3,10 @@
     <Identity>
         <GenericName>Drone Kamikaze</GenericName>
         <SelectionGroupName>units/mla/swarm_member_kamikaze</SelectionGroupName>
+        <Icon>units/swarm_drone_kamikaze.png</Icon>
     </Identity>
+  <!-- Enxame é batalhão: não usa as formações do 0AD. -->
+  <UnitAI>
+    <Formations disable=""/>
+  </UnitAI>
 </Entity>

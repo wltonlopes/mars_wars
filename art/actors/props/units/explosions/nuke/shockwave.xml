@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Estágio 3: onda de choque de poeira. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="nuke_shockwave.xml"/>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

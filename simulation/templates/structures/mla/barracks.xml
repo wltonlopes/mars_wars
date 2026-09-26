@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_military_barracks">
+  <AirSupportProvider>
+    <tunnel>
+      <Cooldown>120</Cooldown>
+      <Template>special/tunnel_exit</Template>
+      <Battalion datatype="tokens">units/mla/battalion_infantry_rifleman units/mla/battalion_infantry_snipe</Battalion>
+      <MinDistanceFromEnemyStructures>50</MinDistanceFromEnemyStructures>
+    </tunnel>
+  </AirSupportProvider>
   <Footprint>
     <Square width="24.0" depth="25.0"/>
     <Height>15.0</Height>

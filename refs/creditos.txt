@@ -1,0 +1,65 @@
+"Dark Ambience Loop by Iwan Gabovitch qubodup.net" or "Dark Ambience Loop by Iwan Gabovitch http://opengameart.org/users/qubodup"
+
+
+A sound pack made for Bos Wars but it might be useful for other games.
+
+44100 Hz .wav files.
+
+All sources were cc0/pd at the time of creating this pack or my own work:
+
+aircraftfactory.select.wav is a mix of
+
+    http://freesound.org/people/Ferdinger/sounds/146256/ (which was CC0 at the time https://web.archive.org/web/20140709175127/https://freesound.org/people/...) and
+    http://freesound.org/people/qubodup/sounds/162446/
+
+hydraulic sounds are the best!
+
+ 
+
+artil.*.wav are mixes of
+
+    http://freesound.org/people/qubodup/sounds/169742/ and
+    http://freesound.org/people/qubodup/sounds/169743/
+
+I imagined a sociopath driver/gunman, who is grumpy, because he has to sit in this very isolated, plated vehicle all day, which is why he prefers not to talk.
+
+ 
+
+blackhawk.template.wav is an edit of
+
+    http://freesound.org/people/John%20Sipos/sounds/156678/ (CC0 proof: https://web.archive.org/web/20230129225035/http://freesound.org/people/J...)
+
+ 
+
+artil.die.wav is a mix of
+
+    http://freesound.org/people/qubodup/sounds/67617/ and
+    http://freesound.org/people/qubodup/sounds/169743/
+
+ 
+
+destroyer.*.wav are mixes of
+
+    http://freesound.org/people/qubodup/sounds/169741/ and
+    http://freesound.org/people/qubodup/sounds/162365/
+
+I was thinking about the voice of StarCraft's Battle Cruiser captains but mine turned out very different. :)
+
+ 
+
+destroyer.die.wav is a mix of
+
+    http://freesound.org/people/qubodup/sounds/162440/ and
+    http://freesound.org/people/qubodup/sounds/162365/
+
+ 
+
+shipyardselect is an edit of
+
+    http://freesound.org/people/klankbeeld/sounds/169015/ (permission given for this specific clip to be released under CC0)
+
+Note that you may use the *.template.wav files [also] under terms of cc0, as they do not contain my voice. They are intended to be overlayed with voice samples processed to sound like radio talk ( http://www.youtube.com/watch?v=86P3whnojag ) to make new reaction sounds.
+
+Preview generated with https://github.com/qubodup/ogatools
+
+The license of this pack was changed from CC-BY-SA 3.0/GPL2+ to CC0 on 2024-08-28 at which point it had 1225 downloads.

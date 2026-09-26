@@ -2,6 +2,9 @@
 
     <Promotion disable=""/>
 
+    <!-- Moral, posturas, níveis de XP e reforço automático (BattalionTactics.js). -->
+    <BattalionTactics/>
+
     <Identity>
         <Classes datatype="tokens">
             BattalionLeader

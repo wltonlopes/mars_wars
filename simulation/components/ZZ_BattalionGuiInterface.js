@@ -33,6 +33,9 @@
 				"xp": cmpLeader.GetCurrentXp(),
 				"requiredXp": cmpLeader.GetRequiredXp()
 			};
+			const cmpTactics = Engine.QueryInterface(ent, IID_BattalionTactics);
+			if (cmpTactics)
+				ret.battalion.tactics = cmpTactics.GetStatus();
 			return ret;
 		}
 

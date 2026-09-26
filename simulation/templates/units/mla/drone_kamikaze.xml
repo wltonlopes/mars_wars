@@ -4,14 +4,15 @@
     <Melee>
       <AttackName context=".">Gun</AttackName>
       <Damage>
-        <Pierce>100</Pierce>
-        <Crush>107</Crush>
+        <Pierce>10</Pierce>
+        <Crush>10</Crush>
       </Damage>
       <MaxRange>10</MaxRange>
       <MinRange>0</MinRange>
       <PrepareTime>0</PrepareTime>
       <RepeatTime>1000</RepeatTime>
-      <Kamikaze>true</Kamikaze>
+      <!-- A explosão é feita pelo componente Kamikaze (mergulho), não pelo ataque corpo a corpo. -->
+      <Kamikaze>false</Kamikaze>
       <Splash>
         <Shape>Circular</Shape>
         <Range>5</Range>
@@ -36,14 +37,31 @@
   </Decay>
   <GarrisonHolder disable=""/>
   <Health>
-    <Max>100</Max>
+    <Max>60</Max>
+    <RegenRate>-0.5</RegenRate>
     <Unhealable>true</Unhealable>
   </Health>
-  <Kamikaze/>
+  <Kamikaze>
+    <DetectionRange>10</DetectionRange>
+    <DiveSpeed>45</DiveSpeed>
+    <MaxDiveTime>5</MaxDiveTime>
+    <MaxDronesPerTarget>1</MaxDronesPerTarget>
+    <PreferredClasses datatype="tokens">Siege Vehicle Infantry Unit Structure</PreferredClasses>
+    <Warhead>
+      <Damage>
+        <Pierce>60</Pierce>
+        <Crush>120</Crush>
+      </Damage>
+      <Radius>6</Radius>
+      <FriendlyFire>false</FriendlyFire>
+      <ImpactActorName>props/units/explosions/small_explosion.xml</ImpactActorName>
+    </Warhead>
+  </Kamikaze>
     <Identity>
-        <GenericName>Drone Kamikaze</GenericName>
+        <Classes datatype="tokens">Drone Aircraft</Classes>
+        <GenericName>Drone Kamikaze-Sentry</GenericName>
         <SelectionGroupName>units/mla/swarm_drone_kamikaze</SelectionGroupName>
-        <Icon>units/global/mustang.png</Icon>
+        <Icon>units/drone.png</Icon>
   </Identity>
   <Obstruction disable=""/>
   <Position>
@@ -55,7 +73,6 @@
   <Repairable disable=""/>
   <UnitAI>
     <DefaultStance>violent</DefaultStance>
-    <Formations datatype="tokens" replace=""/>
   </UnitAI>
   <UnitMotion disable=""/>
   <UnitMotionFlying>
@@ -73,7 +90,7 @@
     <PassabilityClass>unrestricted</PassabilityClass>
   </UnitMotionFlying>
   <Vision>
-    <Range>100</Range>
+    <Range>70</Range>
   </Vision>
   <VisualActor>
     <Actor>vehicle/mla/drone_kamikaze.xml</Actor>

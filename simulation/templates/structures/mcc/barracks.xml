@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_military_barracks">
+  <AirSupportProvider>
+    <drop_pod>
+      <Cooldown>120</Cooldown>
+      <Template>special/drop_pod</Template>
+      <Battalion datatype="tokens">units/mcc/battalion_infantry_rifleman units/mcc/battalion_infantry_lmg units/mcc/battalion_infantry_police</Battalion>
+    </drop_pod>
+  </AirSupportProvider>
   <Footprint>
     <Square width="24.0" depth="25.0"/>
     <Height>15.0</Height>

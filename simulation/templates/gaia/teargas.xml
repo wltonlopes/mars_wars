@@ -39,7 +39,7 @@
   </UnitAI>
   <UnitMotion>
     <FormationController>false</FormationController>
-    <PassabilityClass>amphibious</PassabilityClass>
+    <!-- <PassabilityClass>amphibious</PassabilityClass> -->
     <RunMultiplier>0.00001</RunMultiplier>
     <WalkSpeed>0.00001</WalkSpeed>
   </UnitMotion>  

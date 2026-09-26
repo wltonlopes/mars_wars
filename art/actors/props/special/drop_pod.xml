@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Placeholder da cápsula orbital: reaproveita o mesh do ICBM (em pé, 17 m)
+     com texturas mcc e retrofoguetes acesos. Trocar pelo modelo da cápsula. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/weapons/icbm.dae</mesh>
+      <props>
+        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_02"/>
+        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_03"/>
+        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_04"/>
+        <prop actor="particle/destruction_dust_small.xml" attachpoint="turbo_01"/>
+      </props>
+      <textures>
+        <texture file="structural/mcc_struct.png" name="baseTex"/>
+        <texture file="structural/mcc_struct_spec.png" name="specTex"/>
+        <texture file="structural/mcc_struct_norm.png" name="normTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>player_trans_parallax_spec.xml</material>
+</actor>

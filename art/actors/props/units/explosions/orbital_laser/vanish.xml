@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Laser orbital, fase 4: fio recolhendo para o céu. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="orbital_laser_vanish.xml"/>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

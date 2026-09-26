@@ -8,7 +8,7 @@ g_Commands["air-support"] = function(player, cmd, data)
 	for (const ent of data.entities)
 	{
 		const cmpProvider = Engine.QueryInterface(ent, IID_AirSupportProvider);
-		if (cmpProvider && cmpProvider.RequestSupport(cmd.supportType, { "x": cmd.x, "z": cmd.z }))
+		if (cmpProvider && cmpProvider.RequestSupport(cmd.supportType, { "x": cmd.x, "z": cmd.z }, cmd.battalion))
 			return;
 	}
 };

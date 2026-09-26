@@ -807,7 +807,18 @@ Attack.prototype.PerformAttack = function(type, target)
 
 	let delay = +(this.template[type].EffectDelay || 0);
 
-	if (this.template[type].Projectile)
+	// Arma de feixe (LaserBeam): dano instantâneo no alvo, sem projétil.
+	const cmpLaserBeam = type == "Ranged" && Engine.QueryInterface(this.entity, IID_LaserBeam);
+	if (cmpLaserBeam)
+	{
+		data.position = targetPosition;
+		data.direction = Vector3D.sub(targetPosition, selfPosition).normalize();
+		data.friendlyFire = !!this.template[type].Projectile && this.template[type].Projectile.FriendlyFire == "true";
+		const cmpSound = Engine.QueryInterface(this.entity, IID_Sound);
+		data.attackImpactSound = cmpSound ? cmpSound.GetSoundGroup("attack_impact_" + type.toLowerCase()) : "";
+		cmpLaserBeam.Fire(targetPosition);
+	}
+	else if (this.template[type].Projectile)
 	{
 		const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
 		const turnLength = cmpTimer.GetLatestTurnLength()/1000;
