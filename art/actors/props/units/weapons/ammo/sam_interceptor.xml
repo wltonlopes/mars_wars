@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Míssil interceptador da defesa aérea: foguete com chama e rastro de fumaça. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/weapons/rocket_shoot.dae</mesh>
+      <props>
+        <prop actor="particle/flame.xml" attachpoint="flame"/>
+        <prop actor="particle/interceptor_glow.xml" attachpoint="root"/>
+        <prop actor="particle/interceptor_trail.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="structural/mla_struct.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

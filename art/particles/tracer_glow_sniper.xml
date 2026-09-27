@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brilho do tracer de sniper.
+     Emissor em espaço do mundo: as partículas ficam para trás enquanto o
+     projétil avança e formam um rastro luminoso curto. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="160"/>
+    <uniform name="lifetime" min="0.08" max="0.13"/>
+
+    <uniform name="size" min="0.8" max="1.0"/>
+    <constant name="size.growthRate" value="-5.0"/>
+
+    <constant name="color.r" value="0.55"/>
+    <constant name="color.g" value="0.8"/>
+    <constant name="color.b" value="1.0"/>
+</particles>

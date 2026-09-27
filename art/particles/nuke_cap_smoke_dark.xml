@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chapéu, camada escura: miolo e parte de baixo, na sombra da própria nuvem. -->
+<particles>
+    <texture>art/textures/particles/smoke_128b.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="22.0"/>
+    <uniform name="lifetime" min="8.0" max="12.0"/>
+
+    <uniform name="position.x" min="-9.0" max="9.0"/>
+    <uniform name="position.z" min="-9.0" max="9.0"/>
+    <uniform name="position.y" min="76.0" max="88.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-4.5" max="4.5"/>
+    <uniform name="velocity.y" min="0.2" max="1.5"/>
+    <uniform name="velocity.z" min="-4.5" max="4.5"/>
+    <uniform name="velocity.angle" min="-0.4" max="0.4"/>
+
+    <uniform name="size" min="22.0" max="32.0"/>
+    <constant name="size.growthRate" value="2.2"/>
+
+    <uniform name="color.r" min="0.13" max="0.22"/>
+    <uniform name="color.g" min="0.11" max="0.18"/>
+    <uniform name="color.b" min="0.1" max="0.16"/>
+</particles>

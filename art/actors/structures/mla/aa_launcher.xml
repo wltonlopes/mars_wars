@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lançador vertical de mísseis antiaéreos com radar (torreta da torre de defesa aérea). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/common_mars/aa_launcher.dae</mesh>
+			<textures>
+				<texture file="structural/aa_launcher.png" name="baseTex"/>
+				<texture file="structural/aa_launcher_spec.png" name="specTex"/>
+				<texture file="structural/aa_launcher_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="100" name="Idle"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_large.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_large.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>player_trans_norm_spec.xml</material>
+</actor>

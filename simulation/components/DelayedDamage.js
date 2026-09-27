@@ -131,4 +131,13 @@ DelayedDamage.prototype.Hit = function(data, lateness)
     // HC-End
 };
 
+/**
+ * Remove um projétil que ficou no chão (ver Projectile/GroundLifetime no Attack).
+ * Se ele já tiver sido removido ao acertar o alvo, não faz nada.
+ */
+DelayedDamage.prototype.RemoveProjectile = function(projectileId)
+{
+	Engine.QueryInterface(SYSTEM_ENTITY, IID_ProjectileManager).RemoveProjectile(projectileId);
+};
+
 Engine.RegisterSystemComponentType(IID_DelayedDamage, "DelayedDamage", DelayedDamage);

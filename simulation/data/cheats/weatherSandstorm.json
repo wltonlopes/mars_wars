@@ -1,0 +1,7 @@
+{
+	"Name": "martian sandstorm",
+	"Data": {
+		"Action": "weather",
+		"Type": "sandstorm"
+	}
+}

@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_civic_civil_centre">
+  <Attack>
+    <Ranged>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.8</ImpactAnimationLifetime>
+      </Projectile>
+    </Ranged>
+  </Attack>
   <AirSupportProvider>
     <strategic_bomber>
       <Cooldown>180</Cooldown>
@@ -72,4 +82,9 @@
   <VisualActor>
     <Actor>structures/mcc/civic_center.xml</Actor>
   </VisualActor>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
 </Entity>

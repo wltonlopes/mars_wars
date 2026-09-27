@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raio da tempestade de areia (variante 2), vive uma fração de segundo. -->
+<Entity parent="special/actor">
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+    <AlwaysVisible>true</AlwaysVisible>
+  </Visibility>
+  <VisualActor>
+    <Actor>props/weather/lightning_2.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -4,10 +4,13 @@
   <group>
     <variant name="Base">
       <decal width="70" depth="70" angle="0" offsetx="0" offsetz="0"/>
+      <props>
+        <prop actor="particle/dust_storm_reddish.xml" attachpoint="root"/>
+      </props>
       <textures>
-        <texture file="props/decal_campfire.png" name="baseTex"/>
-        <texture file="default_norm.png" name="normTex"/>
-        <texture file="null_black.dds" name="specTex"/>
+        <texture file="props/crater.png" name="baseTex"/>
+        <texture file="props/crater_norm.png" name="normTex"/>
+        <texture file="props/crater_spec.png" name="specTex"/>
       </textures>
     </variant>
   </group>

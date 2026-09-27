@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_unit_champion_infantry_archer">
+  <Attack>
+    <Ranged>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.8</ImpactAnimationLifetime>
+      </Projectile>
+    </Ranged>
+  </Attack>
   <DeathDamage>
     <Shape>Circular</Shape>
     <Range>2</Range>
@@ -24,7 +34,7 @@
   </Identity>
   <Sound>
     <SoundGroups>
-      <attack_ranged>attack/weapon/explosion.xml</attack_ranged>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
     </SoundGroups>
   </Sound>
   <VisualActor>

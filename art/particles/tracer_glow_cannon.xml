@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brilho do projétil de canhão pesado (Mammoth).
+     Maior e mais duradouro que o tracer pesado: deixa um rastro
+     incandescente visível durante o voo do obus. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="180"/>
+    <uniform name="lifetime" min="0.12" max="0.2"/>
+
+    <uniform name="size" min="2.8" max="3.6"/>
+    <constant name="size.growthRate" value="-12.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.42"/>
+    <constant name="color.b" value="0.12"/>
+</particles>

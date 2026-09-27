@@ -255,6 +255,11 @@ Attack.prototype.Schema =
 									"<ref name='positiveDecimal'/>" +
 								"</element>" +
 							"</optional>" +
+							"<optional>" +
+								"<element name='GroundLifetime' a:help='Seconds a projectile that missed stays on the ground before disappearing.'>" +
+									"<ref name='nonNegativeDecimal'/>" +
+								"</element>" +
+							"</optional>" +
 						"</interleave>" +
 					"</element>" +
 				"</optional>" +
@@ -905,6 +910,12 @@ Attack.prototype.PerformAttack = function(type, target)
 
 		const cmpProjectileManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_ProjectileManager);
 		data.projectileId = cmpProjectileManager.LaunchProjectileAtPoint(launchPoint, data.position, horizSpeed, gravity, actorName, impactActorName, impactAnimationLifetime);
+
+		// Projétil que errou o alvo: some do chão depois de GroundLifetime segundos.
+		const groundLifetime = this.template[type].Projectile.GroundLifetime;
+		if (groundLifetime !== undefined)
+			Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).SetTimeout(SYSTEM_ENTITY, IID_DelayedDamage, "RemoveProjectile",
+				delay + groundLifetime * 1000, data.projectileId);
 
 		const cmpSound = Engine.QueryInterface(this.entity, IID_Sound);
 		data.attackImpactSound = cmpSound ? cmpSound.GetSoundGroup("attack_impact_" + type.toLowerCase()) : "";

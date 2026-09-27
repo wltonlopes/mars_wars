@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Base, camada escura: onda de poeira marrom que corre rente ao chão para longe do centro. -->
+<particles>
+    <texture>art/textures/particles/dust_128a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="22.0"/>
+    <uniform name="lifetime" min="6.0" max="9.0"/>
+
+    <uniform name="position.x" min="-40.0" max="40.0"/>
+    <uniform name="position.z" min="-40.0" max="40.0"/>
+    <uniform name="position.y" min="0.0" max="3.0"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-7.0" max="7.0"/>
+    <uniform name="velocity.y" min="0.2" max="1.2"/>
+    <uniform name="velocity.z" min="-7.0" max="7.0"/>
+    <uniform name="velocity.angle" min="-0.4" max="0.4"/>
+
+    <uniform name="size" min="18.0" max="28.0"/>
+    <constant name="size.growthRate" value="1.8"/>
+
+    <uniform name="color.r" min="0.26" max="0.36"/>
+    <uniform name="color.g" min="0.2" max="0.28"/>
+    <uniform name="color.b" min="0.15" max="0.21"/>
+</particles>

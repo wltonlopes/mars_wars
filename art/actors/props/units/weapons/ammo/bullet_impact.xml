@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impacto de bala: faíscas e poeira. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="bullet_impact_sparks.xml"/>
+      <props>
+        <prop actor="particle/bullet_impact_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

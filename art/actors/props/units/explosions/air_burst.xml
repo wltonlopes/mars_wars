@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Interceptação no ar: clarão, bola de fogo, destroços e fumaça. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="air_burst_flash.xml"/>
+      <props>
+        <prop actor="particle/air_burst_fire.xml" attachpoint="root"/>
+        <prop actor="particle/air_burst_debris.xml" attachpoint="root"/>
+        <prop actor="particle/air_burst_smoke.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

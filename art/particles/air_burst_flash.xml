@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clarão da interceptação no ar. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="40.0"/>
+    <uniform name="lifetime" min="0.15" max="0.3"/>
+
+    <uniform name="size" min="14.0" max="20.0"/>
+    <constant name="size.growthRate" value="-30.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.85"/>
+    <constant name="color.b" value="0.55"/>
+</particles>

@@ -18,6 +18,7 @@
       structures/{civ}/stable
       structures/{civ}/farmstead
       structures/{civ}/sentry_tower
+      structures/{civ}/air_defense_tower
     </Entities>
   </Builder>
   <VisualActor>

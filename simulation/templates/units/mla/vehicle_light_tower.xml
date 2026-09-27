@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_unit_champion_infantry_archer">
+  <!-- Metralhadora do Coyote: mesma munição dos fuzis de infantaria
+       (tracer de rifle + impacto de bala), com cadência maior. -->
   <Attack>
+    <Capture disable=""/>
     <Ranged>
-      <AttackName>Cannon</AttackName>
+      <AttackName>Heavy Machine Gun</AttackName>
       <Damage>
-        <Crush>30.0</Crush>
-        <Fire>30.0</Fire>
+        <Pierce>14.0</Pierce>
       </Damage>
       <EffectDelay>0</EffectDelay>
-      <MaxRange>60.0</MaxRange>
-      <MinRange>5.0</MinRange>
-      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
-      <PrepareTime>500</PrepareTime>
+      <MaxRange>70.0</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>300</PrepareTime>
       <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
         <FriendlyFire>false</FriendlyFire>
         <Gravity>9.81</Gravity>
-        <ImpactActorName>props/units/explosions/small_explosion.xml</ImpactActorName>
-        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
-        <LaunchPoint y="3"/>
-        <Speed>45.0</Speed>
-        <Spread>3.0</Spread>
+        <LaunchPoint y="7"/>
+        <Speed>500.0</Speed>
+        <Spread>1.2</Spread>
       </Projectile>
-      <RepeatTime>1000</RepeatTime>
-      <Splash disable="true"/>
+      <RepeatTime>900</RepeatTime>
     </Ranged>
   </Attack>
   <DeathDamage>
@@ -46,15 +49,19 @@
   </Health>
   <Identity>
     <Civ>mla</Civ>
-    <GenericName>Cannon Tower 105mm</GenericName>
-    <SpecificName>Cannon Tower 105mm</SpecificName>
+    <GenericName>Coyote Machine Gun</GenericName>
+    <SpecificName>Coyote Machine Gun</SpecificName>
       <Icon>structures/sentry_tower.png</Icon>
   </Identity>
   <Sound>
     <SoundGroups>
-      <attack_ranged>attack/weapon/explosion.xml</attack_ranged>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/arrow_impact.xml</attack_impact_ranged>
     </SoundGroups>
   </Sound>
+  <Vision>
+    <Range>80</Range>
+  </Vision>
   <VisualActor>
     <Actor>vehicle/mla/light_tower.xml</Actor>
   </VisualActor>

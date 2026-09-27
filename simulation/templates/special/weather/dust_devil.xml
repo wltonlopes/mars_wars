@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redemoinho de areia marciano (WeatherManager). Visível sempre, como o céu. -->
+<Entity parent="special/actor">
+  <DustDevil>
+    <Duration>60</Duration>
+    <Speed>5</Speed>
+    <Radius>8</Radius>
+    <SpinRate>3.5</SpinRate>
+    <TickInterval>0.5</TickInterval>
+    <Damage>
+      <Crush>2</Crush>
+    </Damage>
+    <WalkSpeedMultiplier>0.6</WalkSpeedMultiplier>
+    <Sound>ambient/weather/wind_gust.xml</Sound>
+    <SoundInterval>6</SoundInterval>
+  </DustDevil>
+  <Position>
+    <TurnRate>8</TurnRate>
+  </Position>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+    <AlwaysVisible>true</AlwaysVisible>
+  </Visibility>
+  <VisualActor>
+    <Actor>props/weather/dust_devil.xml</Actor>
+  </VisualActor>
+</Entity>

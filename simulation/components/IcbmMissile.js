@@ -7,7 +7,8 @@
  * nivelado, e mergulha cada vez mais inclinado até o alvo.
  *
  * Não usa UnitMotion: a posição é calculada a cada turno a partir do
- * tempo de voo.
+ * tempo de voo. Como a trajetória é conhecida, a defesa aérea (AirDefense)
+ * mira exatamente onde o míssil estará quando o interceptador chegar.
  */
 function IcbmMissile() {}
 
@@ -86,6 +87,8 @@ IcbmMissile.prototype.Init = function()
 	this.target = null;
 	this.flightTime = 0;
 	this.elapsed = 0;
+	// { time (ms de voo), airDefense } quando uma torre já disparou.
+	this.interception = null;
 };
 
 /**
@@ -138,6 +141,18 @@ IcbmMissile.prototype.GetTrajectory = function(u)
 	};
 };
 
+/**
+ * Posição 3D em u (0..1): chão do terreno mais a altura da trajetória.
+ */
+IcbmMissile.prototype.GetWorldPosition = function(u)
+{
+	const point = this.GetTrajectory(u);
+	const x = this.origin.x + (this.target.x - this.origin.x) * point.along;
+	const z = this.origin.z + (this.target.z - this.origin.z) * point.along;
+	const ground = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain).GetGroundLevel(x, z);
+	return new Vector3D(x, ground + Math.max(0, point.height), z);
+};
+
 IcbmMissile.prototype.UpdatePosition = function(cmpPosition, u)
 {
 	const point = this.GetTrajectory(u);
@@ -166,8 +181,45 @@ IcbmMissile.prototype.OnUpdate = function(msg)
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	this.UpdatePosition(cmpPosition, this.elapsed / this.flightTime);
 
-	if (this.elapsed >= this.flightTime)
+	if (this.interception && this.elapsed >= this.interception.time)
+		this.Intercepted();
+	else if (this.elapsed >= this.flightTime)
 		this.Detonate();
+	else if (!this.interception)
+		this.CheckAirDefense();
+};
+
+/**
+ * Se o míssil está no espaço aéreo de uma torre inimiga, ela dispara um
+ * interceptador para o ponto onde ele estará; a explosão no ar acontece
+ * antes do impacto.
+ */
+IcbmMissile.prototype.CheckAirDefense = function()
+{
+	const cmpManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager);
+	const owner = Engine.QueryInterface(this.entity, IID_Ownership).GetOwner();
+	const now = this.GetWorldPosition(this.elapsed / this.flightTime);
+	const airDefense = cmpManager.FindAirDefense(cmpManager.GetMissionType(this.missionId), owner, { "x": now.x, "z": now.z });
+	if (airDefense == INVALID_ENTITY)
+		return;
+
+	// Chega antes do impacto, com folga de um turno.
+	const remaining = (this.flightTime - this.elapsed) / 1000 - 0.25;
+	const time = Engine.QueryInterface(airDefense, IID_AirDefense).Engage(
+		t => this.GetWorldPosition(Math.min(1, (this.elapsed + t * 1000) / this.flightTime)),
+		remaining);
+
+	this.interception = {
+		"time": this.elapsed + time * 1000,
+		"airDefense": airDefense
+	};
+};
+
+IcbmMissile.prototype.Intercepted = function()
+{
+	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).MissionIntercepted(
+		this.missionId, this.interception.airDefense, this.GetWorldPosition(this.elapsed / this.flightTime));
+	this.FinishMission();
 };
 
 IcbmMissile.prototype.Detonate = function()

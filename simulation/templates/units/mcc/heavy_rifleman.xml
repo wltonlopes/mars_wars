@@ -12,6 +12,10 @@
       <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
       <PrepareTime>1600</PrepareTime>
       <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
         <FriendlyFire>false</FriendlyFire>
         <Gravity>9.81</Gravity>
         <LaunchPoint y="3"/>

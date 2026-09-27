@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Estágio 5: coluna subindo (fumaça com fogo na base). -->
+<!-- Estágio 5: coluna subindo. Núcleo escuro, fumaça média e véu claro por
+     fora, com fogo na base. -->
 <actor version="1">
   <group>
     <variant name="Base">
       <particles file="nuke_stem_smoke.xml"/>
       <props>
+        <prop actor="particle/nuke_stem_smoke_dark.xml" attachpoint="root"/>
+        <prop actor="particle/nuke_stem_smoke_light.xml" attachpoint="root"/>
         <prop actor="particle/nuke_stem_fire.xml" attachpoint="root"/>
       </props>
     </variant>

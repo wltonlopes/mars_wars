@@ -4,6 +4,10 @@
  * Não usa UnitMotion/pathfinder: voa em linha reta da borda do mapa,
  * passa sobre o alvo soltando um tapete de bombas e sai pela borda
  * oposta, onde o AirSupportManager a remove.
+ *
+ * Defesa aérea (AirDefense): ao entrar no raio de uma torre inimiga, a
+ * aeronave é abatida; bombas que cairiam dentro de um raio protegido não
+ * são soltas.
  */
 function StrategicBomber() {}
 
@@ -64,6 +68,8 @@ StrategicBomber.prototype.Init = function()
 	// Distâncias (ao longo da rota) onde cada bomba toca o solo.
 	this.impacts = [];
 	this.nextBomb = 0;
+	// { time (ms do jogo), airDefense } quando uma torre já disparou.
+	this.interception = null;
 };
 
 /**
@@ -111,6 +117,17 @@ StrategicBomber.prototype.OnUpdate = function(msg)
 	const position = AirSupport.Offset(this.path.entry, this.path.direction, this.travelled);
 	Engine.QueryInterface(this.entity, IID_Position).MoveTo(position.x, position.z);
 
+	if (this.interception)
+	{
+		if (this.GetTime() >= this.interception.time)
+		{
+			this.ShotDown();
+			return;
+		}
+	}
+	else
+		this.CheckAirDefense(position);
+
 	// A bomba é solta antes do alvo para que a inércia a leve até ele.
 	const lead = this.template.Speed * this.GetFallTime();
 	const reachedExit = this.travelled >= this.path.length;
@@ -122,11 +139,65 @@ StrategicBomber.prototype.OnUpdate = function(msg)
 		this.FinishMission();
 };
 
+StrategicBomber.prototype.GetTime = function()
+{
+	return Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).GetTime();
+};
+
+StrategicBomber.prototype.GetOwner = function()
+{
+	return Engine.QueryInterface(this.entity, IID_Ownership).GetOwner();
+};
+
+/**
+ * Posição 3D ao longo da rota, `distance` metros depois da entrada.
+ */
+StrategicBomber.prototype.GetWorldPosition = function(distance)
+{
+	const point = AirSupport.Offset(this.path.entry, this.path.direction, Math.min(this.path.length, distance));
+	const ground = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain).GetGroundLevel(point.x, point.z);
+	return new Vector3D(point.x, ground + +this.template.FlightAltitude, point.z);
+};
+
+StrategicBomber.prototype.CheckAirDefense = function(position)
+{
+	const airDefense = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).FindAirDefense(
+		"strategic_bomber", this.GetOwner(), position);
+	if (airDefense == INVALID_ENTITY)
+		return;
+
+	const speed = +this.template.Speed;
+	const remaining = (this.path.length - this.travelled) / speed;
+	const time = Engine.QueryInterface(airDefense, IID_AirDefense).Engage(
+		t => this.GetWorldPosition(this.travelled + speed * t), remaining);
+
+	this.interception = {
+		"time": this.GetTime() + time * 1000,
+		"airDefense": airDefense
+	};
+};
+
+/**
+ * Abatida: as bombas que faltam não caem (as que já estão no ar seguem).
+ */
+StrategicBomber.prototype.ShotDown = function()
+{
+	this.nextBomb = this.impacts.length;
+	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).MissionIntercepted(
+		this.missionId, this.interception.airDefense, this.GetWorldPosition(this.travelled));
+	this.FinishMission();
+};
+
 StrategicBomber.prototype.DropBomb = function(impactDistance)
 {
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	const launchPoint = cmpPosition.GetPosition();
 	const impact = AirSupport.Offset(this.path.entry, this.path.direction, impactDistance);
+
+	// Área protegida por defesa aérea inimiga: a bomba não é solta.
+	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).FindAirDefense(
+		"strategic_bomber", this.GetOwner(), impact) != INVALID_ENTITY)
+		return;
 	const cmpTerrain = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain);
 	const targetPoint = new Vector3D(impact.x, cmpTerrain.GetGroundLevel(impact.x, impact.z), impact.z);
 
@@ -144,12 +215,11 @@ StrategicBomber.prototype.DropBomb = function(impactDistance)
 	for (const type in bomb.Damage)
 		damage[type] = +bomb.Damage[type];
 
-	const cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).SetTimeout(SYSTEM_ENTITY, IID_AirSupportManager, "BombImpact", fallTime * 1000, {
 		"position": impact,
 		"attackData": { "Damage": damage },
 		"attacker": this.provider,
-		"attackerOwner": cmpOwnership.GetOwner(),
+		"attackerOwner": this.GetOwner(),
 		"radius": +bomb.Radius,
 		"friendlyFire": bomb.FriendlyFire == "true",
 		"impactSound": bomb.ImpactSound || ""

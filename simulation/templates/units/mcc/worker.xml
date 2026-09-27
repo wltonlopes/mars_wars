@@ -18,6 +18,7 @@
       structures/{civ}/storehouse
       structures/{civ}/forge
       structures/{civ}/sentry_tower
+      structures/{civ}/air_defense_tower
     </Entities>
   </Builder>
   <VisualActor>

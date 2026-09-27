@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redemoinho de areia marciano: coluna em faixas (mais larga no alto) e
+     saia de poeira no chão. A entidade gira, e as partículas em espaço
+     local giram junto. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="dust_devil_low.xml"/>
+      <props>
+        <prop actor="particle/dust_devil_base.xml" attachpoint="root"/>
+        <prop actor="particle/dust_devil_mid.xml" attachpoint="root"/>
+        <prop actor="particle/dust_devil_top.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

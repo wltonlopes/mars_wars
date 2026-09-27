@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chama do motor do míssil interceptador. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="120.0"/>
+    <uniform name="lifetime" min="0.06" max="0.12"/>
+
+    <uniform name="size" min="2.0" max="2.6"/>
+    <constant name="size.growthRate" value="-14.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.7"/>
+    <constant name="color.b" value="0.35"/>
+</particles>

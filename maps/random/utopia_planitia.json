@@ -1,0 +1,10 @@
+{
+	"settings" : {
+		"Name" : "Utopia Planitia",
+		"Script" : "utopia_planitia.js",
+		"Description" : "The vast northern plain of Mars where Viking 2 landed: flat regolith pocked with craters, polygonal cracked ground and ice just below the surface.\n\nFive control points: one inside the great ice crater at the centre and one at each cardinal point, each guarded by ice mines (water). Capturable solar parks (energy) lie next to every base and between neighbouring players.",
+		"Preview" : "utopia_planitia.png",
+		"Keywords": ["multiplayer"],
+		"CircularMap" : true
+	}
+}

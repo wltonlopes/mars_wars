@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tempestade de areia com raios (WeatherManager). Entidade invisível no
+     centro; o visual são as nuvens (CloudTemplate) e os raios. -->
+<Entity parent="special/actor">
+  <Sandstorm>
+    <Radius>90</Radius>
+    <Speed>4.5</Speed>
+    <CloudTemplate>special/weather/sandstorm_cloud</CloudTemplate>
+    <CloudCount>6</CloudCount>
+    <CloudRing>55</CloudRing>
+    <VisionMultiplier>0.55</VisionMultiplier>
+    <WalkSpeedMultiplier>0.8</WalkSpeedMultiplier>
+    <SpreadMultiplier>1.6</SpreadMultiplier>
+    <Lightning>
+      <Templates datatype="tokens">
+        special/weather/lightning_1
+        special/weather/lightning_2
+        special/weather/lightning_3
+      </Templates>
+      <MinInterval>1.5</MinInterval>
+      <MaxInterval>4.5</MaxInterval>
+      <TargetChance>0.35</TargetChance>
+      <Damage>
+        <Crush>30</Crush>
+        <Fire>60</Fire>
+      </Damage>
+      <Radius>6</Radius>
+      <ImpactActor>props/weather/lightning_impact.xml</ImpactActor>
+      <ImpactActorLifetime>4</ImpactActorLifetime>
+      <Sound>ambient/weather/thunder.xml</Sound>
+    </Lightning>
+    <WindSound>ambient/weather/wind_storm.xml</WindSound>
+    <WindSoundInterval>8</WindSoundInterval>
+  </Sandstorm>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+    <AlwaysVisible>true</AlwaysVisible>
+  </Visibility>
+  <VisualActor disable=""/>
+</Entity>

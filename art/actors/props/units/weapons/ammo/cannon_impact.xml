@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impacto de obus de canhão pesado: bola de fogo, faíscas e poeira.
+     Sem malha (a large_explosion deixa uma pedra de onagro no chão). -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="heavy_impact_sparks.xml"/>
+      <props>
+        <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
+        <prop actor="particle/explosion_dustA.xml" attachpoint="root"/>
+        <prop actor="particle/heavy_impact_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Projétil de canhão pesado (Mammoth 155mm): usa a malha do tracer pesado
+     com um brilho maior e mais quente, como um obus incandescente.
+     O material *_glow* com specTex de alfa 0 deixa a cor sem sombreamento. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/tracer_heavy.dae</mesh>
+      <props>
+        <prop actor="particle/tracer_glow_cannon.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/tracer_heavy.png" name="baseTex"/>
+        <texture file="props/tracer_norm.png" name="normTex"/>
+        <texture file="props/tracer_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_glow_norm_spec.xml</material>
+</actor>

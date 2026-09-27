@@ -13,7 +13,10 @@
     ],
     "CivBonuses": [],
     "TeamBonuses": [],
-    "WallSets": [],
+	"WallSets": [
+		"structures/wallset_palisade",
+		"structures/achae/wallset_stone"
+	],
     "StartEntities": [
         {
             "Template": "structures/mcc/civil_centre"

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Torre de defesa aérea: protege um raio contra ataques estratégicos
+     inimigos (AirDefense) e tem um lançador que derruba aeronaves e drones. -->
+<Entity parent="template_structure_defensive_tower_sentry">
+  <AirDefense>
+    <Range>120</Range>
+    <Intercepts datatype="tokens">icbm nuke strategic_bomber</Intercepts>
+    <InterceptorActor>props/units/weapons/ammo/sam_interceptor.xml</InterceptorActor>
+    <InterceptorSpeed>140</InterceptorSpeed>
+    <LaunchHeight>6</LaunchHeight>
+    <InterceptActor>props/units/explosions/air_burst.xml</InterceptActor>
+    <InterceptActorLifetime>4</InterceptActorLifetime>
+    <LaunchSound>attack/siege/ballist_attack.xml</LaunchSound>
+    <InterceptSound>attack/destruction/explode_debris.xml</InterceptSound>
+  </AirDefense>
+  <Attack disable=""/>
+  <BuildingAI disable=""/>
+  <BuildRestrictions>
+    <Distance>
+      <FromClass>AirDefense</FromClass>
+      <MinDistance>80</MinDistance>
+    </Distance>
+  </BuildRestrictions>
+  <Cost>
+    <BuildTime>90</BuildTime>
+    <Resources>
+      <wood>0</wood>
+      <stone>150</stone>
+      <metal>250</metal>
+    </Resources>
+  </Cost>
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>1500</Max>
+  </Health>
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Air Defense Tower</GenericName>
+    <SpecificName>Air Defense Tower</SpecificName>
+    <Classes datatype="tokens">AirDefense</Classes>
+    <VisibleClasses datatype="tokens">AirDefense</VisibleClasses>
+    <Tooltip>Enemy ICBMs, nuclear missiles and strategic bombers cannot strike within 120 m of this tower, and are shot down when they enter its airspace. Its launcher also fires at aircraft and drones.</Tooltip>
+    <Icon>structures/air_defense.png</Icon>
+  </Identity>
+  <Loot>
+    <wood>0</wood>
+    <stone>30</stone>
+    <metal>50</metal>
+  </Loot>
+  <ProductionQueue disable=""/>
+  <Researcher disable=""/>
+  <TurretHolder>
+    <TurretPoints>
+      <One>
+        <X>0.0</X>
+        <Y>0.5</Y>
+        <Z>0.0</Z>
+        <Template>structures/mla/air_defense_launcher</Template>
+        <Angle>1.54</Angle>
+        <Ejectable>false</Ejectable>
+      </One>
+    </TurretPoints>
+  </TurretHolder>
+  <Upgrade disable=""/>
+  <Vision>
+    <Range>120</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>structures/mla/air_defense_tower.xml</Actor>
+  </VisualActor>
+</Entity>

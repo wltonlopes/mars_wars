@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raio: clarão onde o raio toca o chão. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="60.0"/>
+    <uniform name="lifetime" min="0.12" max="0.25"/>
+
+    <uniform name="position.x" min="-1" max="1"/>
+    <uniform name="position.y" min="0.5" max="2.0"/>
+    <uniform name="position.z" min="-1" max="1"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <constant name="velocity.x" value="0"/>
+    <constant name="velocity.y" value="0"/>
+    <constant name="velocity.z" value="0"/>
+    <uniform name="velocity.angle" min="0" max="0"/>
+
+    <uniform name="size" min="26.0" max="36.0"/>
+    <constant name="size.growthRate" value="-60.0"/>
+
+    <constant name="color.r" value="0.8"/>
+    <constant name="color.g" value="0.85"/>
+    <constant name="color.b" value="1.0"/>
+</particles>

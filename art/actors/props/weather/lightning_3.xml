@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Raio (variante 3): canal ramificado emissivo e clarões no chão e na nuvem. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/lightning_3.dae</mesh>
+      <props>
+        <prop actor="particle/lightning_flash_ground.xml" attachpoint="root"/>
+        <prop actor="particle/lightning_flash_sky.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/lightning.png" name="baseTex"/>
+        <texture file="props/tracer_norm.png" name="normTex"/>
+        <texture file="props/tracer_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_glow_norm_spec.xml</material>
+</actor>

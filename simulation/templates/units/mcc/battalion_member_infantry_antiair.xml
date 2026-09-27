@@ -3,6 +3,12 @@
     <!-- Anti-aéreo: prioriza drones e aeronaves inimigas. -->
     <Attack>
         <Ranged>
+            <Projectile>
+                <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+                <GroundLifetime>2</GroundLifetime>
+                <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+                <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+            </Projectile>
             <PreferredClasses datatype="tokens" replace="">Drone Aircraft Human</PreferredClasses>
         </Ranged>
     </Attack>

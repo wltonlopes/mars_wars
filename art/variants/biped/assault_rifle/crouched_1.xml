@@ -10,6 +10,6 @@
   </animations>
   <props>
     <!-- <prop actor="particle/streaks_light.xml" attachpoint="shoot"/> -->
-    <prop actor="props/bullet.xml" attachpoint="projectile"/>
+    <prop actor="props/units/weapons/ammo/tracer_rifle.xml" attachpoint="projectile"/>
   </props>
 </variant>

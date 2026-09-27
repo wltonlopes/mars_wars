@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_unit_champion_infantry_archer">
+  <!-- Canhão pesado do Mammoth: obus rápido de trajetória tensa, com
+       explosão e estilhaços ao redor do ponto de impacto. -->
   <Attack>
+    <Capture disable=""/>
     <Ranged>
-      <AttackName>Rocket</AttackName>
+      <AttackName>Heavy Cannon 155mm</AttackName>
       <Damage>
-        <Crush>100.0</Crush>
-        <Fire>100.0</Fire>
+        <Pierce>40.0</Pierce>
+        <Crush>110.0</Crush>
       </Damage>
       <EffectDelay>0</EffectDelay>
-      <MaxRange>100.0</MaxRange>
-      <MinRange>45.0</MinRange>
-      <PreferredClasses datatype="tokens">Structure</PreferredClasses>
-      <PrepareTime>2000</PrepareTime>
+      <MaxRange>90.0</MaxRange>
+      <MinRange>8.0</MinRange>
+      <PreferredClasses datatype="tokens">Vehicle Structure</PreferredClasses>
+      <PrepareTime>1000</PrepareTime>
       <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
+        <GroundLifetime>1</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>1.2</ImpactAnimationLifetime>
         <FriendlyFire>false</FriendlyFire>
         <Gravity>9.81</Gravity>
-        <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
-        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
         <LaunchPoint y="3"/>
-        <Speed>45.0</Speed>
-        <Spread>3.0</Spread>
+        <Speed>220.0</Speed>
+        <Spread>1.0</Spread>
       </Projectile>
-      <RepeatTime>10000</RepeatTime>
+      <RepeatTime>4500</RepeatTime>
       <Splash>
         <Damage>
-          <Crush>30.0</Crush>
-          <Fire>30.0</Fire>
+          <Pierce>10.0</Pierce>
+          <Crush>35.0</Crush>
         </Damage>
-        <FriendlyFire>true</FriendlyFire>
-        <Range>6</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Range>5</Range>
         <Shape>Circular</Shape>
         <Knockback>
-          <Distance>4</Distance>
-          <Chance>100</Chance>
+          <Distance>3</Distance>
+          <Chance>60</Chance>
         </Knockback>
       </Splash>
     </Ranged>
@@ -62,9 +67,13 @@
   </Identity>
   <Sound>
     <SoundGroups>
-      <attack_ranged>attack/weapon/explosion.xml</attack_ranged>
+      <attack_ranged>attack/weapon/musket.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/siegeprojectilehit.xml</attack_impact_ranged>
     </SoundGroups>
   </Sound>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
   <VisualActor>
     <Actor>vehicle/mcc/mammoth_tower.xml</Actor>
   </VisualActor>

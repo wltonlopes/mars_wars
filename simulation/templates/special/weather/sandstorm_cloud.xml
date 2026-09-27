@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Um trecho visual da tempestade de areia, movido pelo Sandstorm. -->
+<Entity parent="special/actor">
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+    <AlwaysVisible>true</AlwaysVisible>
+  </Visibility>
+  <VisualActor>
+    <Actor>props/weather/sandstorm_cloud.xml</Actor>
+  </VisualActor>
+</Entity>

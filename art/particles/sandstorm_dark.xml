@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tempestade de areia: massa escura no miolo, dá profundidade. -->
+<particles>
+    <texture>art/textures/particles/smoke_128b.png</texture>
+    <blend mode="over"/>
+    <use_local_space/>
+
+    <constant name="emissionrate" value="5.0"/>
+    <uniform name="lifetime" min="7.0" max="10.0"/>
+
+    <uniform name="position.x" min="-24" max="24"/>
+    <uniform name="position.y" min="4" max="18"/>
+    <uniform name="position.z" min="-24" max="24"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-0.8" max="0.8"/>
+    <uniform name="velocity.y" min="0.0" max="0.8"/>
+    <uniform name="velocity.z" min="-6.0" max="-3.5"/>
+    <uniform name="velocity.angle" min="-0.3" max="0.3"/>
+
+    <uniform name="size" min="20.0" max="30.0"/>
+    <constant name="size.growthRate" value="1.3"/>
+
+    <uniform name="color.r" min="0.42" max="0.5"/>
+    <uniform name="color.g" min="0.26" max="0.32"/>
+    <uniform name="color.b" min="0.16" max="0.2"/>
+</particles>

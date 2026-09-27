@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lançador da torre de defesa aérea (torreta): mísseis só contra aeronaves e drones. -->
+<Entity parent="template_unit_champion_infantry_archer">
+  <Attack>
+    <Capture disable=""/>
+    <Ranged>
+      <AttackName>Anti-air missiles</AttackName>
+      <Damage>
+        <Pierce>40</Pierce>
+        <Crush>60</Crush>
+      </Damage>
+      <MaxRange>120</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>500</PrepareTime>
+      <RepeatTime>2500</RepeatTime>
+      <Projectile>
+        <Speed>120</Speed>
+        <Spread>0</Spread>
+        <Gravity>0</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="4"/>
+        <ActorName>props/units/weapons/ammo/sam_interceptor.xml</ActorName>
+        <ImpactActorName>props/units/explosions/air_burst.xml</ImpactActorName>
+        <ImpactAnimationLifetime>3</ImpactAnimationLifetime>
+      </Projectile>
+      <PreferredClasses datatype="tokens" replace="">Drone Aircraft</PreferredClasses>
+      <RestrictedClasses datatype="tokens" replace="">!Aircraft</RestrictedClasses>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Population>0</Population>
+  </Cost>
+  <Decay>
+    <SinkingAnim>false</SinkingAnim>
+    <DelayTime>0.1</DelayTime>
+    <SinkRate>50.0</SinkRate>
+    <SinkAccel>50.0</SinkAccel>
+  </Decay>
+  <Health>
+    <Max>500</Max>
+  </Health>
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>Anti-Air Launcher</GenericName>
+    <SpecificName>Anti-Air Launcher</SpecificName>
+    <Icon>structures/air_defense.png</Icon>
+  </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/siege/ballist_attack.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
+  <Vision>
+    <Range>140</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>structures/mcc/aa_launcher.xml</Actor>
+  </VisualActor>
+</Entity>

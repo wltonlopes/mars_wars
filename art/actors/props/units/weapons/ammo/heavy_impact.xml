@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impacto de bala pesada: faíscas e poeira maiores. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="heavy_impact_sparks.xml"/>
+      <props>
+        <prop actor="particle/heavy_impact_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

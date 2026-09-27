@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Redemoinho: base estreita e densa da coluna. -->
+<particles>
+    <texture>art/textures/particles/dust_256a.png</texture>
+    <blend mode="over"/>
+    <use_local_space/>
+
+    <constant name="emissionrate" value="34.0"/>
+    <uniform name="lifetime" min="1.1" max="1.5"/>
+
+    <uniform name="position.x" min="-1.4" max="1.4"/>
+    <uniform name="position.y" min="0.0" max="4.0"/>
+    <uniform name="position.z" min="-1.4" max="1.4"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-0.4" max="0.4"/>
+    <uniform name="velocity.y" min="4.0" max="6.0"/>
+    <uniform name="velocity.z" min="-0.4" max="0.4"/>
+    <uniform name="velocity.angle" min="3" max="6"/>
+
+    <uniform name="size" min="2.2" max="3.4"/>
+    <constant name="size.growthRate" value="0.9"/>
+
+    <uniform name="color.r" min="0.62" max="0.72"/>
+    <uniform name="color.g" min="0.38" max="0.46"/>
+    <uniform name="color.b" min="0.22" max="0.28"/>
+</particles>

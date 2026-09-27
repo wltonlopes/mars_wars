@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tracer pesado (centro cívico, torres): mais longo e grosso, laranja-avermelhado.
+     A malha são planos cruzados ao longo da direção do voo; o material
+     *_glow* com specTex de alfa 0 deixa a cor sem sombreamento (emissiva). -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/tracer_heavy.dae</mesh>
+      <props>
+        <prop actor="particle/tracer_glow_heavy.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/tracer_heavy.png" name="baseTex"/>
+        <texture file="props/tracer_norm.png" name="normTex"/>
+        <texture file="props/tracer_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_glow_norm_spec.xml</material>
+</actor>

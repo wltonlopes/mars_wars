@@ -182,6 +182,10 @@ AirSupportProvider.prototype.CheckTarget = function(type, owner, target, battali
 		return markForTranslation("The target is outside the map.");
 
 	const power = this.template[type];
+	const cmpManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager);
+	if (this.GetStrikePoints(type, target).some(point => cmpManager.FindAirDefense(type, owner, point) != INVALID_ENTITY))
+		return markForTranslation("The target area is protected by enemy air defense.");
+
 	if (!battalion)
 		return "";
 
@@ -197,6 +201,26 @@ AirSupportProvider.prototype.CheckTarget = function(type, owner, target, battali
 		return markForTranslation("Not enough population room for the battalion.");
 
 	return "";
+};
+
+/**
+ * Pontos atingidos por um ataque: o alvo ou, no bombardeio, cada bomba do
+ * tapete (alinhado com a direção prédio -> alvo, como no StrategicBomber).
+ */
+AirSupportProvider.prototype.GetStrikePoints = function(type, target)
+{
+	const power = this.template[type];
+	const count = type == "strategic_bomber" ? +(power.BombCount || 1) : 1;
+	const length = type == "strategic_bomber" ? +(power.BombingLength || 0) : 0;
+	if (count <= 1 || !length)
+		return [target];
+
+	const origin = Engine.QueryInterface(this.entity, IID_Position).GetPosition2D();
+	const direction = AirSupport.Normalize({ "x": target.x - origin.x, "z": target.z - origin.y });
+	const points = [];
+	for (let i = 0; i < count; ++i)
+		points.push(AirSupport.Offset(target, direction, (i / (count - 1) - 0.5) * length));
+	return points;
 };
 
 AirSupportProvider.prototype.GetEnemyStructuresNear = function(owner, target, range)

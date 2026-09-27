@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Faíscas do impacto de bala pesada. -->
+<particles>
+    <texture>art/textures/particles/sparks.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="140"/>
+    <uniform name="lifetime" min="0.18" max="0.4"/>
+
+    <uniform name="position.y" min="0.2" max="0.8"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-6.0" max="6.0"/>
+    <uniform name="velocity.y" min="2.0" max="7.0"/>
+    <uniform name="velocity.z" min="-6.0" max="6.0"/>
+    <uniform name="velocity.angle" min="-6.0" max="6.0"/>
+
+    <uniform name="size" min="0.35" max="0.6"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.55"/>
+    <constant name="color.b" value="0.2"/>
+
+    <force y="-9.81"/>
+</particles>

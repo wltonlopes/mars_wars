@@ -26,6 +26,28 @@ AirSupportManager.prototype.LAUNCH_MESSAGES = {
 	]
 };
 
+/** Avisos de interceptação: [dono do ataque, dono da defesa aérea]. */
+AirSupportManager.prototype.INTERCEPT_MESSAGES = {
+	"icbm": [
+		markForTranslation("Your ICBM was shot down by enemy air defense."),
+		markForTranslation("Air defense intercepted an enemy ICBM.")
+	],
+	"nuke": [
+		markForTranslation("Your nuclear missile was shot down by enemy air defense."),
+		markForTranslation("Air defense intercepted an enemy nuclear missile.")
+	],
+	"strategic_bomber": [
+		markForTranslation("Your bomber was shot down by enemy air defense."),
+		markForTranslation("Air defense shot down an enemy bomber.")
+	]
+};
+
+/**
+ * Raio da busca por torres de defesa aérea: maior que o alcance de
+ * qualquer torre (o alcance real de cada uma é conferido depois).
+ */
+AirSupportManager.prototype.AIR_DEFENSE_SEARCH_RANGE = 400;
+
 /** Componente que o template do veículo precisa ter, por tipo de missão. */
 AirSupportManager.prototype.VEHICLE_INTERFACES = {
 	"strategic_bomber": "IID_StrategicBomber",
@@ -88,7 +110,7 @@ AirSupportManager.prototype.RequestMission = function(provider, owner, type, tar
 	else if (type == "icbm")
 	{
 		const flightTime = cmpVehicle.StartMission(missionId, provider, parameters.origin, target);
-		this.NotifyLaunch(type, owner, flightTime);
+		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, flightTime);
 	}
 	else if (type == "nuke")
 	{
@@ -99,7 +121,7 @@ AirSupportManager.prototype.RequestMission = function(provider, owner, type, tar
 		};
 		const path = AirSupport.CreateFlightPath(target, direction, this.MAP_EDGE_MARGIN);
 		const flightTime = cmpVehicle.StartMission(missionId, provider, path.entry, target);
-		this.NotifyLaunch(type, owner, flightTime);
+		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, flightTime);
 	}
 	else if (type == "orbital_laser")
 		cmpVehicle.StartMission(missionId, provider, target);
@@ -119,17 +141,93 @@ AirSupportManager.prototype.NotifyLaunch = function(type, owner, flightTime)
 	const others = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).GetNonGaiaPlayers().filter(p => p != owner);
 	const [ownMessage, othersMessage] = this.LAUNCH_MESSAGES[type];
 
-	cmpGuiInterface.AddTimeNotification({
-		"players": [owner],
-		"message": ownMessage,
-		"translateMessage": true
-	}, flightTime);
+	return [
+		cmpGuiInterface.AddTimeNotification({
+			"players": [owner],
+			"message": ownMessage,
+			"translateMessage": true
+		}, flightTime),
+		cmpGuiInterface.AddTimeNotification({
+			"players": others.concat([-1]),
+			"message": othersMessage,
+			"translateMessage": true
+		}, flightTime)
+	];
+};
+
+AirSupportManager.prototype.GetMissionType = function(missionId)
+{
+	const mission = this.missions[missionId];
+	return mission ? mission.type : "";
+};
+
+/**
+ * Torre de defesa aérea inimiga de `attacker` que cobre `position` ({x, z})
+ * e abate missões do tipo `type`; a mais próxima, se houver várias.
+ * @return {number} Entidade da torre, ou INVALID_ENTITY.
+ */
+AirSupportManager.prototype.FindAirDefense = function(type, attacker, position)
+{
+	const cmpDiplomacy = QueryPlayerIDInterface(attacker, IID_Diplomacy);
+	const enemies = cmpDiplomacy ? cmpDiplomacy.GetEnemies().filter(player => player > 0) : [];
+	if (!enemies.length)
+		return INVALID_ENTITY;
+
+	const candidates = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager).ExecuteQueryAroundPos(
+		new Vector2D(position.x, position.z), 0, this.AIR_DEFENSE_SEARCH_RANGE, enemies, IID_AirDefense, false);
+
+	let best = INVALID_ENTITY;
+	let bestDistance = Infinity;
+	for (const ent of candidates)
+	{
+		const cmpAirDefense = Engine.QueryInterface(ent, IID_AirDefense);
+		if (!cmpAirDefense.CanIntercept(type) || !cmpAirDefense.IsHostileTo(attacker))
+			continue;
+		const distance = cmpAirDefense.GetDistanceTo(position);
+		if (distance <= cmpAirDefense.GetRange() && distance < bestDistance)
+		{
+			best = ent;
+			bestDistance = distance;
+		}
+	}
+	return best;
+};
+
+/**
+ * A missão foi abatida pela defesa aérea: cancela a contagem regressiva e
+ * avisa o atacante e o dono da torre. O veículo é removido por quem chama.
+ */
+AirSupportManager.prototype.MissionIntercepted = function(missionId, airDefense, position)
+{
+	const mission = this.missions[missionId];
+	if (!mission)
+		return;
+
+	const cmpGuiInterface = Engine.QueryInterface(SYSTEM_ENTITY, IID_GuiInterface);
+	for (const notification of mission.notifications || [])
+		cmpGuiInterface.DeleteTimeNotification(notification);
+
+	const cmpAirDefense = Engine.QueryInterface(airDefense, IID_AirDefense);
+	if (cmpAirDefense)
+		cmpAirDefense.PlayInterceptSound(position);
+
+	const messages = this.INTERCEPT_MESSAGES[mission.type];
+	if (!messages)
+		return;
 
 	cmpGuiInterface.AddTimeNotification({
-		"players": others.concat([-1]),
-		"message": othersMessage,
+		"players": [mission.owner],
+		"message": messages[0],
 		"translateMessage": true
-	}, flightTime);
+	}, 6000);
+
+	const defender = cmpAirDefense ? cmpAirDefense.GetOwner() : INVALID_PLAYER;
+	if (defender > 0)
+		cmpGuiInterface.AddTimeNotification({
+			"players": [defender],
+			"message": messages[1],
+			"translateMessage": true
+		}, 6000);
 };
 
 AirSupportManager.prototype.FinishMission = function(missionId)

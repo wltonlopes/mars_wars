@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brilho do tracer pesado (centro cívico e torres).
+     Emissor em espaço do mundo: as partículas ficam para trás enquanto o
+     projétil avança e formam um rastro luminoso curto. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="150"/>
+    <uniform name="lifetime" min="0.07" max="0.12"/>
+
+    <uniform name="size" min="1.6" max="2.1"/>
+    <constant name="size.growthRate" value="-12.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.5"/>
+    <constant name="color.b" value="0.18"/>
+</particles>

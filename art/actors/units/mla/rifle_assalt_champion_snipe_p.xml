@@ -7,7 +7,7 @@
       <props>
         <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
         <prop actor="props/units/weapons/sniper_rifle.xml" attachpoint="weapon_R"/>
-        <prop actor="particle/simple_ray.xml" attachpoint="projectile"/>
+        <prop actor="props/units/weapons/ammo/tracer_sniper.xml" attachpoint="projectile"/>
       </props>
     </variant>
   </group>

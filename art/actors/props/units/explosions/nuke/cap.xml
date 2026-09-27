@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Estágio 6: chapéu do cogumelo, a ~90 m de altura. -->
+<!-- Estágio 6: chapéu do cogumelo, a ~90 m de altura. Três camadas de fumaça
+     (escura embaixo/no miolo, média, clara no topo e na borda) dão volume;
+     o brilho alaranjado ilumina a parte de baixo nos primeiros segundos. -->
 <actor version="1">
   <group>
     <variant name="Base">
       <particles file="nuke_cap_smoke.xml"/>
       <props>
+        <prop actor="particle/nuke_cap_smoke_dark.xml" attachpoint="root"/>
+        <prop actor="particle/nuke_cap_smoke_light.xml" attachpoint="root"/>
         <prop actor="particle/nuke_cap_fire.xml" attachpoint="root"/>
       </props>
     </variant>
