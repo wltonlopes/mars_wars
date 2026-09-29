@@ -34,7 +34,7 @@
     <Civ>mcc</Civ>
     <SpecificName>Corporate Light Trooper</SpecificName>
     <GenericName>Light Assault Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/squad_rifle.png</Icon>
     <Tooltip>Light Ranged unit armed with a snub-nosed assault rifle.</Tooltip>
     <VisibleClasses datatype="tokens">Ranged Assault</VisibleClasses>
   </Identity>

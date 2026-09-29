@@ -9,5 +9,6 @@
     <Identity>
         <GenericName>Silent Reapers</GenericName>
         <SelectionGroupName/>
+        <Icon>units/squad_sniper.png</Icon>
     </Identity>
 </Entity>

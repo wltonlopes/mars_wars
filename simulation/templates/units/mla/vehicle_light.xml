@@ -4,7 +4,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName>Light Vehicle Kutu</SpecificName>
-    <Icon>units/hele/siege_tower.png</Icon>
+    <Icon>units/armored.png</Icon>
   </Identity>
     <Health>
     <Max>390</Max>

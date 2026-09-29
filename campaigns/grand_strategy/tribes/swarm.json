@@ -1,0 +1,9 @@
+{
+	"code": "swarm",
+	"name": "swarm",
+	"civ": "mla",
+	"color": "100 140 140",
+	"startProvinces": [
+		"argyre_planitia"
+	]
+}

@@ -36,8 +36,8 @@ ReinforcementDelivery.prototype.Schema =
 			"<interleave>" +
 				"<element name='StartHeight'><ref name='positiveDecimal'/></element>" +
 				"<element name='FallSpeed' a:help='Metres per second.'><ref name='positiveDecimal'/></element>" +
-				"<element name='BrakeHeight' a:help='Retro-rockets fire below this height.'><ref name='nonNegativeDecimal'/></element>" +
-				"<element name='BrakeSpeed'><ref name='positiveDecimal'/></element>" +
+				"<element name='BrakeHeight' a:help='Retro-rockets fire below this height; the speed eases from FallSpeed down to BrakeSpeed at touchdown.'><ref name='nonNegativeDecimal'/></element>" +
+				"<element name='BrakeSpeed' a:help='Touchdown speed, metres per second.'><ref name='positiveDecimal'/></element>" +
 			"</interleave>" +
 		"</element>" +
 	"</optional>" +
@@ -77,6 +77,7 @@ ReinforcementDelivery.prototype.Init = function()
 	this.state = "";
 	this.height = 0;
 	this.timer = 0;
+	this.phase = "";
 };
 
 ReinforcementDelivery.prototype.StartMission = function(missionId, provider, target, battalion)
@@ -94,6 +95,7 @@ ReinforcementDelivery.prototype.StartMission = function(missionId, provider, tar
 		this.state = "descending";
 		this.height = +this.template.Descent.StartHeight;
 		cmpPosition.SetHeightOffset(this.height);
+		this.SetPhase("reentry");
 	}
 	else
 		this.Arrive();
@@ -107,7 +109,18 @@ ReinforcementDelivery.prototype.OnUpdate = function(msg)
 	if (this.state == "descending")
 	{
 		const descent = this.template.Descent;
-		const speed = this.height > +descent.BrakeHeight ? +descent.FallSpeed : +descent.BrakeSpeed;
+		const brakeHeight = +descent.BrakeHeight;
+		const fallSpeed = +descent.FallSpeed;
+		const brakeSpeed = +descent.BrakeSpeed;
+		let speed = fallSpeed;
+		if (this.height <= brakeHeight)
+		{
+			// Queima de frenagem: a velocidade cai suavemente da de queda até
+			// a de pouso conforme a cápsula se aproxima do chão.
+			const t = brakeHeight > 0 ? this.height / brakeHeight : 0;
+			speed = brakeSpeed + (fallSpeed - brakeSpeed) * t * t;
+			this.SetPhase("braking");
+		}
 		this.height = Math.max(0, this.height - speed * msg.turnLength);
 		Engine.QueryInterface(this.entity, IID_Position).SetHeightOffset(this.height);
 		if (this.height <= 0)
@@ -130,11 +143,26 @@ ReinforcementDelivery.prototype.OnUpdate = function(msg)
 };
 
 /**
+ * Troca os efeitos visuais do actor (grupo "phase": reentry, braking, landed).
+ * Actors sem esse grupo, como o do túnel, ignoram a troca.
+ */
+ReinforcementDelivery.prototype.SetPhase = function(phase)
+{
+	if (this.phase == phase)
+		return;
+	this.phase = phase;
+	const cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
+	if (cmpVisual)
+		cmpVisual.SetVariant("phase", phase);
+};
+
+/**
  * Pouso da cápsula ou início da escavação do túnel.
  */
 ReinforcementDelivery.prototype.Arrive = function()
 {
 	this.state = "deploying";
+	this.SetPhase("landed");
 	this.timer = +this.template.DeployTime;
 
 	const impact = this.template.Impact;

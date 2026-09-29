@@ -40,7 +40,7 @@
     <Classes datatype="tokens">Aircraft</Classes>
     <SpecificName></SpecificName>
     <Tooltip>.</Tooltip>
-    <Icon>units/global/mustang.png</Icon>
+    <Icon>units/vtol.png</Icon>
   </Identity>
   <Obstruction disable=""/>
   <Position>

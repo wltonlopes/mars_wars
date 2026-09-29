@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Estilos do menu principal do Mars Wars (sprites em sprites.xml). -->
+<styles>
+
+	<style name="MainMenuPanel"
+		sprite="MainMenuPanel"
+	/>
+
+	<style name="SubmenuPanel"
+		sprite="SubmenuPanel"
+	/>
+
+	<!-- Botões do menu e do submenu: texto à esquerda, planos. -->
+	<style name="MarsMenuButton"
+		sprite="MarsButton"
+		sprite_over="MarsButtonOver"
+		sprite_pressed="MarsButtonPressed"
+		sprite_disabled="MarsButtonDisabled"
+		font="sans-bold-16"
+		textcolor="236 230 220"
+		textcolor_over="255 196 150"
+		textcolor_pressed="255 255 255"
+		textcolor_disabled="150 150 150 150"
+		text_align="left"
+		text_valign="center"
+		buffer_zone="20"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg"
+	/>
+
+	<!-- Links da comunidade (site, bugs, doação...). -->
+	<style name="MarsLinkButton"
+		sprite="MarsLinkButton"
+		sprite_over="MarsLinkButtonOver"
+		sprite_pressed="MarsButtonPressed"
+		sprite_disabled="MarsButtonDisabled"
+		font="sans-13"
+		textcolor="220 214 204"
+		textcolor_over="255 255 255"
+		textcolor_disabled="150 150 150 150"
+		text_align="center"
+		text_valign="center"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg"
+	/>
+
+	<style name="MarsTitle"
+		font="sans-bold-24"
+		textcolor="245 240 232"
+		text_align="left"
+		text_valign="center"
+	/>
+
+	<style name="MarsSubtitle"
+		font="sans-13"
+		textcolor="240 150 100"
+		text_align="left"
+		text_valign="top"
+	/>
+
+	<style name="MarsSmallText"
+		font="sans-12"
+		textcolor="170 165 158"
+		text_align="left"
+		text_valign="center"
+	/>
+
+	<style name="MarsTooltip"
+		sprite="MarsTooltipBox"
+		buffer_zone="12"
+		font="sans-14"
+		textcolor="236 230 220"
+		text_align="left"
+		text_valign="top"
+	/>
+
+	<style name="userReportPanel"
+		sprite="pgUserReportBox"
+	/>
+
+	<style name="userReportText"
+		font="sans-14"
+		textcolor="white"
+		scrollbar="true"
+		scrollbar_style="ModernScrollBar"
+	/>
+
+</styles>

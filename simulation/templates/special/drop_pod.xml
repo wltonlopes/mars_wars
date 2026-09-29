@@ -21,8 +21,8 @@
     <Descent>
       <StartHeight>300</StartHeight>
       <FallSpeed>120</FallSpeed>
-      <BrakeHeight>40</BrakeHeight>
-      <BrakeSpeed>20</BrakeSpeed>
+      <BrakeHeight>60</BrakeHeight>
+      <BrakeSpeed>10</BrakeSpeed>
     </Descent>
     <Impact>
       <Damage>

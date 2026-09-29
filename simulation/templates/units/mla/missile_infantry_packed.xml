@@ -3,7 +3,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName>Archer</SpecificName>
-    <Icon>units/south_america/cavalry_javelineer.png</Icon>
+    <Icon>units/squad_anti-armor.png</Icon>
   </Identity>
   <Pack>
     <Entity>units/mla/missile_infantry_unpacked</Entity>

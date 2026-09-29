@@ -36,7 +36,7 @@
     <Civ>mcc</Civ>
     <SpecificName>Corporate Storm Trooper</SpecificName>
     <GenericName>Heavy Assault Infantry</GenericName>
-    <Icon>units/battalion_member.png</Icon>
+    <Icon>units/squad_machine_gun.png</Icon>
     <Tooltip>Heavy Ranged unit armed with a LMG.</Tooltip>
     <VisibleClasses datatype="tokens">Ranged Assault</VisibleClasses>
   </Identity>

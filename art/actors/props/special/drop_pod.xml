@@ -1,23 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Placeholder da cápsula orbital: reaproveita o mesh do ICBM (em pé, 17 m)
-     com texturas mcc e retrofoguetes acesos. Trocar pelo modelo da cápsula. -->
+<!-- Cápsula orbital do quartel mcc. O componente ReinforcementDelivery troca
+     a variante do grupo "phase" conforme a descida:
+       reentry - entrada atmosférica: plasma no escudo térmico e rastro de fogo e fumaça
+       braking - retrofoguetes acesos nos 5 exaustores (prop_turbo_01..05), poeira no chão
+       landed  - pousada: bocais ainda quentes soltando fumaça
+     turbo_01 e turbo_05 ficam no centro da base; 02, 03 e 04 nas bordas. -->
 <actor version="1">
   <castshadow/>
   <group>
     <variant name="Base">
-      <mesh>props/weapons/icbm.dae</mesh>
-      <props>
-        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_01"/>
-        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_02"/>
-        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_03"/>
-        <prop actor="particle/flame_firepit_1.xml" attachpoint="turbo_04"/>
-        <prop actor="particle/destruction_dust_small.xml" attachpoint="turbo_01"/>
-      </props>
+      <mesh>props/drop_pod.dae</mesh>
       <textures>
-        <texture file="structural/mcc_struct.png" name="baseTex"/>
-        <texture file="structural/mcc_struct_spec.png" name="specTex"/>
-        <texture file="structural/mcc_struct_norm.png" name="normTex"/>
+        <texture file="vehicle/mcc_veh_01.png" name="baseTex"/>
+        <texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
+        <texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
       </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="reentry">
+      <props>
+        <prop actor="particle/drop_pod_reentry_plasma.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/drop_pod_reentry_trail.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/drop_pod_reentry_trail.xml" attachpoint="turbo_02"/>
+        <prop actor="particle/drop_pod_reentry_trail.xml" attachpoint="turbo_03"/>
+        <prop actor="particle/drop_pod_reentry_trail.xml" attachpoint="turbo_04"/>
+        <prop actor="particle/drop_pod_reentry_smoke.xml" attachpoint="turbo_05"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="braking">
+      <props>
+        <prop actor="particle/drop_pod_retro_flame.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/drop_pod_retro_flame.xml" attachpoint="turbo_02"/>
+        <prop actor="particle/drop_pod_retro_flame.xml" attachpoint="turbo_03"/>
+        <prop actor="particle/drop_pod_retro_flame.xml" attachpoint="turbo_04"/>
+        <prop actor="particle/drop_pod_retro_flame.xml" attachpoint="turbo_05"/>
+        <prop actor="particle/drop_pod_retro_core.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/drop_pod_retro_core.xml" attachpoint="turbo_02"/>
+        <prop actor="particle/drop_pod_retro_core.xml" attachpoint="turbo_03"/>
+        <prop actor="particle/drop_pod_retro_core.xml" attachpoint="turbo_04"/>
+        <prop actor="particle/drop_pod_retro_core.xml" attachpoint="turbo_05"/>
+        <prop actor="particle/drop_pod_retro_dust.xml" attachpoint="turbo_01"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="landed">
+      <props>
+        <prop actor="particle/drop_pod_landed_heat.xml" attachpoint="turbo_01"/>
+        <prop actor="particle/drop_pod_landed_heat.xml" attachpoint="turbo_05"/>
+        <prop actor="particle/drop_pod_landed_smoke.xml" attachpoint="turbo_02"/>
+        <prop actor="particle/drop_pod_landed_smoke.xml" attachpoint="turbo_03"/>
+        <prop actor="particle/drop_pod_landed_smoke.xml" attachpoint="turbo_04"/>
+      </props>
     </variant>
   </group>
   <material>player_trans_parallax_spec.xml</material>

@@ -1,0 +1,9 @@
+{
+	"code": "Rebels",
+	"name": "Rebels of Ares",
+	"civ": "mla",
+	"color": "255 0 255",
+	"startProvinces": [
+		"tharsis_montes"
+	]
+}

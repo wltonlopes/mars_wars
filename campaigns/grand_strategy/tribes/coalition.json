@@ -1,0 +1,9 @@
+{
+	"code": "coalition",
+	"name": "Coalition of the Central Plains",
+	"civ": "mcc",
+	"color": "150 200 30",
+	"startProvinces": [
+		"arabia_terra"
+	]
+}

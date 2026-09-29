@@ -1,0 +1,25 @@
+{
+    "portraits": [
+        "session/portraits/heroes_campaign/mcc_01.png",
+        "session/portraits/heroes_campaign/mcc_02.png",
+        "session/portraits/heroes_campaign/mcc_03.png",
+        "session/portraits/heroes_campaign/mcc_04.png",
+        "session/portraits/heroes_campaign/mcc_05.png"
+    ],
+
+    "traits": [
+        "tactician",
+        "mountain_warfare"
+    ],
+
+    "bonuses": {
+        "movement": 1,
+        "combat": 20,
+        "command": 10
+    },
+
+    "titles": [
+        "Suffete",
+        "Commander"
+    ]
+}

@@ -3,6 +3,7 @@
     <Identity>
         <GenericName>Soldado do Batalhão</GenericName>
         <SelectionGroupName>units/mcc/battalion_rifleman</SelectionGroupName>
+        <Icon>units/squad_rifle.png</Icon>
         <Requirements>
             <Techs datatype="tokens">-phase_city phase_village</Techs>
         </Requirements>

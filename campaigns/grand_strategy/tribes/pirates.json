@@ -1,0 +1,9 @@
+{
+	"code": "pirates",
+	"name": "Pirates of Mars",
+	"civ": "mla",
+	"color": "150 200 30",
+	"startProvinces": [
+		"valles_marineris"
+	]
+}

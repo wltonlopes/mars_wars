@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Núcleo branco-azulado na boca de cada exaustor. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="110.0"/>
+    <uniform name="lifetime" min="0.05" max="0.1"/>
+
+    <uniform name="velocity.y" min="-6.0" max="-3.0"/>
+
+    <uniform name="size" min="2.0" max="2.6"/>
+    <constant name="size.growthRate" value="-14.0"/>
+
+    <constant name="color.r" value="0.8"/>
+    <constant name="color.g" value="0.88"/>
+    <constant name="color.b" value="1.0"/>
+</particles>

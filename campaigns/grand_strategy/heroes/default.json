@@ -1,0 +1,21 @@
+{
+    "portraits": [
+        "session/portraits/heroes_campaign/mla_01.png",
+        "session/portraits/heroes_campaign/mla_02.png",
+        "session/portraits/heroes_campaign/mla_03.png",
+        "session/portraits/heroes_campaign/mla_04.png",
+        "session/portraits/heroes_campaign/mla_05.png"
+    ],
+
+    "traits": [],
+
+    "bonuses": {
+        "movement": 0,
+        "combat": 0,
+        "command": 0
+    },
+
+    "titles": [
+        "General"
+    ]
+}

@@ -9,6 +9,7 @@
     </Trainer>
     <Identity>
         <GenericName>Silent Reapers</GenericName>
+        <Icon>units/squad_machine_gun.png</Icon>
         <SelectionGroupName/>
     </Identity>
 </Entity>

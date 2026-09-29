@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Menu principal do Mars Wars: painel de vidro escuro encostado à esquerda,
+	título do mod, botões planos e rodapé com informações. Os nomes dos objetos
+	são os do 0 A.D. (usados por MainMenuItemHandler.js e mainmenu.js).
+-->
+<object>
+
+	<!-- Sombra à esquerda e na base da tela, sob o menu. -->
+	<object name="mainMenuShade" type="image" sprite="MarsMenuShade" ghost="true" size="0 0 640 100%" z="40"/>
+	<object name="mainMenuBottomShade" type="image" sprite="MarsBottomShade" ghost="true" size="0 100%-160 100% 100%" z="40"/>
+
+	<object name="pgToolTip" style="MarsTooltip" type="text" hidden="true" size="100%-360 24 100%-24 220" ghost="true"/>
+
+	<object name="mainMenu" type="image" style="MainMenuPanel" size="0 0 320 100%" z="50">
+
+		<!-- Título -->
+		<object name="modTitle" type="text" style="MarsTitle" ghost="true" size="32 34 100%-16 70">
+			<translatableAttribute id="caption">MARS WARS</translatableAttribute>
+		</object>
+		<object name="modSubtitle" type="text" style="MarsSubtitle" ghost="true" size="32 72 100%-16 92">
+			<translatableAttribute id="caption">The war for the Red Planet</translatableAttribute>
+		</object>
+		<object type="image" sprite="MarsAccentLine" ghost="true" size="32 102 92 104"/>
+
+		<!-- Set z value explicitly to be able to click buttons for low
+			resolutions, when they might be covered by project information.
+			Players should be able to exit at least. -->
+		<object name="mainMenuButtons" size="16 132 100%-16 500" z="60">
+			<repeat count="10">
+				<object name="mainMenuButton[n]" type="button" style="MarsMenuButton" tooltip_style="pgToolTip"/>
+			</repeat>
+		</object>
+
+		<!-- Linha à direita, dividida em duas quando o submenu abre. -->
+		<object name="MainMenuPanelRightBorderTop" type="image" sprite="MainMenuPanelRightBorder" ghost="true" size="100%-1 0 100% 100%"/>
+		<object name="MainMenuPanelRightBorderBottom" type="image" sprite="MainMenuPanelRightBorder" ghost="true" size="100%-1 0 100% 100%"/>
+
+		<include file="gui/pregame/ProjectInformation.xml"/>
+	</object>
+
+	<object name="submenu" type="image" style="SubmenuPanel" size="0 0 320 0%" hidden="true">
+		<object name="submenuButtons" type="image" size="6 4 100%-6 100%-4" tooltip_style="pgToolTip">
+			<repeat count="30">
+				<object type="button" style="MarsMenuButton" tooltip_style="pgToolTip"/>
+			</repeat>
+		</object>
+	</object>
+
+	<!-- Hide submenu when user clicks on the background -->
+	<object name="closeMenuButton" type="button" hotkey="cancel"/>
+
+</object>

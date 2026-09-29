@@ -138,8 +138,37 @@ function(msg)
     if (this.spawned)
         return;
 
+    // Enquanto o mapa carrega (tempo 0), o motor cria as entidades do mapa
+    // com IDs já definidos; criar os soldados agora tomaria esses IDs e o
+    // jogo trava ("!EntityExists(ent)"). Os soldados nascem em OnInitGame.
+    if (Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).GetTime() == 0)
+    {
+        this.spawnAfterMapLoad = true;
+        return;
+    }
+
     this.spawned = true;
 
+    this.SpawnMembers();
+};
+
+/**
+ * Mapa carregado: cria os soldados dos batalhões que já vieram no mapa.
+ */
+BattalionLeader.prototype.OnInitGame =
+function()
+{
+    this.SpawnDeferredMembers();
+};
+
+BattalionLeader.prototype.SpawnDeferredMembers =
+function()
+{
+    if (!this.spawnAfterMapLoad || this.spawned)
+        return;
+
+    this.spawnAfterMapLoad = false;
+    this.spawned = true;
     this.SpawnMembers();
 };
 
@@ -925,6 +954,9 @@ function()
 BattalionLeader.prototype.UpdateBattalion =
 function()
 {
+	// Reserva, caso o carregamento não tenha enviado InitGame.
+	this.SpawnDeferredMembers();
+
 	this.CleanupMembers();
 
     let cmpLeaderPos =

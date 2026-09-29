@@ -13,7 +13,7 @@
   <Identity>
     <Civ>mla</Civ>
     <GenericName>Commandos Ceberus</GenericName>
-    <Icon>units/battalion_member.png</Icon>
+    <Icon>units/squad_sniper.png</Icon>
   </Identity>
   <Selectable>
     <EditorOnly/>

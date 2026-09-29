@@ -4,7 +4,7 @@
   <Identity>
     <Civ>mla</Civ>
     <SpecificName>Special Vehicle Coyote Drone</SpecificName>
-    <Icon>units/hele/siege_tower.png</Icon>
+    <Icon>units/armored.png</Icon>
   </Identity>
   <Health>
     <Max>500</Max>

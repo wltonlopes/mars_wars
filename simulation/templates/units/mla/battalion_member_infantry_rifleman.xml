@@ -6,5 +6,6 @@
         <Requirements>
             <Techs datatype="tokens">-phase_city phase_village</Techs>
         </Requirements>
+        <Icon>units/squad_rifle.png</Icon>
     </Identity>
 </Entity>

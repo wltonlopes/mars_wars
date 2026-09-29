@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fumaça escura deixada no céu pela cápsula. -->
+<particles>
+    <texture>art/textures/particles/smoke_256a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="70.0"/>
+    <uniform name="lifetime" min="2.5" max="4.0"/>
+
+    <uniform name="position.x" min="-1.0" max="1.0"/>
+    <uniform name="position.z" min="-1.0" max="1.0"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-0.6" max="0.6"/>
+    <uniform name="velocity.y" min="0.2" max="0.8"/>
+    <uniform name="velocity.z" min="-0.6" max="0.6"/>
+    <uniform name="velocity.angle" min="-0.4" max="0.4"/>
+
+    <uniform name="size" min="3.0" max="4.0"/>
+    <constant name="size.growthRate" value="2.8"/>
+
+    <uniform name="color.r" min="0.30" max="0.38"/>
+    <uniform name="color.g" min="0.26" max="0.32"/>
+    <uniform name="color.b" min="0.24" max="0.29"/>
+</particles>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Rodapé do painel do menu: descrição do jogo, links da comunidade, organização
+	e versão. Os nomes dos objetos são os do 0 A.D. (preenchidos por
+	ProjectInformation.js). O logo do 0 A.D. dá lugar ao título do Mars Wars.
+-->
+<object>
+	<object name="productLogo" type="image" ghost="true" hidden="true" size="0 0 0 0"/>
+
+	<object type="image" sprite="MarsInfoBox" size="16 100%-340 100%-16 100%-72">
+
+		<object name="productDescription" font="sans-13" type="text" textcolor="205 200 192" size="12 10 100%-12 100%-156" ghost="true"/>
+
+		<!-- As posições dos botões vêm de ProjectInformation.js (6 botões nos
+		     últimos 148 px da caixa). -->
+		<object name="communityButtons">
+			<repeat count="10">
+				<object type="button" style="MarsLinkButton" tooltip_style="pgToolTip" hidden="true"/>
+			</repeat>
+		</object>
+	</object>
+
+	<object size="16 100%-64 100%-16 100%-36" ghost="true">
+		<object name="organizationLogo" type="image" ghost="true" size="0 2 24 26"/>
+		<object name="organizationName" type="text" style="MarsSmallText" ghost="true" size="32 0 100% 28"/>
+	</object>
+
+	<object type="text" name="productBuild" style="MarsSmallText" ghost="true" size="16 100%-34 100%-16 100%-10"/>
+</object>

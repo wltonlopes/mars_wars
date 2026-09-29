@@ -9,7 +9,7 @@
       </animations>
       <mesh>skeletal/muzzleflash.dae</mesh>
       <textures>
-        <texture file="skeletal/empty.dds" name="baseTex"/>
+        <texture file="skeletal/empty.png" name="baseTex"/>
       </textures>
     </variant>
   </group>

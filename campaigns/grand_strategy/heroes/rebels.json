@@ -1,0 +1,25 @@
+{
+    "portraits": [
+        "session/portraits/heroes_campaign/ares_01.png",
+        "session/portraits/heroes_campaign/ares_02.png",
+        "session/portraits/heroes_campaign/ares_03.png",
+        "session/portraits/heroes_campaign/ares_04.png",
+        "session/portraits/heroes_campaign/ares_05.png"
+    ],
+
+    "traits": [
+        "charismatic",
+        "cavalry_master"
+    ],
+
+    "bonuses": {
+        "movement": 1,
+        "combat": 15,
+        "command": 10
+    },
+
+    "titles": [
+        "Strategos",
+        "Basileus"
+    ]
+}

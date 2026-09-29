@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jato dos retrofoguetes de frenagem, apontado para baixo. -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="160.0"/>
+    <uniform name="lifetime" min="0.14" max="0.28"/>
+
+    <uniform name="position.x" min="-0.2" max="0.2"/>
+    <uniform name="position.z" min="-0.2" max="0.2"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-1.4" max="1.4"/>
+    <uniform name="velocity.y" min="-26.0" max="-18.0"/>
+    <uniform name="velocity.z" min="-1.4" max="1.4"/>
+    <uniform name="velocity.angle" min="-2.0" max="2.0"/>
+
+    <uniform name="size" min="1.1" max="1.6"/>
+    <constant name="size.growthRate" value="5.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.55" max="0.7"/>
+    <uniform name="color.b" min="0.25" max="0.4"/>
+</particles>

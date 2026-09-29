@@ -1,0 +1,25 @@
+{
+    "portraits": [
+        "session/portraits/heroes_campaign/pira_01.png",
+        "session/portraits/heroes_campaign/pira_02.png",
+        "session/portraits/heroes_campaign/pira_03.png",
+        "session/portraits/heroes_campaign/pira_04.png",
+        "session/portraits/heroes_campaign/pira_05.png"
+    ],
+
+    "traits": [
+        "charismatic",
+        "cavalry_master"
+    ],
+
+    "bonuses": {
+        "movement": 1,
+        "combat": 15,
+        "command": 10
+    },
+
+    "titles": [
+        "Strategos",
+        "Basileus"
+    ]
+}

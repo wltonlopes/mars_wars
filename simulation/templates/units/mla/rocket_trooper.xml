@@ -46,7 +46,7 @@
     <Civ>mla</Civ>
     <SpecificName>Explosivos Ceberus</SpecificName>
     <GenericName>Medium Artillery Infantry</GenericName>
-    <Icon>units/athen/champion_ranged.png</Icon>
+    <Icon>units/squad_anti-armor.png</Icon>
     <Tooltip>Medium Artillery unit armed with a rocket launcher.</Tooltip>
     <VisibleClasses datatype="tokens">Ranged Artillery</VisibleClasses>
   </Identity>

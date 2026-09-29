@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Brilho fraco dos bocais ainda quentes depois do pouso. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="20.0"/>
+    <uniform name="lifetime" min="0.3" max="0.5"/>
+
+    <uniform name="size" min="1.0" max="1.4"/>
+
+    <constant name="color.r" value="0.9"/>
+    <constant name="color.g" value="0.35"/>
+    <constant name="color.b" value="0.12"/>
+</particles>

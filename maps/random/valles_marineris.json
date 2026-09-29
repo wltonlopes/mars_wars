@@ -1,0 +1,10 @@
+{
+	"settings" : {
+		"Name" : "Valles Marineris",
+		"Script" : "valles_marineris.js",
+		"Description" : "The largest canyon system in the solar system, built from a real Martian heightmap: the Ius, Melas and Coprates chasmata cut the map from west to east, with the deep pit of Candor Chasma on the northern plateau. Teams start on opposite rims; steep walls are impassable cliffs and ramps carved into them are the only ways down.\n\nFive control points: three on the canyon floor (west, centre and east), one at the bottom of Candor Chasma and one inside an ice crater on the southern plateau, each guarded by ice mines (water). Capturable solar parks (energy) lie next to every base and at the top of the ramps.",
+		"Preview" : "valles_marineris.png",
+		"Keywords": ["multiplayer"],
+		"CircularMap" : false
+	}
+}

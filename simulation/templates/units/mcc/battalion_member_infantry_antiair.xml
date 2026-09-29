@@ -15,5 +15,6 @@
     <Identity>
         <GenericName>Soldado do Batlahão</GenericName>
         <SelectionGroupName>units/mcc/grenadier</SelectionGroupName>
+        <Icon>units/squad_anti-air.png</Icon>
     </Identity>
 </Entity>

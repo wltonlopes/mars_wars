@@ -3,5 +3,6 @@
     <Identity>
         <GenericName>Police</GenericName>
         <SelectionGroupName>units/mcc/teargas_police</SelectionGroupName>
+        <Icon>units/squad_anti-armor.png</Icon>
     </Identity>
 </Entity>

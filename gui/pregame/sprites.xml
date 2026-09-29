@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+	Menu principal do Mars Wars: painéis escuros semitransparentes, linhas finas
+	em laranja marciano e botões planos (sem textura de pedra).
+	Paleta: grafite 12 13 18 / laranja 240 120 60 / creme 236 230 220.
+-->
+<sprites>
+
+	<!-- Painel lateral do menu: vidro escuro, cabeçalho um pouco mais escuro. -->
+	<sprite name="MainMenuPanel">
+		<image backcolor="12 13 18 170" size="0 0 100% 100%"/>
+		<image backcolor="0 0 0 45" size="0 0 100% 120"/>
+	</sprite>
+
+	<!-- Linha à direita do painel (dividida em duas pelo submenu aberto). -->
+	<sprite name="MainMenuPanelRightBorder">
+		<image backcolor="240 120 60 150" size="0 0 100% 100%"/>
+	</sprite>
+
+	<!-- Submenu que desliza para o lado. -->
+	<sprite name="SubmenuPanel">
+		<image backcolor="16 17 24 215" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 150" size="0 0 100% 1"/>
+		<image backcolor="240 120 60 150" size="0 100%-1 100% 100%"/>
+		<image backcolor="240 120 60 150" size="100%-1 0 100% 100%"/>
+	</sprite>
+
+	<!-- Degradês suaves (texturas em pregame/mars/): escurecem a esquerda e a
+	     base da tela, para o menu ler bem sobre o céu claro do fundo. -->
+	<sprite name="MarsMenuShade">
+		<image texture="pregame/mars/shade_left.png" texture_size="0 0 100% 100%" size="0 0 100% 100%"/>
+	</sprite>
+
+	<sprite name="MarsBottomShade">
+		<image texture="pregame/mars/shade_bottom.png" texture_size="0 0 100% 100%" size="0 0 100% 100%"/>
+	</sprite>
+
+	<!-- Traço curto de destaque sob o título. -->
+	<sprite name="MarsAccentLine">
+		<image backcolor="240 120 60 255" size="0 0 100% 100%"/>
+	</sprite>
+
+	<!-- Botões do menu: planos, com separador fino; ao passar o mouse,
+	     fundo laranja translúcido e barra à esquerda. -->
+	<sprite name="MarsButton">
+		<image backcolor="255 255 255 6" size="0 0 100% 100%"/>
+		<image backcolor="255 255 255 16" size="0 100%-1 100% 100%"/>
+	</sprite>
+
+	<sprite name="MarsButtonOver">
+		<image backcolor="240 120 60 45" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 255" size="0 0 3 100%"/>
+	</sprite>
+
+	<sprite name="MarsButtonPressed">
+		<image backcolor="240 120 60 95" size="0 0 100% 100%"/>
+		<image backcolor="255 170 120 255" size="0 0 3 100%"/>
+	</sprite>
+
+	<sprite name="MarsButtonDisabled">
+		<image backcolor="255 255 255 3" size="0 0 100% 100%"/>
+		<image backcolor="255 255 255 10" size="0 100%-1 100% 100%"/>
+	</sprite>
+
+	<!-- Links da comunidade: contorno fino. -->
+	<sprite name="MarsLinkButton">
+		<image backcolor="255 255 255 8" size="0 0 100% 100%"/>
+		<image backcolor="255 255 255 40" size="0 0 100% 1"/>
+		<image backcolor="255 255 255 40" size="0 100%-1 100% 100%"/>
+		<image backcolor="255 255 255 40" size="0 0 1 100%"/>
+		<image backcolor="255 255 255 40" size="100%-1 0 100% 100%"/>
+	</sprite>
+
+	<sprite name="MarsLinkButtonOver">
+		<image backcolor="240 120 60 50" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 200" size="0 0 100% 1"/>
+		<image backcolor="240 120 60 200" size="0 100%-1 100% 100%"/>
+		<image backcolor="240 120 60 200" size="0 0 1 100%"/>
+		<image backcolor="240 120 60 200" size="100%-1 0 100% 100%"/>
+	</sprite>
+
+	<!-- Caixa de informações (descrição e links) e dicas. -->
+	<sprite name="MarsInfoBox">
+		<image backcolor="0 0 0 70" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 120" size="0 0 100% 1"/>
+	</sprite>
+
+	<sprite name="MarsTooltipBox">
+		<image backcolor="10 11 16 225" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 255" size="0 0 2 100%"/>
+	</sprite>
+
+	<!-- Mantido do 0 A.D.: caixa do relatório de uso, com o visual novo. -->
+	<sprite name="pgUserReportBox">
+		<image backcolor="10 11 16 215" size="0 0 100% 100%"/>
+		<image backcolor="240 120 60 150" size="0 0 100% 1"/>
+		<image backcolor="255 255 255 30" size="0 100%-1 100% 100%"/>
+		<image backcolor="255 255 255 30" size="0 0 1 100%"/>
+		<image backcolor="255 255 255 30" size="100%-1 0 100% 100%"/>
+	</sprite>
+
+</sprites>

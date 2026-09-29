@@ -1,0 +1,9 @@
+{
+	"code": "mcc",
+	"name": "Mars Colonial Company",
+	"civ": "mcc",
+	"color": "0 0 255",
+	"startProvinces": [
+		"utopia_planitia"
+	]
+}

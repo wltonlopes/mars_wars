@@ -11,5 +11,6 @@
     <Identity>
         <GenericName>Batalhão de Infantaria</GenericName>
         <SelectionGroupName/>
+        <Icon>units/squad_rifle.png</Icon>
     </Identity>
 </Entity>

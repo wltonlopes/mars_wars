@@ -9,5 +9,6 @@
     <Identity>
         <GenericName>Soldado do Batlahão</GenericName>
         <SelectionGroupName>units/mla/rocket_trooper</SelectionGroupName>
+        <Icon>units/squad_anti-air.png</Icon>
     </Identity>
 </Entity>

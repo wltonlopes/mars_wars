@@ -1,0 +1,9 @@
+{
+	"code": "mla",
+	"name": "Mars Liberty Alliance",
+	"civ": "mla",
+	"color": "0 255 255",
+	"startProvinces": [
+		"hellas_planitia"
+	]
+}

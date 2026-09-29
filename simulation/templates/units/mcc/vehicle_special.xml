@@ -5,7 +5,7 @@
   <Identity>
     <Civ>mcc</Civ>
     <SpecificName>Laser Vehicle Lion Cave</SpecificName>
-    <Icon>units/hele/siege_tower.png</Icon>
+    <Icon>units/armored.png</Icon>
   </Identity>
     <Health>
     <Max>390</Max>
