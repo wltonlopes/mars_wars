@@ -1,0 +1,10 @@
+{
+	"settings" : {
+		"Name" : "Hellas Basin",
+		"Script" : "battle/hellas_basin.js",
+		"Description" : "The giant impact basin of southern Mars. A rock wall rings the sunken floor, broken by four passes; an ice lake and two rock towers guard the centre.\n\n5 control points: the basin floor and each of the four passes. Hold 3 of them to win. Solar parks lie on the northern and southern flanks.",
+		"Preview" : "hellas_basin.png",
+		"Keywords": ["battle"],
+		"CircularMap" : true
+	}
+}

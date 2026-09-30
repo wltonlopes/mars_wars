@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Círculo de desdobramento do modo batalha (mla): anel de pouso com o emblema da facção. -->
+<actor version="1">
+  <group>
+    <variant>
+      <decal angle="0" depth="26" offsetx="0" offsetz="0" width="26"/>
+      <textures>
+        <texture file="props/deploy_zone_mla.png" name="baseTex"/>
+        <texture file="props/deploy_zone_norm.png" name="normTex"/>
+        <texture file="null_black.dds" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>terrain_norm_spec.xml</material>
+</actor>

@@ -1,0 +1,30 @@
+{
+	"Description": "Battle Mode: unidades que podem ser compradas para o exército inicial, com o custo em pontos. Nome e ícone vêm do template; \"Name\" substitui o nome quando o template não tem um bom.",
+	"Budgets": [500, 1000, 1500, 2500, 4000],
+	"DefaultBudget": 1000,
+	"Categories": [
+		{ "Id": "infantry", "Name": "Infantry Battalions" },
+		{ "Id": "armor", "Name": "Armored Vehicles" },
+		{ "Id": "air", "Name": "Air Units" }
+	],
+	"Civs": {
+		"mcc": [
+			{ "Template": "units/mcc/battalion_infantry_rifleman", "Category": "infantry", "Cost": 100, "Max": 10 },
+			{ "Template": "units/mcc/battalion_infantry_lmg", "Category": "infantry", "Cost": 130, "Max": 8 },
+			{ "Template": "units/mcc/battalion_infantry_police", "Category": "infantry", "Cost": 80, "Max": 8 },
+			{ "Template": "units/mcc/vehicle_heavy", "Category": "armor", "Cost": 200, "Max": 6 },
+			{ "Template": "units/mcc/vehicle_special", "Category": "armor", "Cost": 250, "Max": 4 },
+			{ "Template": "units/mcc/aero_01", "Name": "VTOL Gunship A-01", "Category": "air", "Cost": 150, "Max": 6 },
+			{ "Template": "units/mcc/aero_02", "Name": "VTOL Gunship A-02", "Category": "air", "Cost": 150, "Max": 6 }
+		],
+		"mla": [
+			{ "Template": "units/mla/battalion_infantry_rifleman", "Category": "infantry", "Cost": 100, "Max": 10 },
+			{ "Template": "units/mla/battalion_infantry_snipe", "Category": "infantry", "Cost": 130, "Max": 8 },
+			{ "Template": "units/mla/vehicle_light", "Category": "armor", "Cost": 120, "Max": 8 },
+			{ "Template": "units/mla/vehicle_medium", "Category": "armor", "Cost": 170, "Max": 6 },
+			{ "Template": "units/mla/vehicle_special", "Category": "armor", "Cost": 220, "Max": 4 },
+			{ "Template": "units/mla/drone_kamikaze", "Category": "air", "Cost": 50, "Max": 12 },
+			{ "Template": "units/mla/swarm_drone_kamikaze_01", "Category": "air", "Cost": 160, "Max": 6 }
+		]
+	}
+}

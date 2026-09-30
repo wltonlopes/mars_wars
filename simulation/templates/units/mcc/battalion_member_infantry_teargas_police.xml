@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="battalion_member|units/mcc/teargas_police">
+    <!-- O mixin battalion_member traz 30 de munição (ranged_combat); aqui são
+         as 3 granadas do policial (a recarga vem de units/mcc/teargas_police). -->
+    <Ammo>
+        <CurrAmmo>3</CurrAmmo>
+        <MaxAmmo>3</MaxAmmo>
+    </Ammo>
     <Identity>
         <GenericName>Police</GenericName>
         <SelectionGroupName>units/mcc/teargas_police</SelectionGroupName>

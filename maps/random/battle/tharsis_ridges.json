@@ -1,0 +1,10 @@
+{
+	"settings" : {
+		"Name" : "Tharsis Ridges",
+		"Script" : "battle/tharsis_ridges.js",
+		"Description" : "Two rock ridges split the field into three lanes, joined by narrow passes. A cliff-walled mesa rises in the centre, reachable only by one ramp facing each army.\n\n3 control points: the mesa top (with two solar parks) and one in each outer lane. Hold 2 of them to win.",
+		"Preview" : "tharsis_ridges.png",
+		"Keywords": ["battle"],
+		"CircularMap" : false
+	}
+}

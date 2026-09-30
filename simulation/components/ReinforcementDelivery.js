@@ -80,12 +80,19 @@ ReinforcementDelivery.prototype.Init = function()
 	this.phase = "";
 };
 
-ReinforcementDelivery.prototype.StartMission = function(missionId, provider, target, battalion)
+/**
+ * @param {Object} [options] - Missão avulsa (modo batalha): "standalone"
+ *   (sem AirSupportManager; a cápsula se remove sozinha no fim) e "rally"
+ *   ({x, z}: para onde a unidade vai depois de sair).
+ */
+ReinforcementDelivery.prototype.StartMission = function(missionId, provider, target, battalion, options)
 {
 	this.missionId = missionId;
 	this.provider = provider;
 	this.target = target;
 	this.battalion = battalion;
+	this.standalone = !!(options && options.standalone);
+	this.rally = options && options.rally;
 
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	cmpPosition.JumpTo(target.x, target.z);
@@ -214,6 +221,15 @@ ReinforcementDelivery.prototype.SpawnBattalion = function()
 	cmpPosition.SetYRotation(Math.atan2(-direction.x, -direction.z));
 	// Ao receber dono, o BattalionLeader cria os membros em volta do líder.
 	Engine.QueryInterface(leader, IID_Ownership).SetOwner(owner);
+
+	if (this.rally)
+		ProcessCommand(owner, {
+			"type": "walk",
+			"entities": [leader],
+			"x": this.rally.x,
+			"z": this.rally.z,
+			"queued": false
+		});
 };
 
 /**
@@ -231,6 +247,11 @@ ReinforcementDelivery.prototype.FinishMission = function()
 
 	const missionId = this.missionId;
 	this.missionId = 0;
+	if (this.standalone)
+	{
+		Engine.DestroyEntity(this.entity);
+		return;
+	}
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).FinishMission(missionId);
 };
 

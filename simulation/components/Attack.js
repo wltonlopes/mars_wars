@@ -288,20 +288,39 @@ Attack.prototype.GetAttackTypes = function(wantedTypes)
 
 Attack.prototype.GetPreferredClasses = function(type)
 {
-	if (this.template[type] && this.template[type].PreferredClasses &&
-	    this.template[type].PreferredClasses._string)
-		return this.template[type].PreferredClasses._string.split(/\s+/);
+	if (this.GetTypeTemplate(type) && this.GetTypeTemplate(type).PreferredClasses &&
+	    this.GetTypeTemplate(type).PreferredClasses._string)
+		return this.GetTypeTemplate(type).PreferredClasses._string.split(/\s+/);
 
 	return [];
 };
 
 Attack.prototype.GetRestrictedClasses = function(type)
 {
-	if (this.template[type] && this.template[type].RestrictedClasses &&
-	    this.template[type].RestrictedClasses._string)
-		return this.template[type].RestrictedClasses._string.split(/\s+/);
+	if (this.GetTypeTemplate(type) && this.GetTypeTemplate(type).RestrictedClasses &&
+	    this.GetTypeTemplate(type).RestrictedClasses._string)
+		return this.GetTypeTemplate(type).RestrictedClasses._string.split(/\s+/);
 
 	return [];
+};
+
+/**
+ * Arma secundária: quando a munição da arma principal (Ammo) acaba e o
+ * template tem <RangedSecondary>, o ataque "Ranged" passa a usar essa arma
+ * (ex.: granadeiro sem granadas saca a metralhadora). Volta à principal
+ * quando a munição é reposta.
+ */
+Attack.prototype.IsUsingSecondary = function(type)
+{
+	if (type != "Ranged" || !this.template.RangedSecondary)
+		return false;
+	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
+	return !!cmpAmmo && !cmpAmmo.HasAmmo();
+};
+
+Attack.prototype.GetTypeTemplate = function(type)
+{
+	return this.IsUsingSecondary(type) ? this.template.RangedSecondary : this.template[type];
 };
 
 Attack.prototype.CanAttack = function(target, wantedTypes)
@@ -417,7 +436,7 @@ Attack.prototype.GetFullAttackRange = function()
 
 Attack.prototype.GetAttackEffectsData = function(type, splash)
 {
-	let template = this.template[type];
+	let template = this.GetTypeTemplate(type);
 	if (!template)
 		return undefined;
 	if (splash)
@@ -462,13 +481,20 @@ Attack.prototype.GetBestAttackAgainst = function(target, allowCapture)
 	if (this.template.Slaughter && cmpIdentity.HasClass("Domestic"))
 		return "Slaughter";
 
+	// Alvos sem vida (pontos de controle) só podem ser capturados; sem isto,
+	// as unidades com munição abaixo atirariam neles para sempre.
+	if (allowCapture && !Engine.QueryInterface(target, IID_Health) &&
+		types.indexOf("Capture") != -1 && this.CanAttack(target, ["Capture"]))
+		return "Capture";
+
 	// Battalion/squad units carry an Ammo component.  Like Grapejuice's
 	// secondary-weapon logic, they use the melee weapon when an enemy is too
 	// close or the magazine is empty.  Other mod units retain vanilla choice.
 	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
 	if (cmpAmmo && this.template.Ranged && this.template.Melee)
 	{
-		if (!cmpAmmo.HasAmmo() || this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
+		if (!cmpAmmo.HasAmmo() && !this.template.RangedSecondary ||
+			this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
 			return this.CanAttack(target, ["Melee"]) ? "Melee" : undefined;
 		if (this.CanAttack(target, ["Ranged"]))
 			return "Ranged";
@@ -506,8 +532,8 @@ Attack.prototype.CompareEntitiesByPreference = function(a, b)
 Attack.prototype.GetAttackName = function(type)
 {
 	return {
-		"name": this.template[type].AttackName._string || this.template[type].AttackName,
-		"context": this.template[type].AttackName["@context"]
+		"name": this.GetTypeTemplate(type).AttackName._string || this.GetTypeTemplate(type).AttackName,
+		"context": this.GetTypeTemplate(type).AttackName["@context"]
 	};
 };
 
@@ -515,8 +541,8 @@ Attack.prototype.GetRepeatTime = function(type)
 {
 	let repeatTime = 1000;
 
-	if (this.template[type] && this.template[type].RepeatTime)
-		repeatTime = +this.template[type].RepeatTime;
+	if (this.GetTypeTemplate(type) && this.GetTypeTemplate(type).RepeatTime)
+		repeatTime = +this.GetTypeTemplate(type).RepeatTime;
 
 	return ApplyValueModificationsToEntity("Attack/" + type + "/RepeatTime", repeatTime, this.entity);
 };
@@ -524,21 +550,21 @@ Attack.prototype.GetRepeatTime = function(type)
 Attack.prototype.GetTimers = function(type)
 {
 	return {
-		"prepare": ApplyValueModificationsToEntity("Attack/" + type + "/PrepareTime", +(this.template[type].PrepareTime || 0), this.entity),
+		"prepare": ApplyValueModificationsToEntity("Attack/" + type + "/PrepareTime", +(this.GetTypeTemplate(type).PrepareTime || 0), this.entity),
 		"repeat": this.GetRepeatTime(type)
 	};
 };
 
 Attack.prototype.GetSplashData = function(type)
 {
-	if (!this.template[type].Splash)
+	if (!this.GetTypeTemplate(type).Splash)
 		return undefined;
 
 	return {
 		"attackData": this.GetAttackEffectsData(type, true),
-		"friendlyFire": this.template[type].Splash.FriendlyFire == "true",
-		"radius": ApplyValueModificationsToEntity("Attack/" + type + "/Splash/Range", +this.template[type].Splash.Range, this.entity),
-		"shape": this.template[type].Splash.Shape,
+		"friendlyFire": this.GetTypeTemplate(type).Splash.FriendlyFire == "true",
+		"radius": ApplyValueModificationsToEntity("Attack/" + type + "/Splash/Range", +this.GetTypeTemplate(type).Splash.Range, this.entity),
+		"shape": this.GetTypeTemplate(type).Splash.Shape,
 		"Stun": this.GetStun(type, true), // HC-Code
 		"Knockback": this.GetKnockback(type, true) // HC-Code
 	};
@@ -546,7 +572,7 @@ Attack.prototype.GetSplashData = function(type)
 
 Attack.prototype.GetKnockback = function(type, isSplash)
 {
-	const attack = this.template[type];
+	const attack = this.GetTypeTemplate(type);
 	const effect = attack && (isSplash ? attack.Splash : attack);
 	const knockback = effect && effect.Knockback;
 	if (!knockback)
@@ -566,13 +592,13 @@ Attack.prototype.GetKnockback = function(type, isSplash)
 
 Attack.prototype.GetRange = function(type)
 {
-	if (!type || !this.template[type])
+	if (!type || !this.GetTypeTemplate(type))
 		return this.GetFullAttackRange();
 
-	let max = +this.template[type].MaxRange;
+	let max = +this.GetTypeTemplate(type).MaxRange;
 	max = ApplyValueModificationsToEntity("Attack/" + type + "/MaxRange", max, this.entity);
 
-	let min = +(this.template[type].MinRange || 0);
+	let min = +(this.GetTypeTemplate(type).MinRange || 0);
 	min = ApplyValueModificationsToEntity("Attack/" + type + "/MinRange", min, this.entity);
 
 	return { "max": max, "min": min };
@@ -580,9 +606,9 @@ Attack.prototype.GetRange = function(type)
 
 Attack.prototype.GetAttackYOrigin = function(type)
 {
-	if (!this.template[type].Origin)
+	if (!this.GetTypeTemplate(type).Origin)
 		return 0;
-	return ApplyValueModificationsToEntity("Attack/" + type + "/Origin/Y", +this.template[type].Origin.Y, this.entity);
+	return ApplyValueModificationsToEntity("Attack/" + type + "/Origin/Y", +this.GetTypeTemplate(type).Origin.Y, this.entity);
 };
 
 Attack.prototype.RepeatRangeCheck = function(type) {
@@ -648,6 +674,7 @@ Attack.prototype.StartAttacking = function(target, type, callerIID, force)
 	this.target = target;
 	this.callerIID = callerIID;
 	this.force = force;
+	this.attackingWithSecondary = this.IsUsingSecondary(type);
 	this.timer = cmpTimer.SetInterval(this.entity, IID_Attack, "Attack", prepare, timings.repeat, type);
 	this.checkTimer = cmpTimer.SetInterval(this.entity, IID_Attack, "RepeatRangeCheck", checkStart, repeatPerCheck, type);
 	return true;
@@ -752,6 +779,18 @@ Attack.prototype.Attack = function(type, lateness)
 		}
 		delete this.resyncAnimation;
 	}
+
+	// A arma mudou (munição acabou ou foi reposta): recomeça o ataque para
+	// usar a cadência e o alcance da arma nova.
+	if (this.IsUsingSecondary(type) != this.attackingWithSecondary)
+	{
+		const target = this.target;
+		const callerIID = this.callerIID;
+		const force = this.force;
+		this.StopAttacking();
+		if (!this.StartAttacking(target, type, callerIID, force))
+			Engine.QueryInterface(this.entity, callerIID)?.ProcessMessage("TargetInvalidated", null);
+	}
 };
 
 /**
@@ -762,9 +801,9 @@ Attack.prototype.Attack = function(type, lateness)
 Attack.prototype.PerformAttack = function(type, target)
 {
 	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
-	if (type == "Ranged" && cmpAmmo)
+	if (type == "Ranged" && cmpAmmo && !this.IsUsingSecondary(type))
 	{
-		if (!cmpAmmo.HasAmmo() || this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
+		if (!cmpAmmo.HasAmmo() || this.template.Melee && this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
 		{
 			// Re-evaluate immediately when a target closes the gap, rather than
 			// completing another ranged animation/shot.
@@ -791,11 +830,11 @@ Attack.prototype.PerformAttack = function(type, target)
 		return;
 	const attackerOwner = cmpOwnership.GetOwner();
 
-    let isSplash = this.template[type].Splash != undefined; //HC-Code
+    let isSplash = this.GetTypeTemplate(type).Splash != undefined; //HC-Code
 	const data = {
 		"type": type,
 		"attackData": this.GetAttackEffectsData(type),
-		"kamikaze": this.template[type].Kamikaze == "true",
+		"kamikaze": this.GetTypeTemplate(type).Kamikaze == "true",
 		"splash": this.GetSplashData(type),
 		"attacker": this.entity,
 		"attackerOwner": attackerOwner,
@@ -810,7 +849,7 @@ Attack.prototype.PerformAttack = function(type, target)
 		data.EntityOnImpact = EntityOnImpact;
 	//HC-End
 
-	let delay = +(this.template[type].EffectDelay || 0);
+	let delay = +(this.GetTypeTemplate(type).EffectDelay || 0);
 
 	// Arma de feixe (LaserBeam): dano instantâneo no alvo, sem projétil.
 	const cmpLaserBeam = type == "Ranged" && Engine.QueryInterface(this.entity, IID_LaserBeam);
@@ -818,12 +857,12 @@ Attack.prototype.PerformAttack = function(type, target)
 	{
 		data.position = targetPosition;
 		data.direction = Vector3D.sub(targetPosition, selfPosition).normalize();
-		data.friendlyFire = !!this.template[type].Projectile && this.template[type].Projectile.FriendlyFire == "true";
+		data.friendlyFire = !!this.GetTypeTemplate(type).Projectile && this.GetTypeTemplate(type).Projectile.FriendlyFire == "true";
 		const cmpSound = Engine.QueryInterface(this.entity, IID_Sound);
 		data.attackImpactSound = cmpSound ? cmpSound.GetSoundGroup("attack_impact_" + type.toLowerCase()) : "";
 		cmpLaserBeam.Fire(targetPosition);
 	}
-	else if (this.template[type].Projectile)
+	else if (this.GetTypeTemplate(type).Projectile)
 	{
 		const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
 		const turnLength = cmpTimer.GetLatestTurnLength()/1000;
@@ -831,8 +870,8 @@ Attack.prototype.PerformAttack = function(type, target)
 		//  * Obstacles like trees could reduce the probability of the target being hit
 		//  * Obstacles like walls should block projectiles entirely
 
-		const horizSpeed = +this.template[type].Projectile.Speed;
-		const gravity = +this.template[type].Projectile.Gravity;
+		const horizSpeed = +this.GetTypeTemplate(type).Projectile.Speed;
+		const gravity = +this.GetTypeTemplate(type).Projectile.Gravity;
 		// horizSpeed /= 2; gravity /= 2; // slow it down for testing
 
 		// We will try to estimate the position of the target, where we can hit it.
@@ -872,7 +911,7 @@ Attack.prototype.PerformAttack = function(type, target)
 		const predictedHeight = cmpTargetPosition.GetHeightAt(predictedPosition.x, predictedPosition.z);
 
 		// Add inaccuracy based on spread.
-		const distanceModifiedSpread = ApplyValueModificationsToEntity("Attack/" + type + "/Projectile/Spread", +this.template[type].Projectile.Spread, this.entity) *
+		const distanceModifiedSpread = ApplyValueModificationsToEntity("Attack/" + type + "/Projectile/Spread", +this.GetTypeTemplate(type).Projectile.Spread, this.entity) *
 			predictedPosition.horizDistanceTo(selfPosition) / 100;
 
 		const randNorm = randomNormal2D();
@@ -887,12 +926,12 @@ Attack.prototype.PerformAttack = function(type, target)
 
 		data.direction = Vector3D.sub(data.position, selfPosition).div(realHorizDistance);
 
-		let actorName = this.template[type].Projectile.ActorName || "";
-		const impactActorName = this.template[type].Projectile.ImpactActorName || "";
-		const impactAnimationLifetime = this.template[type].Projectile.ImpactAnimationLifetime || 0;
+		let actorName = this.GetTypeTemplate(type).Projectile.ActorName || "";
+		const impactActorName = this.GetTypeTemplate(type).Projectile.ImpactActorName || "";
+		const impactAnimationLifetime = this.GetTypeTemplate(type).Projectile.ImpactAnimationLifetime || 0;
 
 		// TODO: Use unit rotation to implement x/z offsets.
-		const deltaLaunchPoint = new Vector3D(0, +this.template[type].Projectile.LaunchPoint["@y"], 0);
+		const deltaLaunchPoint = new Vector3D(0, +this.GetTypeTemplate(type).Projectile.LaunchPoint["@y"], 0);
 		let launchPoint = Vector3D.add(selfPosition, deltaLaunchPoint);
 
 		const cmpVisual = Engine.QueryInterface(this.entity, IID_Visual);
@@ -912,7 +951,7 @@ Attack.prototype.PerformAttack = function(type, target)
 		data.projectileId = cmpProjectileManager.LaunchProjectileAtPoint(launchPoint, data.position, horizSpeed, gravity, actorName, impactActorName, impactAnimationLifetime);
 
 		// Projétil que errou o alvo: some do chão depois de GroundLifetime segundos.
-		const groundLifetime = this.template[type].Projectile.GroundLifetime;
+		const groundLifetime = this.GetTypeTemplate(type).Projectile.GroundLifetime;
 		if (groundLifetime !== undefined)
 			Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).SetTimeout(SYSTEM_ENTITY, IID_DelayedDamage, "RemoveProjectile",
 				delay + groundLifetime * 1000, data.projectileId);
@@ -920,7 +959,7 @@ Attack.prototype.PerformAttack = function(type, target)
 		const cmpSound = Engine.QueryInterface(this.entity, IID_Sound);
 		data.attackImpactSound = cmpSound ? cmpSound.GetSoundGroup("attack_impact_" + type.toLowerCase()) : "";
 
-		data.friendlyFire = this.template[type].Projectile.FriendlyFire == "true";
+		data.friendlyFire = this.GetTypeTemplate(type).Projectile.FriendlyFire == "true";
 	}
 	else
 	{
@@ -968,7 +1007,7 @@ Attack.prototype.OnValueModification = function(msg)
 
 Attack.prototype.GetRangeOverlays = function(type = "Ranged")
 {
-	if (!this.template[type] || !this.template[type].RangeOverlay)
+	if (!this.GetTypeTemplate(type) || !this.GetTypeTemplate(type).RangeOverlay)
 		return [];
 
 	const range = this.GetRange(type);
@@ -977,9 +1016,9 @@ Attack.prototype.GetRangeOverlays = function(type = "Ranged")
 		if ((i == "min" || i == "max") && range[i])
 			rangeOverlays.push({
 				"radius": range[i],
-				"texture": this.template[type].RangeOverlay.LineTexture,
-				"textureMask": this.template[type].RangeOverlay.LineTextureMask,
-				"thickness": +this.template[type].RangeOverlay.LineThickness,
+				"texture": this.GetTypeTemplate(type).RangeOverlay.LineTexture,
+				"textureMask": this.GetTypeTemplate(type).RangeOverlay.LineTextureMask,
+				"thickness": +this.GetTypeTemplate(type).RangeOverlay.LineThickness,
 			});
 	return rangeOverlays;
 };

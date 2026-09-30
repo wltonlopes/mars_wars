@@ -53,19 +53,19 @@ export function* generateMap(mapSettings)
 {
 	setBiome("generic/nubia");
 
-	// Céu empoeirado cor de caramelo, sol fraco e névoa alaranjada.
+	// Mesmo ajuste de cor da Valles Marineris: pouca saturação e contraste, névoa densa.
 	setSkySet("desert");
 	setSunColor(1.18, 0.98, 0.82);
 	setSunElevation(0.62);
 	setSunRotation(randomAngle());
 	setAmbientColor(0.42, 0.33, 0.29);
 	setFogColor(0.82, 0.58, 0.42);
-	setFogFactor(0.0032);
-	setFogThickness(0.22);
+	setFogFactor(0.0076);
+	setFogThickness(0.45);
 	setPPEffect("hdr");
-	setPPSaturation(0.9);
-	setPPContrast(1.05);
-	setPPBloom(0.15);
+	setPPSaturation(0.5);
+	setPPContrast(0.10);
+	setPPBloom(0.05);
 
 	const heightLand = 25;
 	globalThis.g_Map = new RandomMap(heightLand, tRegolith);

@@ -1,0 +1,10 @@
+{
+	"settings" : {
+		"Name" : "Noctis Labyrinthus",
+		"Script" : "battle/noctis_labyrinthus.js",
+		"Description" : "The \"labyrinth of the night\": dozens of cliff-walled mesas form a maze of narrow corridors. Some mesas have a ramp and make good lookouts; a great mesa with four ramps holds the centre.\n\n5 control points: the central mesa, north, south and one near each army. Hold 3 of them to win.",
+		"Preview" : "noctis_labyrinthus.png",
+		"Keywords": ["battle"],
+		"CircularMap" : false
+	}
+}

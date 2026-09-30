@@ -9,7 +9,7 @@
 const CONTROL_POINT_REQUIRED_PERCENT = 60;
 const CONTROL_POINT_DEFAULT_DURATION = 5 * 60 * 1000;
 const CONTROL_POINT_DEFAULT_COUNT = 5;
-const CONTROL_POINT_TEMPLATE = "special/control_point";
+const CONTROL_POINT_TEMPLATE = "structures/control_point";
 const CONTROL_POINT_CLEAR_RADIUS = 5;
 const CONTROL_POINT_SPAWN_ATTEMPTS = 300;
 const CONTROL_POINT_SEARCH_STEP = 5;
@@ -46,7 +46,7 @@ Trigger.prototype.InitControlPointGame = function()
     if (!this.controlPoints.length && settings.mapType !== "skirmish")
         this.SpawnDefaultControlPoints();
 
-    warn(
+    log(
         "Found "
         + this.controlPoints.length +
         " Control Points."
@@ -497,7 +497,7 @@ function(data)
 
     this.controlPointData[data.entity].owner = data.to;
 
-    warn(
+    log(
         "Player "
         + data.to +
         " captured "
@@ -520,16 +520,43 @@ Trigger.prototype.GetControlPointVictoryDuration = function()
             IID_EndGameManager
         ).GetGameSettings();
 
+    const battle = this.GetBattleModeControlPointSettings();
+    if (battle && battle.holdTime)
+        return battle.holdTime * 1000;
+
     return settings.controlPointDuration || CONTROL_POINT_DEFAULT_DURATION;
+};
+
+/**
+ * Configuração do modo batalha (gui/battle_mode), se a partida for dele.
+ */
+Trigger.prototype.GetBattleModeControlPointSettings = function()
+{
+    const battleMode = InitAttributes.settings.BattleMode;
+    return battleMode && battleMode.controlPoints;
 };
 
 Trigger.prototype.GetControlPointRequiredCount = function()
 {
+    // Modo batalha: basta a maioria (mais da metade dos pontos).
+    if (this.GetBattleModeControlPointSettings())
+        return Math.floor(this.totalControlPoints / 2) + 1;
+
     return Math.ceil(
         this.totalControlPoints *
         CONTROL_POINT_REQUIRED_PERCENT /
         100
     );
+};
+
+/**
+ * Texto da parcela exigida, para as mensagens de contagem regressiva.
+ */
+Trigger.prototype.GetControlPointRequiredShareText = function()
+{
+    return this.GetBattleModeControlPointSettings() ?
+        markForTranslation("more than half") :
+        CONTROL_POINT_REQUIRED_PERCENT + "%";
 };
 
 Trigger.prototype.GetControlPointAlliedPlayers = function(playerID, activePlayers)
@@ -662,18 +689,21 @@ Trigger.prototype.StartControlPointVictoryCountdown = function(winningPlayers)
     const isTeam = winningPlayers.length > 1;
     const playerID = winningPlayers[0];
 
+    const share = this.GetControlPointRequiredShareText();
+
     this.othersControlPointVictoryMessage =
         cmpGuiInterface.AddTimeNotification(
             {
                 "message": isTeam ?
-                    markForTranslation("%(_player_)s and their allies control 60 porc. of the Control Points and will win in %(time)s.") :
-                    markForTranslation("%(_player_)s controls 60% of the Control Points and will win in %(time)s."),
+                    markForTranslation("%(_player_)s and their allies control %(share)s of the Control Points and will win in %(time)s.") :
+                    markForTranslation("%(_player_)s controls %(share)s of the Control Points and will win in %(time)s."),
                 "players": others,
                 "parameters": {
-                    "_player_": playerID
+                    "_player_": playerID,
+                    "share": share
                 },
                 "translateMessage": true,
-                "translateParameters": []
+                "translateParameters": ["share"]
             },
             duration
         );
@@ -682,10 +712,14 @@ Trigger.prototype.StartControlPointVictoryCountdown = function(winningPlayers)
         cmpGuiInterface.AddTimeNotification(
             {
                 "message": isTeam ?
-                    markForTranslation("You and your allies control 60 porc. of the Control Points and will win in %(time)s.") :
-                    markForTranslation("You control 60 porc. of the Control Points and will win in %(time)s."),
+                    markForTranslation("You and your allies control %(share)s of the Control Points and will win in %(time)s.") :
+                    markForTranslation("You control %(share)s of the Control Points and will win in %(time)s."),
                 "players": winningPlayers,
-                "translateMessage": true
+                "parameters": {
+                    "share": share
+                },
+                "translateMessage": true,
+                "translateParameters": ["share"]
             },
             duration
         );

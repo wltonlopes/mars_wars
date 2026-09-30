@@ -26,7 +26,7 @@
 		<!-- Set z value explicitly to be able to click buttons for low
 			resolutions, when they might be covered by project information.
 			Players should be able to exit at least. -->
-		<object name="mainMenuButtons" size="16 132 100%-16 500" z="60">
+		<object name="mainMenuButtons" size="16 120 100%-16 500" z="60">
 			<repeat count="10">
 				<object name="mainMenuButton[n]" type="button" style="MarsMenuButton" tooltip_style="pgToolTip"/>
 			</repeat>

@@ -36,7 +36,41 @@
         </Knockback>
       </Splash>
     </Ranged>
+    <!-- Arma secundária: usada quando as granadas acabam (ver Ammo). -->
+    <RangedSecondary>
+      <AttackName>Machine Gun</AttackName>
+      <Damage>
+        <Pierce>7</Pierce>
+      </Damage>
+      <MaxRange>40</MaxRange>
+      <MinRange>0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>500</PrepareTime>
+      <RepeatTime>1000</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>500.0</Speed>
+        <Spread>2.5</Spread>
+      </Projectile>
+    </RangedSecondary>
   </Attack>
+  <!-- 3 granadas; recarrega 1 a cada 8 s perto de uma estrutura própria. -->
+  <Ammo>
+    <CurrAmmo>3</CurrAmmo>
+    <MaxAmmo>3</MaxAmmo>
+    <Resupply>
+      <Range>30</Range>
+      <Interval>8000</Interval>
+      <Amount>1</Amount>
+      <Classes>Structure</Classes>
+    </Resupply>
+  </Ammo>
   <Cost>
     <Resources>
       <metal>50</metal>

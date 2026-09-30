@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Zona de desdobramento do modo batalha: onde o exército nasce.
+	- Dá 60 de população ao dono.
+	- Selecionada, mostra o botão de reforços (gui/session/z_battle_reinforce.js),
+	  que abre o painel para comprar mais tropas com os pontos de reforço.
+	- Não pode ser atacada nem capturada, e as unidades andam por cima.
+	- Conta como estrutura própria: granadeiros recarregam aqui.
+-->
+<Entity parent="template_structure">
+  <Capturable disable=""/>
+  <Decay disable=""/>
+  <Guard disable=""/>
+  <Health disable=""/>
+  <Loot disable=""/>
+  <Obstruction disable=""/>
+  <Repairable disable=""/>
+  <TerritoryDecay disable=""/>
+  <TerritoryInfluence disable=""/>
+  <ProductionQueue disable=""/>
+  <Researcher disable=""/>
+  <Trainer disable=""/>
+  <Footprint>
+    <Circle radius="12.0"/>
+    <Height>6.0</Height>
+  </Footprint>
+  <Identity>
+    <GenericName>Deployment Zone</GenericName>
+    <SpecificName>Deployment Zone</SpecificName>
+    <Classes datatype="tokens">DeployPoint</Classes>
+    <VisibleClasses datatype="tokens">DeployPoint</VisibleClasses>
+    <Tooltip>Where your army lands. Provides 60 population. Select it to call reinforcements with the points earned by holding control points.</Tooltip>
+    <Icon>units/squad_rifle.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Population>
+    <Bonus>60</Bonus>
+  </Population>
+  <Vision>
+    <Range>40</Range>
+  </Vision>
+</Entity>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_battle_deploy_point">
+  <Identity>
+    <Civ>mcc</Civ>
+  </Identity>
+  <VisualActor>
+    <Actor>structures/battle/deploy_point_mcc.xml</Actor>
+  </VisualActor>
+</Entity>

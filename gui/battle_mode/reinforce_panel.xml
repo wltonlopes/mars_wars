@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel de reforços do modo batalha (aberto pela zona de desdobramento). -->
+<objects>
+	<script directory="gui/common/"/>
+	<script file="gui/battle_mode/ReinforcePage.js"/>
+
+	<object type="image" sprite="color: 0 0 0 175"/>
+
+	<object type="image" style="SubmenuPanel" size="50%-380 50%-280 50%+380 50%+280">
+		<object type="text" style="MarsTitle" size="24 14 100%-24 48">
+			<translatableAttribute id="caption">REINFORCEMENTS</translatableAttribute>
+		</object>
+		<object type="image" sprite="MarsAccentLine" ghost="true" size="24 50 84 52"/>
+		<object name="statusText" type="text" style="MarsSmallText" size="24 58 100%-24 100" text_valign="top"/>
+
+		<object size="20 104 100%-20 100%-84">
+			<repeat count="8" var="n">
+				<object name="unitRow[n]" type="image" sprite="color: 255 255 255 8" hidden="true">
+					<object name="unitIcon[n]" type="image" size="4 4 44 44"/>
+					<object name="unitName[n]" type="text" style="MarsSmallText" size="54 2 100%-230 24" font="sans-bold-14"/>
+					<object name="unitInfo[n]" type="text" style="MarsSmallText" size="54 22 100%-230 44"/>
+					<object name="unitCost[n]" type="text" style="MarsSmallText" size="100%-222 4 100%-150 44" text_align="right"/>
+					<object name="unitMinus[n]" type="button" style="StoneButton" size="100%-136 8 100%-100 40">-</object>
+					<object name="unitCount[n]" type="text" style="MarsTitle" size="100%-96 4 100%-44 44" text_align="center" font="sans-bold-20"/>
+					<object name="unitPlus[n]" type="button" style="StoneButton" size="100%-40 8 100%-4 40">+</object>
+				</object>
+			</repeat>
+		</object>
+
+		<object name="summaryText" type="text" style="MarsSmallText" size="24 100%-76 100%-24 100%-52"/>
+		<object name="cancelButton" type="button" style="StoneButton" size="24 100%-44 224 100%-12" hotkey="cancel">
+			<translatableAttribute id="caption">Cancel</translatableAttribute>
+		</object>
+		<object name="deployButton" type="button" style="StoneButtonFancy" size="100%-224 100%-44 100%-24 100%-12">
+			<translatableAttribute id="caption">Deploy</translatableAttribute>
+		</object>
+	</object>
+</objects>

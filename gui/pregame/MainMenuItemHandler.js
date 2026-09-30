@@ -161,7 +161,7 @@ export class MainMenuItemHandler
  * Vertical size per button.
  * Mars Wars: botões planos mais altos (0 A.D.: 28).
  */
-MainMenuItemHandler.prototype.ButtonHeight = 34;
+MainMenuItemHandler.prototype.ButtonHeight = 30;
 
 /**
  * Distance between consecutive buttons.
