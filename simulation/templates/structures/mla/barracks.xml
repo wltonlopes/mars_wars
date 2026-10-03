@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_military_barracks">
   <AirSupportProvider>
     <tunnel>
@@ -27,11 +27,23 @@
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/battalion_infantry_rifleman
+      units/{civ}/battalion_infantry_flamethrower
       units/{civ}/battalion_infantry_snipe
+      units/{civ}/battalion_infantry_ghost
     </Entities>
   </Trainer>
   <VisualActor>
     <Actor>structures/mla/bunker.xml</Actor>
     <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
   </VisualActor>
+  <!-- População: cada quartel amplia o efetivo. -->
+  <Population>
+    <Bonus>20</Bonus>
+  </Population>
+  <Researcher>
+    <Technologies datatype="tokens">
+      military_quarters
+      modular_barracks
+    </Technologies>
+  </Researcher>
 </Entity>

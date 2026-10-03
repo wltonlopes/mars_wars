@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_member|units/mla/ghost">
+    <Identity>
+        <GenericName>Ghost</GenericName>
+        <SelectionGroupName>units/mla/battalion_ghost</SelectionGroupName>
+        <Icon>units/squad_stealth.png</Icon>
+    </Identity>
+</Entity>

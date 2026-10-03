@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chama-piloto no bocal do lança-chamas enquanto ataca. -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <constant name="emissionrate" value="40.0"/>
+    <uniform name="lifetime" min="0.10" max="0.20"/>
+    <uniform name="position.x" min="-0.03" max="0.03"/>
+    <uniform name="position.y" min="-0.03" max="0.03"/>
+    <uniform name="position.z" min="-0.03" max="0.03"/>
+    <uniform name="velocity.x" min="-0.2" max="0.2"/>
+    <uniform name="velocity.y" min="0.2" max="0.8"/>
+    <uniform name="velocity.z" min="-0.2" max="0.2"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="size" min="0.20" max="0.35"/>
+    <uniform name="color.r" min="0.9" max="1.0"/>
+    <uniform name="color.g" min="0.5" max="0.7"/>
+    <uniform name="color.b" min="0.2" max="0.3"/>
+</particles>

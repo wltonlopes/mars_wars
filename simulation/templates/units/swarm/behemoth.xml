@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/grenadier">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Acid Behemoth</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Tank-sized monster that spits great amounts of acid.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/elephant_african_bush.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Ranged>
+      <AttackName>Acid</AttackName>
+      <Damage>
+        <Fire>40</Fire>
+        <Crush>20</Crush>
+      </Damage>
+      <MaxRange>45</MaxRange>
+      <RepeatTime>4000</RepeatTime>
+      <Splash>
+        <Damage>
+          <Fire>20</Fire>
+        </Damage>
+        <Range>14</Range>
+      </Splash>
+    </Ranged>
+    <RangedSecondary disable=""/>
+  </Attack>
+  <Ammo disable=""/>
+  <Health>
+    <Max>1400</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>6</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>5</Population>
+    <BuildTime>50</BuildTime>
+    <Resources>
+      <food>300</food>
+      <metal>200</metal>
+      <stone>0</stone>
+      <wood>100</wood>
+    </Resources>
+  </Cost>
+  <Footprint>
+    <Circle radius="4.0"/>
+    <Height>6.0</Height>
+  </Footprint>
+</Entity>

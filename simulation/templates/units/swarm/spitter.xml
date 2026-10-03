@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/grenadier">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Spitter</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Creature that spits acid from a distance.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/crocodile.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Ranged>
+      <AttackName>Acid</AttackName>
+      <Damage>
+        <Fire>14</Fire>
+        <Crush>7</Crush>
+      </Damage>
+      <MaxRange>35</MaxRange>
+      <RepeatTime>2500</RepeatTime>
+      <Splash>
+        <Damage>
+          <Fire>7</Fire>
+        </Damage>
+        <Range>6</Range>
+      </Splash>
+    </Ranged>
+    <RangedSecondary disable=""/>
+  </Attack>
+  <Ammo disable=""/>
+  <Health>
+    <Max>200</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>7.5</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>1</Population>
+    <BuildTime>18</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>60</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

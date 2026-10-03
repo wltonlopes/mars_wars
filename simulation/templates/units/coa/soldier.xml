@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/rifleman">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition Rifleman</GenericName>
+    <Icon>units/squad_rifle.png</Icon>
+    <Tooltip>Well equipped soldier. Loses accuracy without a nearby officer or command.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/units/mcc/rifle_assalt.xml</Actor>
+  </VisualActor>
+</Entity>

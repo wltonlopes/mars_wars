@@ -5,8 +5,8 @@
  */
 
 const g_ReinforceCatalogPath = "simulation/data/battle_mode/army_catalog.json";
-const g_ReinforceRowHeight = 48;
-const g_ReinforceRowGap = 4;
+const g_ReinforceRowHeight = 42;
+const g_ReinforceRowGap = 3;
 
 var g_ReinforcePage;
 
@@ -112,7 +112,10 @@ class ReinforcePage
 				"income": status.income,
 				"time": timeToString(status.interval),
 				"pop": status.popPerControlPoint
-			});
+			}) +
+			(status.deployIncome ? "\n" + sprintf(translate("Deployment zone: +%(income)s points per minute."), {
+				"income": status.deployIncome
+			}) : "");
 
 		for (let i = 0; i < this.rowCount(); ++i)
 		{

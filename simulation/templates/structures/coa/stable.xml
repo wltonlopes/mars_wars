@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mcc/stable">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Motor Pool</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/stable.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/vehicle_ifv
+      units/{civ}/vehicle_mbt
+      units/{civ}/vehicle_titan_packed
+    </Entities>
+  </Trainer>
+</Entity>

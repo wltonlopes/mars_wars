@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tempestade de areia convocada pelo centro cívico dos piratas
+     (AirSupportProvider tipo sandstorm). Mesma tempestade do clima, porém
+     menor, mais lenta (vai à deriva) e com raios mais fortes que só
+     atingem inimigos. -->
+<Entity parent="special/weather/sandstorm">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Summoned Sandstorm</GenericName>
+    <Icon>special/sandstorm.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Sandstorm>
+    <Radius>70</Radius>
+    <Speed>2.5</Speed>
+    <CloudCount>5</CloudCount>
+    <CloudRing>42</CloudRing>
+    <MissionDuration>40</MissionDuration>
+    <FriendlyFire>false</FriendlyFire>
+    <Lightning>
+      <MinInterval>0.8</MinInterval>
+      <MaxInterval>2.2</MaxInterval>
+      <TargetChance>0.6</TargetChance>
+      <Damage>
+        <Crush>40</Crush>
+        <Fire>80</Fire>
+      </Damage>
+      <Radius>7</Radius>
+    </Lightning>
+  </Sandstorm>
+</Entity>

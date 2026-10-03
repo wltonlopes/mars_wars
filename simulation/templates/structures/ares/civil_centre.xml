@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/civil_centre">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Legion Citadel</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/structures/mla/civic_center.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/worker
+      units/{civ}/battalion_legion
+      units/{civ}/battalion_shock
+    </Entities>
+  </Trainer>
+</Entity>

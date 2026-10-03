@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/civil_centre">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Caravan Hub</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>vehicle/pira/cc.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/worker
+      units/{civ}/battalion_raiders
+      units/{civ}/scout
+    </Entities>
+  </Trainer>
+  <AirSupportProvider replace="">
+    <sandstorm>
+      <Cooldown>240</Cooldown>
+      <Template>special/sandstorm_strike</Template>
+    </sandstorm>
+  </AirSupportProvider>
+</Entity>

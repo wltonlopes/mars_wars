@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Esquadrão campeão: muralha de quatro escudos pesados em linha cerrada. -->
+<Entity parent="battalion_profile_defense|units/mcc/heavy_shield">
+    <BattalionLeader>
+        <Columns>4</Columns>
+        <Spacing>3.2</Spacing>
+        <MemberTemplates>units/mcc/battalion_member_infantry_heavy_shield:4</MemberTemplates>
+        <MemberRoles>units/mcc/battalion_member_infantry_heavy_shield:4:front</MemberRoles>
+    </BattalionLeader>
+    <Trainer>
+        <Entities datatype="tokens">units/mcc/battalion_member_infantry_heavy_shield</Entities>
+    </Trainer>
+    <Identity>
+        <GenericName>Bulwark Squad</GenericName>
+        <SelectionGroupName/>
+        <Icon>units/squad_assalt.png</Icon>
+        <Tooltip>Champion squad of heavy shield troopers: a slow, heavily armoured wall that blocks ranged fire and hits hard.</Tooltip>
+    </Identity>
+</Entity>

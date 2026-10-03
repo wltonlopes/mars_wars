@@ -2,7 +2,7 @@
  * Botões de apoio aéreo e reforços para estruturas com AirSupportProvider.
  *
  * Cada tipo (bombardeiro, míssil nuclear, laser orbital, ICBM, cápsula
- * orbital, túnel)
+ * orbital, túnel, tempestade de areia)
  * tem seu botão; uma estrutura pode ter vários (entState.airSupport é uma
  * lista, um status por poder). O botão coloca a GUI em
  * modo de mira (como Patrulhar); o clique esquerdo no terreno envia o
@@ -57,6 +57,14 @@ var g_AirSupportTypes = {
 		"cursorTooltip": markForTranslation("Left-click to choose the tunnel exit, right-click to cancel."),
 		"readyText": markForTranslation("Dig a tunnel that opens at the chosen point and releases an infantry battalion (%(pop)s population). The exit must be at least %(distance)s m from enemy buildings."),
 		"activeText": markForTranslation("The tunnel is being dug.")
+	},
+	"sandstorm": {
+		"action": 106,
+		"icon": "special/sandstorm.png",
+		"name": markForTranslation("Summon Sandstorm"),
+		"cursorTooltip": markForTranslation("Left-click to choose where the sandstorm forms, right-click to cancel."),
+		"readyText": markForTranslation("A sandstorm with lightning forms at the chosen point and drifts away from this building for about 40 seconds. Inside it units move 25%% slower and see 50%% less; the lightning only strikes enemies. All players are warned."),
+		"activeText": markForTranslation("The sandstorm is raging.")
 	}
 };
 

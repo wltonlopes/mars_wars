@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/field">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Moisture Farm</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/structures/mla/greenhouse.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mochila com os tanques de combustível do lança-chamas (faixa na cor do jogador). -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/armor/flame_tank.dae</mesh>
+      <textures>
+        <texture file="props/weapons/flamethrower.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

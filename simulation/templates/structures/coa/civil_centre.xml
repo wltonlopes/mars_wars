@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mcc/civil_centre">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition Command</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/civic_center.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/worker
+      units/{civ}/battalion_rifle
+      units/{civ}/officer
+    </Entities>
+  </Trainer>
+  <Auras datatype="tokens">factions/coa_hq</Auras>
+</Entity>

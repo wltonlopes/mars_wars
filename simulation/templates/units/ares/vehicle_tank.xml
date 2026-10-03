@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/vehicle_heavy">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Ares Battle Tank</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Main battle tank of the Legion: thick armour, heavy cannon.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/vehicle/mcc/mammoth.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>45</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>250</metal>
+      <stone>220</stone>
+      <wood>120</wood>
+    </Resources>
+  </Cost>
+</Entity>

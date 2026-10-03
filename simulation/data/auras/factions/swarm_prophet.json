@@ -1,0 +1,65 @@
+{
+	"type": "range",
+	"radius": 90,
+	"affects": [
+		"SwarmMass",
+		"Creature"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Melee/Damage/Fire",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.25
+		},
+		{
+			"value": "Attack/Melee/RepeatTime",
+			"multiply": 0.85
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.85
+		},
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"add": 3
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"add": 3
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"add": 3
+		}
+	],
+	"auraName": "Cohesion (Prophet)",
+	"auraDescription": "The Prophet's will: +25% damage, +15% attack speed and +3 armour in a wide area.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

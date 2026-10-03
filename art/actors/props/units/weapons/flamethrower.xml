@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lança-chamas (malha gerada por tools/flamethrower/gen_flamethrower.py). -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/weapons/flamethrower.dae</mesh>
+      <textures>
+        <texture file="props/weapons/flamethrower.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <!-- Atacando: chama-piloto acesa no bocal. -->
+    <variant name="attack_ranged">
+      <props>
+        <prop actor="particle/flamethrower/flame_pilot.xml" attachpoint="shoot"/>
+      </props>
+    </variant>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

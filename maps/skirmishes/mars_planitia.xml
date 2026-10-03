@@ -42,7 +42,7 @@
   "AllyView": false,
   "CircularMap": true,
   "Description": "Mars",
-  "Keywords": [],
+  "Keywords": ["mars"],
   "LockTeams": false,
   "Name": "mars_planitia",
   "PlayerData": [

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/forge">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Gene Temple</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/structures/mla/lab.xml</Actor>
+  </VisualActor>
+</Entity>

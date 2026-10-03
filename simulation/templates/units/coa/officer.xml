@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/rifleman">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Officer</GenericName>
+    <SpecificName>Field Officer</SpecificName>
+    <Icon>units/battalion_leader.png</Icon>
+    <Tooltip>Chain of command: units around the officer keep their accuracy, fire faster and see further.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/units/mcc/rifle_assalt_champion.xml</Actor>
+  </VisualActor>
+  <Auras datatype="tokens">factions/coa_command</Auras>
+  <Cost>
+    <BuildTime>30</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>100</metal>
+      <stone>0</stone>
+      <wood>50</wood>
+    </Resources>
+  </Cost>
+</Entity>

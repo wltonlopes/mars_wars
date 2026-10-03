@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jato de chamas de 24 m (gerado por tools/flamethrower/gen_flamethrower.py) -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/flame_anchor.dae</mesh>
+      <props>
+        <prop actor="particle/flamethrower/jet_024.xml" attachpoint="root"/>
+        <prop actor="particle/flamethrower/jet_core_024.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/weapons/flamethrower.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

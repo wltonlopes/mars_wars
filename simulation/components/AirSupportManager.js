@@ -23,6 +23,10 @@ AirSupportManager.prototype.LAUNCH_MESSAGES = {
 	"nuke": [
 		markForTranslation("Nuclear strike inbound. Impact in %(time)s."),
 		markForTranslation("WARNING: Nuclear missile incoming! Impact in %(time)s.")
+	],
+	"sandstorm": [
+		markForTranslation("Sandstorm summoned. It dies down in %(time)s."),
+		markForTranslation("Warning: the Dune Pirates summoned a sandstorm! It dies down in %(time)s.")
 	]
 };
 
@@ -54,6 +58,7 @@ AirSupportManager.prototype.VEHICLE_INTERFACES = {
 	"icbm": "IID_IcbmMissile",
 	"nuke": "IID_IcbmMissile",
 	"orbital_laser": "IID_OrbitalStrike",
+	"sandstorm": "IID_Sandstorm",
 	"drop_pod": "IID_ReinforcementDelivery",
 	"tunnel": "IID_ReinforcementDelivery"
 };
@@ -122,6 +127,11 @@ AirSupportManager.prototype.RequestMission = function(provider, owner, type, tar
 		const path = AirSupport.CreateFlightPath(target, direction, this.MAP_EDGE_MARGIN);
 		const flightTime = cmpVehicle.StartMission(missionId, provider, path.entry, target);
 		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, flightTime);
+	}
+	else if (type == "sandstorm")
+	{
+		const duration = cmpVehicle.StartMission(missionId, provider, parameters.origin, target);
+		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, duration);
 	}
 	else if (type == "orbital_laser")
 		cmpVehicle.StartMission(missionId, provider, target);

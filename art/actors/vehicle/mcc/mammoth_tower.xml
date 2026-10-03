@@ -5,7 +5,7 @@
 		<variant frequency="1" name="Base">
 			<mesh>vehicle/mammoth_tower.dae</mesh>
 			<props>
-        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="root"/>
+        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="projectile"/>
         <prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
@@ -17,6 +17,12 @@
 	</group>
 	<group>
 		<variant frequency="100" name="Idle"/>
+		<!-- Disparando: fumaça saindo do cano. -->
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/vehicle_cannon_smoke.xml" attachpoint="projectile"/>
+			</props>
+		</variant>
 		<variant name="death">
 			<props>
 				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>

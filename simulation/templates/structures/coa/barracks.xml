@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mcc/barracks">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Garrison</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/bunker.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_rifle
+      units/{civ}/battalion_rangers
+      units/{civ}/officer
+    </Entities>
+  </Trainer>
+  <AirSupportProvider>
+    <drop_pod>
+      <Battalion datatype="tokens" replace="">units/coa/battalion_rifle units/coa/battalion_rangers</Battalion>
+    </drop_pod>
+  </AirSupportProvider>
+</Entity>

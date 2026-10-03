@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Infantaria pesada de escudo balístico: escudo na mão esquerda (prop
+     "shield"), arma na direita. Animações geradas por
+     tools/animation/gen_heavy_assault.py. -->
+<variant name="Base" frequency="1">
+  <animations>
+    <animation file="biped/heavy_shield/idle.dae" name="Idle" speed="100"/>
+    <!-- Passo curto e pesado, sempre atrás do escudo (speed = % por metro/segundo). -->
+    <animation file="biped/heavy_shield/walk.dae" name="Walk" speed="30"/>
+    <animation file="biped/heavy_shield/walk.dae" name="Run" speed="30"/>
+    <!-- Ergue a arma ao lado do escudo e dispara; event = 1º tiro. -->
+    <animation event="0.36" file="biped/heavy_shield/shoot.dae" name="attack_ranged" speed="100"/>
+    <!-- Sem munição ou colado no inimigo (arma secundária): mesmo gesto, à queima-roupa. -->
+    <animation event="0.36" file="biped/heavy_shield/shoot.dae" name="attack_melee" speed="100"/>
+    <animation file="biped/heavy_shield/death.dae" name="death" speed="100"/>
+  </animations>
+</variant>

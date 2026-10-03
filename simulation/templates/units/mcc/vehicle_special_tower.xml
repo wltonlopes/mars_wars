@@ -47,6 +47,7 @@
     <ImpactActor>props/units/weapons/laser_beam/impact.xml</ImpactActor>
   </LaserBeam>
   <Health>
+    <DeathType>vanish</DeathType>
     <Max>400</Max>
   </Health>
   <Identity>
@@ -65,6 +66,13 @@
   </VisualActor>
   <!-- Torre montada no veículo: quem entra em formação é o veículo. -->
   <UnitAI>
+    <DefaultStance>standground</DefaultStance>
     <Formations disable=""/>
   </UnitAI>
+  <!-- Torreta: sem alvo volta para a frente do veículo; não persegue alvos
+       (atira no que entra no alcance) e gira com velocidade realista. -->
+  <TurretRest/>
+  <Position>
+    <TurnRate>3.0</TurnRate>
+  </Position>
 </Entity>

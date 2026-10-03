@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/heavy_rifleman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Abomination</GenericName>
+    <Icon>units/squad_machine_gun.png</Icon>
+    <Tooltip>A human turned into a biological weapon.</Tooltip>
+    <Classes datatype="tokens">Creature</Classes>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/units/mcc/heavy_rifle_assault.xml</Actor>
+  </VisualActor>
+  <Health>
+    <Max>420</Max>
+  </Health>
+  <Cost>
+    <BuildTime>26</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>80</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

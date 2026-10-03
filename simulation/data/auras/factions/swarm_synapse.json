@@ -1,0 +1,64 @@
+{
+	"type": "range",
+	"radius": 45,
+	"affects": [
+		"Creature"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Melee/Damage/Fire",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.3
+		},
+		{
+			"value": "Attack/Melee/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"add": 1
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"add": 1
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"add": 1
+		}
+	],
+	"auraName": "Synaptic Link",
+	"auraDescription": "Neural node: creatures nearby fight with +30% damage, +10% attack speed and +1 armour.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

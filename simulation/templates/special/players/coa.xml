@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_player_mars">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Earth Coalition</GenericName>
+    <History>After years of controversy around the MCC, Earth's great powers voted for an international intervention. Forces from the United States, China, India, Brazil, Russia, the European Union, Nigeria and others arrived to "stabilise" Mars - but who gave Earth the right to decide the planet's future? "Mars must be stabilised."</History>
+    <Icon>emblems/emblem_coa.png</Icon>
+  </Identity>
+</Entity>

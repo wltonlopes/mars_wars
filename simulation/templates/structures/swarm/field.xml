@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/field">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Biomass Bed</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/structures/mla/greenhouse.xml</Actor>
+  </VisualActor>
+</Entity>

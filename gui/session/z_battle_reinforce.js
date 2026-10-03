@@ -19,7 +19,9 @@ g_EntityCommands["battle-reinforce"] = {
 					"time": timeToString(status.interval),
 					"pop": status.popPerControlPoint,
 					"held": status.controlPoints
-				})),
+				}) + (status.deployIncome ? " " + sprintf(translate("The deployment zone gives %(income)s points per minute."), {
+					"income": status.deployIncome
+				}) : "")),
 			"icon": "production.png",
 			"portrait": "units/squad_rifle.png",
 			"count": Math.floor(status.points),

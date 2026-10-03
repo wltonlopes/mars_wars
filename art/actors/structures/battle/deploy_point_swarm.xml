@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="others/waypoints/base.xml" frequency="1" name="Base">
+      <props>
+        <prop actor="props/structures/decals/deploy_zone_swarm.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/banner_swarm.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans_norm_spec.xml</material>
+</actor>

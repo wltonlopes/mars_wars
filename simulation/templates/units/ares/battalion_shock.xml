@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_assault|units/ares/shock_trooper">
+  <BattalionLeader>
+    <MemberTemplates>units/ares/battalion_member_shock_trooper:4</MemberTemplates>
+    <MemberRoles>units/ares/battalion_member_shock_trooper:4:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/ares/battalion_member_shock_trooper</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Shock Cohort</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_assalt.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>26</BuildTime>
+    <Resources>
+      <food>110</food>
+      <metal>90</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

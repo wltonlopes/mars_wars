@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/barracks">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>War Hall</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/structures/mla/bunker.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_legion
+      units/{civ}/battalion_shock
+      units/{civ}/exo_trooper
+    </Entities>
+  </Trainer>
+  <AirSupportProvider>
+    <tunnel>
+      <Battalion datatype="tokens" replace="">units/ares/battalion_legion units/ares/battalion_shock</Battalion>
+    </tunnel>
+  </AirSupportProvider>
+</Entity>

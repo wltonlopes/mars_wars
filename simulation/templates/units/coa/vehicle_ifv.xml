@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/vehicle_special">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition IFV</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Infantry fighting vehicle.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/vehicle/mcc/cavelion.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>40</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>220</metal>
+      <stone>180</stone>
+      <wood>120</wood>
+    </Resources>
+  </Cost>
+</Entity>

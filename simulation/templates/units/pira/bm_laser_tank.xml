@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/vehicle_special">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Black Market: Laser Vehicle</GenericName>
+    <Tooltip>Bought on the black market: an outside faction's unit at a higher price.</Tooltip>
+  </Identity>
+  <Cost>
+    <BuildTime>40</BuildTime>
+    <Resources>
+      <food>180</food>
+      <metal>225</metal>
+      <wood>120</wood>
+    </Resources>
+  </Cost>
+</Entity>

@@ -11,7 +11,6 @@
       structures/{civ}/civil_centre
       structures/{civ}/silos
       structures/{civ}/aero
-      structures/{civ}/house
       structures/{civ}/barracks
       structures/{civ}/forge
       structures/{civ}/storehouse
@@ -24,4 +23,8 @@
   <VisualActor>
     <Actor>units/mla/worker.xml</Actor>
   </VisualActor>
+  <!-- Limite de trabalhadores (special/players: categoria Worker). -->
+  <TrainingRestrictions>
+    <Category>Worker</Category>
+  </TrainingRestrictions>
 </Entity>

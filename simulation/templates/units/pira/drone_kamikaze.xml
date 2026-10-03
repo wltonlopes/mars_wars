@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/drone_kamikaze">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Scrap Drone</GenericName>
+    <Icon>units/drone.png</Icon>
+    <Tooltip>Improvised kamikaze drone.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/vehicle/mla/drone_kamikaze.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>12</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>40</metal>
+      <stone>0</stone>
+      <wood>40</wood>
+    </Resources>
+  </Cost>
+</Entity>

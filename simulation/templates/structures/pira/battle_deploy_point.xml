@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_battle_deploy_point">
+  <Identity>
+    <Civ>pira</Civ>
+  </Identity>
+  <VisualActor>
+    <Actor>structures/battle/deploy_point_pira.xml</Actor>
+  </VisualActor>
+</Entity>

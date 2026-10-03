@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/sniper_oper">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Dune Scout</GenericName>
+    <SpecificName>Sharpshooter Scout</SpecificName>
+    <Icon>units/squad_recon.png</Icon>
+    <Tooltip>Long sight and a long rifle: finds the enemy and picks targets for ambushes.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/units/mla/rifle_assalt_champion_snipe_p.xml</Actor>
+  </VisualActor>
+  <Vision>
+    <Range>120</Range>
+  </Vision>
+  <Cost>
+    <BuildTime>14</BuildTime>
+    <Resources>
+      <food>50</food>
+      <metal>60</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

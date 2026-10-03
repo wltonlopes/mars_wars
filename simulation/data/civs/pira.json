@@ -1,0 +1,39 @@
+{
+	"Code": "pira",
+	"Culture": "Mars",
+	"Music": [
+		{
+			"File": "menu_theme.ogg",
+			"Type": "peace"
+		}
+	],
+	"CivBonuses": [],
+	"TeamBonuses": [],
+	"WallSets": [
+		"structures/wallset_palisade",
+		"structures/achae/wallset_stone"
+	],
+	"StartEntities": [
+		{
+			"Template": "structures/pira/civil_centre"
+		},
+		{
+			"Template": "units/pira/worker",
+			"Count": 3
+		},
+		{
+			"Template": "units/pira/battalion_raiders",
+			"Count": 2
+		}
+	],
+	"AINames": [
+		"Dune Pirates I",
+		"Dune Pirates II",
+		"Dune Pirates III"
+	],
+	"SkirmishReplacements": {
+		"skirmish/units/default_support_civilian": "units/pira/worker",
+		"skirmish/units/default_infantry_ranged_b": "units/pira/battalion_raiders"
+	},
+	"SelectableInGameSetup": true
+}

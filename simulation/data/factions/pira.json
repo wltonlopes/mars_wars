@@ -1,0 +1,50 @@
+{
+	"Name": "Piratas das Dunas",
+	"Description": "Velocidade, reconhecimento e saque. Pouca blindagem e estruturas frágeis.",
+	"Doctrine": [
+		{
+			"affects": [
+				"Unit"
+			],
+			"modifications": [
+				{
+					"value": "UnitMotion/WalkSpeed",
+					"multiply": 1.2
+				},
+				{
+					"value": "Vision/Range",
+					"multiply": 1.2
+				},
+				{
+					"value": "Health/Max",
+					"multiply": 0.9
+				}
+			]
+		},
+		{
+			"affects": [
+				"Structure"
+			],
+			"modifications": [
+				{
+					"value": "Health/Max",
+					"multiply": 0.75
+				},
+				{
+					"value": "Cost/BuildTime",
+					"multiply": 0.6
+				}
+			]
+		}
+	],
+	"Loot": {
+		"Range": 60,
+		"Share": 0.4,
+		"Classes": [
+			"Vehicle",
+			"Structure",
+			"Siege"
+		],
+		"FallbackPerPop": 60
+	}
+}

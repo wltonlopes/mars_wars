@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="units/coa/vehicle_titan_packed">
+  <!-- Titan descompactado (implantado): canhão erguido, fica parado e atira.
+       Permanece descompactado enquanto não receber ordem de movimento. -->
+  <Pack>
+    <Entity>units/coa/vehicle_titan_packed</Entity>
+    <State>unpacked</State>
+    <Time>6000</Time>
+  </Pack>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>12</Hack>
+        <Pierce>35</Pierce>
+        <Crush>10</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <UnitAI>
+    <DefaultStance>standground</DefaultStance>
+  </UnitAI>
+  <UnitMotion>
+    <WalkSpeed>0.001</WalkSpeed>
+  </UnitMotion>
+  <VehicleSound disable=""/>
+  <TrackMarks disable=""/>
+  <Vision>
+    <Range>110</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/coa/titan_unpacked.xml</Actor>
+  </VisualActor>
+</Entity>

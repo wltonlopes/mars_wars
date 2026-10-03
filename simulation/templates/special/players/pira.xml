@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_player_mars">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Dune Pirates</GenericName>
+    <History>A people without a homeland: smugglers, raiders, ex-soldiers, traders, deserters, explorers, criminals and nomadic communities who cross Mars constantly. They have no great cities, no central government and no heavy industry - their base is a caravan. "Mars belongs to no one."</History>
+    <Icon>emblems/emblem_pira.png</Icon>
+  </Identity>
+</Entity>

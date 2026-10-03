@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/ares/shock_trooper">
+  <Identity>
+    <GenericName>Shock Cohort Member</GenericName>
+    <SelectionGroupName>units/ares/battalion_shock</SelectionGroupName>
+    <Icon>units/squad_assalt.png</Icon>
+  </Identity>
+</Entity>

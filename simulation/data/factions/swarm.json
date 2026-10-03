@@ -1,0 +1,65 @@
+{
+	"Name": "O Enxame",
+	"Description": "Massa enorme e barata guiada por uma mente coletiva. Sem os líderes, a massa se fragmenta.",
+	"Doctrine": [
+		{
+			"affects": [
+				"SwarmMass"
+			],
+			"modifications": [
+				{
+					"value": "Attack/Melee/Damage/Hack",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Melee/Damage/Pierce",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Melee/Damage/Crush",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Melee/Damage/Fire",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Ranged/Damage/Hack",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Ranged/Damage/Pierce",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Ranged/Damage/Crush",
+					"multiply": 0.75
+				},
+				{
+					"value": "Attack/Ranged/Damage/Fire",
+					"multiply": 0.75
+				},
+				{
+					"value": "Cost/Resources/food",
+					"multiply": 0.7
+				},
+				{
+					"value": "Cost/Resources/metal",
+					"multiply": 0.7
+				},
+				{
+					"value": "Cost/Resources/stone",
+					"multiply": 0.7
+				},
+				{
+					"value": "Cost/Resources/wood",
+					"multiply": 0.7
+				},
+				{
+					"value": "Cost/BuildTime",
+					"multiply": 0.7
+				}
+			]
+		}
+	]
+}

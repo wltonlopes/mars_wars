@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/pirates_mars_rifleman">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Dune Rifleman</GenericName>
+    <Icon>units/squad_rifle.png</Icon>
+    <Tooltip>Cheap rifleman who hits and runs.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/units/mcc/rifle_assalt_pmc_b.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>10</BuildTime>
+    <Resources>
+      <food>40</food>
+      <metal>30</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

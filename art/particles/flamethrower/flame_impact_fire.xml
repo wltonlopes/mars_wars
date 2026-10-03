@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fogo no ponto atingido pelo lança-chamas (combustível espirrado em chamas). -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <constant name="emissionrate" value="45.0"/>
+    <uniform name="lifetime" min="0.45" max="0.9"/>
+    <uniform name="position.x" min="-1.4" max="1.4"/>
+    <uniform name="position.y" min="0.0" max="0.4"/>
+    <uniform name="position.z" min="-1.4" max="1.4"/>
+    <uniform name="velocity.x" min="-0.4" max="0.4"/>
+    <uniform name="velocity.y" min="1.2" max="3.2"/>
+    <uniform name="velocity.z" min="-0.4" max="0.4"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.angle" min="-2.0" max="2.0"/>
+    <uniform name="size" min="0.9" max="1.6"/>
+    <constant name="size.growthRate" value="-0.6"/>
+    <uniform name="color.r" min="0.95" max="1.0"/>
+    <uniform name="color.g" min="0.4" max="0.6"/>
+    <uniform name="color.b" min="0.08" max="0.15"/>
+</particles>

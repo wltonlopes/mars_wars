@@ -1,0 +1,21 @@
+{
+	"type": "range",
+	"radius": 90,
+	"affects": [
+		"Soldier",
+		"Vehicle"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Ranged/Projectile/Spread",
+			"multiply": 0.6
+		},
+		{
+			"value": "Vision/Range",
+			"multiply": 1.2
+		}
+	],
+	"auraName": "Regional Command",
+	"auraDescription": "Units near the command centre keep their chain of command: better accuracy and +20% vision.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/rifleman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Thrall</GenericName>
+    <SpecificName>Mass</SpecificName>
+    <Icon>units/squad_rifle.png</Icon>
+    <Tooltip>Part of the Mass: weak alone, strong near Conductors, Hierophants and the Prophet.</Tooltip>
+    <Classes datatype="tokens">SwarmMass</Classes>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/units/mla/rifle_assalt.xml</Actor>
+  </VisualActor>
+</Entity>

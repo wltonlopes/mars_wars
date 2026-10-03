@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/smg_soldier">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Raider</GenericName>
+    <Icon>units/squad_assalt.png</Icon>
+    <Tooltip>Fast raider with a submachine gun.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>vehicle/pira/bike.xml</Actor>
+  </VisualActor>
+</Entity>

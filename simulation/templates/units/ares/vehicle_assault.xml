@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/vehicle_medium">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Assault Carrier</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Armoured assault vehicle that rushes troops into the fight.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/vehicle/mla/coyote.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>30</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>150</metal>
+      <stone>120</stone>
+      <wood>60</wood>
+    </Resources>
+  </Cost>
+</Entity>

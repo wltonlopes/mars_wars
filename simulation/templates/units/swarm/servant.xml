@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/grenadier">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Servant</GenericName>
+    <SpecificName>Acid Thrower</SpecificName>
+    <Icon>units/squad_anti-armor.png</Icon>
+    <Tooltip>Specialised servant that throws acid bombs.</Tooltip>
+    <Classes datatype="tokens">SwarmMass</Classes>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/units/mla/grenadier.xml</Actor>
+  </VisualActor>
+</Entity>

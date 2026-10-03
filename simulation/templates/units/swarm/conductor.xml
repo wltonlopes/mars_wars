@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/snipe_sup">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Conductor</GenericName>
+    <SpecificName>Command Node</SpecificName>
+    <Icon>units/battalion_leader.png</Icon>
+    <Tooltip>Cohesion: the Mass and creatures around it fight in coordination. Kill it to fragment the hive mind.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/units/mla/rifle_assalt_champion.xml</Actor>
+  </VisualActor>
+  <Auras datatype="tokens">factions/swarm_conductor</Auras>
+  <Cost>
+    <BuildTime>24</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>80</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

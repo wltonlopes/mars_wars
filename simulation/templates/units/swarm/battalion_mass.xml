@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_assault|units/swarm/thrall">
+  <BattalionLeader>
+    <MemberTemplates>units/swarm/battalion_member_thrall:5</MemberTemplates>
+    <MemberRoles>units/swarm/battalion_member_thrall:5:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/swarm/battalion_member_thrall</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Mass Swarm</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_rifle.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>20</BuildTime>
+    <Resources>
+      <food>80</food>
+      <metal>40</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

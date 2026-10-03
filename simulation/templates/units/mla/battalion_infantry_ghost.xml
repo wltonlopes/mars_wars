@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Esquadrão camuflado: líder + 3 soldados, todos com Camouflage. -->
+<Entity parent="battalion_profile_skirmisher|units/mla/ghost">
+    <BattalionLeader>
+        <MemberTemplates>units/mla/battalion_member_infantry_ghost:3</MemberTemplates>
+        <MemberRoles>units/mla/battalion_member_infantry_ghost:3:support</MemberRoles>
+        <Spacing>6</Spacing>
+    </BattalionLeader>
+    <Trainer>
+        <Entities datatype="tokens">units/mla/battalion_member_infantry_ghost</Entities>
+    </Trainer>
+    <Identity>
+        <GenericName>Phantom Squad</GenericName>
+        <SelectionGroupName/>
+        <Icon>units/squad_stealth.png</Icon>
+    </Identity>
+</Entity>

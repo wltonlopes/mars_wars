@@ -15,8 +15,8 @@ const g_BattleCatalogPath = "simulation/data/battle_mode/army_catalog.json";
 const g_BattleTriggerScript = "scripts/BattleMode.js";
 const g_BattleHoldTimes = [60, 120, 180, 300];
 const g_BattleDefaultHoldTime = 120;
-const g_BattleRowHeight = 48;
-const g_BattleRowGap = 4;
+const g_BattleRowHeight = 42;
+const g_BattleRowGap = 3;
 const g_AIDifficulties = [
 	translateWithContext("aiDiff", "Sandbox"),
 	translateWithContext("aiDiff", "Very Easy"),

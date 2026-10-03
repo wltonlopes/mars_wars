@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/flamethrower/gen_flamethrower.py -->
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
+  <library_images><image id="tex" name="tex"><init_from>flamethrower.png</init_from></image></library_images>
+  <library_effects>
+    <effect id="mat-effect"><profile_COMMON>
+      <newparam sid="tex-surface"><surface type="2D"><init_from>tex</init_from></surface></newparam>
+      <newparam sid="tex-sampler"><sampler2D><source>tex-surface</source></sampler2D></newparam>
+      <technique sid="common"><lambert><diffuse><texture texture="tex-sampler" texcoord="UVMap"/></diffuse></lambert></technique>
+    </profile_COMMON></effect>
+  </library_effects>
+  <library_materials><material id="mat" name="mat"><instance_effect url="#mat-effect"/></material></library_materials>
+  <library_geometries>
+    <geometry id="flame_anchor-mesh" name="flame_anchor">
+      <mesh>
+        <source id="flame_anchor-pos"><float_array id="flame_anchor-pos-array" count="9">0.00000 0.00000 -5.00000 0.00100 0.00000 -5.00000 0.00000 0.00100 -5.00000</float_array>
+          <technique_common><accessor source="#flame_anchor-pos-array" count="3" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+        <source id="flame_anchor-nrm"><float_array id="flame_anchor-nrm-array" count="9">0.00000 0.00000 1.00000 0.00000 0.00000 1.00000 0.00000 0.00000 1.00000</float_array>
+          <technique_common><accessor source="#flame_anchor-nrm-array" count="3" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+        <source id="flame_anchor-uv"><float_array id="flame_anchor-uv-array" count="6">0.00000 0.00000 1.00000 0.00000 0.00000 1.00000</float_array>
+          <technique_common><accessor source="#flame_anchor-uv-array" count="3" stride="2"><param name="S" type="float"/><param name="T" type="float"/></accessor></technique_common></source>
+        <vertices id="flame_anchor-vtx"><input semantic="POSITION" source="#flame_anchor-pos"/></vertices>
+        <triangles material="mat" count="1">
+          <input semantic="VERTEX" source="#flame_anchor-vtx" offset="0"/>
+          <input semantic="NORMAL" source="#flame_anchor-nrm" offset="1"/>
+          <input semantic="TEXCOORD" source="#flame_anchor-uv" offset="2" set="0"/>
+          <p>0 0 0 1 1 1 2 2 2</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="flame_anchor" name="flame_anchor" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#flame_anchor-mesh" name="flame_anchor">
+          <bind_material><technique_common><instance_material symbol="mat" target="#mat"><bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/></instance_material></technique_common></bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene><instance_visual_scene url="#Scene"/></scene>
+</COLLADA>

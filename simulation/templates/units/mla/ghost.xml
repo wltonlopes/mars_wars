@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soldado camuflado (MLA): os inimigos só o enxergam com metade da visão
+     enquanto ele se move ou atira, e com um quarto dela quando está parado
+     e sem atacar (componente Camouflage). Fuzil com supressor. -->
+<Entity parent="units/mla/rifleman">
+  <Attack>
+    <Ranged>
+      <AttackName>Suppressed Rifle</AttackName>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+    </Ranged>
+  </Attack>
+  <Camouflage>
+    <MovingFactor>0.5</MovingFactor>
+    <StillFactor>0.25</StillFactor>
+    <StillDelay>1500</StillDelay>
+    <Interval>500</Interval>
+  </Camouflage>
+  <Cost>
+    <Resources>
+      <metal>70</metal>
+      <wood>15</wood>
+    </Resources>
+  </Cost>
+  <Identity>
+    <SpecificName>Ghost Ceberus</SpecificName>
+    <GenericName>Camouflaged Infantry</GenericName>
+    <Icon>units/squad_stealth.png</Icon>
+    <Tooltip>Recon and ambush infantry in Martian camouflage. Enemies see them only at 50% of their vision range while they move or shoot, and at 25% while they stay still without attacking. Units that cannot see them cannot target them.</Tooltip>
+    <VisibleClasses datatype="tokens">Camouflaged</VisibleClasses>
+  </Identity>
+  <Vision>
+    <Range>90</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>units/mla/ghost.xml</Actor>
+  </VisualActor>
+</Entity>

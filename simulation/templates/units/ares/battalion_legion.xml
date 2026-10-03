@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_assault|units/ares/legionary">
+  <BattalionLeader>
+    <MemberTemplates>units/ares/battalion_member_legionary:4</MemberTemplates>
+    <MemberRoles>units/ares/battalion_member_legionary:4:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/ares/battalion_member_legionary</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Legion Cohort</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_rifle.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>30</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>100</metal>
+      <stone>40</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

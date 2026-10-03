@@ -1,0 +1,80 @@
+{
+	"Name": "Coalizão Terrestre",
+	"Description": "Armas combinadas e alta tecnologia. Unidades caras, lentas de treinar e dependentes da cadeia de comando.",
+	"Doctrine": [
+		{
+			"affects": [
+				"Unit"
+			],
+			"modifications": [
+				{
+					"value": "Cost/BuildTime",
+					"multiply": 1.3
+				},
+				{
+					"value": "Cost/Resources/food",
+					"multiply": 1.25
+				},
+				{
+					"value": "Cost/Resources/metal",
+					"multiply": 1.25
+				},
+				{
+					"value": "Cost/Resources/stone",
+					"multiply": 1.25
+				},
+				{
+					"value": "Cost/Resources/wood",
+					"multiply": 1.25
+				},
+				{
+					"value": "Attack/Melee/Damage/Hack",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Melee/Damage/Pierce",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Melee/Damage/Crush",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Melee/Damage/Fire",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Ranged/Damage/Hack",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Ranged/Damage/Pierce",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Ranged/Damage/Crush",
+					"multiply": 1.15
+				},
+				{
+					"value": "Attack/Ranged/Damage/Fire",
+					"multiply": 1.15
+				}
+			]
+		},
+		{
+			"affects": [
+				"Soldier"
+			],
+			"modifications": [
+				{
+					"value": "Attack/Ranged/Projectile/Spread",
+					"multiply": 1.4
+				},
+				{
+					"value": "Vision/Range",
+					"multiply": 0.85
+				}
+			]
+		}
+	]
+}

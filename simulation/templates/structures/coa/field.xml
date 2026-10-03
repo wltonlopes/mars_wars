@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mcc/field">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Supply Field</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/greenhouse.xml</Actor>
+  </VisualActor>
+</Entity>

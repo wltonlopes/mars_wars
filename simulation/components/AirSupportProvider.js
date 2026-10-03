@@ -7,12 +7,13 @@
  *   icbm             - silos mla
  *   drop_pod         - quartel mcc (cápsula orbital com batalhão)
  *   tunnel           - quartel mla (túnel com batalhão)
+ *   sandstorm        - centro cívico dos piratas (tempestade de areia com raios)
  *
  * A missão em si é executada pelo AirSupportManager.
  */
 function AirSupportProvider() {}
 
-AirSupportProvider.prototype.TYPES = ["strategic_bomber", "nuke", "orbital_laser", "icbm", "drop_pod", "tunnel"];
+AirSupportProvider.prototype.TYPES = ["strategic_bomber", "nuke", "orbital_laser", "icbm", "drop_pod", "tunnel", "sandstorm"];
 
 AirSupportProvider.prototype.Schema =
 	"<a:help>Special powers of this structure (air strikes and reinforcements). One child element per power, named after its type.</a:help>" +
@@ -37,7 +38,7 @@ AirSupportProvider.prototype.Schema =
 				"<element name='Cooldown' a:help='Seconds, counted from the moment the power is used.'>" +
 					"<ref name='nonNegativeDecimal'/>" +
 				"</element>" +
-				"<element name='Template' a:help='Template of the aircraft (StrategicBomber), missile (IcbmMissile), orbital laser (OrbitalStrike) or delivery (ReinforcementDelivery).'>" +
+				"<element name='Template' a:help='Template of the aircraft (StrategicBomber), missile (IcbmMissile), orbital laser (OrbitalStrike), sandstorm (Sandstorm) or delivery (ReinforcementDelivery).'>" +
 					"<text/>" +
 				"</element>" +
 				"<optional>" +

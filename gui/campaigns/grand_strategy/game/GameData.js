@@ -93,7 +93,15 @@ class GameData
 			);
 		}
 		for (const prov in data.provinces)
+		{
+			// Província que não existe mais no mapa atual: ignora.
+			if (!this.provinces[prov])
+			{
+				warn("Grand Strategy: ignoring unknown province '" + prov + "' from the saved campaign.");
+				continue;
+			}
 			this.provinces[prov].Deserialize(data.provinces[prov]);
+		}
 
 		for (const code in data.tribes)
 		{

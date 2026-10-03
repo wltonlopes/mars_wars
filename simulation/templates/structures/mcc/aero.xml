@@ -21,4 +21,8 @@
   <VisualActor>
     <Actor>structures/mcc/aeroport.xml</Actor>
   </VisualActor>
+  <!-- População: aeroporto. -->
+  <Population>
+    <Bonus>10</Bonus>
+  </Population>
 </Entity>

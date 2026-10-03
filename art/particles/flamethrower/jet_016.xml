@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jato de chamas de 16 m (chama externa), gerado.
+     Espaço local: o jato sai do bocal (z=0) pelo eixo -Z (a entidade é
+     girada para o alvo pelo componente LaserBeam). -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <use_local_space/>
+
+    <constant name="emissionrate" value="150.0"/>
+    <uniform name="lifetime" min="0.306" max="0.396"/>
+
+    <uniform name="position.x" min="-0.05" max="0.05"/>
+    <uniform name="position.y" min="-0.05" max="0.05"/>
+    <constant name="position.z" value="0.0"/>
+
+    <uniform name="velocity.x" min="-4.89" max="4.89"/>
+    <uniform name="velocity.y" min="-2.93" max="5.87"/>
+    <uniform name="velocity.z" min="-46.67" max="-40.89"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.angle" min="-4.0" max="4.0"/>
+
+    <uniform name="size" min="0.28" max="0.42"/>
+    <constant name="size.growthRate" value="6.42"/>
+
+    <uniform name="color.r" min="0.95" max="1.0"/>
+    <uniform name="color.g" min="0.38" max="0.55"/>
+    <uniform name="color.b" min="0.05" max="0.12"/>
+</particles>

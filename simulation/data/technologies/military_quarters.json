@@ -1,0 +1,22 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Military Quarters",
+	"description": "Bunk rooms and armouries inside the barracks house more soldiers.",
+	"cost": {
+		"food": 150,
+		"stone": 100
+	},
+	"icon": "standard_equipment.png",
+	"researchTime": 30,
+	"tooltip": "Barracks +10 population each.",
+	"modifications": [
+		{
+			"value": "Population/Bonus",
+			"add": 10
+		}
+	],
+	"affects": [
+		"Barracks"
+	]
+}

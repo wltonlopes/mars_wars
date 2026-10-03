@@ -21,4 +21,8 @@
   <VisualActor>
     <Actor>structures/mcc/stable.xml</Actor>
   </VisualActor>
+  <!-- População: garagem de veículos. -->
+  <Population>
+    <Bonus>15</Bonus>
+  </Population>
 </Entity>

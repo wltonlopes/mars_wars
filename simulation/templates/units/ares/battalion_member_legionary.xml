@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/ares/legionary">
+  <Identity>
+    <GenericName>Legion Cohort Member</GenericName>
+    <SelectionGroupName>units/ares/battalion_legion</SelectionGroupName>
+    <Icon>units/squad_rifle.png</Icon>
+  </Identity>
+</Entity>

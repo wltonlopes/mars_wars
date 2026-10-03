@@ -31,7 +31,8 @@ Ammo.prototype.Init = function()
 {
 	this.ammo = +this.template.CurrAmmo;
 	this.maxAmmo = +this.template.MaxAmmo;
-	this.switchToMeleeRange = +(this.template.SwitchToMeleeRange || 12);
+	// 0 desliga a troca para a arma branca (ex.: lança-chamas).
+	this.switchToMeleeRange = this.template.SwitchToMeleeRange !== undefined ? +this.template.SwitchToMeleeRange : 12;
 };
 
 Ammo.prototype.GetAmmo = function()

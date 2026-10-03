@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_unit_champion_infantry_swordsman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Brute</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Heavy combat creature.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/bear_brown.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Melee>
+      <AttackName>Claws</AttackName>
+      <Damage>
+        <Hack>26</Hack>
+        <Pierce>0</Pierce>
+        <Crush>8</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <RepeatTime>1500</RepeatTime>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>480</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>8.5</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>2</Population>
+    <BuildTime>24</BuildTime>
+    <Resources>
+      <food>150</food>
+      <metal>60</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

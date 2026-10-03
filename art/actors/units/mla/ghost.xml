@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soldado camuflado MLA: uniforme com camuflagem marciana (suit_camo.png). -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="biped/assault_rifle/guerrilla.xml">
+      <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
+      <props>
+        <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
+      </props>
+    </variant>
+  </group>
+    <group>
+      <variant frequency="1" name="tunic_01_01">
+        <textures>
+          <texture file="skeletal/mla/suit_camo.png" name="baseTex"/>
+        </textures>
+      </variant>
+   </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant file="biped/assault_rifle/shoot_standing_1.xml" name="Attack_Ranged"/>
+    <variant file="biped/attack_capture.xml"/>
+    <!-- <variant file="biped/formations/suppression_stance.xml"/>
+    <variant file="biped/formations/suppression_kneel.xml"/>
+    <variant file="biped/formations/suppression_prone.xml"/> -->
+    <variant file="biped/build.xml"/>
+    <variant file="biped/build_farm.xml"/>
+    <variant file="biped/death_infantry.xml"/>
+    <variant file="biped/jump_infantry.xml"/>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

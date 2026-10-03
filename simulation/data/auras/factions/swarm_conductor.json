@@ -1,0 +1,53 @@
+{
+	"type": "range",
+	"radius": 40,
+	"affects": [
+		"SwarmMass",
+		"Creature"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Melee/Damage/Fire",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.35
+		},
+		{
+			"value": "Attack/Melee/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.9
+		}
+	],
+	"auraName": "Cohesion (Conductor)",
+	"auraDescription": "The hive mind: Mass and creatures nearby recover their coordination (+35% damage, +10% attack speed).",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

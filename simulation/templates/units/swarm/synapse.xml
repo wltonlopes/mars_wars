@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_unit_champion_infantry_swordsman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Synapse</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Neural node that coordinates the creatures around it.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/rhino.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Melee>
+      <AttackName>Claws</AttackName>
+      <Damage>
+        <Hack>12</Hack>
+        <Pierce>0</Pierce>
+        <Crush>0</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <RepeatTime>1500</RepeatTime>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>400</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>8</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>2</Population>
+    <BuildTime>30</BuildTime>
+    <Resources>
+      <food>160</food>
+      <metal>100</metal>
+      <stone>0</stone>
+      <wood>60</wood>
+    </Resources>
+  </Cost>
+  <Auras datatype="tokens">factions/swarm_synapse</Auras>
+</Entity>

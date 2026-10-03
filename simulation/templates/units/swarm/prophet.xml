@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/commander">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Prophet</GenericName>
+    <SpecificName>Voice of the Sovereigns</SpecificName>
+    <Icon>units/battalion_leader.png</Icon>
+    <Tooltip>Supreme leader of the cult (hero). Huge Cohesion aura.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/units/mcc/rifle_assalt_champion_hell_angels.xml</Actor>
+  </VisualActor>
+  <Auras datatype="tokens">factions/swarm_prophet</Auras>
+  <Health>
+    <Max>700</Max>
+  </Health>
+</Entity>

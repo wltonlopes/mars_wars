@@ -1,0 +1,22 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Workforce Training",
+	"description": "Training programmes turn more colonists into qualified workers.",
+	"cost": {
+		"food": 150,
+		"metal": 100
+	},
+	"icon": "automated_construction.png",
+	"researchTime": 30,
+	"tooltip": "+4 worker limit.",
+	"modifications": [
+		{
+			"value": "EntityLimits/Limits/Worker",
+			"add": 4
+		}
+	],
+	"affects": [
+		"Player"
+	]
+}

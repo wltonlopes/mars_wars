@@ -1,0 +1,47 @@
+{
+	"Code": "swarm",
+	"Culture": "Mars",
+	"Music": [
+		{
+			"File": "Red_Dawn.ogg",
+			"Type": "peace"
+		},
+		{
+			"File": "Hill_of_Sorrows.ogg",
+			"Type": "peace"
+		}
+	],
+	"CivBonuses": [],
+	"TeamBonuses": [],
+	"WallSets": [
+		"structures/wallset_palisade",
+		"structures/achae/wallset_stone"
+	],
+	"StartEntities": [
+		{
+			"Template": "structures/swarm/civil_centre"
+		},
+		{
+			"Template": "units/swarm/worker",
+			"Count": 3
+		},
+		{
+			"Template": "units/swarm/battalion_mass",
+			"Count": 2
+		},
+		{
+			"Template": "units/swarm/conductor",
+			"Count": 1
+		}
+	],
+	"AINames": [
+		"The Swarm I",
+		"The Swarm II",
+		"The Swarm III"
+	],
+	"SkirmishReplacements": {
+		"skirmish/units/default_support_civilian": "units/swarm/worker",
+		"skirmish/units/default_infantry_ranged_b": "units/swarm/battalion_mass"
+	},
+	"SelectableInGameSetup": true
+}

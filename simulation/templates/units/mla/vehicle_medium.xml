@@ -12,8 +12,8 @@
   </Health>
   <Sound>
     <SoundGroups>
-      <walk>actor/human/movement/walk.xml</walk>
-      <run>actor/human/movement/run.xml</run>
+      <walk>actor/vehicle/engine_wheeled.xml</walk>
+      <run>actor/vehicle/engine_wheeled.xml</run>
     </SoundGroups>
   </Sound>
   <TurretHolder>
@@ -31,4 +31,14 @@
   <VisualActor>
     <Actor>vehicle/mla/coyote.xml</Actor>
   </VisualActor>
+  <VehicleSeparation>
+    <Radius>5.0</Radius>
+  </VehicleSeparation>
+  <!-- Rastro: offset lateral = props w_01/w_02 do modelo. -->
+  <TrackMarks>
+    <Template>special/tracks/track_wheeled</Template>
+    <Offset>3.64</Offset>
+    <Spacing>2.6</Spacing>
+    <Lifetime>10</Lifetime>
+  </TrackMarks>
 </Entity>

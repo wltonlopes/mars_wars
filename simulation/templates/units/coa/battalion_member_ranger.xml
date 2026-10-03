@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/coa/ranger">
+  <Identity>
+    <GenericName>Ranger Team Member</GenericName>
+    <SelectionGroupName>units/coa/battalion_rangers</SelectionGroupName>
+    <Icon>units/squad_stealth.png</Icon>
+  </Identity>
+</Entity>

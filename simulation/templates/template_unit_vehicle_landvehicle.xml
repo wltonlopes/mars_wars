@@ -40,9 +40,19 @@
     </Overlay>
   </Selectable>
   <UnitMotion>
+    <!-- Colisão de veículo (simulation/data/pathfinder.xml): um não entra no outro. -->
+    <PassabilityClass>vehicle</PassabilityClass>
     <WalkSpeed>10</WalkSpeed>
     <Acceleration op="mul">2.8</Acceleration>
   </UnitMotion>
+  <!-- Ronco do motor enquanto anda (simulation/components/VehicleSound.js). -->
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_wheeled.xml</MoveSound>
+    <Interval>1250</Interval>
+  </VehicleSound>
+  <VehicleSeparation>
+    <Radius>4.5</Radius>
+  </VehicleSeparation>
   <Vision>
     <Range>80</Range>
   </Vision>

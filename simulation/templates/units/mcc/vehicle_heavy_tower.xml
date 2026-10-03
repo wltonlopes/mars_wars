@@ -57,6 +57,7 @@
     <SinkAccel>50.0</SinkAccel>
   </Decay>
   <Health>
+    <DeathType>vanish</DeathType>
     <Max>1000</Max>
   </Health>
   <Identity>
@@ -67,7 +68,7 @@
   </Identity>
   <Sound>
     <SoundGroups>
-      <attack_ranged>attack/weapon/musket.xml</attack_ranged>
+      <attack_ranged>attack/weapon/cannon_heavy.xml</attack_ranged>
       <attack_impact_ranged>attack/impact/siegeprojectilehit.xml</attack_impact_ranged>
     </SoundGroups>
   </Sound>
@@ -79,6 +80,13 @@
   </VisualActor>
   <!-- Torre montada no veículo: quem entra em formação é o veículo. -->
   <UnitAI>
+    <DefaultStance>standground</DefaultStance>
     <Formations disable=""/>
   </UnitAI>
+  <!-- Torreta: sem alvo volta para a frente do veículo; não persegue alvos
+       (atira no que entra no alcance) e gira com velocidade realista. -->
+  <TurretRest/>
+  <Position>
+    <TurnRate>3.0</TurnRate>
+  </Position>
 </Entity>

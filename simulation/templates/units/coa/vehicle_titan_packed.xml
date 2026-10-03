@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_unit_vehicle_landvehicle">
+  <!-- Titan: obuseiro autopropulsado. Modo de transporte (packed): anda, mas
+       não atira. Ao receber ordem de ataque com o alvo no alcance, o UnitAI
+       descompacta sozinho (vira vehicle_titan_unpacked) e só então dispara;
+       para andar de novo ele compacta automaticamente. -->
+  <Attack>
+    <Ranged replace="">
+      <AttackName>Titan Mega Howitzer 420mm</AttackName>
+      <Damage>
+        <Pierce>80.0</Pierce>
+        <Crush>450.0</Crush>
+      </Damage>
+      <MaxRange>170.0</MaxRange>
+      <MinRange>35.0</MinRange>
+      <PrepareTime>2500</PrepareTime>
+      <RepeatTime>10000</RepeatTime>
+      <EffectDelay>0</EffectDelay>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/titan_shell_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>2.5</ImpactAnimationLifetime>
+        <GroundLifetime>1</GroundLifetime>
+        <!-- Trajetória curva de obus: velocidade baixa + gravidade alta. -->
+        <Speed>80.0</Speed>
+        <Gravity>40.0</Gravity>
+        <Spread>4.0</Spread>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="11"/>
+      </Projectile>
+      <PreferredClasses datatype="tokens">Structure Vehicle</PreferredClasses>
+      <RangeOverlay>
+        <LineTexture>outline_border.png</LineTexture>
+        <LineTextureMask>outline_border_mask.png</LineTextureMask>
+        <LineThickness>0.175</LineThickness>
+      </RangeOverlay>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>12</Range>
+        <FriendlyFire>true</FriendlyFire>
+        <Damage>
+          <Pierce>40.0</Pierce>
+          <Crush>150.0</Crush>
+        </Damage>
+        <Knockback>
+          <Distance>5</Distance>
+          <Chance>80</Chance>
+        </Knockback>
+      </Splash>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Population>5</Population>
+    <BuildTime>80</BuildTime>
+    <Resources>
+      <food>0</food>
+      <wood>200</wood>
+      <stone>300</stone>
+      <metal>500</metal>
+    </Resources>
+  </Cost>
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>900</Max>
+  </Health>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Titan Siege Howitzer</GenericName>
+    <SpecificName>Titan</SpecificName>
+    <Icon>units/armored.png</Icon>
+    <VisibleClasses datatype="tokens">Siege Ranged</VisibleClasses>
+    <Tooltip>Mega-heavy self-propelled howitzer. Must unpack (deploy) to fire; packs up automatically to move. Huge range and splash, but cannot hit targets too close.</Tooltip>
+  </Identity>
+  <Pack>
+    <Entity>units/coa/vehicle_titan_unpacked</Entity>
+    <State>packed</State>
+    <Time>6000</Time>
+  </Pack>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>10</Hack>
+        <Pierce>30</Pierce>
+        <Crush>8</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/cannon_heavy.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/siegeprojectilehit.xml</attack_impact_ranged>
+      <walk>actor/vehicle/engine_tracked.xml</walk>
+      <run>actor/vehicle/engine_tracked.xml</run>
+    </SoundGroups>
+  </Sound>
+  <StatusBars>
+    <HeightOffset>9.0</HeightOffset>
+  </StatusBars>
+  <UnitMotion>
+    <WalkSpeed>7</WalkSpeed>
+  </UnitMotion>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_tracked.xml</MoveSound>
+    <Interval>1450</Interval>
+  </VehicleSound>
+  <VehicleSeparation>
+    <Radius>7</Radius>
+  </VehicleSeparation>
+  <TrackMarks>
+    <Template>special/tracks/track_tracked</Template>
+    <Offset>4.47</Offset>
+    <Spacing>2.6</Spacing>
+    <Lifetime>10</Lifetime>
+  </TrackMarks>
+  <Vision>
+    <Range>90</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/coa/titan_packed.xml</Actor>
+  </VisualActor>
+</Entity>

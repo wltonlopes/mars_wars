@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soldado lança-chamas: jato de fogo de curto alcance (LaserBeam desenha o
+     jato), dano em linha atrás do alvo e queimadura (status Burning).
+     Combustível = Ammo; sem combustível usa a pistola e reabastece perto de
+     estruturas próprias. O tanque explode quando ele morre (FuelTankExplosion). -->
+<Entity parent="ranged_combat|template_unit_infantry">
+  <Ammo>
+    <CurrAmmo>20</CurrAmmo>
+    <MaxAmmo>20</MaxAmmo>
+    <SwitchToMeleeRange>0</SwitchToMeleeRange>
+    <Resupply>
+      <Range>30</Range>
+      <Interval>3000</Interval>
+      <Amount>2</Amount>
+      <Classes>Structure</Classes>
+    </Resupply>
+  </Ammo>
+  <Attack>
+    <Ranged>
+      <AttackName>Flamethrower</AttackName>
+      <Damage>
+        <Fire>9.0</Fire>
+      </Damage>
+      <ApplyStatus>
+        <Burning>
+          <Duration>4000</Duration>
+          <Interval>1000</Interval>
+          <Damage>
+            <Fire>3</Fire>
+          </Damage>
+          <Stackability>Replace</Stackability>
+        </Burning>
+      </ApplyStatus>
+      <Bonuses>
+        <Infantry>
+          <Classes>Infantry</Classes>
+          <Multiplier>1.4</Multiplier>
+        </Infantry>
+      </Bonuses>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>24.0</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>400</PrepareTime>
+      <RepeatTime>1000</RepeatTime>
+      <Projectile>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="1.6"/>
+        <Speed>100.0</Speed>
+        <Spread>0.0</Spread>
+      </Projectile>
+      <!-- O fogo segue em linha por 8 m além do alvo. -->
+      <Splash>
+        <Damage>
+          <Fire>4.0</Fire>
+        </Damage>
+        <FriendlyFire>false</FriendlyFire>
+        <Range>8</Range>
+        <Shape>Linear</Shape>
+      </Splash>
+    </Ranged>
+    <!-- Sem combustível: pistola. -->
+    <RangedSecondary>
+      <AttackName>Pistol</AttackName>
+      <Damage>
+        <Pierce>5</Pierce>
+      </Damage>
+      <MaxRange>25</MaxRange>
+      <MinRange>0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <PrepareTime>500</PrepareTime>
+      <RepeatTime>1200</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="1.6"/>
+        <Speed>400.0</Speed>
+        <Spread>3.0</Spread>
+      </Projectile>
+    </RangedSecondary>
+  </Attack>
+  <Cost>
+    <Resources>
+      <metal>60</metal>
+      <wood>20</wood>
+    </Resources>
+  </Cost>
+  <FuelTankExplosion>
+    <Damage>
+      <Fire>30</Fire>
+    </Damage>
+    <Radius>5</Radius>
+    <!-- Sem fogo amigo: evita reação em cadeia entre os tanques do esquadrão. -->
+    <FriendlyFire>false</FriendlyFire>
+    <ImpactActorName>props/units/weapons/flame_jet/tank_burst.xml</ImpactActorName>
+    <ImpactSound>attack/weapon/fuel_tank_burst.xml</ImpactSound>
+  </FuelTankExplosion>
+  <Identity>
+    <Civ>mcc</Civ>
+    <SpecificName>Pyro Trooper</SpecificName>
+    <GenericName>Flamethrower Infantry</GenericName>
+    <Icon>units/squad_flamethrower.png</Icon>
+    <Tooltip>Short-range assault infantry. Sprays burning fuel that sets targets on fire and spreads 8 m behind them. Deadly against infantry and garrisons; the fuel tank explodes when the soldier dies. Refuels near own structures.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Flamethrower</VisibleClasses>
+  </Identity>
+  <LaserBeam>
+    <BeamActorPrefix>props/units/weapons/flame_jet/jet_</BeamActorPrefix>
+    <BeamStep>2</BeamStep>
+    <MaxBeamLength>24</MaxBeamLength>
+    <Duration>0.9</Duration>
+    <TargetHeight>0.8</TargetHeight>
+    <ImpactActor>props/units/weapons/flame_jet/impact.xml</ImpactActor>
+  </LaserBeam>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Fire>4</Fire>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/flamethrower.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
+  <UnitMotion>
+    <WalkSpeed>8.0</WalkSpeed>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mcc/flamethrower.xml</Actor>
+  </VisualActor>
+</Entity>

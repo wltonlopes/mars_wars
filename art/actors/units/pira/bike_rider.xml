@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Piloto da moto dos piratas: é um prop (ponto "ride") de vehicle/pira/bike.xml
+     e toca a mesma animação que a moto (Idle, Walk, attack_ranged). -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="biped/bike_rider/ride.xml">
+      <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
+      <props>
+        <prop actor="factions/pira/props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="factions/pira/props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+      </props>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="tunic_01_01">
+      <textures>
+        <texture file="factions/pira/skeletal/mla/suit_01_01.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <!-- Pilotando: a submetralhadora fica no coldre da coxa direita. -->
+    <variant frequency="1" name="Idle">
+      <props>
+        <prop actor="props/units/weapons/submachinegun.xml" attachpoint="sheath_R"/>
+      </props>
+    </variant>
+    <!-- Atirando: a arma vai para a mão direita. -->
+    <variant name="attack_ranged">
+      <props>
+        <prop actor="props/units/weapons/submachinegun.xml" attachpoint="weapon_R"/>
+      </props>
+    </variant>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

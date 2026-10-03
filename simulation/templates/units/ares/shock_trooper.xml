@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/smg_soldier">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Shock Trooper</GenericName>
+    <Icon>units/squad_assalt.png</Icon>
+    <Tooltip>Assault infantry for charges and close combat.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/units/mla/rifle_assalt_guerrilla.xml</Actor>
+  </VisualActor>
+</Entity>

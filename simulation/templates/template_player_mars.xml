@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Jogador de Mars Wars. Limite de trabalhadores: 8 + 4 por centro de
+	comando (12 com um centro); tecnologias somam mais (EntityLimits/Limits/Worker,
+	ver simulation/components/ZZ_EntityLimitsTechBonus.js).
+-->
+<Entity parent="template_player">
+  <EntityLimits>
+    <Limits>
+      <Worker>8</Worker>
+    </Limits>
+    <LimitChangers>
+      <Worker>
+        <CivCentre>4</CivCentre>
+      </Worker>
+    </LimitChangers>
+  </EntityLimits>
+</Entity>

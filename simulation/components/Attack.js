@@ -334,6 +334,15 @@ Attack.prototype.CanAttack = function(target, wantedTypes)
 	if (!cmpThisPosition || !cmpTargetPosition || !cmpThisPosition.IsInWorld() || !cmpTargetPosition.IsInWorld())
 		return false;
 
+	// Alvo camuflado que o nosso jogador não enxerga: não dá para mirar.
+	const cmpTargetCamouflage = Engine.QueryInterface(target, IID_Camouflage);
+	if (cmpTargetCamouflage)
+	{
+		const cmpThisOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+		if (cmpThisOwnership && !cmpTargetCamouflage.IsVisibleTo(cmpThisOwnership.GetOwner()))
+			return false;
+	}
+
 	const cmpResistance = QueryMiragedInterface(target, IID_Resistance);
 	if (!cmpResistance)
 		return false;
@@ -456,8 +465,8 @@ Attack.prototype.IsTargetWithinWeaponSwitchRange = function(target, cmpAmmo)
 		!cmpThisPosition.IsInWorld() || !cmpTargetPosition.IsInWorld())
 		return false;
 
-	return PositionHelper.DistanceBetweenEntities(this.entity, target) <=
-		cmpAmmo.GetSwitchToMeleeRange();
+	const switchRange = cmpAmmo.GetSwitchToMeleeRange();
+	return switchRange > 0 && PositionHelper.DistanceBetweenEntities(this.entity, target) <= switchRange;
 };
 
 /**

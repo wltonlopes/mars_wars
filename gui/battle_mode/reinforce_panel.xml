@@ -6,23 +6,23 @@
 
 	<object type="image" sprite="color: 0 0 0 175"/>
 
-	<object type="image" style="SubmenuPanel" size="50%-380 50%-280 50%+380 50%+280">
+	<object type="image" style="SubmenuPanel" size="50%-380 50%-345 50%+380 50%+345">
 		<object type="text" style="MarsTitle" size="24 14 100%-24 48">
 			<translatableAttribute id="caption">REINFORCEMENTS</translatableAttribute>
 		</object>
 		<object type="image" sprite="MarsAccentLine" ghost="true" size="24 50 84 52"/>
-		<object name="statusText" type="text" style="MarsSmallText" size="24 58 100%-24 100" text_valign="top"/>
+		<object name="statusText" type="text" style="MarsSmallText" size="24 56 100%-24 118" text_valign="top"/>
 
-		<object size="20 104 100%-20 100%-84">
-			<repeat count="8" var="n">
+		<object size="20 122 100%-20 100%-84">
+			<repeat count="10" var="n">
 				<object name="unitRow[n]" type="image" sprite="color: 255 255 255 8" hidden="true">
-					<object name="unitIcon[n]" type="image" size="4 4 44 44"/>
-					<object name="unitName[n]" type="text" style="MarsSmallText" size="54 2 100%-230 24" font="sans-bold-14"/>
-					<object name="unitInfo[n]" type="text" style="MarsSmallText" size="54 22 100%-230 44"/>
-					<object name="unitCost[n]" type="text" style="MarsSmallText" size="100%-222 4 100%-150 44" text_align="right"/>
-					<object name="unitMinus[n]" type="button" style="StoneButton" size="100%-136 8 100%-100 40">-</object>
-					<object name="unitCount[n]" type="text" style="MarsTitle" size="100%-96 4 100%-44 44" text_align="center" font="sans-bold-20"/>
-					<object name="unitPlus[n]" type="button" style="StoneButton" size="100%-40 8 100%-4 40">+</object>
+					<object name="unitIcon[n]" type="image" size="3 3 39 39"/>
+					<object name="unitName[n]" type="text" style="MarsSmallText" size="48 0 100%-230 21" font="sans-bold-14"/>
+					<object name="unitInfo[n]" type="text" style="MarsSmallText" size="48 19 100%-230 41"/>
+					<object name="unitCost[n]" type="text" style="MarsSmallText" size="100%-222 2 100%-150 40" text_align="right"/>
+					<object name="unitMinus[n]" type="button" style="StoneButton" size="100%-136 5 100%-100 37">-</object>
+					<object name="unitCount[n]" type="text" style="MarsTitle" size="100%-96 0 100%-44 42" text_align="center" font="sans-bold-20"/>
+					<object name="unitPlus[n]" type="button" style="StoneButton" size="100%-40 5 100%-4 37">+</object>
 				</object>
 			</repeat>
 		</object>

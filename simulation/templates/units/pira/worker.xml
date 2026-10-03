@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/worker">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Scavenger</GenericName>
+    <Icon>units/worker.png</Icon>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/units/mla/worker.xml</Actor>
+  </VisualActor>
+  <Builder>
+    <Entities datatype="tokens" replace="">
+      structures/{civ}/barracks
+      structures/{civ}/civil_centre
+      structures/{civ}/farmstead
+      structures/{civ}/forge
+      structures/{civ}/sentry_tower
+      structures/{civ}/stable
+      structures/{civ}/storehouse
+      structures/{civ}/field
+    </Entities>
+  </Builder>
+  <Cost>
+    <BuildTime>8</BuildTime>
+    <Resources>
+      <food>45</food>
+      <metal>0</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

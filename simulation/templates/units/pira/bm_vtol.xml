@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/aero_01">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Black Market: Stolen VTOL</GenericName>
+    <Tooltip>Bought on the black market: an outside faction's unit at a higher price.</Tooltip>
+  </Identity>
+  <Cost>
+    <BuildTime>40</BuildTime>
+    <Resources>
+      <food>192</food>
+      <metal>240</metal>
+      <wood>128</wood>
+    </Resources>
+  </Cost>
+</Entity>

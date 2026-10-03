@@ -1,0 +1,34 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Orbital Supply Chain",
+	"description": "Regular supply drops from orbit feed and equip a much larger army.",
+	"cost": {
+		"food": 400,
+		"metal": 300,
+		"wood": 200
+	},
+	"requirements": {
+		"all": [
+			{
+				"tech": "colony_logistics"
+			},
+			{
+				"tech": "phase_city"
+			}
+		]
+	},
+	"requirementsTooltip": "Requires Colony Logistics and City Phase.",
+	"icon": "satellite_network.png",
+	"researchTime": 70,
+	"tooltip": "Civic Centres +30 population.",
+	"modifications": [
+		{
+			"value": "Population/Bonus",
+			"add": 30
+		}
+	],
+	"affects": [
+		"CivCentre"
+	]
+}

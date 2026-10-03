@@ -1,30 +1,299 @@
 {
 	"Description": "Battle Mode: unidades que podem ser compradas para o exército inicial, com o custo em pontos. Nome e ícone vêm do template; \"Name\" substitui o nome quando o template não tem um bom.",
-	"Budgets": [500, 1000, 1500, 2500, 4000],
+	"Budgets": [
+		500,
+		1000,
+		1500,
+		2500,
+		4000
+	],
 	"DefaultBudget": 1000,
 	"Categories": [
-		{ "Id": "infantry", "Name": "Infantry Battalions" },
-		{ "Id": "armor", "Name": "Armored Vehicles" },
-		{ "Id": "air", "Name": "Air Units" }
+		{
+			"Id": "infantry",
+			"Name": "Infantry Battalions"
+		},
+		{
+			"Id": "armor",
+			"Name": "Armored Vehicles"
+		},
+		{
+			"Id": "air",
+			"Name": "Air Units"
+		}
 	],
 	"Civs": {
 		"mcc": [
-			{ "Template": "units/mcc/battalion_infantry_rifleman", "Category": "infantry", "Cost": 100, "Max": 10 },
-			{ "Template": "units/mcc/battalion_infantry_lmg", "Category": "infantry", "Cost": 130, "Max": 8 },
-			{ "Template": "units/mcc/battalion_infantry_police", "Category": "infantry", "Cost": 80, "Max": 8 },
-			{ "Template": "units/mcc/vehicle_heavy", "Category": "armor", "Cost": 200, "Max": 6 },
-			{ "Template": "units/mcc/vehicle_special", "Category": "armor", "Cost": 250, "Max": 4 },
-			{ "Template": "units/mcc/aero_01", "Name": "VTOL Gunship A-01", "Category": "air", "Cost": 150, "Max": 6 },
-			{ "Template": "units/mcc/aero_02", "Name": "VTOL Gunship A-02", "Category": "air", "Cost": 150, "Max": 6 }
+			{
+				"Template": "units/mcc/battalion_infantry_rifleman",
+				"Category": "infantry",
+				"Cost": 100,
+				"Max": 10
+			},
+			{
+				"Template": "units/mcc/battalion_infantry_lmg",
+				"Category": "infantry",
+				"Cost": 130,
+				"Max": 8
+			},
+			{
+				"Template": "units/mcc/battalion_infantry_police",
+				"Category": "infantry",
+				"Cost": 80,
+				"Max": 8
+			},
+			{
+				"Template": "units/mcc/battalion_infantry_heavy_shield",
+				"Category": "infantry",
+				"Cost": 220,
+				"Max": 4
+			},
+			{
+				"Template": "units/mcc/battalion_infantry_flamethrower",
+				"Category": "infantry",
+				"Cost": 120,
+				"Max": 6
+			},
+			{
+				"Template": "units/mcc/vehicle_heavy",
+				"Category": "armor",
+				"Cost": 200,
+				"Max": 6
+			},
+			{
+				"Template": "units/mcc/vehicle_special",
+				"Category": "armor",
+				"Cost": 250,
+				"Max": 4
+			},
+			{
+				"Template": "units/mcc/aero_01",
+				"Name": "VTOL Gunship A-01",
+				"Category": "air",
+				"Cost": 150,
+				"Max": 6
+			},
+			{
+				"Template": "units/mcc/aero_02",
+				"Name": "VTOL Gunship A-02",
+				"Category": "air",
+				"Cost": 150,
+				"Max": 6
+			}
 		],
 		"mla": [
-			{ "Template": "units/mla/battalion_infantry_rifleman", "Category": "infantry", "Cost": 100, "Max": 10 },
-			{ "Template": "units/mla/battalion_infantry_snipe", "Category": "infantry", "Cost": 130, "Max": 8 },
-			{ "Template": "units/mla/vehicle_light", "Category": "armor", "Cost": 120, "Max": 8 },
-			{ "Template": "units/mla/vehicle_medium", "Category": "armor", "Cost": 170, "Max": 6 },
-			{ "Template": "units/mla/vehicle_special", "Category": "armor", "Cost": 220, "Max": 4 },
-			{ "Template": "units/mla/drone_kamikaze", "Category": "air", "Cost": 50, "Max": 12 },
-			{ "Template": "units/mla/swarm_drone_kamikaze_01", "Category": "air", "Cost": 160, "Max": 6 }
+			{
+				"Template": "units/mla/battalion_infantry_rifleman",
+				"Category": "infantry",
+				"Cost": 100,
+				"Max": 10
+			},
+			{
+				"Template": "units/mla/battalion_infantry_snipe",
+				"Category": "infantry",
+				"Cost": 130,
+				"Max": 8
+			},
+			{
+				"Template": "units/mla/battalion_infantry_ghost",
+				"Category": "infantry",
+				"Cost": 140,
+				"Max": 6
+			},
+			{
+				"Template": "units/mla/battalion_infantry_flamethrower",
+				"Category": "infantry",
+				"Cost": 120,
+				"Max": 6
+			},
+			{
+				"Template": "units/mla/vehicle_light",
+				"Category": "armor",
+				"Cost": 120,
+				"Max": 8
+			},
+			{
+				"Template": "units/mla/vehicle_medium",
+				"Category": "armor",
+				"Cost": 170,
+				"Max": 6
+			},
+			{
+				"Template": "units/mla/vehicle_special",
+				"Category": "armor",
+				"Cost": 220,
+				"Max": 4
+			},
+			{
+				"Template": "units/mla/drone_kamikaze",
+				"Category": "air",
+				"Cost": 50,
+				"Max": 12
+			},
+			{
+				"Template": "units/mla/swarm_drone_kamikaze_01",
+				"Category": "air",
+				"Cost": 160,
+				"Max": 6
+			}
+		],
+		"ares": [
+			{
+				"Template": "units/ares/battalion_legion",
+				"Category": "infantry",
+				"Cost": 120,
+				"Max": 10
+			},
+			{
+				"Template": "units/ares/battalion_shock",
+				"Category": "infantry",
+				"Cost": 110,
+				"Max": 10
+			},
+			{
+				"Template": "units/ares/exo_trooper",
+				"Category": "infantry",
+				"Cost": 90,
+				"Max": 10
+			},
+			{
+				"Template": "units/ares/vehicle_assault",
+				"Category": "armor",
+				"Cost": 170,
+				"Max": 10
+			},
+			{
+				"Template": "units/ares/vehicle_tank",
+				"Category": "armor",
+				"Cost": 230,
+				"Max": 10
+			}
+		],
+		"pira": [
+			{
+				"Template": "units/pira/battalion_raiders",
+				"Category": "infantry",
+				"Cost": 80,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/scout",
+				"Category": "infantry",
+				"Cost": 50,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/vehicle_buggy",
+				"Category": "armor",
+				"Cost": 100,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/vehicle_technical",
+				"Category": "armor",
+				"Cost": 140,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/drone_kamikaze",
+				"Category": "air",
+				"Cost": 50,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/bm_laser_tank",
+				"Category": "armor",
+				"Cost": 300,
+				"Max": 10
+			}
+		],
+		"coa": [
+			{
+				"Template": "units/coa/battalion_rifle",
+				"Category": "infantry",
+				"Cost": 130,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/battalion_rangers",
+				"Category": "infantry",
+				"Cost": 150,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/officer",
+				"Category": "infantry",
+				"Cost": 90,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/vehicle_ifv",
+				"Category": "armor",
+				"Cost": 260,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/vehicle_mbt",
+				"Category": "armor",
+				"Cost": 280,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/aero_01",
+				"Category": "air",
+				"Cost": 190,
+				"Max": 10
+			},
+			{
+				"Template": "units/coa/drone_recon",
+				"Category": "air",
+				"Cost": 70,
+				"Max": 10
+			}
+		],
+		"swarm": [
+			{
+				"Template": "units/swarm/battalion_mass",
+				"Category": "infantry",
+				"Cost": 60,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/conductor",
+				"Category": "infantry",
+				"Cost": 70,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/stalker",
+				"Category": "infantry",
+				"Cost": 60,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/brute",
+				"Category": "infantry",
+				"Cost": 110,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/spitter",
+				"Category": "infantry",
+				"Cost": 80,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/synapse",
+				"Category": "infantry",
+				"Cost": 120,
+				"Max": 10
+			},
+			{
+				"Template": "units/swarm/behemoth",
+				"Category": "armor",
+				"Cost": 280,
+				"Max": 10
+			}
 		]
 	}
 }

@@ -53,6 +53,10 @@ const BATTLE_MODE_POD_INTERVAL = 1200;
 const BATTLE_MODE_POD_ARRIVAL = 8000;
 /** Intervalo da renda de pontos de reforço (ms). */
 const BATTLE_MODE_INCOME_INTERVAL = 20000;
+/** Pontos de reforço por minuto da zona de desdobramento de cada facção. */
+const BATTLE_MODE_DEPLOY_POINTS_PER_MINUTE = 100;
+/** Intervalo dessa renda (10 pontos a cada 6 s = 100 por minuto). */
+const BATTLE_MODE_DEPLOY_INCOME_INTERVAL = 6000;
 /** Inimigos a esta distância de um ponto de controle da IA o ameaçam (m). */
 const BATTLE_MODE_THREAT_RADIUS = 60;
 
@@ -141,6 +145,7 @@ Trigger.prototype.BattleModeSetup = function()
 		Engine.DestroyEntity(ent);
 
 	this.DoRepeatedly(BATTLE_MODE_INCOME_INTERVAL, "BattleModeIncome", {});
+	this.DoRepeatedly(BATTLE_MODE_DEPLOY_INCOME_INTERVAL, "BattleModeDeployIncome", {});
 	if (settings.aiAttack !== false)
 		this.DoRepeatedly(BATTLE_MODE_DIRECTOR_INTERVAL, "BattleModeDirector", {});
 };
@@ -185,6 +190,27 @@ Trigger.prototype.BattleModeIncome = function()
 	}
 };
 
+/** A zona de desdobramento do jogador ainda existe e é dele? */
+Trigger.prototype.BattleModeHasDeployPoint = function(playerID)
+{
+	const ent = this.battleModeDeployPoints?.[playerID];
+	return !!ent && Engine.QueryInterface(ent, IID_Ownership)?.GetOwner() == playerID;
+};
+
+/** Renda fixa da zona de desdobramento: 100 pontos por minuto. */
+Trigger.prototype.BattleModeDeployIncome = function()
+{
+	if (!this.battleModePoints)
+		return;
+	const amount = BATTLE_MODE_DEPLOY_POINTS_PER_MINUTE * BATTLE_MODE_DEPLOY_INCOME_INTERVAL / 60000;
+	for (const playerID in this.battleModePoints)
+	{
+		const cmpPlayer = QueryPlayerIDInterface(+playerID);
+		if (cmpPlayer && cmpPlayer.GetState() == "active" && this.BattleModeHasDeployPoint(+playerID))
+			this.battleModePoints[playerID] += amount;
+	}
+};
+
 /** Situação dos reforços de um jogador, para a GUI. */
 Trigger.prototype.BattleModeGetStatus = function(playerID)
 {
@@ -199,6 +225,7 @@ Trigger.prototype.BattleModeGetStatus = function(playerID)
 		"pointsPerControlPoint": BATTLE_MODE_POINTS_PER_CONTROL_POINT,
 		"popPerControlPoint": BATTLE_MODE_CONTROL_POINT_POP,
 		"interval": BATTLE_MODE_INCOME_INTERVAL,
+		"deployIncome": this.BattleModeHasDeployPoint(playerID) ? BATTLE_MODE_DEPLOY_POINTS_PER_MINUTE : 0,
 		"popCount": cmpPlayer.GetPopulationCount() + (this.battleModePendingPop?.[playerID] || 0),
 		"popLimit": cmpPlayer.GetPopulationLimit(),
 		"civ": QueryPlayerIDInterface(playerID, IID_Identity)?.GetCiv(),

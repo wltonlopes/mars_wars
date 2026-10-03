@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_assault|units/coa/soldier">
+  <BattalionLeader>
+    <MemberTemplates>units/coa/battalion_member_soldier:4</MemberTemplates>
+    <MemberRoles>units/coa/battalion_member_soldier:4:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/coa/battalion_member_soldier</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Coalition Rifle Squad</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_rifle.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>32</BuildTime>
+    <Resources>
+      <food>110</food>
+      <metal>110</metal>
+      <stone>0</stone>
+      <wood>30</wood>
+    </Resources>
+  </Cost>
+</Entity>

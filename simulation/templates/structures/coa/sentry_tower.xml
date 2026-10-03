@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mcc/sentry_tower">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Watch Post</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/auto_defense_tower.xml</Actor>
+  </VisualActor>
+</Entity>

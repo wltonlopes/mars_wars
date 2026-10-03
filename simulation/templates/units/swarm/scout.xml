@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_unit_champion_infantry_swordsman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Scout</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Dog-sized scouting creature.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/fox_red.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Melee>
+      <AttackName>Claws</AttackName>
+      <Damage>
+        <Hack>5</Hack>
+        <Pierce>0</Pierce>
+        <Crush>0</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <RepeatTime>1000</RepeatTime>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>90</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>15</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>1</Population>
+    <BuildTime>8</BuildTime>
+    <Resources>
+      <food>40</food>
+      <metal>0</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
+</Entity>

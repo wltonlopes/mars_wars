@@ -1,0 +1,26 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Colony Logistics",
+	"description": "Supply routes, rationing and shared habitats let the colony sustain a larger force.",
+	"cost": {
+		"food": 200,
+		"metal": 150
+	},
+	"requirements": {
+		"tech": "phase_town"
+	},
+	"requirementsTooltip": "Requires Town Phase.",
+	"icon": "habitat_engineering.png",
+	"researchTime": 40,
+	"tooltip": "Civic Centres +20 population.",
+	"modifications": [
+		{
+			"value": "Population/Bonus",
+			"add": 20
+		}
+	],
+	"affects": [
+		"CivCentre"
+	]
+}

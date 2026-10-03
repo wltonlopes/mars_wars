@@ -12,8 +12,8 @@
   <ProductionQueue/>
   <Sound>
     <SoundGroups>
-      <walk>actor/human/movement/walk.xml</walk>
-      <run>actor/human/movement/run.xml</run>
+      <walk>actor/vehicle/engine_wheeled.xml</walk>
+      <run>actor/vehicle/engine_wheeled.xml</run>
     </SoundGroups>
   </Sound>
   <Trainer>

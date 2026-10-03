@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Piloto de moto (prop "ride" de vehicle/pira/bike.xml). As animações são
+     geradas por tools/animation/gen_bike_rider.py a partir da geometria da moto. -->
+<variant name="Base" frequency="1">
+  <animations>
+    <animation file="biped/bike_rider/ride_idle.dae" name="Idle" speed="100"/>
+    <!-- Andando/correndo a velocidade da animação acompanha a da moto
+         (speed = % por metro/segundo). -->
+    <animation file="biped/bike_rider/ride_move.dae" name="Walk" speed="10"/>
+    <animation file="biped/bike_rider/ride_move.dae" name="Run" speed="10"/>
+    <!-- Saca a submetralhadora, atira (event = 1º disparo da rajada) e volta ao guidão. -->
+    <animation event="0.4" file="biped/bike_rider/ride_shoot.dae" name="attack_ranged" speed="100"/>
+    <!-- Arremessado para o lado em que a moto tomba (vehicle/bike/death.dae). -->
+    <animation file="biped/bike_rider/ride_death.dae" name="death" speed="100"/>
+  </animations>
+</variant>

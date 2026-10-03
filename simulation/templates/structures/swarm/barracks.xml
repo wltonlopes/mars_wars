@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/barracks">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Spawning Chamber</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/structures/mla/bunker.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_mass
+      units/{civ}/servant
+      units/{civ}/abomination
+      units/{civ}/conductor
+      units/{civ}/hierophant
+      units/{civ}/prophet
+    </Entities>
+  </Trainer>
+  <AirSupportProvider>
+    <tunnel>
+      <Battalion datatype="tokens" replace="">units/swarm/battalion_mass</Battalion>
+    </tunnel>
+  </AirSupportProvider>
+</Entity>

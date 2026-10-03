@@ -1,8 +1,15 @@
 /**
- * Tempestade de areia marciana com raios (evento de clima, criado pelo
- * WeatherManager).
+ * Tempestade de areia marciana com raios.
  *
- * Entra por uma borda do mapa e atravessa até a borda oposta. É formada por
+ * Dois usos:
+ *  - evento de clima (WeatherManager): entra por uma borda do mapa e
+ *    atravessa até a borda oposta, e os raios atingem todos;
+ *  - ataque especial (centro cívico dos piratas, AirSupportProvider tipo
+ *    "sandstorm"): nasce no ponto escolhido e vai à deriva, se afastando
+ *    do prédio, por MissionDuration segundos; os raios são do jogador que
+ *    convocou (sem fogo amigo, se FriendlyFire for false).
+ *
+ * É formada por É formada por
  * várias nuvens (entidades CloudTemplate) que andam juntas. Dentro dela:
  *  - a visão diminui, as unidades andam mais devagar e os tiros espalham mais;
  *  - caem raios em pontos aleatórios (às vezes sobre uma unidade ou prédio),
@@ -12,6 +19,7 @@ function Sandstorm() {}
 
 Sandstorm.prototype.Schema =
 	"<a:help>Martian sandstorm with lightning: crosses the map, reducing vision, speed and accuracy inside it, with random lightning strikes.</a:help>" +
+	"<interleave>" +
 	"<element name='Radius' a:help='Metres.'><ref name='positiveDecimal'/></element>" +
 	"<element name='Speed' a:help='Metres per second.'><ref name='positiveDecimal'/></element>" +
 	"<element name='CloudTemplate' a:help='Visual cloud entity; one in the centre and CloudCount around it.'><text/></element>" +
@@ -36,8 +44,11 @@ Sandstorm.prototype.Schema =
 			"<optional><element name='Sound'><text/></element></optional>" +
 		"</interleave>" +
 	"</element>" +
+	"<optional><element name='MissionDuration' a:help='Special attack only: seconds the summoned storm lasts.'><ref name='positiveDecimal'/></element></optional>" +
+	"<optional><element name='FriendlyFire' a:help='Special attack only: whether the lightning hits the summoner and allies (natural storms hit everyone).'><data type='boolean'/></element></optional>" +
 	"<optional><element name='WindSound'><text/></element></optional>" +
-	"<optional><element name='WindSoundInterval'><ref name='positiveDecimal'/></element></optional>";
+	"<optional><element name='WindSoundInterval'><ref name='positiveDecimal'/></element></optional>" +
+	"</interleave>";
 
 /** Segundos entre atualizações dos efeitos nas unidades. */
 Sandstorm.prototype.EFFECT_INTERVAL = 1;
@@ -55,6 +66,8 @@ Sandstorm.prototype.Init = function()
 	this.windTime = 0;
 	this.affected = [];
 	this.finished = false;
+	this.missionId = 0;
+	this.provider = INVALID_ENTITY;
 };
 
 Sandstorm.prototype.GetModifierId = function()
@@ -93,6 +106,31 @@ Sandstorm.prototype.Start = function(path)
 
 	this.nextStrike = this.GetTime() + 3000;
 	return path.length / +this.template.Speed * 1000;
+};
+
+/**
+ * Ataque especial (AirSupportManager): a tempestade se forma em `target` e
+ * vai à deriva na direção prédio -> alvo.
+ * @return {number} Duração em milissegundos.
+ */
+Sandstorm.prototype.StartMission = function(missionId, provider, origin, target)
+{
+	this.missionId = missionId;
+	this.provider = provider;
+	const direction = AirSupport.Normalize({ "x": target.x - origin.x, "z": target.z - origin.z });
+	const duration = +(this.template.MissionDuration || 40);
+	return this.Start({
+		"entry": target,
+		"direction": direction,
+		"length": +this.template.Speed * duration
+	});
+};
+
+/** Dono do dano dos raios: quem convocou, ou gaia nas tempestades naturais. */
+Sandstorm.prototype.GetAttackerOwner = function()
+{
+	const cmpOwnership = Engine.QueryInterface(this.entity, IID_Ownership);
+	return cmpOwnership ? Math.max(0, cmpOwnership.GetOwner()) : 0;
 };
 
 Sandstorm.prototype.GetTime = function()
@@ -177,9 +215,21 @@ Sandstorm.prototype.Strike = function(center)
 	const radius = +this.template.Radius;
 	let point = null;
 
+	const owner = this.GetAttackerOwner();
+	const friendlyFire = !owner || this.template.FriendlyFire != "false";
+
 	if (randBool(+lightning.TargetChance))
 	{
-		const targets = WeatherHelper.GetEntitiesInArea(new Vector2D(center.x, center.z), radius * 0.9, IID_Health);
+		let targets = WeatherHelper.GetEntitiesInArea(new Vector2D(center.x, center.z), radius * 0.9, IID_Health);
+		// Convocada sem fogo amigo: os raios procuram só inimigos.
+		if (!friendlyFire)
+		{
+			const cmpDiplomacy = QueryPlayerIDInterface(owner, IID_Diplomacy);
+			targets = targets.filter(ent => {
+				const targetOwner = Engine.QueryInterface(ent, IID_Ownership)?.GetOwner();
+				return targetOwner !== undefined && cmpDiplomacy && cmpDiplomacy.IsEnemy(targetOwner);
+			});
+		}
 		const structures = targets.filter(ent => Engine.QueryInterface(ent, IID_Identity)?.HasClass("Structure"));
 		const pool = structures.length && randBool(0.6) ? structures : targets;
 		if (pool.length)
@@ -230,12 +280,12 @@ Sandstorm.prototype.Strike = function(center)
 	AttackHelper.CauseDamageOverArea({
 		"type": "Ranged",
 		"attackData": { "Damage": damage },
-		"attacker": this.entity,
-		"attackerOwner": 0,
+		"attacker": owner && Engine.QueryInterface(this.provider, IID_Position) ? this.provider : this.entity,
+		"attackerOwner": owner,
 		"origin": new Vector2D(point.x, point.z),
 		"radius": +lightning.Radius,
 		"shape": "Circular",
-		"friendlyFire": true
+		"friendlyFire": friendlyFire
 	});
 };
 
@@ -244,7 +294,24 @@ Sandstorm.prototype.Finish = function()
 	if (this.finished)
 		return;
 	this.finished = true;
-	Engine.DestroyEntity(this.entity);
+	// A missão é encerrada pelo AirSupportManager, que remove esta entidade.
+	if (!this.FinishMission())
+		Engine.DestroyEntity(this.entity);
+};
+
+/**
+ * Libera o prédio que convocou a tempestade (se for um ataque especial).
+ * @return {boolean} Se havia uma missão.
+ */
+Sandstorm.prototype.FinishMission = function()
+{
+	if (!this.missionId)
+		return false;
+
+	const missionId = this.missionId;
+	this.missionId = 0;
+	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).FinishMission(missionId);
+	return true;
 };
 
 /**
@@ -259,6 +326,8 @@ Sandstorm.prototype.OnDestroy = function()
 
 	WeatherHelper.UpdateAreaModifiers(this.GetModifierId(), this.affected, [], {});
 	this.affected = [];
+
+	this.FinishMission();
 };
 
 Engine.RegisterComponentType(IID_Sandstorm, "Sandstorm", Sandstorm);

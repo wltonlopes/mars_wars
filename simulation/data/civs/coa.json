@@ -1,0 +1,47 @@
+{
+	"Code": "coa",
+	"Culture": "Mars",
+	"Music": [
+		{
+			"File": "Red_Dawn.ogg",
+			"Type": "peace"
+		},
+		{
+			"File": "Hill_of_Sorrows.ogg",
+			"Type": "peace"
+		}
+	],
+	"CivBonuses": [],
+	"TeamBonuses": [],
+	"WallSets": [
+		"structures/wallset_palisade",
+		"structures/achae/wallset_stone"
+	],
+	"StartEntities": [
+		{
+			"Template": "structures/coa/civil_centre"
+		},
+		{
+			"Template": "units/coa/worker",
+			"Count": 3
+		},
+		{
+			"Template": "units/coa/battalion_rifle",
+			"Count": 2
+		},
+		{
+			"Template": "units/coa/officer",
+			"Count": 1
+		}
+	],
+	"AINames": [
+		"Earth Coalition I",
+		"Earth Coalition II",
+		"Earth Coalition III"
+	],
+	"SkirmishReplacements": {
+		"skirmish/units/default_support_civilian": "units/coa/worker",
+		"skirmish/units/default_infantry_ranged_b": "units/coa/battalion_rifle"
+	},
+	"SelectableInGameSetup": true
+}

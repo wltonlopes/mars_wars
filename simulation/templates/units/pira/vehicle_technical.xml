@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/vehicle_medium">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Technical</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Pickup with a mounted gun.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/vehicle/mla/coyote.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>22</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>120</metal>
+      <stone>90</stone>
+      <wood>30</wood>
+    </Resources>
+  </Cost>
+</Entity>

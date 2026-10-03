@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Campeão pesado de escudo balístico: muito blindado e lento, avança atrás
+     do escudo e atira com a arma na outra mão. Poucos tiros, mas fortes. -->
+<Entity parent="units/mcc/rifleman">
+  <Attack>
+    <Ranged>
+      <AttackName>Heavy Assault Rifle</AttackName>
+      <Damage>
+        <Pierce>55.0</Pierce>
+        <Crush>12.0</Crush>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>62</MaxRange>
+      <MinRange>0.0</MinRange>
+      <PreferredClasses datatype="tokens">Infantry Vehicle</PreferredClasses>
+      <!-- 0,36 do ciclo, igual ao event da animação de tiro. -->
+      <PrepareTime>1300</PrepareTime>
+      <RepeatTime>3600</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.8</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="3"/>
+        <Speed>450.0</Speed>
+        <Spread>1.2</Spread>
+      </Projectile>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>22</BuildTime>
+    <Resources>
+      <food>0</food>
+      <wood>0</wood>
+      <metal>320</metal>
+    </Resources>
+  </Cost>
+  <Health>
+    <Max>420</Max>
+  </Health>
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>Heavy Shield Trooper</GenericName>
+    <SpecificName>Corporate Bulwark</SpecificName>
+    <Icon>units/squad_assalt.png</Icon>
+    <Tooltip>Champion heavy infantry behind a ballistic shield: very slow and heavily armoured, blocks half of incoming ranged attacks and hits hard with a heavy rifle.</Tooltip>
+    <VisibleClasses datatype="tokens">Ranged Assault Heavy</VisibleClasses>
+  </Identity>
+  <Loot>
+    <xp>250</xp>
+  </Loot>
+  <Resistance>
+    <!-- Escudo balístico: metade dos tiros é bloqueada por completo. -->
+    <BlockRating>50</BlockRating>
+    <Entity>
+      <Damage>
+        <Hack>12</Hack>
+        <Pierce>14</Pierce>
+        <Crush>25</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <StatusBars>
+    <HeightOffset>8.0</HeightOffset>
+  </StatusBars>
+  <UnitMotion>
+    <WalkSpeed>4.6</WalkSpeed>
+    <RunMultiplier>1.0</RunMultiplier>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mcc/rifle_assalt_champion_heavy_assalt.xml</Actor>
+  </VisualActor>
+</Entity>

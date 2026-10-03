@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rastro de veículo: entidade local (só visual, não sincronizada), como um cadáver. -->
+<Entity>
+  <Decay>
+    <Active>true</Active>
+    <SinkingAnim>false</SinkingAnim>
+    <SinkProb>1.0</SinkProb>
+    <DelayTime>10.5</DelayTime>
+    <SinkRate>2.0</SinkRate>
+    <SinkAccel>2.0</SinkAccel>
+  </Decay>
+  <Ownership/>
+  <Position>
+    <Altitude>0</Altitude>
+    <Anchor>upright</Anchor>
+    <Floating>false</Floating>
+    <FloatDepth>0.0</FloatDepth>
+    <TurnRate>6.0</TurnRate>
+  </Position>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+    <AlwaysVisible>false</AlwaysVisible>
+    <Corpse>false</Corpse>
+    <Preview>false</Preview>
+  </Visibility>
+  <VisualActor>
+    <Actor>props/special/tracks/track_wheeled.xml</Actor>
+    <SilhouetteDisplay>false</SilhouetteDisplay>
+    <SilhouetteOccluder>false</SilhouetteOccluder>
+    <VisibleInAtlasOnly>false</VisibleInAtlasOnly>
+  </VisualActor>
+</Entity>

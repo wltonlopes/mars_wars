@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_skirmisher|units/coa/ranger">
+  <BattalionLeader>
+    <MemberTemplates>units/coa/battalion_member_ranger:3</MemberTemplates>
+    <MemberRoles>units/coa/battalion_member_ranger:3:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/coa/battalion_member_ranger</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Ranger Team</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_stealth.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>34</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>120</metal>
+      <stone>0</stone>
+      <wood>60</wood>
+    </Resources>
+  </Cost>
+</Entity>

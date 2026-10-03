@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rastro de veículo no solo (tracked). As variantes vão esmaecendo; o componente
+     TrackMarks troca fresh -> mid -> old e remove o rastro após ~10 s. -->
+<actor version="1">
+  <group>
+    <variant frequency="1" name="fresh">
+      <decal angle="0" depth="3.2" offsetx="0" offsetz="0" width="2.6"/>
+      <textures>
+        <texture file="props/track_tracked_fresh.png" name="baseTex"/>
+        <texture file="default_norm.png" name="normTex"/>
+        <texture file="null_black.dds" name="specTex"/>
+      </textures>
+    </variant>
+    <variant frequency="0" name="mid">
+      <decal angle="0" depth="3.2" offsetx="0" offsetz="0" width="2.6"/>
+      <textures>
+        <texture file="props/track_tracked_mid.png" name="baseTex"/>
+        <texture file="default_norm.png" name="normTex"/>
+        <texture file="null_black.dds" name="specTex"/>
+      </textures>
+    </variant>
+    <variant frequency="0" name="old">
+      <decal angle="0" depth="3.2" offsetx="0" offsetz="0" width="2.6"/>
+      <textures>
+        <texture file="props/track_tracked_old.png" name="baseTex"/>
+        <texture file="default_norm.png" name="normTex"/>
+        <texture file="null_black.dds" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>terrain_norm_spec.xml</material>
+</actor>

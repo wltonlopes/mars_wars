@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Moto dos piratas (art/meshes/vehicle/bike_rigged.dae), gerada por
+     tools/animation/gen_bike_rider.py. -->
+<skeletons>
+	<standard_skeleton title="Bike" id="bike">
+		<bone name="bike_root">
+			<bone name="wheel_front"></bone>
+			<bone name="wheel_rear"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Bike" target="bike">
+		<identifier>
+			<root>bike_root</root>
+		</identifier>
+		<bone name="bike_root"><target>bike_root</target>
+			<bone name="wheel_front"><target>wheel_front</target></bone>
+			<bone name="wheel_rear"><target>wheel_rear</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

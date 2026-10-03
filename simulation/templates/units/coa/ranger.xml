@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/light_rifleman">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Ranger</GenericName>
+    <SpecificName>Special Forces</SpecificName>
+    <Icon>units/squad_stealth.png</Icon>
+    <Tooltip>Special forces scout: long sight to feed the information network.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/units/mcc/rifle_assalt_pmc_b.xml</Actor>
+  </VisualActor>
+  <Vision>
+    <Range>110</Range>
+  </Vision>
+</Entity>

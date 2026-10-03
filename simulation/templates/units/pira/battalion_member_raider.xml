@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/pira/raider">
+  <Identity>
+    <GenericName>Raider Band Member</GenericName>
+    <SelectionGroupName>units/pira/battalion_raiders</SelectionGroupName>
+    <Icon>units/squad_assalt.png</Icon>
+  </Identity>
+</Entity>

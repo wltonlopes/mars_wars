@@ -1,0 +1,65 @@
+{
+	"type": "range",
+	"radius": 60,
+	"affects": [
+		"SwarmMass",
+		"Creature"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Melee/Damage/Fire",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.2
+		},
+		{
+			"value": "Attack/Melee/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"add": 2
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"add": 2
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"add": 2
+		}
+	],
+	"auraName": "Cohesion (Hierophant)",
+	"auraDescription": "A Hierophant sharpens the hive mind: +20% damage, +10% attack speed and +2 armour around it.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

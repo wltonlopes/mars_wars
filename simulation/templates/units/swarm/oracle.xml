@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_unit_champion_infantry_swordsman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Oracle</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Sensory creature with an enormous field of view.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/swarm/fauna/arctic_wolf.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Melee>
+      <AttackName>Claws</AttackName>
+      <Damage>
+        <Hack>4</Hack>
+        <Pierce>0</Pierce>
+        <Crush>0</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <RepeatTime>1200</RepeatTime>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>120</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>13</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>1</Population>
+    <BuildTime>12</BuildTime>
+    <Resources>
+      <food>60</food>
+      <metal>40</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+  <Vision>
+    <Range>150</Range>
+  </Vision>
+</Entity>

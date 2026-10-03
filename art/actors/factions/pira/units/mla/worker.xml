@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="worker_01" frequency="1">
+      <mesh>skeletal/worker_01.dae</mesh>
+      <props>
+        <prop actor="props/units/worker_glass.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+    <group>
+  <variant frequency="1" name="01_01">
+    <textures>
+	    <texture file="factions/pira/skeletal/mla_worker.png" name="baseTex"/>
+      <texture file="skeletal/mla_worker_spec.png" name="specTex"/>
+      <texture file="skeletal/mla_worker_norm.png" name="normTex"/>
+	  </textures>
+  </variant>
+  </group>
+	<group>
+		<variant frequency="100" name="Idle"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+        <prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+  <material>basic_trans_parallax_spec.xml</material>
+</actor>

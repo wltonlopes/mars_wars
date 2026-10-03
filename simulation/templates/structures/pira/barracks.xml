@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/barracks">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Hideout</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>vehicle/pira/barracks.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_raiders
+      units/{civ}/rifleman
+      units/{civ}/scout
+      units/{civ}/bm_lmg
+    </Entities>
+  </Trainer>
+  <AirSupportProvider>
+    <tunnel>
+      <Battalion datatype="tokens" replace="">units/pira/battalion_raiders</Battalion>
+    </tunnel>
+  </AirSupportProvider>
+</Entity>

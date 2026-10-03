@@ -1,0 +1,34 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Automated Workforce",
+	"description": "Drones and exoskeleton rigs let the colony support more workers.",
+	"cost": {
+		"food": 250,
+		"metal": 200,
+		"wood": 150
+	},
+	"requirements": {
+		"all": [
+			{
+				"tech": "workforce_training"
+			},
+			{
+				"tech": "phase_town"
+			}
+		]
+	},
+	"requirementsTooltip": "Requires Workforce Training and Town Phase.",
+	"icon": "exoskeleton_systems.png",
+	"researchTime": 50,
+	"tooltip": "+6 worker limit.",
+	"modifications": [
+		{
+			"value": "EntityLimits/Limits/Worker",
+			"add": 6
+		}
+	],
+	"affects": [
+		"Player"
+	]
+}

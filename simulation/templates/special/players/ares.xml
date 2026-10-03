@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_player_mars">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Legion of Ares</GenericName>
+    <History>Born inside the MLA itself, the Legion of Ares believes political independence is not enough: Mars must become a militarised, disciplined, hierarchical and self-sufficient nation. Anyone from outside Mars - the MCC, the Coalition, foreigners, Earth organisations - is a potential threat. "Only the strong will inherit Mars."</History>
+    <Icon>emblems/emblem_ares.png</Icon>
+  </Identity>
+</Entity>

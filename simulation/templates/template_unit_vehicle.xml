@@ -65,12 +65,12 @@
   </Selectable>
   <Sound>
     <SoundGroups>
-      <!-- <attack_ranged>attack/weapon/rifle_attack.xml</attack_ranged>
-      <select>engine_heavy.xml</select>
-      <order_walk>engine_heavy.xml</order_walk>
-      <order_attack>attack/weapon/rifle_attack.xml</order_attack>
-      <order_attack_move>engine_heavy.xml</order_attack_move>
-      <trained>engine_heavy.xml</trained> -->
+      <attack_ranged>attack/weapon/cannon_heavy.xml</attack_ranged>
+      <select>actor/destroyer/destroyer_select.xml</select>
+      <!-- <order_walk>engine_heavy.xml</order_walk> -->
+      <order_attack>attack/weapon/cannon_heavy.xml</order_attack>
+      <order_attack_move>actor/destroyer/destroyer_ready.xml</order_attack_move>
+      <trained>actor/destroyer/destroyer_ready.xml</trained>
     </SoundGroups>
   </Sound>
   <StatusBars>

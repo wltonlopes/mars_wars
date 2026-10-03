@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Explosão do tanque de combustível do lança-chamas. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/flame_anchor.dae</mesh>
+      <props>
+        <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
+        <prop actor="particle/flamethrower/flame_impact_fire.xml" attachpoint="root"/>
+        <prop actor="particle/flamethrower/flame_impact_smoke.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/weapons/flamethrower.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

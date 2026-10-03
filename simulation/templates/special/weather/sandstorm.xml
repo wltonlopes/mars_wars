@@ -8,8 +8,8 @@
     <CloudTemplate>special/weather/sandstorm_cloud</CloudTemplate>
     <CloudCount>6</CloudCount>
     <CloudRing>55</CloudRing>
-    <VisionMultiplier>0.55</VisionMultiplier>
-    <WalkSpeedMultiplier>0.8</WalkSpeedMultiplier>
+    <VisionMultiplier>0.5</VisionMultiplier>
+    <WalkSpeedMultiplier>0.75</WalkSpeedMultiplier>
     <SpreadMultiplier>1.6</SpreadMultiplier>
     <Lightning>
       <Templates datatype="tokens">

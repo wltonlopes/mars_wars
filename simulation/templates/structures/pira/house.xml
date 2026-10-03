@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/house">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Tent Camp</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/structures/mla/house.xml</Actor>
+  </VisualActor>
+</Entity>

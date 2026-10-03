@@ -63,9 +63,10 @@ export function* generateMap(mapSettings)
 	setFogFactor(0.0076);
 	setFogThickness(0.45);
 	setPPEffect("hdr");
-	setPPSaturation(0.5);
-	setPPContrast(0.10);
-	setPPBloom(0.05);
+	setPPContrast(0.67);
+	setPPSaturation(0.42);
+	setPPBloom(0.23);
+
 
 	const heightLand = 25;
 	globalThis.g_Map = new RandomMap(heightLand, tRegolith);

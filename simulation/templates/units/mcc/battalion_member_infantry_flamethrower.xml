@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_member|units/mcc/flamethrower">
+    <!-- O mixin battalion_member traz 30 de munição (ranged_combat); aqui é o
+         combustível do lança-chamas (a recarga vem de units/mcc/flamethrower). -->
+    <Ammo>
+        <CurrAmmo>20</CurrAmmo>
+        <MaxAmmo>20</MaxAmmo>
+        <SwitchToMeleeRange>0</SwitchToMeleeRange>
+    </Ammo>
+    <Identity>
+        <GenericName>Flamethrower</GenericName>
+        <SelectionGroupName>units/mcc/battalion_flamethrower</SelectionGroupName>
+        <Icon>units/squad_flamethrower.png</Icon>
+    </Identity>
+</Entity>

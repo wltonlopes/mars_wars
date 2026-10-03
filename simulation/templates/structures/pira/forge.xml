@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/forge">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Black Market</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/pira/structures/mla/lab.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/bm_vtol
+    </Entities>
+  </Trainer>
+</Entity>

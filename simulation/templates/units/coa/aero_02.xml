@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/aero_02">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition Strike VTOL</GenericName>
+    <Icon>units/vtol.png</Icon>
+    <Tooltip>Strike VTOL.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/structures/mcc/aero_02.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>45</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>200</metal>
+      <stone>150</stone>
+      <wood>200</wood>
+    </Resources>
+  </Cost>
+</Entity>

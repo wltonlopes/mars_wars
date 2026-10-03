@@ -1,0 +1,71 @@
+{
+	"Name": "Legião de Ares",
+	"Description": "Armadura pesada, disciplina e combate direto. Menor alcance e velocidade média.",
+	"Doctrine": [
+		{
+			"affects": [
+				"Soldier"
+			],
+			"modifications": [
+				{
+					"value": "Resistance/Entity/Damage/Hack",
+					"add": 2
+				},
+				{
+					"value": "Resistance/Entity/Damage/Pierce",
+					"add": 2
+				},
+				{
+					"value": "Resistance/Entity/Damage/Crush",
+					"add": 2
+				},
+				{
+					"value": "Attack/Melee/Damage/Hack",
+					"multiply": 1.3
+				},
+				{
+					"value": "Attack/Melee/Damage/Pierce",
+					"multiply": 1.3
+				},
+				{
+					"value": "Attack/Melee/Damage/Crush",
+					"multiply": 1.3
+				},
+				{
+					"value": "Attack/Melee/Damage/Fire",
+					"multiply": 1.3
+				},
+				{
+					"value": "Attack/Ranged/MaxRange",
+					"multiply": 0.85
+				},
+				{
+					"value": "UnitMotion/WalkSpeed",
+					"multiply": 0.95
+				},
+				{
+					"value": "Health/Max",
+					"multiply": 1.15
+				}
+			]
+		},
+		{
+			"affects": [
+				"Structure"
+			],
+			"modifications": [
+				{
+					"value": "Health/Max",
+					"multiply": 1.25
+				}
+			]
+		}
+	],
+	"Momentum": {
+		"ValuePerPoint": 30,
+		"Decay": 3,
+		"DecayDelay": 15,
+		"Max": 100,
+		"LevelSize": 20
+	}
+}

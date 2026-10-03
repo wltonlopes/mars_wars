@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/stable">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Armoury</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/structures/mla/stable.xml</Actor>
+  </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/vehicle_assault
+      units/{civ}/vehicle_tank
+    </Entities>
+  </Trainer>
+</Entity>

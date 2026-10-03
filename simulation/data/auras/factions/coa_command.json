@@ -1,0 +1,25 @@
+{
+	"type": "range",
+	"radius": 60,
+	"affects": [
+		"Soldier",
+		"Vehicle"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Ranged/Projectile/Spread",
+			"multiply": 0.6
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Vision/Range",
+			"multiply": 1.3
+		}
+	],
+	"auraName": "Chain of Command",
+	"auraDescription": "Units in contact with command: better accuracy (cancels the out-of-command penalty), +10% fire rate and +30% vision.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

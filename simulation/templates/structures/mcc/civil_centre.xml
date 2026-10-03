@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_civic_civil_centre">
   <Attack>
     <Ranged>
@@ -87,4 +87,16 @@
       <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
     </SoundGroups>
   </Sound>
+  <!-- População: valor inicial da colônia (sobe com tecnologias). -->
+  <Population>
+    <Bonus>40</Bonus>
+  </Population>
+  <Researcher>
+    <Technologies datatype="tokens">
+      colony_logistics
+      orbital_supply_chain
+      workforce_training
+      automated_workforce
+    </Technologies>
+  </Researcher>
 </Entity>

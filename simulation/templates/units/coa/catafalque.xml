@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/catafalque">
+  <Identity>
+    <Civ>coa</Civ>
+  </Identity>
+</Entity>

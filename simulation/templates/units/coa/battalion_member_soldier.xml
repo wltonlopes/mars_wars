@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/coa/soldier">
+  <Identity>
+    <GenericName>Coalition Rifle Squad Member</GenericName>
+    <SelectionGroupName>units/coa/battalion_rifle</SelectionGroupName>
+    <Icon>units/squad_rifle.png</Icon>
+  </Identity>
+</Entity>

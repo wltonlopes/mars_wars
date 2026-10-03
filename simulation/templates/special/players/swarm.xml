@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="template_player_mars">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>The Swarm</GenericName>
+    <History>A cult that claims telepathic contact with ancient alien sovereigns, masters of genetic manipulation who left the material world. Its followers rebuild their bodies with genetics, biotechnology and neural symbiosis; the masses lose their individuality and act as a partial hive mind, guided by Conductors, Hierophants and Prophets. "We did not find them. We were found."</History>
+    <Icon>emblems/emblem_swarm.png</Icon>
+  </Identity>
+</Entity>

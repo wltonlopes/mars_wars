@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/vehicle_heavy">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition MBT</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Main battle tank.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/vehicle/mcc/mammoth.xml</Actor>
+  </VisualActor>
+  <Cost>
+    <BuildTime>55</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>300</metal>
+      <stone>260</stone>
+      <wood>150</wood>
+    </Resources>
+  </Cost>
+</Entity>

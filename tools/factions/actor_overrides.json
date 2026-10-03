@@ -1,0 +1,4 @@
+{
+	"structures/pira/barracks": "vehicle/pira/barracks.xml",
+	"structures/pira/civil_centre": "vehicle/pira/cc.xml"
+}

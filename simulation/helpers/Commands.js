@@ -419,10 +419,12 @@ var g_Commands = {
 		{
 			if (!data.controlAllUnits)
 			{
+				// Entidades não deletáveis (pontos de controle, zonas de
+				// desdobramento, parques solares...) não podem ser removidas;
+				// sem isto a IA deletava o ponto de controle prestes a ser
+				// capturado e ele "sumia".
 				const cmpIdentity = Engine.QueryInterface(ent, IID_Identity);
-				if (cmpIdentity &&
-					cmpIdentity.HasClass("BattalionLeader")
-					 && cmpIdentity.IsUndeletable())
+				if (cmpIdentity && cmpIdentity.IsUndeletable())
 					continue;
 
 				const cmpCapturable = QueryMiragedInterface(ent, IID_Capturable);

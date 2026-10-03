@@ -1,0 +1,34 @@
+{
+	"specificName": {},
+	"soundComplete": "interface/alarm/alarm_upgradearmory.xml",
+	"genericName": "Modular Barracks",
+	"description": "Prefabricated modules expand every barracks on demand.",
+	"cost": {
+		"food": 250,
+		"stone": 200,
+		"wood": 100
+	},
+	"requirements": {
+		"all": [
+			{
+				"tech": "military_quarters"
+			},
+			{
+				"tech": "phase_town"
+			}
+		]
+	},
+	"requirementsTooltip": "Requires Military Quarters and Town Phase.",
+	"icon": "industrial_fabrication.png",
+	"researchTime": 50,
+	"tooltip": "Barracks +15 population each.",
+	"modifications": [
+		{
+			"value": "Population/Bonus",
+			"add": 15
+		}
+	],
+	"affects": [
+		"Barracks"
+	]
+}

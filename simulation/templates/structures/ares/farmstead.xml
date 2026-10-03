@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="structures/mla/farmstead">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Hydroponics</GenericName>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/ares/structures/mla/greenhouse.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/drone_kamikaze">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Recon Drone</GenericName>
+    <Icon>units/drone.png</Icon>
+    <Tooltip>Drone with a wide sensor range for the information network.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>factions/coa/vehicle/mla/drone_kamikaze.xml</Actor>
+  </VisualActor>
+  <Vision>
+    <Range>130</Range>
+  </Vision>
+  <Cost>
+    <BuildTime>15</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>60</metal>
+      <stone>0</stone>
+      <wood>80</wood>
+    </Resources>
+  </Cost>
+</Entity>
