@@ -20,6 +20,7 @@
   </Trainer>
   <VisualActor>
     <Actor>structures/mcc/stable.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_10x8.xml</FoundationActor>
   </VisualActor>
   <!-- População: garagem de veículos. -->
   <Population>

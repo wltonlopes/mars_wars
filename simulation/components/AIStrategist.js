@@ -10,7 +10,13 @@
  *    paraquedas) vão para a base atacada, para a frente de combate ou, sem
  *    nada disso, para casa.
  *  - Estruturas que a Petra não sabe construir (BUILD_PLANS): silos de
- *    mísseis e torres de defesa aérea.
+ *    mísseis e torres de defesa aérea; e, como rede de segurança, o primeiro
+ *    quartel, a primeira garagem e as torres sentinela, se ela não os fizer.
+ *  - Parques solares: são a única fonte de Energia (que toda construção
+ *    custa) e só se ganham capturando. A Petra não faz isso e, sem energia,
+ *    trava; aqui a infantaria ociosa é mandada capturar os parques.
+ *  - Trabalhadores que a Petra deixa parados: vão coletar o recurso mais
+ *    próximo.
  *
  * Um jogador da IA é atendido por vez (rodízio), para o custo ficar baixo.
  * A IA só mira no que o jogador dela enxerga: unidades visíveis e estruturas
@@ -65,15 +71,32 @@ AIStrategist.prototype.REINFORCEMENT_POWERS = ["drop_pod", "tunnel", "vehicle_ai
  *                construção não atrapalhar a economia da Petra
  */
 AIStrategist.prototype.BUILD_PLANS = [
+	// Rede de segurança: a Petra sabe construir estes, mas às vezes não constrói.
+	{ "template": "barracks", "max": 1, "minPop": 12, "reserve": 1 },
+	{ "template": "sentry_tower", "max": 2, "minPop": 25, "reserve": 1.3 },
+	{ "template": "stable", "max": 1, "minPop": 35, "reserve": 1.2 },
+	// A Petra não conhece estes.
 	{ "template": "air_defense_tower", "max": 1, "minPop": 45, "reserve": 1.5 },
 	{ "template": "silos", "max": 1, "minPop": 70, "reserve": 1.5 }
 ];
+
+/** A infantaria ociosa a até esta distância de um parque solar vai capturá-lo. */
+AIStrategist.prototype.CAPTURE_RANGE = 130;
+/** Além disso, o parque livre mais próximo da base recebe até este tanto de unidades, de onde estiverem. */
+AIStrategist.prototype.CAPTURE_PARTY = 4;
+/** De quanto em quanto tempo a lista de parques solares do mapa é refeita, em ms. */
+AIStrategist.prototype.PARK_REFRESH = 120000;
+/** Trabalhadores parados procuram recursos a até esta distância deles. */
+AIStrategist.prototype.GATHER_RANGE = 220;
 
 AIStrategist.prototype.Init = function()
 {
 	this.nextPlayer = 1;
 	// Por jogador: { lastBuild, nextPower }.
 	this.players = {};
+	// Parques solares do mapa (não são destruídos; só mudam de dono).
+	this.parks = null;
+	this.parksTime = 0;
 	// Milissegundos desde o último atendimento. Contado em OnUpdate, e não
 	// com o Timer: os componentes do sistema são criados em ordem alfabética
 	// e o Timer ainda não existe quando este Init roda.
@@ -117,21 +140,23 @@ AIStrategist.prototype.Tick = function()
 AIStrategist.prototype.Think = function(player, cmpPlayer)
 {
 	if (!this.players[player])
-		this.players[player] = { "lastBuild": 0, "nextPower": 0 };
+		this.players[player] = { "lastBuild": 0, "nextPower": 0, "idleWorkers": [] };
 	const memory = this.players[player];
 
 	const context = this.BuildContext(player);
-	if (!context.enemies.length)
-		return;
 
-	if (this.GetTime() >= this.MIN_GAME_TIME)
-		this.UsePowers(player, memory, context);
+	// Economia primeiro: sem energia nada mais anda.
+	this.CaptureSolarParks(player, context);
+	this.PutIdleWorkersToWork(player, memory, context);
 
 	if (this.GetTime() - memory.lastBuild >= this.BUILD_INTERVAL)
 	{
 		memory.lastBuild = this.GetTime();
 		this.ManageConstruction(player, cmpPlayer, context);
 	}
+
+	if (context.enemies.length && this.GetTime() >= this.MIN_GAME_TIME)
+		this.UsePowers(player, memory, context);
 };
 
 // ------------------------------------------------------------------ contexto
@@ -310,6 +335,208 @@ AIStrategist.prototype.GetHome = function(context)
 {
 	const anchor = context.centres[0] || context.structures[0];
 	return anchor !== undefined ? this.GetPosition(anchor) : null;
+};
+
+// ----------------------------------------------------------------- economia
+
+/**
+ * Todos os parques solares do mapa, de qualquer dono.
+ */
+AIStrategist.prototype.GetSolarParks = function()
+{
+	if (this.parks && this.GetTime() - this.parksTime < this.PARK_REFRESH)
+		return this.parks;
+
+	const cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+	const numPlayers = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager).GetNumPlayers();
+	this.parks = [];
+	for (let owner = 0; owner < numPlayers; ++owner)
+		for (const ent of cmpRangeManager.GetEntitiesByPlayer(owner))
+			if (Engine.QueryInterface(ent, IID_Capturable) && this.HasClass(ent, "SolarPark"))
+				this.parks.push(ent);
+	this.parksTime = this.GetTime();
+	return this.parks;
+};
+
+/**
+ * A unidade que recebe a ordem: o líder, se ela for de um batalhão (o
+ * comando de ataque é repassado aos membros).
+ */
+AIStrategist.prototype.GetCommandEntity = function(ent)
+{
+	const cmpMember = Engine.QueryInterface(ent, IID_BattalionMember);
+	const leader = cmpMember ? cmpMember.GetLeader() : INVALID_ENTITY;
+	return leader != INVALID_ENTITY ? leader : ent;
+};
+
+AIStrategist.prototype.IsCapturing = function(ent, target)
+{
+	const cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+	const order = cmpUnitAI && cmpUnitAI.order;
+	return !!order && order.type == "Attack" && !!order.data && order.data.target == target;
+};
+
+/**
+ * Manda a infantaria ociosa capturar os parques solares que não são do
+ * jogador nem de aliados:
+ *  - toda unidade ociosa a até CAPTURE_RANGE de um parque vai capturá-lo;
+ *  - o parque livre mais próximo da base recebe um grupo (CAPTURE_PARTY) de
+ *    onde estiver, para a energia começar a entrar logo no início.
+ * Quem já está ocupado (atacando, andando por ordem da Petra) não é tocado.
+ */
+AIStrategist.prototype.CaptureSolarParks = function(player, context)
+{
+	const home = this.GetHome(context);
+	if (!home)
+		return;
+
+	// Infantaria que sabe capturar, com posição e se está ociosa.
+	const infantry = [];
+	for (const ent of context.army)
+	{
+		if (!this.HasClass(ent, "Infantry"))
+			continue;
+		const cmpAttack = Engine.QueryInterface(ent, IID_Attack);
+		if (cmpAttack.GetAttackTypes().indexOf("Capture") == -1)
+			continue;
+		const position = this.GetPosition(ent);
+		if (!position)
+			continue;
+		// Num batalhão, o líder também precisa estar sem ordens.
+		const cmpLeaderAI = Engine.QueryInterface(this.GetCommandEntity(ent), IID_UnitAI);
+		infantry.push({
+			"ent": ent,
+			"position": position,
+			"idle": Engine.QueryInterface(ent, IID_UnitAI).IsIdle() && (!cmpLeaderAI || cmpLeaderAI.IsIdle())
+		});
+	}
+	if (!infantry.length)
+		return;
+
+	const targets = [];
+	for (const park of this.GetSolarParks())
+	{
+		const cmpOwnership = Engine.QueryInterface(park, IID_Ownership);
+		const position = this.GetPosition(park);
+		if (!cmpOwnership || !position || context.friends.indexOf(cmpOwnership.GetOwner()) != -1)
+			continue;
+		targets.push({
+			"ent": park,
+			"position": position,
+			"gaia": cmpOwnership.GetOwner() == 0,
+			"homeDistance": Math.euclidDistance2D(position.x, position.z, home.x, home.z)
+		});
+	}
+	if (!targets.length)
+		return;
+	targets.sort((a, b) => a.homeDistance - b.homeDistance);
+
+	const distanceTo = (unit, park) => Math.euclidDistance2D(unit.position.x, unit.position.z, park.position.x, park.position.z);
+	const assigned = new Set();
+	const send = (units, park) => {
+		const entities = [];
+		for (const unit of units)
+		{
+			assigned.add(unit.ent);
+			const commandEntity = this.GetCommandEntity(unit.ent);
+			if (entities.indexOf(commandEntity) == -1)
+				entities.push(commandEntity);
+		}
+		if (entities.length)
+			ProcessCommand(player, {
+				"type": "attack",
+				"entities": entities,
+				"target": park.ent,
+				"allowCapture": true,
+				"queued": false
+			});
+	};
+
+	// O parque livre (de ninguém) mais próximo da base: um grupo vai até lá.
+	const nearest = targets.find(park => park.gaia);
+	if (nearest)
+	{
+		const already = infantry.filter(unit => this.IsCapturing(unit.ent, nearest.ent)).length;
+		if (already < this.CAPTURE_PARTY)
+			send(infantry.filter(unit => unit.idle)
+				.sort((a, b) => distanceTo(a, nearest) - distanceTo(b, nearest))
+				.slice(0, this.CAPTURE_PARTY - already), nearest);
+	}
+
+	// Todos os parques perto de quem está ocioso.
+	for (const park of targets)
+	{
+		const near = infantry.filter(unit => unit.idle && !assigned.has(unit.ent) && distanceTo(unit, park) <= this.CAPTURE_RANGE);
+		if (near.length)
+			send(near, park);
+	}
+};
+
+/**
+ * Trabalhadores parados por dois atendimentos seguidos (a Petra não lhes deu
+ * o que fazer) vão coletar: o recurso disponível mais próximo, dando
+ * preferência ao tipo que o jogador menos tem.
+ */
+AIStrategist.prototype.PutIdleWorkersToWork = function(player, memory, context)
+{
+	const idle = context.builders.filter(ent => {
+		const cmpUnitAI = Engine.QueryInterface(ent, IID_UnitAI);
+		return cmpUnitAI && cmpUnitAI.IsIdle() && !!Engine.QueryInterface(ent, IID_ResourceGatherer);
+	});
+	const stillIdle = idle.filter(ent => (memory.idleWorkers || []).indexOf(ent) != -1);
+	memory.idleWorkers = idle;
+	if (!stillIdle.length)
+		return;
+
+	const cmpPlayer = QueryPlayerIDInterface(player);
+	const resources = cmpPlayer.GetResourceCounts();
+	const cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
+
+	// Quantos já foram mandados a cada fonte neste atendimento.
+	const sent = new Map();
+	for (const worker of stillIdle)
+	{
+		const position = this.GetPosition(worker);
+		if (!position)
+			continue;
+
+		let best = INVALID_ENTITY;
+		let bestScore = Infinity;
+		for (const supply of cmpRangeManager.ExecuteQueryAroundPos(
+			new Vector2D(position.x, position.z), 0, this.GATHER_RANGE, [0, player], IID_ResourceSupply, true))
+		{
+			const cmpSupply = Engine.QueryInterface(supply, IID_ResourceSupply);
+			const supplyPosition = this.GetPosition(supply);
+			if (!supplyPosition || !cmpSupply.GetCurrentAmount() || Engine.QueryInterface(supply, IID_Foundation))
+				continue;
+			if (cmpSupply.GetNumGatherers() + (sent.get(supply) || 0) >= cmpSupply.GetMaxGatherers())
+				continue;
+			const cmpGatherer = Engine.QueryInterface(worker, IID_ResourceGatherer);
+			if (!cmpGatherer.GetTargetGatherRate(supply))
+				continue;
+
+			// Distância, com desconto para o recurso que está em falta.
+			const type = cmpSupply.GetType().generic;
+			const scarcity = Math.min(1, (resources[type] || 0) / 500);
+			const distance = Math.euclidDistance2D(position.x, position.z, supplyPosition.x, supplyPosition.z);
+			const score = distance * (0.4 + 0.6 * scarcity);
+			if (score < bestScore)
+			{
+				bestScore = score;
+				best = supply;
+			}
+		}
+		if (best == INVALID_ENTITY)
+			continue;
+
+		sent.set(best, (sent.get(best) || 0) + 1);
+		ProcessCommand(player, {
+			"type": "gather",
+			"entities": [worker],
+			"target": best,
+			"queued": false
+		});
+	}
 };
 
 // ------------------------------------------------------------------ poderes
@@ -573,10 +800,10 @@ AIStrategist.prototype.ManageConstruction = function(player, cmpPlayer, context)
  */
 AIStrategist.prototype.TryBuild = function(player, cmpPlayer, context, templateName, home)
 {
-	for (let attempt = 0; attempt < 6; ++attempt)
+	for (let attempt = 0; attempt < 10; ++attempt)
 	{
 		const angle = randFloat(0, 2 * Math.PI);
-		const distance = randFloat(35, 75);
+		const distance = randFloat(35, 95);
 		const point = {
 			"x": home.x + Math.cos(angle) * distance,
 			"z": home.z + Math.sin(angle) * distance

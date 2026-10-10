@@ -16,7 +16,7 @@
   </Obstruction>
   <VisualActor>
     <Actor>structures/mla/house.xml</Actor>
-    <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
+    <FoundationActor>structures/mars/fndn_mars_5x6.xml</FoundationActor>
   </VisualActor>
   <!-- População: casas não dão mais população (nem são construídas). -->
   <Population>

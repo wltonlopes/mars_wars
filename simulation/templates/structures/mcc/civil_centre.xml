@@ -20,6 +20,8 @@
     <nuke>
       <Cooldown>300</Cooldown>
       <Template>special/nuclear_missile</Template>
+      <!-- Liberado só na fase 3 (City Phase). -->
+      <RequiredTechnology>phase_city</RequiredTechnology>
     </nuke>
     <white_phosphorus>
       <Cooldown>200</Cooldown>
@@ -85,6 +87,7 @@
   </Trainer>
   <VisualActor>
     <Actor>structures/mcc/civic_center.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_11x9.xml</FoundationActor>
   </VisualActor>
   <Sound>
     <SoundGroups>

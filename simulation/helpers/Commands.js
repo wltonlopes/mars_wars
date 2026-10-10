@@ -2116,3 +2116,5 @@ Engine.RegisterGlobal("GetDockAngle", GetDockAngle);
 Engine.RegisterGlobal("ProcessCommand", ProcessCommand);
 Engine.RegisterGlobal("g_Commands", g_Commands);
 Engine.RegisterGlobal("IncurBribeCost", IncurBribeCost);
+// Mars Wars: usado pelo AIStrategist para as construções da IA.
+Engine.RegisterGlobal("TryConstructBuilding", TryConstructBuilding);

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Andaimes do canteiro 10x8 tiles, gerado por tools/foundations/gen_foundations.py. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/mars/scaf_10x8.dae</mesh>
+      <textures>
+        <texture file="structural/mars_construction.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>default.xml</material>
+</actor>

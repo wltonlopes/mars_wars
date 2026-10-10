@@ -30,6 +30,7 @@
   </TurretHolder>
   <VisualActor>
     <Actor>structures/mla/auto_defense_tower.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_4x4.xml</FoundationActor>
   </VisualActor>
   <Sound>
     <SoundGroups>

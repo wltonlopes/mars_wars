@@ -17,6 +17,7 @@
   </Obstruction>
   <VisualActor>
     <Actor>structures/mla/greenhouse.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_11x11.xml</FoundationActor>
   </VisualActor>
 </Entity>
 

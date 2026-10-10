@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mammoth com lagartas animadas (art/meshes/vehicle/mammoth_rigged.dae), gerado por
+     tools/animation/gen_mammoth_tracks.py. -->
+<skeletons>
+	<standard_skeleton title="Mammoth" id="mammoth">
+		<bone name="track_root">
+			<bone name="wheel_01"></bone>
+			<bone name="wheel_02"></bone>
+			<bone name="wheel_03"></bone>
+			<bone name="wheel_04"></bone>
+			<bone name="wheel_05"></bone>
+			<bone name="wheel_06"></bone>
+			<bone name="wheel_07"></bone>
+			<bone name="wheel_08"></bone>
+			<bone name="wheel_09"></bone>
+			<bone name="wheel_10"></bone>
+			<bone name="wheel_11"></bone>
+			<bone name="wheel_12"></bone>
+			<bone name="wheel_13"></bone>
+			<bone name="wheel_14"></bone>
+			<bone name="cleat_f_01"></bone>
+			<bone name="cleat_f_02"></bone>
+			<bone name="cleat_f_03"></bone>
+			<bone name="cleat_f_04"></bone>
+			<bone name="cleat_f_05"></bone>
+			<bone name="cleat_f_06"></bone>
+			<bone name="cleat_f_07"></bone>
+			<bone name="cleat_f_08"></bone>
+			<bone name="cleat_f_09"></bone>
+			<bone name="cleat_f_10"></bone>
+			<bone name="cleat_f_11"></bone>
+			<bone name="cleat_f_12"></bone>
+			<bone name="cleat_f_13"></bone>
+			<bone name="cleat_f_14"></bone>
+			<bone name="cleat_f_15"></bone>
+			<bone name="cleat_f_16"></bone>
+			<bone name="cleat_f_17"></bone>
+			<bone name="cleat_f_18"></bone>
+			<bone name="cleat_f_19"></bone>
+			<bone name="cleat_f_20"></bone>
+			<bone name="cleat_r_01"></bone>
+			<bone name="cleat_r_02"></bone>
+			<bone name="cleat_r_03"></bone>
+			<bone name="cleat_r_04"></bone>
+			<bone name="cleat_r_05"></bone>
+			<bone name="cleat_r_06"></bone>
+			<bone name="cleat_r_07"></bone>
+			<bone name="cleat_r_08"></bone>
+			<bone name="cleat_r_09"></bone>
+			<bone name="cleat_r_10"></bone>
+			<bone name="cleat_r_11"></bone>
+			<bone name="cleat_r_12"></bone>
+			<bone name="cleat_r_13"></bone>
+			<bone name="cleat_r_14"></bone>
+			<bone name="cleat_r_15"></bone>
+			<bone name="cleat_r_16"></bone>
+			<bone name="cleat_r_17"></bone>
+			<bone name="cleat_r_18"></bone>
+			<bone name="cleat_r_19"></bone>
+			<bone name="cleat_r_20"></bone>
+			<bone name="cleat_r_21"></bone>
+			<bone name="cleat_r_22"></bone>
+			<bone name="cleat_r_23"></bone>
+			<bone name="prop_w_01"></bone>
+			<bone name="prop_w_02"></bone>
+			<bone name="prop_gun_01"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Mammoth" target="mammoth">
+		<identifier>
+			<root>track_root</root>
+		</identifier>
+		<bone name="track_root"><target>track_root</target>
+			<bone name="wheel_01"><target>wheel_01</target></bone>
+			<bone name="wheel_02"><target>wheel_02</target></bone>
+			<bone name="wheel_03"><target>wheel_03</target></bone>
+			<bone name="wheel_04"><target>wheel_04</target></bone>
+			<bone name="wheel_05"><target>wheel_05</target></bone>
+			<bone name="wheel_06"><target>wheel_06</target></bone>
+			<bone name="wheel_07"><target>wheel_07</target></bone>
+			<bone name="wheel_08"><target>wheel_08</target></bone>
+			<bone name="wheel_09"><target>wheel_09</target></bone>
+			<bone name="wheel_10"><target>wheel_10</target></bone>
+			<bone name="wheel_11"><target>wheel_11</target></bone>
+			<bone name="wheel_12"><target>wheel_12</target></bone>
+			<bone name="wheel_13"><target>wheel_13</target></bone>
+			<bone name="wheel_14"><target>wheel_14</target></bone>
+			<bone name="cleat_f_01"><target>cleat_f_01</target></bone>
+			<bone name="cleat_f_02"><target>cleat_f_02</target></bone>
+			<bone name="cleat_f_03"><target>cleat_f_03</target></bone>
+			<bone name="cleat_f_04"><target>cleat_f_04</target></bone>
+			<bone name="cleat_f_05"><target>cleat_f_05</target></bone>
+			<bone name="cleat_f_06"><target>cleat_f_06</target></bone>
+			<bone name="cleat_f_07"><target>cleat_f_07</target></bone>
+			<bone name="cleat_f_08"><target>cleat_f_08</target></bone>
+			<bone name="cleat_f_09"><target>cleat_f_09</target></bone>
+			<bone name="cleat_f_10"><target>cleat_f_10</target></bone>
+			<bone name="cleat_f_11"><target>cleat_f_11</target></bone>
+			<bone name="cleat_f_12"><target>cleat_f_12</target></bone>
+			<bone name="cleat_f_13"><target>cleat_f_13</target></bone>
+			<bone name="cleat_f_14"><target>cleat_f_14</target></bone>
+			<bone name="cleat_f_15"><target>cleat_f_15</target></bone>
+			<bone name="cleat_f_16"><target>cleat_f_16</target></bone>
+			<bone name="cleat_f_17"><target>cleat_f_17</target></bone>
+			<bone name="cleat_f_18"><target>cleat_f_18</target></bone>
+			<bone name="cleat_f_19"><target>cleat_f_19</target></bone>
+			<bone name="cleat_f_20"><target>cleat_f_20</target></bone>
+			<bone name="cleat_r_01"><target>cleat_r_01</target></bone>
+			<bone name="cleat_r_02"><target>cleat_r_02</target></bone>
+			<bone name="cleat_r_03"><target>cleat_r_03</target></bone>
+			<bone name="cleat_r_04"><target>cleat_r_04</target></bone>
+			<bone name="cleat_r_05"><target>cleat_r_05</target></bone>
+			<bone name="cleat_r_06"><target>cleat_r_06</target></bone>
+			<bone name="cleat_r_07"><target>cleat_r_07</target></bone>
+			<bone name="cleat_r_08"><target>cleat_r_08</target></bone>
+			<bone name="cleat_r_09"><target>cleat_r_09</target></bone>
+			<bone name="cleat_r_10"><target>cleat_r_10</target></bone>
+			<bone name="cleat_r_11"><target>cleat_r_11</target></bone>
+			<bone name="cleat_r_12"><target>cleat_r_12</target></bone>
+			<bone name="cleat_r_13"><target>cleat_r_13</target></bone>
+			<bone name="cleat_r_14"><target>cleat_r_14</target></bone>
+			<bone name="cleat_r_15"><target>cleat_r_15</target></bone>
+			<bone name="cleat_r_16"><target>cleat_r_16</target></bone>
+			<bone name="cleat_r_17"><target>cleat_r_17</target></bone>
+			<bone name="cleat_r_18"><target>cleat_r_18</target></bone>
+			<bone name="cleat_r_19"><target>cleat_r_19</target></bone>
+			<bone name="cleat_r_20"><target>cleat_r_20</target></bone>
+			<bone name="cleat_r_21"><target>cleat_r_21</target></bone>
+			<bone name="cleat_r_22"><target>cleat_r_22</target></bone>
+			<bone name="cleat_r_23"><target>cleat_r_23</target></bone>
+			<bone name="prop_w_01"><target>prop_w_01</target></bone>
+			<bone name="prop_w_02"><target>prop_w_02</target></bone>
+			<bone name="prop_gun_01"><target>prop_gun_01</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

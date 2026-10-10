@@ -8,12 +8,18 @@
     <Civ>mla</Civ>
     <SpecificName>Aeroport</SpecificName>
     <Icon>structures/aero.png</Icon>
+    <!-- Barter: com um aeroporto pronto o jogador pode trocar recursos no
+         painel de comércio, como com um mercado do 0 A.D. (cargas aéreas). -->
+    <Classes datatype="tokens">Barter</Classes>
+    <VisibleClasses datatype="tokens">Trade</VisibleClasses>
+    <Tooltip>Train aircraft. Barter resources: air freight lets you trade one resource for another in the Barter panel.</Tooltip>
   </Identity>
   <Obstruction>
     <Static width="60.0" depth="35.5"/>
   </Obstruction>
   <VisualActor>
     <Actor>structures/mla/aeroport.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_16x10.xml</FoundationActor>
   </VisualActor>
   <!-- População: aeroporto. -->
   <Population>

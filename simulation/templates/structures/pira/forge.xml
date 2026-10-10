@@ -7,6 +7,7 @@
   </Identity>
   <VisualActor>
     <Actor>vehicle/pira/tec_vehicle.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_4x11.xml</FoundationActor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

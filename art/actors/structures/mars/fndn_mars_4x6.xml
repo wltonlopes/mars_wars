@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Canteiro de obra 4x6 tiles (16 x 24 m), gerado por
+     tools/foundations/gen_foundations.py. O piso fica visível o tempo todo;
+     a variante "scaffold" (andaimes) entra quando os construtores começam. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="Base">
+      <props>
+        <prop actor="particle/construction_dust.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="structural/mars_construction.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="obra 4x6 1">
+      <mesh>structural/mars/found_4x6_1.dae</mesh>
+    </variant>
+    <variant frequency="1" name="obra 4x6 2">
+      <mesh>structural/mars/found_4x6_2.dae</mesh>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant name="scaffold">
+      <props>
+        <prop actor="props/structures/construction/mars_scaf_4x6.xml" attachpoint="root"/>
+        <prop actor="particle/construction_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>default.xml</material>
+</actor>

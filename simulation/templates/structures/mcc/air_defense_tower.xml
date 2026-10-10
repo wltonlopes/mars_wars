@@ -67,6 +67,7 @@
   </Vision>
   <VisualActor>
     <Actor>structures/mcc/air_defense_tower.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_4x4.xml</FoundationActor>
   </VisualActor>
   <Footprint replace="">
     <Square width="13.5" depth="13.5"/>

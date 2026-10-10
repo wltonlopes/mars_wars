@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/pira/base.dae</mesh>
+			<textures>
+				<texture file="vehicle/pira_veh.png" name="baseTex"/>
+				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
+				<texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+		<!-- <variant file="shoot_mark_iv.xml" name="attack_ranged"/> -->
+		<variant name="Walk">
+			<props>
+				<prop actor="particle/dust_cav.xml" attachpoint="w_01"/>
+				<prop actor="particle/dust_cav.xml" attachpoint="w_02"/>
+			</props>
+		</variant>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+				<prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>player_trans_parallax_spec.xml</material>
+</actor>

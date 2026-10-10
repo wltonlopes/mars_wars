@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Gerado por tools/factions/gen_factions.py -->
-<Entity parent="structures/mla/sentry_tower">
+<Entity parent="template_structure_defensive_tower_sentry">
+  <Attack>
+    <Ranged>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.8</ImpactAnimationLifetime>
+      </Projectile>
+    </Ranged>
+  </Attack>
   <Identity>
-    <Civ>pira</Civ>
-    <GenericName>Lookout</GenericName>
+    <Civ>mla</Civ>
+    <GenericName>automatic torret</GenericName>
+    <SpecificName>automatic torret</SpecificName>
+    <Icon>structures/sentry_gun.png</Icon>
   </Identity>
+  <TurretHolder>
+    <TurretPoints>
+      <One>
+          <X>0.0</X>
+          <Y>0.5</Y>
+          <Z>0.0</Z>
+          <Template>structures/pira/sentry_tower_autogun</Template>
+          <Angle>1.54</Angle>
+      <Ejectable>false</Ejectable>
+      </One>
+    </TurretPoints>
+  </TurretHolder>
   <VisualActor>
-    <Actor>structures/pira/auto_defense_tower.xml</Actor>
+    <Actor>vehicle/pira/base.xml</Actor>
   </VisualActor>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
+    </SoundGroups>
+  </Sound>
+  <Footprint replace="">
+    <Square width="13.5" depth="13.5"/>
+    <Height>6.5</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="12.5" depth="12.5"/>
+  </Obstruction>
 </Entity>

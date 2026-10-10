@@ -19,6 +19,6 @@
   </Trainer>
   <VisualActor>
     <Actor>structures/mla/lab.xml</Actor>
-    <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
+    <FoundationActor>structures/mars/fndn_mars_10x12.xml</FoundationActor>
   </VisualActor>
 </Entity>

@@ -14,5 +14,6 @@
   </Obstruction>
   <VisualActor>
     <Actor>structures/mcc/storehouse.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_4x6.xml</FoundationActor>
   </VisualActor>
 </Entity>

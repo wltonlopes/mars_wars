@@ -3,7 +3,16 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/mammoth.dae</mesh>
+			<!-- mammoth.dae com sapatas e esqueleto (rodas e lagartas), gerada por
+			     tools/animation/gen_mammoth_tracks.py. -->
+			<mesh>vehicle/mammoth_rigged.dae</mesh>
+			<animations>
+				<animation file="vehicle/mammoth/idle.dae" name="Idle" speed="100"/>
+				<!-- Um ciclo anda ~2,2 m: speed 46 faz as sapatas ficarem paradas
+				     em relação ao chão em qualquer velocidade. -->
+				<animation file="vehicle/mammoth/move.dae" name="Walk" speed="46"/>
+				<animation file="vehicle/mammoth/move.dae" name="Run" speed="46"/>
+			</animations>
 			<!-- <props>
 			    <prop actor="props/structures/decals/ares/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>

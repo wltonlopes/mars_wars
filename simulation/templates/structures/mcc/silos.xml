@@ -45,6 +45,7 @@
   </Identity>
   <VisualActor>
     <Actor>structures/mcc/silos.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_4x5.xml</FoundationActor>
   </VisualActor>
   <Footprint replace="">
     <Square width="12.5" depth="16.5"/>

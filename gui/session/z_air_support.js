@@ -170,7 +170,12 @@ for (const type in g_AirSupportTypes)
 				const cooldown = Math.min(...providers.map(status => status.cooldown));
 
 				let status;
-				if (available)
+				const locked = providers.every(status => status.locked);
+				if (locked)
+					status = providers[0].requiredTechnology.startsWith("phase_city") ?
+						translate("Locked: requires the City Phase (phase 3).") :
+						sprintf(translate("Locked: requires the technology %(technology)s."), { "technology": providers[0].requiredTechnology });
+				else if (available)
 					status = sprintf(translate(info.readyText), {
 						"pop": battalion ? battalion.popCost : providers[0].popCost,
 						"distance": providers[0].minDistanceFromEnemyStructures
@@ -184,7 +189,7 @@ for (const type in g_AirSupportTypes)
 					"tooltip": translate(info.name) + (battalion ? ": " + translate(battalion.name) : "") + "\n" + bodyFont(status),
 					"icon": info.icon,
 					"portrait": battalion && battalion.icon,
-					"count": available || !cooldown ? "" : Math.ceil(cooldown / 1000),
+					"count": available || locked || !cooldown ? "" : Math.ceil(cooldown / 1000),
 					"enabled": available
 				};
 			},

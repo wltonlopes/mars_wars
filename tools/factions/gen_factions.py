@@ -308,8 +308,9 @@ def cost(food=0, water=0, materials=0, energy=0, time=None, pop=None):
 	return out
 
 
-def actor(path):
-	return "  <VisualActor>\n    <Actor>" + path + "</Actor>\n  </VisualActor>\n"
+def actor(path, foundation=None):
+	found = "    <FoundationActor>" + foundation + "</FoundationActor>\n" if foundation else ""
+	return "  <VisualActor>\n    <Actor>" + path + "</Actor>\n" + found + "  </VisualActor>\n"
 
 
 def trainer(entities):
@@ -481,9 +482,16 @@ FACTIONS = {
 				"      <Template>special/sandstorm_strike</Template>\n    </sandstorm>\n  </AirSupportProvider>\n" +
 				model_size(11.5, 41.0, 12.5),
 			# Caravanas e oficinas: modelos próprios, mais estreitos e compridos que os do mla.
+			# (os canteiros de obra deles estão em "structure_foundations")
 			"barracks": model_size(11.5, 29.5, 10.0),
 			"forge": model_size(16.0, 41.0, 16.5),
 			"stable": model_size(16.0, 26.0, 13.0),
+		},
+		"structure_foundations": {
+			"civil_centre": "structures/mars/fndn_mars_3x11.xml",
+			"barracks": "structures/mars/fndn_mars_3x8.xml",
+			"forge": "structures/mars/fndn_mars_4x11.xml",
+			"stable": "structures/mars/fndn_mars_4x7.xml",
 		},
 		"units": {
 			"worker": dict(kind="worker", parent="units/mla/worker", actor="units/mla/worker.xml",
@@ -690,7 +698,9 @@ def generate(civ, faction):
 		for t in trains:
 			assert t in unit_names or os.path.exists(os.path.join(MOD, TEMPLATES_DIR + "units/" + civ + "/" + t + ".xml")), civ + ": " + t
 		body = identity(civ, name)
-		body += actor(tinted_actor(STRUCTURE_ACTORS[base][structure], civ))
+		# Canteiro de obra próprio (tools/foundations/gen_foundations.py) para
+		# estruturas com modelo de outro tamanho que o da civ base.
+		body += actor(tinted_actor(STRUCTURE_ACTORS[base][structure], civ), faction.get("structure_foundations", {}).get(structure))
 		body += trainer(["units/{civ}/" + t for t in trains])
 		if structure == "barracks" and base == "mla":
 			# Túnel de reforço (do mla) com os batalhões da facção.

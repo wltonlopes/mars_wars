@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/tank_tower.dae</mesh>
+			<props>
+        <prop actor="props/units/weapons/muzzleflash.xml" attachpoint="projectile"/>
+        <prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
+			</props>
+			<textures>
+				<texture file="vehicle/mcc_veh_01.png" name="baseTex"/>
+				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>
+				<texture file="vehicle/mcc_veh_01_norm.png" name="normTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="100" name="Idle"/>
+		<!-- Disparando: fumaça saindo do cano. -->
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/vehicle_cannon_smoke.xml" attachpoint="projectile"/>
+			</props>
+		</variant>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+				<prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>player_trans_parallax_spec.xml</material>
+</actor>

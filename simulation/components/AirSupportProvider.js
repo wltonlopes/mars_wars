@@ -66,6 +66,11 @@ AirSupportProvider.prototype.Schema =
 						"<ref name='nonNegativeDecimal'/>" +
 					"</element>" +
 				"</optional>" +
+				"<optional>" +
+					"<element name='RequiredTechnology' a:help='The power is locked until the owner has researched this technology (e.g. phase_city).'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
 			"</interleave>" +
 		"</element>" +
 	"</oneOrMore>";
@@ -106,9 +111,21 @@ AirSupportProvider.prototype.GetCooldownTotal = function(type)
 	return ApplyValueModificationsToEntity("AirSupportProvider/" + type + "/Cooldown", +this.template[type].Cooldown, this.entity) * 1000;
 };
 
+/**
+ * Se o dono já pesquisou a tecnologia exigida pelo poder (se houver).
+ */
+AirSupportProvider.prototype.IsUnlocked = function(type)
+{
+	const technology = this.template[type].RequiredTechnology;
+	if (!technology)
+		return true;
+	const cmpTechnologyManager = QueryOwnerInterface(this.entity, IID_TechnologyManager);
+	return !!cmpTechnologyManager && cmpTechnologyManager.IsTechnologyResearched(technology);
+};
+
 AirSupportProvider.prototype.IsAvailable = function(type)
 {
-	return this.HasType(type) && !this.powers[type].missionId && this.GetCooldown(type) <= 0;
+	return this.HasType(type) && this.IsUnlocked(type) && !this.powers[type].missionId && this.GetCooldown(type) <= 0;
 };
 
 /**
@@ -287,6 +304,8 @@ AirSupportProvider.prototype.GetStatus = function()
 	return this.GetTypes().map(type => ({
 		"type": type,
 		"available": this.IsAvailable(type),
+		"locked": !this.IsUnlocked(type),
+		"requiredTechnology": this.template[type].RequiredTechnology || "",
 		"missionActive": !!this.powers[type].missionId,
 		"cooldown": this.GetCooldown(type),
 		"cooldownTotal": this.GetCooldownTotal(type),

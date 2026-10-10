@@ -300,7 +300,7 @@
 		"hash": "e44f8311b9c799b43b2d0a90beba55f00d0474ac"
 	},
 	"art/actors/vehicle/ares/mammoth.xml": {
-		"hash": "f53e1ffd14a33e8ea5a768eacab507578dfe5d15"
+		"hash": "da793a70617c396bda5dfde744b5429e23d38186"
 	},
 	"art/actors/vehicle/coa/cavelion.xml": {
 		"hash": "b56836385e7ca6c058b4f2fc01777fba9f71b4e4"
@@ -309,7 +309,7 @@
 		"hash": "ffffe8593927a42b9ad2fd385399e46291e3b771"
 	},
 	"art/actors/vehicle/coa/mammoth.xml": {
-		"hash": "21bb0264d37b06769667a5daf0f3517041177329"
+		"hash": "aa4d396011858477b7ca5fbd76d2bc3d8c95a2b0"
 	},
 	"art/actors/vehicle/pira/coyote.xml": {
 		"hash": "2c51d75e2aefea0cdbb7f642dad2e245bc1ebb28"
@@ -685,7 +685,7 @@
 	"simulation/templates/structures/pira/barracks.xml": {
 		"actor": "vehicle/pira/barracks.xml",
 		"body": "226119c92a72a60177939a94de45ae46779fd89d",
-		"hash": "b6e40746dea6af0b9a143389a3b3be4b122a8b71"
+		"hash": "550b9b403377fbd380b91ea75321b6f6cdde28b0"
 	},
 	"simulation/templates/structures/pira/battle_deploy_point.xml": {
 		"actor": "structures/battle/deploy_point_pira.xml",
@@ -695,7 +695,7 @@
 	"simulation/templates/structures/pira/civil_centre.xml": {
 		"actor": "vehicle/pira/cc.xml",
 		"body": "160b70ace401a94e00a085b6d6fa3e313a798577",
-		"hash": "8a3b9957c672c092f37060a672f2c23b5a93a4fb"
+		"hash": "ae6e1ba830e018e569499f0430303d7099bf78ab"
 	},
 	"simulation/templates/structures/pira/farmstead.xml": {
 		"actor": "structures/pira/greenhouse.xml",
@@ -710,7 +710,7 @@
 	"simulation/templates/structures/pira/forge.xml": {
 		"actor": "vehicle/pira/tec_vehicle.xml",
 		"body": "e306c78d006d5c4b2b32ea572818f4ce6cf5c5d0",
-		"hash": "df8409569bb402629af821da8f32c26a8218bcc7"
+		"hash": "d3561dd1f49b0570c155f048c1d734fd3e96008a"
 	},
 	"simulation/templates/structures/pira/house.xml": {
 		"actor": "structures/pira/house.xml",

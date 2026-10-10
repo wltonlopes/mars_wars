@@ -33,8 +33,8 @@
     </Entities>
   </Trainer>
   <VisualActor>
-    <Actor>structures/mcc/bunker.xml</Actor>
-    <FoundationActor>structures/fndn_5x5.xml</FoundationActor>
+    <Actor>structures/mcc/barracks.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_6x10.xml</FoundationActor>
   </VisualActor>
   <!-- População: cada quartel amplia o efetivo. -->
   <Population>
