@@ -8,7 +8,7 @@
     <Tooltip>Improvised kamikaze drone.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/vehicle/mla/drone_kamikaze.xml</Actor>
+    <Actor>vehicle/pira/drone_kamikaze.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>12</BuildTime>

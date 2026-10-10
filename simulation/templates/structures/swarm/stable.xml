@@ -6,7 +6,7 @@
     <GenericName>Incubator</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/stable.xml</Actor>
+    <Actor>structures/swarm/stable.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

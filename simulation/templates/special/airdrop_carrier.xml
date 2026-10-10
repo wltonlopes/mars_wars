@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aeronave de transporte da Coalizão (AirSupportProvider tipo
+     vehicle_airdrop, pedido na garagem). Passa alto sobre o alvo e solta o
+     contêiner special/supply_drop. Não é selecionável nem pode ser atacada
+     por unidades; a defesa aérea a abate. -->
+<Entity parent="special/actor">
+  <AirDropCarrier>
+    <Speed>35</Speed>
+    <!-- Igual a ReinforcementDelivery/Descent/StartHeight de special/supply_drop. -->
+    <FlightAltitude>90</FlightAltitude>
+    <CargoTemplate>special/supply_drop</CargoTemplate>
+  </AirDropCarrier>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Transport Aircraft</GenericName>
+    <Icon>units/vtol.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Position>
+    <Floating>true</Floating>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>40</Range>
+  </Vision>
+  <VisualActor>
+    <!-- Placeholder: VTOL da Coalizão. Trocar pelo actor do cargueiro. -->
+    <Actor>structures/coa/aero_02.xml</Actor>
+  </VisualActor>
+</Entity>

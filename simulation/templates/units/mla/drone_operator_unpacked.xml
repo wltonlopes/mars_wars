@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Operador de drones descompactado: de bruços (animação do actor), parado,
+     soltando enxames de drones FPV. Fica assim enquanto não receber ordem de
+     movimento. -->
+<Entity parent="units/mla/drone_operator_packed">
+  <Pack>
+    <Entity>units/mla/drone_operator_packed</Entity>
+    <State>unpacked</State>
+    <Time>3000</Time>
+  </Pack>
+  <UnitAI>
+    <DefaultStance>standground</DefaultStance>
+  </UnitAI>
+  <UnitMotion>
+    <WalkSpeed>0.001</WalkSpeed>
+  </UnitMotion>
+  <VisualActor>
+    <Actor>units/mla/drone_operator_unpacked.xml</Actor>
+  </VisualActor>
+</Entity>

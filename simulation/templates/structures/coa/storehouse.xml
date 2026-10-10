@@ -6,6 +6,6 @@
     <GenericName>Logistics Depot</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/storehouse.xml</Actor>
+    <Actor>structures/coa/storehouse.xml</Actor>
   </VisualActor>
 </Entity>

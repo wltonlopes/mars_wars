@@ -6,6 +6,11 @@
     <GenericName>Gene Temple</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/lab.xml</Actor>
+    <Actor>structures/swarm/lab.xml</Actor>
   </VisualActor>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/occult_priest
+    </Entities>
+  </Trainer>
 </Entity>

@@ -6,6 +6,6 @@
     <GenericName>Barracks Block</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/structures/mla/house.xml</Actor>
+    <Actor>structures/ares/house.xml</Actor>
   </VisualActor>
 </Entity>

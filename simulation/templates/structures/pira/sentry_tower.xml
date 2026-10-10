@@ -6,6 +6,6 @@
     <GenericName>Lookout</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/auto_defense_tower.xml</Actor>
+    <Actor>structures/pira/auto_defense_tower.xml</Actor>
   </VisualActor>
 </Entity>

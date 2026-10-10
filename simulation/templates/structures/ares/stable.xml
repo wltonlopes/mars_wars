@@ -6,7 +6,7 @@
     <GenericName>Armoury</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/structures/mla/stable.xml</Actor>
+    <Actor>structures/ares/stable.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

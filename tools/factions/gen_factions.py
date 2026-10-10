@@ -17,8 +17,10 @@ Edições feitas à mão são preservadas:
   - --force regrava tudo (os actors de actor_overrides.json continuam valendo).
 
 Gera:
-  art/textures/skins/factions/<civ>/...   texturas retintas
-  art/actors/factions/<civ>/...           actors apontando para elas
+  art/textures/skins/<tipo>/<civ>/...     texturas retintas
+  art/actors/<tipo>/<civ>/...             actors apontando para elas
+  (a pasta da civ base, mcc ou mla, vira a pasta da facção; arte sem pasta de
+  civ ganha uma, ex.: props/units/armor/x.xml -> props/units/armor/<civ>/x.xml)
   simulation/templates/structures/<civ>/  estruturas
   simulation/templates/units/<civ>/       unidades
   simulation/templates/special/players/<civ>.xml
@@ -68,6 +70,7 @@ FORCE = "--force" in sys.argv
 MANIFEST_PATH = os.path.join(MOD, "tools/factions/generated_manifest.json")
 OVERRIDES_PATH = os.path.join(MOD, "tools/factions/actor_overrides.json")
 TEMPLATES_DIR = "simulation/templates/"
+BASE_CIVS = ("mcc", "mla")
 
 
 def load_json(path, default):
@@ -107,10 +110,27 @@ def with_actor(text, actor_path):
 	return text[:i] + block + text[i:]
 
 
+def civ_path(rel, civ):
+	"""Caminho de arte da facção no padrão do 0 A.D.: a pasta da civ base vira
+	a da facção; se não houver, a pasta da facção entra antes do arquivo."""
+	parts = rel.split("/")
+	folders, name = parts[:-1], parts[-1]
+	if any(p in BASE_CIVS for p in folders):
+		folders = [civ if p in BASE_CIVS else p for p in folders]
+	else:
+		folders = folders + [civ]
+	return "/".join(folders + [name])
+
+
 def write_bytes(rel, data, body=None, actor_path=None):
 	"""Grava um arquivo gerado, sem passar por cima de edições feitas à mão."""
 	path = os.path.join(MOD, rel)
 	entry = MANIFEST.get(rel)
+	if os.path.exists(path) and not entry:
+		# Nunca foi gerado: é arte feita à mão na pasta da facção (nem --force regrava).
+		if open(path, "rb").read() != data:
+			KEPT.append(rel)
+		return False
 	if os.path.exists(path) and entry and not FORCE:
 		disk = open(path, "rb").read()
 		if sha(disk) != entry["hash"] and disk != data:
@@ -183,7 +203,7 @@ def tinted_texture(tex, civ):
 	if data is not None:
 		try:
 			img = tint_image(data, civ)
-			new = "factions/" + civ + "/" + os.path.splitext(tex)[0] + ".png"
+			new = civ_path(os.path.splitext(tex)[0] + ".png", civ)
 			save_image("art/textures/skins/" + new, img)
 		except Exception as error:  # DDS que o PIL não lê: mantém a original
 			print("  (sem retinta) " + tex + ": " + str(error))
@@ -208,7 +228,7 @@ def tinted_actor(actor, civ):
 		ACTOR_CACHE[key] = actor
 		return actor
 	text = data.decode("utf-8-sig")
-	new = "factions/" + civ + "/" + actor
+	new = civ_path(actor, civ)
 	ACTOR_CACHE[key] = new
 
 	def sub_texture(m):
@@ -311,6 +331,59 @@ def speed(walk):
 	return "  <UnitMotion>\n    <WalkSpeed>" + str(walk) + "</WalkSpeed>\n  </UnitMotion>\n"
 
 
+def heal(amount, heal_range, interval=2000):
+	"""Cura de infantaria (componente Heal do jogo base)."""
+	return ("  <Heal>\n    <Range>" + str(heal_range) + "</Range>\n    <RangeOverlay>\n"
+		"      <LineTexture>heal_overlay_range.png</LineTexture>\n"
+		"      <LineTextureMask>heal_overlay_range_mask.png</LineTextureMask>\n"
+		"      <LineThickness>0.35</LineThickness>\n    </RangeOverlay>\n"
+		"    <Health>" + str(amount) + "</Health>\n    <Interval>" + str(interval) + "</Interval>\n"
+		'    <UnhealableClasses datatype="tokens"/>\n    <HealableClasses datatype="tokens">Human</HealableClasses>\n'
+		"  </Heal>\n")
+
+
+def shotgun12():
+	"""Espingarda calibre 12 com munição explosiva (tipo FRAG-12), no lugar da
+	LMG herdada: alcance menor, mas cada projétil explode no impacto."""
+	return ("  <Attack>\n    <Ranged>\n      <AttackName>12-Gauge Explosive Rounds</AttackName>\n"
+		"      <Damage>\n        <Pierce>14.0</Pierce>\n        <Crush>10.0</Crush>\n      </Damage>\n"
+		"      <MaxRange>50</MaxRange>\n      <PrepareTime>1200</PrepareTime>\n      <RepeatTime>1800</RepeatTime>\n"
+		"      <Projectile>\n        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>\n"
+		"        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>\n"
+		"        <ImpactAnimationLifetime>0.4</ImpactAnimationLifetime>\n"
+		"        <Speed>220.0</Speed>\n        <Spread>2.0</Spread>\n      </Projectile>\n"
+		"      <Splash>\n        <Damage>\n          <Crush>12.0</Crush>\n          <Fire>6.0</Fire>\n        </Damage>\n"
+		"        <FriendlyFire>false</FriendlyFire>\n        <Range>4</Range>\n        <Shape>Circular</Shape>\n"
+		"        <Knockback>\n          <Distance>2</Distance>\n          <Chance>25</Chance>\n        </Knockback>\n"
+		"      </Splash>\n    </Ranged>\n  </Attack>\n")
+
+
+def model_size(width, depth, height):
+	"""Footprint e obstrução de uma estrutura com modelo 3D próprio (medidas da
+	malha, em metros; a obstrução fica 1 m menor que a área de seleção)."""
+	return ("  <!-- Medidas do modelo 3D próprio desta facção. -->\n"
+		'  <Footprint replace="">\n    <Square width="%.1f" depth="%.1f"/>\n    <Height>%.1f</Height>\n  </Footprint>\n'
+		'  <Obstruction>\n    <Static width="%.1f" depth="%.1f"/>\n  </Obstruction>\n'
+		% (width, depth, height, width - 1, depth - 1))
+
+
+def bike_sounds():
+	"""Moto: as falas tocam misturadas com o motor (audio/voice/english/bike,
+	de tools/voices/gen_bike_sounds.py) e o motor ronca enquanto ela anda."""
+	voice = "voice/{lang}/bike/civ_{phenotype}_"
+	return ("  <Sound>\n    <SoundGroups>\n"
+		"      <select>" + voice + "select.xml</select>\n"
+		"      <order_walk>" + voice + "walk.xml</order_walk>\n"
+		"      <order_attack>" + voice + "attack.xml</order_attack>\n"
+		"      <order_attack_move>" + voice + "attack.xml</order_attack_move>\n"
+		"      <order_garrison>" + voice + "garrison.xml</order_garrison>\n"
+		"      <walk>actor/vehicle/engine_bike.xml</walk>\n"
+		"      <run>actor/vehicle/engine_bike.xml</run>\n"
+		"    </SoundGroups>\n  </Sound>\n"
+		"  <VehicleSound>\n    <MoveSound>actor/vehicle/engine_bike.xml</MoveSound>\n"
+		"    <Interval>1300</Interval>\n  </VehicleSound>\n")
+
+
 def vision(value):
 	return "  <Vision>\n    <Range>" + str(value) + "</Range>\n  </Vision>\n"
 
@@ -342,10 +415,15 @@ FACTIONS = {
 		"structures": {
 			"civil_centre": ("Legion Citadel", ["worker", "battalion_legion", "battalion_shock"]),
 			"house": ("Barracks Block", []),
-			"barracks": ("War Hall", ["battalion_legion", "battalion_shock", "exo_trooper"]),
+			"barracks": ("War Hall", ["battalion_legion", "battalion_shock", "battalion_exo", "exo_trooper"]),
 			"stable": ("Armoury", ["vehicle_assault", "vehicle_tank"]),
 			"storehouse": ("Depot", []), "farmstead": ("Hydroponics", []), "field": ("Hydroponic Field", []),
-			"forge": ("Forge of Ares", []), "sentry_tower": ("Bastion", []), "silos": ("Fortified Silo", []),
+			"forge": ("Forge of Ares", ["praetorian"]), "sentry_tower": ("Bastion", []), "silos": ("Fortified Silo", []),
+		},
+		# Poder especial dos silos: míssil de fragmentação com minas (além do ICBM do mla).
+		"structure_extra": {
+			"silos": "  <AirSupportProvider>\n    <mine_missile>\n      <Cooldown>180</Cooldown>\n" +
+				"      <Template>special/mine_missile</Template>\n    </mine_missile>\n  </AirSupportProvider>\n",
 		},
 		"units": {
 			"worker": dict(kind="worker", parent="units/mla/worker", actor="units/mla/worker.xml",
@@ -358,8 +436,13 @@ FACTIONS = {
 				tooltip="Assault infantry for charges and close combat."),
 			"exo_trooper": dict(parent="units/mcc/heavy_rifleman", actor="units/mcc/heavy_rifle_assault.xml",
 				name="Exo-Legionary", specific="Exoskeleton Trooper", icon="units/squad_machine_gun.png",
-				tooltip="Exoskeleton heavy gunner. Very slow and very hard to dislodge.",
-				extra=health(320) + speed(6.5) + cost(food=60, water=80, materials=60, time=24)),
+				tooltip="Exoskeleton trooper with a 12-gauge shotgun firing explosive rounds. Very slow and very hard to dislodge.",
+				extra=shotgun12() + health(320) + speed(6.5) + cost(food=60, water=80, materials=60, time=24)),
+			# Unidade especial (Forja de Ares): aura de combate.
+			"praetorian": dict(parent="units/mcc/heavy_rifleman", actor="units/mcc/heavy_rifle_assault.xml",
+				name="Praetorian", specific="Guard of Ares", icon="units/battalion_leader.png",
+				tooltip="Elite guard of the Legion. Soldiers around him fight harder: more damage, fire rate, accuracy and armour.",
+				extra=shotgun12() + auras(["factions/ares_praetorian"]) + health(450) + cost(food=150, water=150, materials=80, time=35)),
 			"vehicle_assault": dict(parent="units/mla/vehicle_medium", actor="vehicle/mla/coyote.xml",
 				name="Assault Carrier", icon="units/armored.png",
 				tooltip="Armoured assault vehicle that rushes troops into the fight.",
@@ -374,6 +457,9 @@ FACTIONS = {
 				cost(food=120, water=100, materials=40, time=30)),
 			"battalion_shock": ("assault", "shock_trooper", 4, "Shock Cohort", "units/squad_assalt.png",
 				cost(food=110, water=90, time=26)),
+			# Exo-Legionários com a calibre 12 explosiva: líder + 3.
+			"battalion_exo": ("assault", "exo_trooper", 3, "Exo Cohort", "units/squad_machine_gun.png",
+				cost(food=180, water=220, materials=160, time=40)),
 		},
 		"start": ["battalion_legion"],
 	},
@@ -384,7 +470,7 @@ FACTIONS = {
 		"structures": {
 			"civil_centre": ("Caravan Hub", ["worker", "battalion_raiders", "scout"]),
 			"house": ("Tent Camp", []),
-			"barracks": ("Hideout", ["battalion_raiders", "rifleman", "scout", "bm_lmg"]),
+			"barracks": ("Hideout", ["battalion_raiders", "battalion_guerrilla", "rifleman", "scout", "bm_lmg"]),
 			"stable": ("Chop Shop", ["vehicle_buggy", "vehicle_technical", "drone_kamikaze", "bm_laser_tank"]),
 			"storehouse": ("Scrap Yard", []), "farmstead": ("Water Still", []), "field": ("Moisture Farm", []),
 			"forge": ("Black Market", ["bm_vtol"]), "sentry_tower": ("Lookout", []),
@@ -392,13 +478,25 @@ FACTIONS = {
 		# Poder especial do centro cívico: tempestade de areia (no lugar do míssil nuclear do mla).
 		"structure_extra": {
 			"civil_centre": "  <AirSupportProvider replace=\"\">\n    <sandstorm>\n      <Cooldown>240</Cooldown>\n" +
-				"      <Template>special/sandstorm_strike</Template>\n    </sandstorm>\n  </AirSupportProvider>\n",
+				"      <Template>special/sandstorm_strike</Template>\n    </sandstorm>\n  </AirSupportProvider>\n" +
+				model_size(11.5, 41.0, 12.5),
+			# Caravanas e oficinas: modelos próprios, mais estreitos e compridos que os do mla.
+			"barracks": model_size(11.5, 29.5, 10.0),
+			"forge": model_size(16.0, 41.0, 16.5),
+			"stable": model_size(16.0, 26.0, 13.0),
 		},
 		"units": {
 			"worker": dict(kind="worker", parent="units/mla/worker", actor="units/mla/worker.xml",
 				name="Scavenger", cost=cost(food=45, time=8)),
 			"raider": dict(parent="units/mla/smg_soldier", actor="units/mla/rifle_assalt_guerrilla.xml",
-				name="Raider", icon="units/squad_assalt.png", tooltip="Fast raider with a submachine gun."),
+				name="Raider", icon="units/squad_assalt.png", tooltip="Fast raider with a submachine gun.",
+				# O actor do Raider é a moto, vehicle/pira/bike_{phenotype}.xml
+				# (actor_overrides.json): metade pilotos, metade pilotas.
+				phenotype="male female", extra=bike_sounds()),
+			# Guerrilheiro a pé (o Raider passou a usar a moto): soldado do batalhão de guerrilha.
+			"guerrilla": dict(parent="units/mla/smg_soldier", actor="units/mla/rifle_assalt_guerrilla.xml",
+				name="Guerrilla", specific="Dune Guerrilla", icon="units/squad_assalt.png",
+				tooltip="Light guerrilla fighter on foot with a submachine gun."),
 			"rifleman": dict(parent="units/pirates_mars_rifleman", actor="units/mcc/rifle_assalt_pmc_b.xml",
 				name="Dune Rifleman", icon="units/squad_rifle.png",
 				tooltip="Cheap rifleman who hits and runs.", extra=cost(food=40, water=30, time=10)),
@@ -425,6 +523,8 @@ FACTIONS = {
 		"battalions": {
 			"battalion_raiders": ("skirmisher", "raider", 4, "Raider Band", "units/squad_assalt.png",
 				cost(food=90, water=70, time=18)),
+			"battalion_guerrilla": ("skirmisher", "guerrilla", 4, "Guerrilla Band", "units/squad_assalt.png",
+				cost(food=100, water=60, time=20)),
 		},
 		"start": ["battalion_raiders"],
 	},
@@ -436,11 +536,22 @@ FACTIONS = {
 			"civil_centre": ("Coalition Command", ["worker", "battalion_rifle", "officer"]),
 			"house": ("Habitat Module", []),
 			"barracks": ("Garrison", ["battalion_rifle", "battalion_rangers", "officer"]),
-			"stable": ("Motor Pool", ["vehicle_ifv", "vehicle_mbt", "vehicle_titan_packed"]),
+			"stable": ("Motor Pool", ["vehicle_ifv", "vehicle_mbt", "vehicle_titan_packed"]),  # Titan: template feito à mão
 			"aero": ("Airbase", ["aero_01", "aero_02", "drone_recon"]),
 			"storehouse": ("Logistics Depot", []), "farmstead": ("Supply Dome", []), "field": ("Supply Field", []),
-			"forge": ("Research Centre", []), "sentry_tower": ("Watch Post", []), "silos": ("Missile Silo", []),
+			"forge": ("Research Centre", ["field_scientist"]), "sentry_tower": ("Watch Post", []), "silos": ("Missile Silo", []),
 			"air_defense_tower": ("Air Defence", []),
+		},
+		# Poder especial do centro cívico: ataque orbital de saturação (além do bombardeiro e do míssil nuclear do mcc).
+		"structure_extra": {
+			"civil_centre": "  <AirSupportProvider>\n    <orbital_saturation>\n      <Cooldown>240</Cooldown>\n" +
+				"      <Template>special/orbital_saturation</Template>\n    </orbital_saturation>\n  </AirSupportProvider>\n",
+			# Garagem: veículo pesado lançado de paraquedas por uma aeronave.
+			"stable": "  <AirSupportProvider>\n    <vehicle_airdrop>\n      <Cooldown>240</Cooldown>\n" +
+				"      <Template>special/airdrop_carrier</Template>\n" +
+				"      <Battalion datatype=\"tokens\">units/coa/vehicle_mbt units/coa/vehicle_ifv units/coa/vehicle_titan_packed</Battalion>\n" +
+				"      <MinDistanceFromEnemyStructures>60</MinDistanceFromEnemyStructures>\n" +
+				"    </vehicle_airdrop>\n  </AirSupportProvider>\n",
 		},
 		"structure_auras": {"civil_centre": ["factions/coa_hq"]},
 		"units": {
@@ -457,6 +568,11 @@ FACTIONS = {
 				name="Officer", specific="Field Officer", icon="units/battalion_leader.png",
 				tooltip="Chain of command: units around the officer keep their accuracy, fire faster and see further.",
 				extra=auras(["factions/coa_command"]) + cost(food=100, water=100, energy=50, time=30)),
+			# Unidade especial (Centro de Pesquisa): cura a infantaria e conserta veículos.
+			"field_scientist": dict(parent="units/mcc/rifleman", actor="units/mcc/rifle_assalt_pmc_b.xml",
+				name="Field Scientist", specific="Coalition Research Corps", icon="units/medic.png",
+				tooltip="Heals infantry (6 health every 2 s) and repairs the vehicles around him.",
+				extra=heal(6, 14) + auras(["factions/coa_field_repair"]) + cost(food=120, water=120, energy=80, time=30)),
 			"vehicle_ifv": dict(parent="units/mcc/vehicle_special", actor="vehicle/mcc/cavelion.xml",
 				name="Coalition IFV", icon="units/armored.png", tooltip="Infantry fighting vehicle.",
 				extra=cost(water=220, materials=180, energy=120, time=40)),
@@ -492,7 +608,7 @@ FACTIONS = {
 			"barracks": ("Spawning Chamber", ["battalion_mass", "servant", "abomination", "conductor", "hierophant", "prophet"]),
 			"stable": ("Incubator", ["scout", "stalker", "spitter", "brute", "synapse", "oracle", "behemoth"]),
 			"storehouse": ("Digestion Pit", []), "farmstead": ("Biomass Vat", []), "field": ("Biomass Bed", []),
-			"forge": ("Gene Temple", []), "sentry_tower": ("Spine Tower", []),
+			"forge": ("Gene Temple", ["occult_priest"]), "sentry_tower": ("Spine Tower", []),
 		},
 		"units": {
 			"worker": dict(kind="worker", parent="units/mla/worker", actor="units/mla/worker.xml",
@@ -511,6 +627,11 @@ FACTIONS = {
 				name="Conductor", specific="Command Node", icon="units/battalion_leader.png",
 				tooltip="Cohesion: the Mass and creatures around it fight in coordination. Kill it to fragment the hive mind.",
 				extra=auras(["factions/swarm_conductor"]) + cost(food=120, water=80, time=24)),
+			# Unidade especial (Templo Genético): mais armadura e incentivo de combate.
+			"occult_priest": dict(parent="units/mla/rifleman", actor="units/mla/rifle_assalt_champion.xml",
+				name="Priest of the Occult", specific="Keeper of the Rites", icon="units/battalion_leader.png",
+				tooltip="His rites harden the flesh and drive the faithful into a frenzy: the Mass and creatures around him gain armour, damage and attack speed.",
+				extra=auras(["factions/swarm_occult_priest"]) + health(260) + cost(food=140, water=120, energy=60, time=32)),
 			"hierophant": dict(parent="units/mla/snipe_sup", actor="units/mcc/rifle_assalt_champion_hell_angels.xml",
 				name="Hierophant", icon="units/battalion_leader.png",
 				tooltip="An intelligent, individual leader with a stronger and wider Cohesion aura.",
@@ -567,7 +688,7 @@ def generate(civ, faction):
 	# Estruturas
 	for structure, (name, trains) in faction["structures"].items():
 		for t in trains:
-			assert t in unit_names, civ + ": " + t
+			assert t in unit_names or os.path.exists(os.path.join(MOD, TEMPLATES_DIR + "units/" + civ + "/" + t + ".xml")), civ + ": " + t
 		body = identity(civ, name)
 		body += actor(tinted_actor(STRUCTURE_ACTORS[base][structure], civ))
 		body += trainer(["units/{civ}/" + t for t in trains])
@@ -594,7 +715,9 @@ def generate(civ, faction):
 
 	# Unidades
 	for unit, u in faction["units"].items():
-		body = identity(civ, u["name"], u.get("specific"), u.get("icon"), u.get("tooltip"), u.get("classes"))
+		# "phenotype": sorteio de voz (e de modelo, se o actor usar {phenotype}).
+		phenotype = '    <Phenotype datatype="tokens">' + u["phenotype"] + "</Phenotype>\n" if u.get("phenotype") else ""
+		body = identity(civ, u["name"], u.get("specific"), u.get("icon"), u.get("tooltip"), u.get("classes"), None, phenotype)
 		body += actor(tinted_actor(u["actor"], civ))
 		if u.get("kind") == "worker":
 			body = identity(civ, u["name"], None, "units/worker.png", None, u.get("classes"))
@@ -748,9 +871,9 @@ def update_battle_catalog():
 	path = os.path.join(MOD, "simulation/data/battle_mode/army_catalog.json")
 	catalog = json.load(open(path, encoding="utf-8"))
 	entries = {
-		"ares": [("battalion_legion", "infantry", 120), ("battalion_shock", "infantry", 110), ("exo_trooper", "infantry", 90),
+		"ares": [("battalion_legion", "infantry", 120), ("battalion_shock", "infantry", 110), ("battalion_exo", "infantry", 200), ("exo_trooper", "infantry", 90),
 			("vehicle_assault", "armor", 170), ("vehicle_tank", "armor", 230)],
-		"pira": [("battalion_raiders", "infantry", 80), ("scout", "infantry", 50), ("vehicle_buggy", "armor", 100),
+		"pira": [("battalion_raiders", "infantry", 80), ("battalion_guerrilla", "infantry", 90), ("scout", "infantry", 50), ("vehicle_buggy", "armor", 100),
 			("vehicle_technical", "armor", 140), ("drone_kamikaze", "air", 50), ("bm_laser_tank", "armor", 300)],
 		"coa": [("battalion_rifle", "infantry", 130), ("battalion_rangers", "infantry", 150), ("officer", "infantry", 90),
 			("vehicle_ifv", "armor", 260), ("vehicle_mbt", "armor", 280), ("aero_01", "air", 190), ("drone_recon", "air", 70)],

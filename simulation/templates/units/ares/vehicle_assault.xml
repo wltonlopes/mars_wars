@@ -8,7 +8,7 @@
     <Tooltip>Armoured assault vehicle that rushes troops into the fight.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/vehicle/mla/coyote.xml</Actor>
+    <Actor>vehicle/ares/coyote.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>30</BuildTime>

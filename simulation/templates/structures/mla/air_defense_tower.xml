@@ -4,7 +4,7 @@
 <Entity parent="template_structure_defensive_tower_sentry">
   <AirDefense>
     <Range>120</Range>
-    <Intercepts datatype="tokens">icbm nuke strategic_bomber</Intercepts>
+    <Intercepts datatype="tokens">icbm nuke mine_missile white_phosphorus strategic_bomber vehicle_airdrop</Intercepts>
     <InterceptorActor>props/units/weapons/ammo/sam_interceptor.xml</InterceptorActor>
     <InterceptorSpeed>140</InterceptorSpeed>
     <LaunchHeight>6</LaunchHeight>
@@ -39,7 +39,7 @@
     <SpecificName>Air Defense Tower</SpecificName>
     <Classes datatype="tokens">AirDefense</Classes>
     <VisibleClasses datatype="tokens">AirDefense</VisibleClasses>
-    <Tooltip>Enemy ICBMs, nuclear missiles and strategic bombers cannot strike within 120 m of this tower, and are shot down when they enter its airspace. Its launcher also fires at aircraft and drones.</Tooltip>
+    <Tooltip>Enemy ICBMs, nuclear, fragmentation and white phosphorus missiles and strategic bombers cannot strike within 120 m of this tower, and are shot down when they enter its airspace. Its launcher also fires at aircraft and drones.</Tooltip>
     <Icon>structures/air_defense.png</Icon>
   </Identity>
   <Loot>
@@ -68,4 +68,11 @@
   <VisualActor>
     <Actor>structures/mla/air_defense_tower.xml</Actor>
   </VisualActor>
+  <Footprint replace="">
+    <Square width="13.5" depth="13.5"/>
+    <Height>6.5</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="12.5" depth="12.5"/>
+  </Obstruction>
 </Entity>

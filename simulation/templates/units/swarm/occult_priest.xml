@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/rifleman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Priest of the Occult</GenericName>
+    <SpecificName>Keeper of the Rites</SpecificName>
+    <Icon>units/battalion_leader.png</Icon>
+    <Tooltip>His rites harden the flesh and drive the faithful into a frenzy: the Mass and creatures around him gain armour, damage and attack speed.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/swarm/rifle_assalt_champion.xml</Actor>
+  </VisualActor>
+  <Auras datatype="tokens">factions/swarm_occult_priest</Auras>
+  <Health>
+    <Max>260</Max>
+  </Health>
+  <Cost>
+    <BuildTime>32</BuildTime>
+    <Resources>
+      <food>140</food>
+      <metal>120</metal>
+      <stone>0</stone>
+      <wood>60</wood>
+    </Resources>
+  </Cost>
+</Entity>

@@ -1,7 +1,7 @@
 /**
  * Botões de apoio aéreo e reforços para estruturas com AirSupportProvider.
  *
- * Cada tipo (bombardeiro, míssil nuclear, laser orbital, ICBM, cápsula
+ * Cada tipo (bombardeiro, míssil nuclear, laser orbital, saturação orbital, ICBM, cápsula
  * orbital, túnel, tempestade de areia)
  * tem seu botão; uma estrutura pode ter vários (entState.airSupport é uma
  * lista, um status por poder). O botão coloca a GUI em
@@ -34,6 +34,14 @@ var g_AirSupportTypes = {
 		"readyText": markForTranslation("A satellite fires a laser beam at the chosen point for about 10 seconds: it locks on, burns at full power and then fades, damaging enemies in the area."),
 		"activeText": markForTranslation("The orbital laser is firing.")
 	},
+	"orbital_saturation": {
+		"action": 107,
+		"icon": "special/orbital.png",
+		"name": markForTranslation("Orbital Saturation Strike"),
+		"cursorTooltip": markForTranslation("Left-click to choose the centre of the barrage, right-click to cancel."),
+		"readyText": markForTranslation("Warships in orbit saturate a wide area around the chosen point with dozens of shells for about 12 seconds. The barrage is indiscriminate: it also hits your own and allied units. All players are warned before the first impacts."),
+		"activeText": markForTranslation("The orbital barrage is under way.")
+	},
 	"icbm": {
 		"action": 101,
 		"icon": "special/icbm.png",
@@ -41,6 +49,30 @@ var g_AirSupportTypes = {
 		"cursorTooltip": markForTranslation("Left-click to choose the impact point, right-click to cancel."),
 		"readyText": markForTranslation("Choose a target: a ballistic missile devastates a wide area, including your own and allied units. All players are warned of the launch."),
 		"activeText": markForTranslation("The missile is in flight.")
+	},
+	"mine_missile": {
+		"action": 108,
+		"icon": "special/icbm.png",
+		"name": markForTranslation("Fragmentation Missile"),
+		"cursorTooltip": markForTranslation("Left-click to choose where the mines are scattered, right-click to cancel."),
+		"readyText": markForTranslation("A missile bursts above the chosen point and scatters proximity mines over a wide area. The mines are hidden from the enemy until he is almost on top of them, explode when an enemy ground unit comes close and disarm after a few minutes. Your own and allied units are safe. All players are warned of the launch."),
+		"activeText": markForTranslation("The missile is in flight.")
+	},
+	"white_phosphorus": {
+		"action": 109,
+		"icon": "special/icbm.png",
+		"name": markForTranslation("White Phosphorus Missile"),
+		"cursorTooltip": markForTranslation("Left-click to choose where the phosphorus rains down, right-click to cancel."),
+		"readyText": markForTranslation("A missile launched from this building bursts above the chosen point and rains burning white phosphorus over a wide area. The fires burn for about 18 seconds and damage everything near them, including your own and allied units: deadly for infantry that stays, weak against buildings. All players are warned of the launch."),
+		"activeText": markForTranslation("The missile is in flight.")
+	},
+	"vehicle_airdrop": {
+		"action": 110,
+		"icon": "special/drop_pod.png",
+		"name": markForTranslation("Heavy Vehicle Airdrop"),
+		"cursorTooltip": markForTranslation("Left-click to choose the drop zone, right-click to cancel."),
+		"readyText": markForTranslation("A transport aircraft flies in from the direction of this building and drops a supply container on two parachutes; it lands and releases the vehicle (%(pop)s population). The drop zone must be on land, at least %(distance)s m from enemy buildings. Enemy air defense shoots the aircraft down."),
+		"activeText": markForTranslation("The transport aircraft is on its way.")
 	},
 	"drop_pod": {
 		"action": 102,

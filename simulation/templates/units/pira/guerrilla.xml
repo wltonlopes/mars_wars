@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mla/smg_soldier">
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Guerrilla</GenericName>
+    <SpecificName>Dune Guerrilla</SpecificName>
+    <Icon>units/squad_assalt.png</Icon>
+    <Tooltip>Light guerrilla fighter on foot with a submachine gun.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/pira/rifle_assalt_guerrilla.xml</Actor>
+  </VisualActor>
+</Entity>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Luz vermelha que pisca sobre a mina de proximidade. -->
+<particles>
+    <texture>art/textures/particles/fairy_glow_red.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="1.2"/>
+    <uniform name="lifetime" min="0.35" max="0.45"/>
+
+    <constant name="position.y" value="0.6"/>
+
+    <uniform name="size" min="0.9" max="1.1"/>
+</particles>

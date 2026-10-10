@@ -3,8 +3,12 @@
  * Cada poder é um elemento filho com o nome do tipo e tem recarga própria:
  *   strategic_bomber - centro cívico mcc (drone bombardeiro)
  *   nuke             - centros cívicos mcc e mla (míssil nuclear vindo de fora do mapa)
+ *   white_phosphorus - centros cívicos mcc e mla (míssil que espalha focos de incêndio)
  *   orbital_laser    - laboratório mcc (laser orbital em fases)
+ *   orbital_saturation - centro cívico da Coalizão (salva orbital sobre uma área ampla)
  *   icbm             - silos mla
+ *   mine_missile     - silos de Ares (míssil de fragmentação que espalha minas de proximidade)
+ *   vehicle_airdrop  - garagem da Coalizão (aeronave lança um veículo pesado de paraquedas)
  *   drop_pod         - quartel mcc (cápsula orbital com batalhão)
  *   tunnel           - quartel mla (túnel com batalhão)
  *   sandstorm        - centro cívico dos piratas (tempestade de areia com raios)
@@ -13,7 +17,7 @@
  */
 function AirSupportProvider() {}
 
-AirSupportProvider.prototype.TYPES = ["strategic_bomber", "nuke", "orbital_laser", "icbm", "drop_pod", "tunnel", "sandstorm"];
+AirSupportProvider.prototype.TYPES = ["strategic_bomber", "nuke", "orbital_laser", "orbital_saturation", "icbm", "mine_missile", "white_phosphorus", "vehicle_airdrop", "drop_pod", "tunnel", "sandstorm"];
 
 AirSupportProvider.prototype.Schema =
 	"<a:help>Special powers of this structure (air strikes and reinforcements). One child element per power, named after its type.</a:help>" +
@@ -38,7 +42,7 @@ AirSupportProvider.prototype.Schema =
 				"<element name='Cooldown' a:help='Seconds, counted from the moment the power is used.'>" +
 					"<ref name='nonNegativeDecimal'/>" +
 				"</element>" +
-				"<element name='Template' a:help='Template of the aircraft (StrategicBomber), missile (IcbmMissile), orbital laser (OrbitalStrike), sandstorm (Sandstorm) or delivery (ReinforcementDelivery).'>" +
+				"<element name='Template' a:help='Template of the aircraft (StrategicBomber, AirDropCarrier), missile (IcbmMissile), orbital laser (OrbitalStrike), orbital barrage (OrbitalSaturation), sandstorm (Sandstorm) or delivery (ReinforcementDelivery).'>" +
 					"<text/>" +
 				"</element>" +
 				"<optional>" +
@@ -52,7 +56,7 @@ AirSupportProvider.prototype.Schema =
 					"</element>" +
 				"</optional>" +
 				"<optional>" +
-					"<element name='Battalion' a:help='drop_pod/tunnel: battalion leader templates the player can choose from (the first is the default). Costs population like a trained battalion.'>" +
+					"<element name='Battalion' a:help='drop_pod/tunnel: battalion leader templates the player can choose from (the first is the default); vehicle_airdrop: vehicle templates. Costs population like the trained unit.'>" +
 						"<optional><attribute name='datatype'><value>tokens</value></attribute></optional>" +
 						"<text/>" +
 					"</element>" +

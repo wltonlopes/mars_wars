@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Míssil de fragmentação dos silos de Ares (AirSupportProvider tipo
+     mine_missile). Estoura no ar sobre o alvo e espalha minas de proximidade
+     (special/proximity_mine); o estouro em si quase não causa dano. -->
+<Entity parent="special/icbm_missile">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Fragmentation Missile</GenericName>
+  </Identity>
+  <IcbmMissile>
+    <Speed>45</Speed>
+    <MinFlightTime>12</MinFlightTime>
+    <ApexHeight>160</ApexHeight>
+    <Submunitions>
+      <Template>special/proximity_mine</Template>
+      <Count>10</Count>
+      <Radius>32</Radius>
+      <BurstHeight>45</BurstHeight>
+      <FallTime>2.2</FallTime>
+      <ActorName>props/special/proximity_mine.xml</ActorName>
+    </Submunitions>
+    <Warhead>
+      <Damage>
+        <Crush>20</Crush>
+        <Fire>20</Fire>
+      </Damage>
+      <Radius>6</Radius>
+      <FriendlyFire>false</FriendlyFire>
+      <ImpactActorName>props/units/explosions/air_burst.xml</ImpactActorName>
+      <ImpactAnimationLifetime>4</ImpactAnimationLifetime>
+      <ImpactSound>attack/destruction/explode_debris.xml</ImpactSound>
+    </Warhead>
+  </IcbmMissile>
+</Entity>

@@ -9,7 +9,7 @@
   <group>
     <variant frequency="1" name="Red">
       <textures>
-        <texture file="factions/swarm/skeletal/animal_fox_red.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal_fox_red.png" name="baseTex"/>
         <texture file="default_norm.png" name="normTex"/>
         <texture file="null_black.dds" name="specTex"/>
       </textures>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_resource_field">
-  <Footprint>
-    <Square width="25.0" depth="25.0"/>
+  <Footprint replace="">
+    <Square width="42.5" depth="40.5"/>
+    <Height>15.0</Height>
   </Footprint>
   <Identity>
     <Civ>mla</Civ>
@@ -9,7 +10,7 @@
     <Icon>structures/bio.png</Icon>
   </Identity>
   <Obstruction>
-    <Static width="25.5" depth="25.5"/>
+    <Static width="41.5" depth="39.5"/>
   </Obstruction>
   <VisualActor>
     <Actor>structures/mla/greenhouse.xml</Actor>

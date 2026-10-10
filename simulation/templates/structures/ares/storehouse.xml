@@ -6,6 +6,6 @@
     <GenericName>Depot</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/structures/mla/storehouse.xml</Actor>
+    <Actor>structures/ares/storehouse.xml</Actor>
   </VisualActor>
 </Entity>

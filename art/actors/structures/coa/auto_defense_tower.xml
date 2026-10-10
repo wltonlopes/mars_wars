@@ -7,7 +7,7 @@
 			<props>
 			</props>
 			<textures>
-				<texture file="factions/coa/structural/mcc_struct.png" name="baseTex"/>
+				<texture file="structural/coa/mcc_struct.png" name="baseTex"/>
 				<texture file="structural/mcc_struct_spec.png" name="specTex"/>
 				<texture file="structural/mcc_struct_norm.png" name="normTex"/>
 			</textures>

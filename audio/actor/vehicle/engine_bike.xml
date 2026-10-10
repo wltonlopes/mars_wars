@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<SoundGroup>
+	<Gain>0.6</Gain>
+	<Priority>60</Priority>
+	<ConeGain>1</ConeGain>
+	<Looping>0</Looping>
+	<RandOrder>1</RandOrder>
+	<RandGain>1</RandGain>
+	<GainUpper>0.6</GainUpper>
+	<GainLower>0.5</GainLower>
+	<RandPitch>1</RandPitch>
+	<PitchUpper>1.06</PitchUpper>
+	<PitchLower>0.94</PitchLower>
+	<Threshold>2</Threshold>
+	<Path>audio/actor/vehicle</Path>
+	<Sound>engine_bike_01.ogg</Sound>
+	<Sound>engine_bike_02.ogg</Sound>
+</SoundGroup>

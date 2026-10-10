@@ -6,6 +6,6 @@
     <GenericName>Digestion Pit</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/storehouse.xml</Actor>
+    <Actor>structures/swarm/storehouse.xml</Actor>
   </VisualActor>
 </Entity>

@@ -6,6 +6,10 @@
  * Perfil "reentry": entra pela borda do mapa a ApexHeight, em voo
  * nivelado, e mergulha cada vez mais inclinado até o alvo.
  *
+ * Com Submunitions (míssil de fragmentação), o míssil não chega ao solo:
+ * estoura no ar a BurstHeight e espalha as submunições (ex.: minas) em
+ * pontos sorteados dentro de Radius em volta do alvo.
+ *
  * Não usa UnitMotion: a posição é calculada a cada turno a partir do
  * tempo de voo. Como a trajetória é conhecida, a defesa aérea (AirDefense)
  * mira exatamente onde o míssil estará quando o interceptador chegar.
@@ -31,6 +35,18 @@ IcbmMissile.prototype.Schema =
 	"<element name='ApexHeight' a:help='Highest point of the flight, in metres above the terrain.'>" +
 		"<ref name='positiveDecimal'/>" +
 	"</element>" +
+	"<optional>" +
+		"<element name='Submunitions' a:help='Fragmentation: the missile bursts in the air and scatters entities around the target.'>" +
+			"<interleave>" +
+				"<element name='Template' a:help='Entity created where each submunition lands.'><text/></element>" +
+				"<element name='Count'><data type='positiveInteger'/></element>" +
+				"<element name='Radius' a:help='Metres around the target.'><ref name='positiveDecimal'/></element>" +
+				"<element name='BurstHeight' a:help='Height above the terrain where the missile bursts, in metres.'><ref name='positiveDecimal'/></element>" +
+				"<element name='FallTime' a:help='Seconds from the burst to the ground.'><ref name='positiveDecimal'/></element>" +
+				"<element name='ActorName' a:help='Actor of the falling submunition.'><text/></element>" +
+			"</interleave>" +
+		"</element>" +
+	"</optional>" +
 	"<element name='Warhead'>" +
 		"<interleave>" +
 			"<element name='Damage' a:help='Damage at the centre of the blast, e.g. Crush, Fire. Falls off towards Radius.'>" +
@@ -183,7 +199,7 @@ IcbmMissile.prototype.OnUpdate = function(msg)
 
 	if (this.interception && this.elapsed >= this.interception.time)
 		this.Intercepted();
-	else if (this.elapsed >= this.flightTime)
+	else if (this.elapsed >= this.flightTime || this.ReachedBurstHeight())
 		this.Detonate();
 	else if (!this.interception)
 		this.CheckAirDefense();
@@ -222,6 +238,64 @@ IcbmMissile.prototype.Intercepted = function()
 	this.FinishMission();
 };
 
+/**
+ * Míssil de fragmentação: já na descida e à altura do estouro?
+ */
+IcbmMissile.prototype.ReachedBurstHeight = function()
+{
+	const submunitions = this.template.Submunitions;
+	if (!submunitions)
+		return false;
+
+	const u = this.elapsed / this.flightTime;
+	return u > 0.5 && this.GetTrajectory(u).height <= +submunitions.BurstHeight;
+};
+
+/**
+ * Espalha as submunições a partir do ponto do estouro: cada uma cai em
+ * arco até um ponto sorteado (distribuição uniforme no círculo) e vira a
+ * entidade Template ao tocar o solo. Pontos fora do mapa ou na água são
+ * descartados.
+ */
+IcbmMissile.prototype.ReleaseSubmunitions = function(burst)
+{
+	const submunitions = this.template.Submunitions;
+	const fallTime = +submunitions.FallTime;
+	const owner = Engine.QueryInterface(this.entity, IID_Ownership).GetOwner();
+	const cmpTerrain = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain);
+	const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
+	const cmpProjectileManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_ProjectileManager);
+
+	// A gravidade que leva do ponto do estouro ao solo em FallTime, partindo
+	// sem velocidade vertical.
+	const ground = cmpTerrain.GetGroundLevel(this.target.x, this.target.z);
+	const gravity = 2 * Math.max(1, burst.y - ground) / (fallTime * fallTime);
+
+	for (let i = 0; i < +submunitions.Count; ++i)
+	{
+		const angle = randFloat(0, 2 * Math.PI);
+		const distance = submunitions.Radius * Math.sqrt(randFloat(0, 1));
+		const point = {
+			"x": this.target.x + Math.cos(angle) * distance,
+			"z": this.target.z + Math.sin(angle) * distance
+		};
+		if (!AirSupport.IsInsideMap(point, 4) || !AirSupport.IsOnLand(point))
+			continue;
+
+		const landing = new Vector3D(point.x, cmpTerrain.GetGroundLevel(point.x, point.z), point.z);
+		cmpProjectileManager.LaunchProjectileAtPoint(
+			burst, landing, Math.max(1, burst.horizDistanceTo(landing)) / fallTime, gravity,
+			submunitions.ActorName, "", 0);
+
+		cmpTimer.SetTimeout(SYSTEM_ENTITY, IID_AirSupportManager, "SpawnSubmunition", fallTime * 1000, {
+			"template": submunitions.Template,
+			"owner": owner,
+			"position": point,
+			"rotation": randFloat(0, 2 * Math.PI)
+		});
+	}
+};
+
 IcbmMissile.prototype.Detonate = function()
 {
 	const warhead = this.template.Warhead;
@@ -229,9 +303,19 @@ IcbmMissile.prototype.Detonate = function()
 	for (const type in warhead.Damage)
 		damage[type] = +warhead.Damage[type];
 
+	// Estouro no ar: os efeitos aparecem na altura do míssil.
+	let height = 0;
+	if (this.template.Submunitions)
+	{
+		const burst = this.GetWorldPosition(this.elapsed / this.flightTime);
+		height = this.GetTrajectory(this.elapsed / this.flightTime).height;
+		this.ReleaseSubmunitions(burst);
+	}
+
 	const cmpManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager);
 	cmpManager.BombImpact({
 		"position": this.target,
+		"height": Math.max(0, height),
 		"attackData": { "Damage": damage },
 		"attacker": this.provider,
 		"attackerOwner": Engine.QueryInterface(this.entity, IID_Ownership).GetOwner(),

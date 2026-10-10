@@ -8,7 +8,7 @@
     <Tooltip>Main battle tank.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/vehicle/mcc/mammoth.xml</Actor>
+    <Actor>vehicle/coa/mammoth.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>55</BuildTime>

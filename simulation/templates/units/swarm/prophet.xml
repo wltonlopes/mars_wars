@@ -9,7 +9,7 @@
     <Tooltip>Supreme leader of the cult (hero). Huge Cohesion aura.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/units/mcc/rifle_assalt_champion_hell_angels.xml</Actor>
+    <Actor>units/swarm/rifle_assalt_champion_hell_angels.xml</Actor>
   </VisualActor>
   <Auras datatype="tokens">factions/swarm_prophet</Auras>
   <Health>

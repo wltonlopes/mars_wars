@@ -286,6 +286,17 @@ Attack.prototype.GetAttackTypes = function(wantedTypes)
 	      (!wantedTypesReal || !wantedTypesReal.length || wantedTypesReal.indexOf(type) != -1));
 };
 
+// A GUI atual (GuiInterface) pede a quantidade de projéteis por ataque.
+Attack.prototype.GetProjectileCount = function(type)
+{
+	if (!this.template[type] || !this.template[type].Projectile)
+		return 1;
+
+	let count = this.template[type].Projectile.Count ? +this.template[type].Projectile.Count : 1;
+	count = ApplyValueModificationsToEntity("Attack/" + type + "/Projectile/Count", count, this.entity);
+	return Math.max(1, Math.floor(count));
+};
+
 Attack.prototype.GetPreferredClasses = function(type)
 {
 	if (this.GetTypeTemplate(type) && this.GetTypeTemplate(type).PreferredClasses &&
@@ -838,6 +849,14 @@ Attack.prototype.PerformAttack = function(type, target)
 	if (!cmpOwnership)
 		return;
 	const attackerOwner = cmpOwnership.GetOwner();
+
+	// Operador de drones: o "disparo" solta um enxame em vez de um projétil.
+	const cmpDroneLauncher = type == "Ranged" && Engine.QueryInterface(this.entity, IID_DroneLauncher);
+	if (cmpDroneLauncher)
+	{
+		cmpDroneLauncher.Launch(target);
+		return;
+	}
 
     let isSplash = this.GetTypeTemplate(type).Splash != undefined; //HC-Code
 	const data = {

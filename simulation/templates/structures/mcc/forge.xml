@@ -7,9 +7,9 @@
     </orbital_laser>
   </AirSupportProvider>
 
-  <Footprint>
-    <Square width="20.0" depth="20.0"/>
-    <Height>15.0</Height>
+  <Footprint replace="">
+    <Square width="40.0" depth="46.5"/>
+    <Height>24.0</Height>
   </Footprint>
   <Identity>
     <Civ>mcc</Civ>
@@ -20,8 +20,13 @@
     </Requirements>
   </Identity>
   <Obstruction>
-    <Static width="19.5" depth="19.5"/>
+    <Static width="39.0" depth="45.5"/>
   </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens">
+      units/{civ}/contract_surgeon
+    </Entities>
+  </Trainer>
   <VisualActor>
     <Actor>structures/mcc/lab.xml</Actor>
     <FoundationActor>structures/fndn_5x5.xml</FoundationActor>

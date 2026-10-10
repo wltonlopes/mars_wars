@@ -6,11 +6,19 @@
     <GenericName>Black Market</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/lab.xml</Actor>
+    <Actor>vehicle/pira/tec_vehicle.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/bm_vtol
     </Entities>
   </Trainer>
+  <!-- Medidas do modelo 3D próprio desta facção. -->
+  <Footprint replace="">
+    <Square width="16.0" depth="41.0"/>
+    <Height>16.5</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="15.0" depth="40.0"/>
+  </Obstruction>
 </Entity>

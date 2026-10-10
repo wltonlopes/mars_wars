@@ -9,7 +9,7 @@
     <Tooltip>Special forces scout: long sight to feed the information network.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/units/mcc/rifle_assalt_pmc_b.xml</Actor>
+    <Actor>units/coa/rifle_assalt_pmc_b.xml</Actor>
   </VisualActor>
   <Vision>
     <Range>110</Range>

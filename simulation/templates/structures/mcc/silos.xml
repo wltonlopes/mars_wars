@@ -46,4 +46,11 @@
   <VisualActor>
     <Actor>structures/mcc/silos.xml</Actor>
   </VisualActor>
+  <Footprint replace="">
+    <Square width="12.5" depth="16.5"/>
+    <Height>14.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="11.5" depth="15.5"/>
+  </Obstruction>
 </Entity>

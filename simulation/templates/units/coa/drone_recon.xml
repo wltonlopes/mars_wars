@@ -8,7 +8,7 @@
     <Tooltip>Drone with a wide sensor range for the information network.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/vehicle/mla/drone_kamikaze.xml</Actor>
+    <Actor>vehicle/coa/drone_kamikaze.xml</Actor>
   </VisualActor>
   <Vision>
     <Range>130</Range>

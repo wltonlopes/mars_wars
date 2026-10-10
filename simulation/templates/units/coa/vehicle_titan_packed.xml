@@ -19,7 +19,7 @@
       <Projectile>
         <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
         <ImpactActorName>props/units/weapons/ammo/titan_shell_impact.xml</ImpactActorName>
-        <ImpactAnimationLifetime>2.5</ImpactAnimationLifetime>
+        <ImpactAnimationLifetime>0.5</ImpactAnimationLifetime>
         <GroundLifetime>1</GroundLifetime>
         <!-- Trajetória curva de obus: velocidade baixa + gravidade alta. -->
         <Speed>80.0</Speed>
@@ -68,6 +68,9 @@
     <GenericName>Titan Siege Howitzer</GenericName>
     <SpecificName>Titan</SpecificName>
     <Icon>units/armored.png</Icon>
+    <!-- Sem Champion: para a IA o Titan é só artilharia de cerco (Siege+Ranged),
+         pedida em pequeno número, e não um veículo de linha. -->
+    <Classes datatype="tokens">-Champion</Classes>
     <VisibleClasses datatype="tokens">Siege Ranged</VisibleClasses>
     <Tooltip>Mega-heavy self-propelled howitzer. Must unpack (deploy) to fire; packs up automatically to move. Huge range and splash, but cannot hit targets too close.</Tooltip>
   </Identity>

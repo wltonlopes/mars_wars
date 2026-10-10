@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Operador de drones (unidade especial do mla). Modo de transporte
+     (packed): anda, mas não lança drones. Ao receber ordem de ataque com o
+     alvo no alcance, o UnitAI descompacta sozinho (vira
+     drone_operator_unpacked, de bruços) e só então solta os enxames;
+     para andar de novo ele compacta automaticamente. -->
+<Entity parent="template_unit_siege_missile_infantry">
+  <Attack>
+    <Ranged>
+      <AttackName>FPV Drone Swarm</AttackName>
+      <!-- Só para a interface: o dano real é o fuzil de cada drone
+           (units/mla/drone_pvp); o ataque não dispara projétil. -->
+      <Damage>
+        <Pierce>8</Pierce>
+        <Crush>0</Crush>
+      </Damage>
+      <MaxRange>90</MaxRange>
+      <MinRange>12</MinRange>
+      <!-- Tempo de bruços preparando o primeiro enxame e entre um enxame e outro. -->
+      <PrepareTime>3000</PrepareTime>
+      <RepeatTime>20000</RepeatTime>
+      <PreferredClasses datatype="tokens">Infantry Vehicle</PreferredClasses>
+      <Splash disable=""/>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>25</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>120</metal>
+      <stone>0</stone>
+      <wood>80</wood>
+    </Resources>
+  </Cost>
+  <DroneLauncher>
+    <DroneTemplate>units/mla/drone_pvp</DroneTemplate>
+    <Count>2</Count>
+    <MaxActive>3</MaxActive>
+    <LaunchInterval>1000</LaunchInterval>
+    <Prone>false</Prone>
+  </DroneLauncher>
+  <Identity>
+    <Civ>mla</Civ>
+    <GenericName>Drone Operator</GenericName>
+    <SpecificName>FPV Swarm Operator</SpecificName>
+    <Icon>units/drone.png</Icon>
+    <VisibleClasses datatype="tokens">-StoneThrower -Worker</VisibleClasses>
+    <Tooltip>Launches small FPV drones, 2 at a time and at most 3 in the air, that hover near the enemy and shoot until their battery runs out. Must lie down (unpack) to launch; gets up automatically to move. Helpless at close range.</Tooltip>
+  </Identity>
+  <Pack>
+    <Entity>units/mla/drone_operator_unpacked</Entity>
+    <State>packed</State>
+    <Time>3000</Time>
+  </Pack>
+  <VisualActor>
+    <Actor>units/mla/drone_operator_packed.xml</Actor>
+  </VisualActor>
+</Entity>

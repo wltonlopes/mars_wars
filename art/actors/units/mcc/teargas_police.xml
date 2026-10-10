@@ -5,7 +5,7 @@
     <variant frequency="1" name="Base">
       <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
       <props>
-        <prop actor="props/units/helmets/mcc_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/helmets/mcc_helmet_03.xml" attachpoint="helmet"/>
         <prop actor="props/units/weapons/flash_grenade.xml" attachpoint="weapon_R"/>
       </props>
       <textures>

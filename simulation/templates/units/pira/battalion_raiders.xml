@@ -2,8 +2,8 @@
 <!-- Gerado por tools/factions/gen_factions.py -->
 <Entity parent="battalion_profile_skirmisher|units/pira/raider">
   <BattalionLeader>
-    <MemberTemplates>units/pira/battalion_member_raider:4</MemberTemplates>
-    <MemberRoles>units/pira/battalion_member_raider:4:front</MemberRoles>
+    <MemberTemplates>units/pira/battalion_member_raider:3</MemberTemplates>
+    <MemberRoles>units/pira/battalion_member_raider:3:front</MemberRoles>
   </BattalionLeader>
   <Trainer>
     <Entities datatype="tokens" replace="">units/pira/battalion_member_raider</Entities>

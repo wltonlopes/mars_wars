@@ -9,7 +9,7 @@
     <Tooltip>Cohesion: the Mass and creatures around it fight in coordination. Kill it to fragment the hive mind.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/units/mla/rifle_assalt_champion.xml</Actor>
+    <Actor>units/swarm/rifle_assalt_champion.xml</Actor>
   </VisualActor>
   <Auras datatype="tokens">factions/swarm_conductor</Auras>
   <Cost>

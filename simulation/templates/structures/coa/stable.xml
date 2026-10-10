@@ -6,7 +6,7 @@
     <GenericName>Motor Pool</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/stable.xml</Actor>
+    <Actor>structures/coa/stable.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
@@ -15,4 +15,12 @@
       units/{civ}/vehicle_titan_packed
     </Entities>
   </Trainer>
+  <AirSupportProvider>
+    <vehicle_airdrop>
+      <Cooldown>240</Cooldown>
+      <Template>special/airdrop_carrier</Template>
+      <Battalion datatype="tokens">units/coa/vehicle_mbt units/coa/vehicle_ifv units/coa/vehicle_titan_packed</Battalion>
+      <MinDistanceFromEnemyStructures>60</MinDistanceFromEnemyStructures>
+    </vehicle_airdrop>
+  </AirSupportProvider>
 </Entity>

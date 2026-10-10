@@ -6,7 +6,7 @@
     <GenericName>Coalition Command</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/civic_center.xml</Actor>
+    <Actor>structures/coa/civic_center.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
@@ -15,5 +15,11 @@
       units/{civ}/officer
     </Entities>
   </Trainer>
+  <AirSupportProvider>
+    <orbital_saturation>
+      <Cooldown>240</Cooldown>
+      <Template>special/orbital_saturation</Template>
+    </orbital_saturation>
+  </AirSupportProvider>
   <Auras datatype="tokens">factions/coa_hq</Auras>
 </Entity>

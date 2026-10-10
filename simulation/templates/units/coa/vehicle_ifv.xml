@@ -8,7 +8,7 @@
     <Tooltip>Infantry fighting vehicle.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/vehicle/mcc/cavelion.xml</Actor>
+    <Actor>vehicle/coa/cavelion.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>40</BuildTime>

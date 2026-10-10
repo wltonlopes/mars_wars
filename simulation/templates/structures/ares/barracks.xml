@@ -6,18 +6,19 @@
     <GenericName>War Hall</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/structures/mla/bunker.xml</Actor>
+    <Actor>structures/ares/bunker.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/battalion_legion
       units/{civ}/battalion_shock
+      units/{civ}/battalion_exo
       units/{civ}/exo_trooper
     </Entities>
   </Trainer>
   <AirSupportProvider>
     <tunnel>
-      <Battalion datatype="tokens" replace="">units/ares/battalion_legion units/ares/battalion_shock</Battalion>
+      <Battalion datatype="tokens" replace="">units/ares/battalion_legion units/ares/battalion_shock units/ares/battalion_exo</Battalion>
     </tunnel>
   </AirSupportProvider>
 </Entity>

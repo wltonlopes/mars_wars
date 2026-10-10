@@ -6,8 +6,24 @@
     <GenericName>Raider</GenericName>
     <Icon>units/squad_assalt.png</Icon>
     <Tooltip>Fast raider with a submachine gun.</Tooltip>
+    <Phenotype datatype="tokens">male female</Phenotype>
   </Identity>
   <VisualActor>
-    <Actor>vehicle/pira/bike.xml</Actor>
+    <Actor>vehicle/pira/bike_{phenotype}.xml</Actor>
   </VisualActor>
+  <Sound>
+    <SoundGroups>
+      <select>voice/{lang}/bike/civ_{phenotype}_select.xml</select>
+      <order_walk>voice/{lang}/bike/civ_{phenotype}_walk.xml</order_walk>
+      <order_attack>voice/{lang}/bike/civ_{phenotype}_attack.xml</order_attack>
+      <order_attack_move>voice/{lang}/bike/civ_{phenotype}_attack.xml</order_attack_move>
+      <order_garrison>voice/{lang}/bike/civ_{phenotype}_garrison.xml</order_garrison>
+      <walk>actor/vehicle/engine_bike.xml</walk>
+      <run>actor/vehicle/engine_bike.xml</run>
+    </SoundGroups>
+  </Sound>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_bike.xml</MoveSound>
+    <Interval>1300</Interval>
+  </VehicleSound>
 </Entity>

@@ -8,7 +8,7 @@
     <Tooltip>Main battle tank of the Legion: thick armour, heavy cannon.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/vehicle/mcc/mammoth.xml</Actor>
+    <Actor>vehicle/ares/mammoth.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>45</BuildTime>

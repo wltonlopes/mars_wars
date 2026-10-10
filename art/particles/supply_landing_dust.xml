@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Poeira levantada quando o contêiner de suprimentos toca o chão. -->
+<particles>
+    <texture>art/textures/particles/dust_256a.png</texture>
+    <blend mode="over"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="14.0"/>
+    <uniform name="lifetime" min="2.0" max="3.5"/>
+
+    <uniform name="position.x" min="-6.0" max="6.0"/>
+    <uniform name="position.z" min="-14.0" max="14.0"/>
+    <uniform name="position.y" min="0.0" max="1.5"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-4.0" max="4.0"/>
+    <uniform name="velocity.y" min="0.3" max="1.8"/>
+    <uniform name="velocity.z" min="-4.0" max="4.0"/>
+    <uniform name="velocity.angle" min="-0.5" max="0.5"/>
+
+    <uniform name="size" min="5.0" max="8.0"/>
+    <constant name="size.growthRate" value="2.0"/>
+
+    <uniform name="color.r" min="0.58" max="0.68"/>
+    <uniform name="color.g" min="0.44" max="0.52"/>
+    <uniform name="color.b" min="0.34" max="0.4"/>
+</particles>

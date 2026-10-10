@@ -6,6 +6,6 @@
     <GenericName>Supply Field</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/greenhouse.xml</Actor>
+    <Actor>structures/coa/greenhouse.xml</Actor>
   </VisualActor>
 </Entity>

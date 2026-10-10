@@ -6,6 +6,6 @@
     <GenericName>Biomass Bed</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/greenhouse.xml</Actor>
+    <Actor>structures/swarm/greenhouse.xml</Actor>
   </VisualActor>
 </Entity>

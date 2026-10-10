@@ -5,11 +5,11 @@
 		<variant frequency="1" name="Base">
 			<mesh>mechanical/aero_01.dae</mesh>
 			<!-- <props>
-			    <prop actor="factions/coa/props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
+			    <prop actor="props/structures/decals/coa/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props> -->
 			<textures>
-				<texture file="factions/coa/mechanical/mcc_aero.png" name="baseTex"/>
+				<texture file="mechanical/coa/mcc_aero.png" name="baseTex"/>
 				<texture file="mechanical/mcc_aero_spec.png" name="specTex"/>
 				<texture file="mechanical/mcc_aero_norm.png" name="normTex"/>
 			</textures>

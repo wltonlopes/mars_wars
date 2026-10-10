@@ -15,7 +15,7 @@
       </animations>
       <mesh>skeletal/Croc.dae</mesh>
       <textures>
-        <texture file="factions/swarm/skeletal/animal_crocodile.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal_crocodile.png" name="baseTex"/>
         <texture file="skeletal/animal_crocodile_norm.png" name="normTex"/>
         <texture file="skeletal/animal_crocodile_spec.png" name="specTex"/>
       </textures>

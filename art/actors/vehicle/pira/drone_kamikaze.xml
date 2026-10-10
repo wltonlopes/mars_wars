@@ -9,7 +9,7 @@
 				<prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
-				<texture file="factions/pira/mechanical/mla_v.png" name="baseTex"/>
+				<texture file="mechanical/pira/mla_v.png" name="baseTex"/>
 				<texture file="mechanical/mla_v_spec.png" name="specTex"/>
 				<texture file="mechanical/mla_v_norm.png" name="normTex"/>
 			</textures>

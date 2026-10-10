@@ -10,7 +10,7 @@
     <VisibleClasses datatype="tokens">Creature</VisibleClasses>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/fauna/crocodile.xml</Actor>
+    <Actor>fauna/swarm/crocodile.xml</Actor>
   </VisualActor>
   <Attack>
     <Ranged>

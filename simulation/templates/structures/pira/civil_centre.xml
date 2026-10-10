@@ -21,4 +21,12 @@
       <Template>special/sandstorm_strike</Template>
     </sandstorm>
   </AirSupportProvider>
+  <!-- Medidas do modelo 3D próprio desta facção. -->
+  <Footprint replace="">
+    <Square width="11.5" depth="41.0"/>
+    <Height>12.5</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="10.5" depth="40.0"/>
+  </Obstruction>
 </Entity>

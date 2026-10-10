@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Míssil de fósforo branco dos centros cívicos (AirSupportProvider tipo
+     white_phosphorus). Estoura no ar sobre o alvo e espalha fragmentos
+     incandescentes; cada um vira um foco de incêndio no chão
+     (special/white_phosphorus_fire). O estouro em si quase não causa dano. -->
+<Entity parent="special/icbm_missile">
+  <Identity>
+    <GenericName>White Phosphorus Missile</GenericName>
+  </Identity>
+  <IcbmMissile>
+    <Speed>45</Speed>
+    <MinFlightTime>12</MinFlightTime>
+    <ApexHeight>180</ApexHeight>
+    <Submunitions>
+      <Template>special/white_phosphorus_fire</Template>
+      <Count>12</Count>
+      <Radius>28</Radius>
+      <BurstHeight>60</BurstHeight>
+      <FallTime>3</FallTime>
+      <ActorName>props/units/explosions/white_phosphorus/fragment.xml</ActorName>
+    </Submunitions>
+    <Warhead>
+      <Damage>
+        <Fire>30</Fire>
+      </Damage>
+      <Radius>10</Radius>
+      <FriendlyFire>true</FriendlyFire>
+      <ImpactActorName>props/units/explosions/white_phosphorus/burst.xml</ImpactActorName>
+      <ImpactAnimationLifetime>1</ImpactAnimationLifetime>
+      <ImpactSound>attack/destruction/explode_debris.xml</ImpactSound>
+    </Warhead>
+  </IcbmMissile>
+</Entity>

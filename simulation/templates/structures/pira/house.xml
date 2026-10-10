@@ -6,6 +6,6 @@
     <GenericName>Tent Camp</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/house.xml</Actor>
+    <Actor>structures/pira/house.xml</Actor>
   </VisualActor>
 </Entity>

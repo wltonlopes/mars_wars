@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cirurgião contratado (unidade especial do mcc, treinada no laboratório):
+     médico puro, cura mais e de mais longe que o médico de combate do mla. -->
+<Entity parent="units/mcc/rifleman">
+  <Cost>
+    <BuildTime>28</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>150</metal>
+      <stone>0</stone>
+      <wood>40</wood>
+    </Resources>
+  </Cost>
+  <Heal>
+    <Range>18</Range>
+    <RangeOverlay>
+      <LineTexture>heal_overlay_range.png</LineTexture>
+      <LineTextureMask>heal_overlay_range_mask.png</LineTextureMask>
+      <LineThickness>0.35</LineThickness>
+    </RangeOverlay>
+    <Health>12</Health>
+    <Interval>2000</Interval>
+    <UnhealableClasses datatype="tokens"/>
+    <HealableClasses datatype="tokens">Human</HealableClasses>
+  </Heal>
+  <Identity>
+    <GenericName>Contract Surgeon</GenericName>
+    <SpecificName>Corporate Field Surgeon</SpecificName>
+    <Icon>units/medic.png</Icon>
+    <VisibleClasses datatype="tokens">Healer</VisibleClasses>
+    <Tooltip>Hired surgeon with corporate medical gear: heals infantry (12 health every 2 s).</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/mcc/rifle_assalt_pmc_b.xml</Actor>
+  </VisualActor>
+</Entity>

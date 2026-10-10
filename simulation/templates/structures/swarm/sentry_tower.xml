@@ -6,6 +6,6 @@
     <GenericName>Spine Tower</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/auto_defense_tower.xml</Actor>
+    <Actor>structures/swarm/auto_defense_tower.xml</Actor>
   </VisualActor>
 </Entity>

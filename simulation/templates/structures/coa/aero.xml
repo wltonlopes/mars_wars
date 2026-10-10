@@ -6,7 +6,7 @@
     <GenericName>Airbase</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/aeroport.xml</Actor>
+    <Actor>structures/coa/aeroport.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

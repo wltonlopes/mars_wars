@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mina de proximidade espalhada pelo míssil de fragmentação de Ares.
+     Não pode ser selecionada nem atacada. Camouflage: os inimigos só a veem
+     quando estão quase em cima dela (fração do alcance de visão deles). -->
+<Entity parent="special/actor">
+  <Camouflage>
+    <MovingFactor>0.08</MovingFactor>
+    <StillFactor>0.08</StillFactor>
+    <StillDelay>0</StillDelay>
+    <Interval>1000</Interval>
+  </Camouflage>
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Proximity Mine</GenericName>
+    <Icon>special/icbm.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <ProximityMine>
+    <ArmDelay>3</ArmDelay>
+    <TriggerRadius>5</TriggerRadius>
+    <Lifetime>240</Lifetime>
+    <CheckInterval>500</CheckInterval>
+    <Damage>
+      <Crush>140</Crush>
+      <Pierce>60</Pierce>
+    </Damage>
+    <Radius>9</Radius>
+    <FriendlyFire>false</FriendlyFire>
+    <Knockback>
+      <Distance>4</Distance>
+      <Chance>100</Chance>
+    </Knockback>
+    <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+    <ImpactAnimationLifetime>2</ImpactAnimationLifetime>
+    <ImpactSound>attack/destruction/explode_debris.xml</ImpactSound>
+  </ProximityMine>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>12</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/special/proximity_mine.xml</Actor>
+  </VisualActor>
+</Entity>

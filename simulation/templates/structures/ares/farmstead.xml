@@ -6,6 +6,6 @@
     <GenericName>Hydroponics</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/structures/mla/greenhouse.xml</Actor>
+    <Actor>structures/ares/greenhouse.xml</Actor>
   </VisualActor>
 </Entity>

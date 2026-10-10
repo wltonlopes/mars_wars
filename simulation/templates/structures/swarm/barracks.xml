@@ -6,7 +6,7 @@
     <GenericName>Spawning Chamber</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/structures/mla/bunker.xml</Actor>
+    <Actor>structures/swarm/bunker.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

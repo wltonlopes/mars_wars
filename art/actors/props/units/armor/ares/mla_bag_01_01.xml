@@ -5,7 +5,7 @@
     <variant frequency="1" name="helmet">
       <mesh>props/armor/mla_bag_01_01.dae</mesh>
       <textures>
-	      <texture file="factions/ares/props/armor/mla_bag.png" name="baseTex"/>
+	      <texture file="props/armor/ares/mla_bag.png" name="baseTex"/>
       </textures>
     </variant>
   </group>

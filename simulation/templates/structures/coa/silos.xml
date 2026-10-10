@@ -6,6 +6,6 @@
     <GenericName>Missile Silo</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/silos.xml</Actor>
+    <Actor>structures/coa/silos.xml</Actor>
   </VisualActor>
 </Entity>

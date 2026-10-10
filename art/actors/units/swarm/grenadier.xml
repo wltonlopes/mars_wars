@@ -5,7 +5,7 @@
     <variant file="biped/assault_rifle/crouched_1.xml">
       <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
       <props>
-        <prop actor="factions/swarm/props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/helmets/swarm/mla_helmet_01.xml" attachpoint="helmet"/>
         <prop actor="props/units/weapons/frag_grenade.xml" attachpoint="weapon_R"/>
       </props>
     </variant>
@@ -13,7 +13,7 @@
     <group>
       <variant frequency="1" name="tunic_02_01">
         <textures>
-          <texture file="factions/swarm/skeletal/mla/suit_02_01.png" name="baseTex"/>
+          <texture file="skeletal/swarm/suit_02_01.png" name="baseTex"/>
         </textures>
       </variant>
    </group>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Piloto da moto dos piratas: é um prop (ponto "ride") de vehicle/pira/bike.xml
+<!-- Piloto da moto dos piratas: é um prop (ponto "ride") de vehicle/pira/bike_male.xml
      e toca a mesma animação que a moto (Idle, Walk, attack_ranged). -->
 <actor version="1">
   <castshadow/>
@@ -7,15 +7,16 @@
     <variant file="biped/bike_rider/ride.xml">
       <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
       <props>
-        <prop actor="factions/pira/props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
-        <prop actor="factions/pira/props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/helmets/pira/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/pira/mla_bag_01_01.xml" attachpoint="back"/>
       </props>
     </variant>
   </group>
   <group>
     <variant frequency="1" name="tunic_01_01">
-      <textures>
-        <texture file="factions/pira/skeletal/mla/suit_01_01.png" name="baseTex"/>
+      <textures>  
+      
+	      <texture file="skeletal/pira/suit_04_01.png" name="baseTex"/>
       </textures>
     </variant>
   </group>

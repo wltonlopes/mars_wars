@@ -6,6 +6,6 @@
     <GenericName>Water Still</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/greenhouse.xml</Actor>
+    <Actor>structures/pira/greenhouse.xml</Actor>
   </VisualActor>
 </Entity>

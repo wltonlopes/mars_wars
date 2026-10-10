@@ -9,7 +9,7 @@
     <Tooltip>Long sight and a long rifle: finds the enemy and picks targets for ambushes.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/units/mla/rifle_assalt_champion_snipe_p.xml</Actor>
+    <Actor>units/pira/rifle_assalt_champion_snipe_p.xml</Actor>
   </VisualActor>
   <Vision>
     <Range>120</Range>

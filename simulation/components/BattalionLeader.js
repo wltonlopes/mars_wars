@@ -622,7 +622,7 @@ function()
 		}
 	}
 
-	if (!queue || !queue.AddItem(template, "unit", 1, { "battalion": this.entity }))
+	if (!queue || !queue.AddItem(template, "unit", 1))
 		return false;
 
 	this.pendingReinforcement = true;
@@ -640,7 +640,7 @@ function(template)
 	this.state = "replenishing";
 
 	let cmpQueue = Engine.QueryInterface(this.entity, IID_ProductionQueue);
-	if (!cmpQueue || !cmpQueue.AddItem(template, "unit", 1, { "battalion": this.entity }))
+	if (!cmpQueue || !cmpQueue.AddItem(template, "unit", 1))
 		return false;
 
 	this.pendingReinforcement = true;

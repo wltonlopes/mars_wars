@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Foco de fósforo branco no chão: queima por Duration segundos causando
+     dano de fogo a tudo em volta, inclusive unidades do próprio jogador. -->
+<Entity parent="special/actor">
+  <BurningGround>
+    <Duration>18</Duration>
+    <Interval>1000</Interval>
+    <Damage>
+      <Fire>14</Fire>
+    </Damage>
+    <Radius>7</Radius>
+    <FriendlyFire>true</FriendlyFire>
+  </BurningGround>
+  <Identity>
+    <Civ>gaia</Civ>
+    <GenericName>White Phosphorus</GenericName>
+    <Icon>special/icbm.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>20</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/units/explosions/white_phosphorus/fire.xml</Actor>
+  </VisualActor>
+</Entity>

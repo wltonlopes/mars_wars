@@ -7,9 +7,9 @@
       <Battalion datatype="tokens">units/mcc/battalion_infantry_rifleman units/mcc/battalion_infantry_lmg units/mcc/battalion_infantry_police units/mcc/battalion_infantry_heavy_shield</Battalion>
     </drop_pod>
   </AirSupportProvider>
-  <Footprint>
-    <Square width="24.0" depth="25.0"/>
-    <Height>15.0</Height>
+  <Footprint replace="">
+    <Square width="21.0" depth="37.5"/>
+    <Height>10.5</Height>
   </Footprint>
   <Health>
     <SpawnEntityOnDeath>decay|rubble/rubble_stone_5x5</SpawnEntityOnDeath>
@@ -21,7 +21,7 @@
     <Icon>structures/barracks_bunker.png</Icon>
   </Identity>
   <Obstruction>
-    <Static width="22.0" depth="23.0"/>
+    <Static width="20.0" depth="36.5"/>
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens" replace="">

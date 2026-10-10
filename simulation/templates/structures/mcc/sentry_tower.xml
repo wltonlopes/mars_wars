@@ -36,4 +36,11 @@
       <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
     </SoundGroups>
   </Sound>
+  <Footprint replace="">
+    <Square width="13.5" depth="13.5"/>
+    <Height>6.5</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="12.5" depth="12.5"/>
+  </Obstruction>
 </Entity>

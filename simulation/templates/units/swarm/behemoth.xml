@@ -10,7 +10,7 @@
     <VisibleClasses datatype="tokens">Creature</VisibleClasses>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/fauna/elephant_african_bush.xml</Actor>
+    <Actor>fauna/swarm/elephant_african_bush.xml</Actor>
   </VisualActor>
   <Attack>
     <Ranged>

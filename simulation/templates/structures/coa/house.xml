@@ -6,6 +6,6 @@
     <GenericName>Habitat Module</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/house.xml</Actor>
+    <Actor>structures/coa/house.xml</Actor>
   </VisualActor>
 </Entity>

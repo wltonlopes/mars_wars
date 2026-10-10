@@ -20,7 +20,7 @@
   <group>
     <variant frequency="1" name="fur-white">
       <textures>
-        <texture file="factions/swarm/skeletal/animal_wolf_white.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal_wolf_white.png" name="baseTex"/>
         <texture file="default_norm.png" name="normTex"/>
         <texture file="null_black.dds" name="specTex"/>
       </textures>

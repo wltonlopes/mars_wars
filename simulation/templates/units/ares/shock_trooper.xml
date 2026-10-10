@@ -8,6 +8,6 @@
     <Tooltip>Assault infantry for charges and close combat.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/units/mla/rifle_assalt_guerrilla.xml</Actor>
+    <Actor>units/ares/rifle_assalt_guerrilla.xml</Actor>
   </VisualActor>
 </Entity>

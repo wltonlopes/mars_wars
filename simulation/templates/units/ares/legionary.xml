@@ -9,6 +9,6 @@
     <Tooltip>Heavy infantry. Short range, thick armour, deadly up close.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/ares/units/mla/rifle_assalt_champion.xml</Actor>
+    <Actor>units/ares/rifle_assalt_champion.xml</Actor>
   </VisualActor>
 </Entity>

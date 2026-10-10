@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contêiner de suprimentos da Coalizão, solto pela aeronave
+     special/airdrop_carrier. Desce preso a dois paraquedas, pousa e libera
+     o veículo pedido; depois de LingerTime o contêiner vazio é removido. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Supply Container</GenericName>
+    <Icon>units/armored.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <Ownership/>
+  <Position>
+    <Floating>true</Floating>
+    <TurnRate>1</TurnRate>
+  </Position>
+  <ReinforcementDelivery>
+    <Mode>orbital</Mode>
+    <DeployTime>2</DeployTime>
+    <LingerTime>15</LingerTime>
+    <!-- O contêiner tem ~27 m de comprimento: o veículo sai pela ponta. -->
+    <ExitDistance>20</ExitDistance>
+    <Descent>
+      <StartHeight>90</StartHeight>
+      <FallSpeed>11</FallSpeed>
+      <BrakeHeight>12</BrakeHeight>
+      <BrakeSpeed>5</BrakeSpeed>
+    </Descent>
+  </ReinforcementDelivery>
+  <Visibility>
+    <RetainInFog>false</RetainInFog>
+  </Visibility>
+  <Vision>
+    <Range>30</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>props/special/supply_drop.xml</Actor>
+  </VisualActor>
+</Entity>

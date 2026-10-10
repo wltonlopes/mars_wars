@@ -8,7 +8,7 @@
     <Tooltip>Pickup with a mounted gun.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/vehicle/mla/coyote.xml</Actor>
+    <Actor>vehicle/pira/coyote.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>22</BuildTime>

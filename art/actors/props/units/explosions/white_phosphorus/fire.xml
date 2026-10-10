@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Foco de fósforo branco queimando no chão: chama clara, fagulhas e fumaça branca. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="white_phosphorus_fire.xml"/>
+      <props>
+        <prop actor="particle/white_phosphorus_sparks.xml" attachpoint="root"/>
+        <prop actor="particle/white_phosphorus_smoke.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

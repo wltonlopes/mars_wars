@@ -4,10 +4,9 @@
 	<group>
 		<variant frequency="1" name="Base">
 			<mesh>vehicle/pira/barracks.dae</mesh>
-			<!-- <props>
-			    <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
-				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
-			</props> -->
+			<props>
+			    <prop actor="vehicle/pira/barracks_tent.xml" attachpoint="root"/>
+			</props>
 			<textures>
 				<texture file="vehicle/pira_veh.png" name="baseTex"/>
 				<texture file="vehicle/mcc_veh_01_spec.png" name="specTex"/>

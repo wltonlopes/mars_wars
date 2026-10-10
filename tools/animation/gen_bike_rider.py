@@ -8,7 +8,7 @@ Piloto (units/pira/bike_rider), em art/animation/biped/bike_rider/:
                   volta ao guidão
   ride_death.dae  é arremessado para o lado quando a moto tomba e cai no chão
 
-Moto (vehicle/pira/bike.xml):
+Moto (vehicle/pira/bike_male.xml e bike_female.xml):
   art/meshes/vehicle/bike_rigged.dae     a malha de bike.dae com esqueleto
                                          (bike_root, wheel_front, wheel_rear)
   art/animation/vehicle/bike/idle.dae    parada

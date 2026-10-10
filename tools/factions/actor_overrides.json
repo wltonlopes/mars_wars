@@ -1,4 +1,7 @@
 {
 	"structures/pira/barracks": "vehicle/pira/barracks.xml",
-	"structures/pira/civil_centre": "vehicle/pira/cc.xml"
+	"structures/pira/civil_centre": "vehicle/pira/cc.xml",
+	"structures/pira/forge": "vehicle/pira/tec_vehicle.xml",
+	"structures/pira/stable": "structures/pira/garage_tent.xml",
+	"units/pira/raider": "vehicle/pira/bike_{phenotype}.xml"
 }

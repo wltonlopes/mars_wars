@@ -15,7 +15,9 @@
 
     <Trainer/>
     <ProductionQueue/>
-
+    <Vision>
+        <Range>12</Range>
+    </Vision>
     <VisualActor>
 
         <Actor>structures/strategic_satellite_dish.xml</Actor>

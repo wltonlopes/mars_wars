@@ -8,7 +8,7 @@
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
-				<texture file="factions/pira/structural/mla_struct.png" name="baseTex"/>
+				<texture file="structural/pira/mla_struct.png" name="baseTex"/>
 				<texture file="structural/mla_struct_spec.png" name="specTex"/>
 				<texture file="structural/mla_struct_norm.png" name="normTex"/>
 			</textures>

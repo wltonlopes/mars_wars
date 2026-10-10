@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ataque orbital de saturação do centro cívico da Coalizão
+     (AirSupportProvider tipo orbital_saturation). Entidade invisível no alvo
+     que dispara a salva; todos os jogadores são avisados antes dos impactos. -->
+<Entity parent="special/actor">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Orbital Saturation Strike</GenericName>
+    <Icon>special/orbital.png</Icon>
+    <Undeletable>true</Undeletable>
+  </Identity>
+  <OrbitalSaturation>
+    <ShellCount>40</ShellCount>
+    <Radius>70</Radius>
+    <WarningTime>6</WarningTime>
+    <Duration>12</Duration>
+    <Shell>
+      <Damage>
+        <Crush>200</Crush>
+        <Fire>60</Fire>
+      </Damage>
+      <Radius>10</Radius>
+      <FriendlyFire>true</FriendlyFire>
+      <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
+      <FallHeight>260</FallHeight>
+      <FallTime>1.2</FallTime>
+      <Slant>50</Slant>
+      <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+      <ImpactAnimationLifetime>3</ImpactAnimationLifetime>
+      <ImpactSound>attack/destruction/explode_debris.xml</ImpactSound>
+      <ScorchActor>props/units/explosions/orbital_laser/scorch.xml</ScorchActor>
+      <ScorchTime>30</ScorchTime>
+    </Shell>
+  </OrbitalSaturation>
+  <Ownership/>
+  <Vision>
+    <Range>80</Range>
+  </Vision>
+  <VisualActor disable=""/>
+</Entity>

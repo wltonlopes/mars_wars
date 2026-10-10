@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_civic_house_big">
   <Footprint replace="">
-    <Circle radius="8.0"/>
-    <Height>18.0</Height>
+    <Circle radius="10.5"/>
+    <Height>7.0</Height>
   </Footprint>
   <Identity>
     <Civ>mcc</Civ>
@@ -12,7 +12,7 @@
     </Phenotype>
   </Identity>
   <Obstruction>
-    <Static width="10.0" depth="10.0"/>
+    <Static width="16.5" depth="20.0"/>
   </Obstruction>
   <VisualActor>
     <Actor>structures/mcc/house.xml</Actor>

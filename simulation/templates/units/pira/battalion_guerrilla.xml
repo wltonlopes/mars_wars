@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_skirmisher|units/pira/guerrilla">
+  <BattalionLeader>
+    <MemberTemplates>units/pira/battalion_member_guerrilla:4</MemberTemplates>
+    <MemberRoles>units/pira/battalion_member_guerrilla:4:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/pira/battalion_member_guerrilla</Entities>
+  </Trainer>
+  <Identity>
+    <Civ>pira</Civ>
+    <GenericName>Guerrilla Band</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_assalt.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>20</BuildTime>
+    <Resources>
+      <food>100</food>
+      <metal>60</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

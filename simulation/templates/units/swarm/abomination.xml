@@ -9,7 +9,7 @@
     <Classes datatype="tokens">Creature</Classes>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/units/mcc/heavy_rifle_assault.xml</Actor>
+    <Actor>units/swarm/heavy_rifle_assault.xml</Actor>
   </VisualActor>
   <Health>
     <Max>420</Max>

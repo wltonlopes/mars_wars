@@ -8,7 +8,7 @@
     <Tooltip>Strike VTOL.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/aero_02.xml</Actor>
+    <Actor>structures/coa/aero_02.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>45</BuildTime>

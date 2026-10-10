@@ -2,36 +2,39 @@
 <actor version="1">
   <castshadow/>
   <group>
-    <variant file="biped/assault_rifle/crouched_1.xml">
+    <variant file="biped/heavy_shield/base.xml">
       <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
       <props>
-        <prop actor="factions/ares/props/units/helmets/mcc_helmet_01.xml" attachpoint="helmet"/>
-        <prop actor="factions/ares/props/units/armor/mcc_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/helmets/ares_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/ares/mcc_bag_01_01.xml" attachpoint="back"/>
         <prop actor="props/units/weapons/rifle_50.xml" attachpoint="weapon_R"/>
-        <prop actor="factions/ares/props/units/armor/pauldron_R_02.xml" attachpoint="shoulderpad_R"/>
-        <prop actor="factions/ares/props/units/armor/pauldron_L_02.xml" attachpoint="shoulderpad_L"/>
+        <prop actor="props/units/shields/ares_shield_01.xml" attachpoint="shield"/>
+        <prop actor="props/units/armor/ares/pauldron_R_02.xml" attachpoint="shoulderpad_R"/>
+        <prop actor="props/units/armor/ares/pauldron_L_02.xml" attachpoint="shoulderpad_L"/>
       </props>
     </variant>
   </group>
     <group>
   <variant frequency="1" name="tunic_01_01">
     <textures>
-	    <texture file="factions/ares/skeletal/mcc/suit_armo_01_01.png" name="baseTex"/>
+	    <texture file="skeletal/ares/suit_01_01.png" name="baseTex"/>
 	  </textures>
   </variant>
-   </group>
+  <variant frequency="1" name="tunic_01_02">
+    <textures>
+	    <texture file="skeletal/ares/suit_01_02.png" name="baseTex"/>
+	  </textures>
+  </variant>
+  <variant frequency="1" name="tunic_01_03">
+    <textures>
+	    <texture file="skeletal/ares/suit_01_03.png" name="baseTex"/>
+	  </textures>
+  </variant>
+  </group>
   <group>
     <variant frequency="1" name="Idle"/>
-    <variant file="biped/assault_rifle/ready_1.xml" name="ready"/>
-      <variant file="biped/assault_rifle/attack_melee_rifleman.xml">
-      <props>
-        <prop actor="props/units/weapons/xiphos.xml" attachpoint="weapon_R"/>
-      </props>
-    </variant>
+    <variant name="attack_ranged"/>
     <variant file="biped/attack_capture.xml"/>
-    <variant file="biped/build.xml"/>
-    <variant file="biped/build_farm.xml"/>
-    <variant file="biped/death_infantry.xml"/>
     <variant file="biped/jump_infantry.xml"/>
   </group>
   <material>player_trans.xml</material>

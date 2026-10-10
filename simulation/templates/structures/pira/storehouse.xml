@@ -6,6 +6,6 @@
     <GenericName>Scrap Yard</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/storehouse.xml</Actor>
+    <Actor>structures/pira/storehouse.xml</Actor>
   </VisualActor>
 </Entity>

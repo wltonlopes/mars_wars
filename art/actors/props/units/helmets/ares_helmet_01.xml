@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="helmet">
+      <mesh>props/ares_helmet_01_01.dae</mesh>
+    </variant>
+  </group>
+  <group>
+  <variant frequency="1" name="tunic_01_01">
+    <textures>
+	      <texture file="skeletal/ares/suit_01_01.png" name="baseTex"/>
+	  </textures>
+  </variant>
+  <variant frequency="1" name="tunic_01_02">
+    <textures>
+	      <texture file="skeletal/ares/suit_01_02.png" name="baseTex"/>
+	  </textures>
+  </variant>
+  <variant frequency="1" name="tunic_01_03">
+    <textures>
+	      <texture file="skeletal/ares/suit_01_03.png" name="baseTex"/>
+	  </textures>
+  </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

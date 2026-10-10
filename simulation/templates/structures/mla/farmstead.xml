@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Entity parent="template_structure_economic_farmstead|template_structure_resource_field">
-  <Footprint>
-    <Square width="18.0" depth="13.0"/>
+  <Footprint replace="">
+    <Square width="42.5" depth="40.5"/>
+    <Height>15.0</Height>
   </Footprint>
   <Health>
     <SpawnEntityOnDeath>decay|rubble/rubble_stone_4x2</SpawnEntityOnDeath>
@@ -12,7 +13,7 @@
     <Icon>structures/bio.png</Icon>
   </Identity>
   <Obstruction>
-    <Static width="16.0" depth="11.0"/>
+    <Static width="41.5" depth="39.5"/>
   </Obstruction>
   <VisualActor>
     <Actor>structures/mla/greenhouse.xml</Actor>

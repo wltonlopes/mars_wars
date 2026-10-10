@@ -10,6 +10,6 @@
     <Classes datatype="tokens">SwarmMass</Classes>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/units/mla/grenadier.xml</Actor>
+    <Actor>units/swarm/grenadier.xml</Actor>
   </VisualActor>
 </Entity>

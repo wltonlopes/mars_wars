@@ -17,7 +17,7 @@
   <group>
     <variant frequency="1" name="standard">
       <textures>
-        <texture file="factions/swarm/skeletal/animal_rhino.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal_rhino.png" name="baseTex"/>
         <texture file="skeletal/animal_rhino_spec.png" name="specTex"/>
         <texture file="default_norm.png" name="normTex"/>
       </textures>

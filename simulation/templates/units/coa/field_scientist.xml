@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/rifleman">
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Field Scientist</GenericName>
+    <SpecificName>Coalition Research Corps</SpecificName>
+    <Icon>units/medic.png</Icon>
+    <Tooltip>Heals infantry (6 health every 2 s) and repairs the vehicles around him.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/coa/rifle_assalt_pmc_b.xml</Actor>
+  </VisualActor>
+  <Heal>
+    <Range>14</Range>
+    <RangeOverlay>
+      <LineTexture>heal_overlay_range.png</LineTexture>
+      <LineTextureMask>heal_overlay_range_mask.png</LineTextureMask>
+      <LineThickness>0.35</LineThickness>
+    </RangeOverlay>
+    <Health>6</Health>
+    <Interval>2000</Interval>
+    <UnhealableClasses datatype="tokens"/>
+    <HealableClasses datatype="tokens">Human</HealableClasses>
+  </Heal>
+  <Auras datatype="tokens">factions/coa_field_repair</Auras>
+  <Cost>
+    <BuildTime>30</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>120</metal>
+      <stone>0</stone>
+      <wood>80</wood>
+    </Resources>
+  </Cost>
+</Entity>

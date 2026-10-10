@@ -5,18 +5,18 @@
     <variant file="biped/assault_rifle/crouched_1.xml">
       <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
       <props>
-        <prop actor="factions/swarm/props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>
-        <prop actor="factions/swarm/props/units/armor/mla_bag_01_01.xml" attachpoint="back"/>
+        <prop actor="props/units/helmets/swarm/mla_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/swarm/mla_bag_01_01.xml" attachpoint="back"/>
         <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
-        <prop actor="factions/swarm/props/units/armor/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
-        <prop actor="factions/swarm/props/units/armor/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
+        <prop actor="props/units/armor/swarm/pauldron_R_01.xml" attachpoint="shoulderpad_R"/>
+        <prop actor="props/units/armor/swarm/pauldron_L_01.xml" attachpoint="shoulderpad_L"/>
       </props>
     </variant>
   </group>
     <group>
   <variant frequency="1" name="tunic_01_01">
     <textures>
-	    <texture file="factions/swarm/skeletal/mla_02_01.png" name="baseTex"/>
+	    <texture file="skeletal/swarm/mla_02_01.png" name="baseTex"/>
 	  </textures>
   </variant>
    </group>

@@ -6,7 +6,7 @@
     <GenericName>Garrison</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/structures/mcc/bunker.xml</Actor>
+    <Actor>structures/coa/bunker.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

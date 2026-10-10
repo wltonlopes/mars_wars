@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dois paraquedas do contêiner de suprimentos da Coalizão, um em cada ponta
+     (uma malha só, presa na origem do contêiner). -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/parachutes_supply.dae</mesh>
+      <textures>
+        <texture file="props/parachute.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>default.xml</material>
+</actor>

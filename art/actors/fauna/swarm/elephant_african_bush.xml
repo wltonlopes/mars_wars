@@ -5,7 +5,7 @@
     <variant file="quadraped/base_elephant_african_bush.xml">
       <mesh>skeletal/elephant_african_bush.dae</mesh>
       <textures>
-        <texture file="factions/swarm/skeletal/animal-elephant-base.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal-elephant-base.png" name="baseTex"/>
         <texture file="skeletal/animal-elephant-base_spec.png" name="specTex"/>
         <texture file="default_norm.png" name="normTex"/>
       </textures>

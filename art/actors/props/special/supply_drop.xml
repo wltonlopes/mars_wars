@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contêiner de suprimentos da Coalizão lançado de paraquedas (mesma malha
+     de structures/coa/suply.xml). O componente ReinforcementDelivery troca a
+     variante do grupo "phase" conforme a descida:
+       reentry / braking - no ar, pendurado nos dois paraquedas
+       landed            - no chão, sem os paraquedas, levantando poeira -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>structural/coa/suply_container.dae</mesh>
+      <textures>
+        <texture file="structural/coa_struct.png" name="baseTex"/>
+        <texture file="structural/mcc_struct_spec.png" name="specTex"/>
+        <texture file="structural/mcc_struct_norm.png" name="normTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="reentry">
+      <props>
+        <prop actor="props/special/parachutes_supply.xml" attachpoint="root"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="braking">
+      <props>
+        <prop actor="props/special/parachutes_supply.xml" attachpoint="root"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="landed">
+      <props>
+        <prop actor="particle/supply_landing_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>player_trans_parallax_spec.xml</material>
+</actor>

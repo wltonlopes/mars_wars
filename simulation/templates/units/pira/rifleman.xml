@@ -8,7 +8,7 @@
     <Tooltip>Cheap rifleman who hits and runs.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/units/mcc/rifle_assalt_pmc_b.xml</Actor>
+    <Actor>units/pira/rifle_assalt_pmc_b.xml</Actor>
   </VisualActor>
   <Cost>
     <BuildTime>10</BuildTime>

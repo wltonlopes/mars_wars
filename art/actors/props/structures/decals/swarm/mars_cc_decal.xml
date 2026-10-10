@@ -4,7 +4,7 @@
     <variant>
       <decal angle="0" depth="20" offsetx="0" offsetz="0" width="20"/>
       <textures>
-        <texture file="factions/swarm/structural/decal_cc_mcc.png" name="baseTex"/>
+        <texture file="structural/swarm/decal_cc_mcc.png" name="baseTex"/>
         <texture file="structural/decal_cc_mcc_norm.png" name="normTex"/>
         <texture file="null_black.dds" name="specTex"/>
       </textures>

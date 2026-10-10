@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_member|units/ares/exo_trooper">
+  <Identity>
+    <GenericName>Exo Cohort Member</GenericName>
+    <SelectionGroupName>units/ares/battalion_exo</SelectionGroupName>
+    <Icon>units/squad_machine_gun.png</Icon>
+  </Identity>
+</Entity>

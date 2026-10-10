@@ -29,7 +29,11 @@
   </GarrisonHolder>
   <Identity>
     <GenericName>Land Vehicle</GenericName>
-    <VisibleClasses datatype="tokens">LandVehicle</VisibleClasses>
+    <!-- Champion + Ranged: a IA (Petra) monta os ataques pedindo unidades
+         "FastMoving+Ranged+Champion"; sem essas classes ela nunca treina
+         veículos nas garagens. -->
+    <Classes datatype="tokens">Champion</Classes>
+    <VisibleClasses datatype="tokens">LandVehicle Ranged</VisibleClasses>
   </Identity>
   <Selectable>
     <Overlay>

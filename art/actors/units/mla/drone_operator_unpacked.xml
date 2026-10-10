@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Operador de drones descompactado: usa a variante de bruços
+     (biped/formations/suppression_prone.xml). -->
 <actor version="1">
   <castshadow/>
   <group>
-    <variant file="biped/assault_rifle/crouched_1.xml">
+    <variant file="biped/formations/suppression_prone.xml">
       <mesh>skeletal/new/m_space_suite_armor_02.dae</mesh>
       <props>
         <prop actor="props/units/helmets/mla_helmet_01.xml" attachpoint="helmet"/>

@@ -25,6 +25,8 @@
     <GenericName>Civilian</GenericName>
     <SelectionGroupName>template_unit_support_civilian</SelectionGroupName>
     <VisibleClasses datatype="tokens">Civilian Worker</VisibleClasses>
+    <!-- Metade dos trabalhadores fala com voz feminina (o modelo é o mesmo). -->
+    <Phenotype datatype="tokens">male female</Phenotype>
   </Identity>
   <Loot>
     <xp>3</xp>

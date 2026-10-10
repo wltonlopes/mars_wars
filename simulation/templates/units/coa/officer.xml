@@ -9,7 +9,7 @@
     <Tooltip>Chain of command: units around the officer keep their accuracy, fire faster and see further.</Tooltip>
   </Identity>
   <VisualActor>
-    <Actor>factions/coa/units/mcc/rifle_assalt_champion.xml</Actor>
+    <Actor>units/coa/rifle_assalt_champion.xml</Actor>
   </VisualActor>
   <Auras datatype="tokens">factions/coa_command</Auras>
   <Cost>

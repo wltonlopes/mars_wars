@@ -7,11 +7,11 @@
 			<props>
 			    <prop actor="structures/mla/lab_cupula.xml" attachpoint="root"/>
 				<prop actor="structures/mcc/prop_lab.xml" attachpoint="root"/>
-			    <prop actor="factions/ares/props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
+			    <prop actor="props/structures/decals/ares/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>
 			</props>
 			<textures>
-				<texture file="factions/ares/structural/mla_struct.png" name="baseTex"/>
+				<texture file="structural/ares/mla_struct.png" name="baseTex"/>
 				<texture file="structural/mla_struct_spec.png" name="specTex"/>
 				<texture file="structural/mla_struct_norm.png" name="normTex"/>
 			</textures>

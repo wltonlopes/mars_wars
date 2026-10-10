@@ -21,6 +21,10 @@
       <Cooldown>300</Cooldown>
       <Template>special/nuclear_missile</Template>
     </nuke>
+    <white_phosphorus>
+      <Cooldown>200</Cooldown>
+      <Template>special/white_phosphorus_missile</Template>
+    </white_phosphorus>
   </AirSupportProvider>
   <!-- <Attack>
     <Ranged>
@@ -60,8 +64,8 @@
     </Ranged>
   </Attack> -->
   <Footprint replace="">
-    <Circle radius="25.0"/>
-    <Height>18.0</Height>
+    <Circle radius="21.5"/>
+    <Height>26.0</Height>
   </Footprint>
   <Identity>
     <Classes datatype="tokens">BattalionResupplyPoint</Classes>
@@ -69,7 +73,7 @@
     <Icon>structures/cc.png</Icon>
   </Identity>
   <Obstruction>
-    <Static width="25.5" depth="25.5"/>
+    <Static width="41.5" depth="32.5"/>
   </Obstruction>
   <Trainer>
     <Entities datatype="tokens" replace="">

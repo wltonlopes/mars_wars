@@ -5,7 +5,7 @@
     <variant frequency="1" name="helmet">
       <mesh>props/helmet_armor_01.dae</mesh>
       <textures>
-	      <texture file="factions/ares/skeletal/mcc_01_01.png" name="baseTex"/>
+	      <texture file="skeletal/ares/mcc_01_01.png" name="baseTex"/>
 <!--         <texture file="props/units/terran/spec/spacesuit_helmet.png" name="specTex"/>
         <texture file="props/units/terran/norm/spacesuit_helmet.png" name="normTex"/> -->
       </textures>

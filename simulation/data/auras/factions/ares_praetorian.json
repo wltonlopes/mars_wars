@@ -1,0 +1,48 @@
+{
+	"type": "range",
+	"radius": 40,
+	"affects": [
+		"Soldier"
+	],
+	"modifications": [
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.15
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.15
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.15
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.15
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.9
+		},
+		{
+			"value": "Attack/Ranged/Projectile/Spread",
+			"multiply": 0.85
+		},
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"add": 1
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"add": 1
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"add": 1
+		}
+	],
+	"auraName": "Praetorian Presence",
+	"auraDescription": "Soldiers fighting beside a Praetorian: +15% damage, +10% fire rate, better accuracy and +1 armour.",
+	"overlayIcon": "art/textures/ui/session/auras/attack_bonus.png"
+}

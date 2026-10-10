@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Impacto do obus mega pesado do Titan: bola de fogo, onda de choque e
-     coluna de poeira bem maiores que o canhão do Mammoth. -->
+<!-- Impacto do obus mega pesado do Titan: clarão, bola de fogo, onda de
+     choque rasteira, terra e estilhaços lançados e uma coluna de fumaça.
+     O actor vive pouco (ImpactAnimationLifetime do ataque) para a explosão
+     ser um estouro só; as partículas já emitidas seguem até o fim da vida. -->
 <actor version="1">
   <group>
     <variant name="Base">
-      <particles file="heavy_impact_sparks.xml"/>
+      <particles file="titan_impact_flash.xml"/>
       <props>
-        <prop actor="particle/explosion_fire_core.xml" attachpoint="root"/>
-        <prop actor="particle/explosion_fire_blastA.xml" attachpoint="root"/>
-        <prop actor="particle/explosion_dust_core.xml" attachpoint="root"/>
-        <prop actor="particle/explosion_dust_shockwaveA.xml" attachpoint="root"/>
-        <prop actor="particle/explosion_dustA.xml" attachpoint="root"/>
-        <prop actor="particle/heavy_impact_dust.xml" attachpoint="root"/>
+        <prop actor="particle/titan_impact_fireball.xml" attachpoint="root"/>
+        <prop actor="particle/titan_impact_shockwave.xml" attachpoint="root"/>
+        <prop actor="particle/titan_impact_debris.xml" attachpoint="root"/>
+        <prop actor="particle/titan_impact_dirt.xml" attachpoint="root"/>
+        <prop actor="particle/titan_impact_smoke.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>

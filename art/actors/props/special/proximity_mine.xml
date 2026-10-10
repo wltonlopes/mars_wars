@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mina de proximidade (e a submunição que cai do míssil de fragmentação).
+     Placeholder: malha da granada com uma luz vermelha piscando. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>props/weapons/frag_grenade.dae</mesh>
+      <props>
+        <prop actor="particle/mine_light.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/mla_props_01.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>objectcolor.xml</material>
+</actor>

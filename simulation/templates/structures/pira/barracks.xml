@@ -11,6 +11,7 @@
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/battalion_raiders
+      units/{civ}/battalion_guerrilla
       units/{civ}/rifleman
       units/{civ}/scout
       units/{civ}/bm_lmg
@@ -18,7 +19,15 @@
   </Trainer>
   <AirSupportProvider>
     <tunnel>
-      <Battalion datatype="tokens" replace="">units/pira/battalion_raiders</Battalion>
+      <Battalion datatype="tokens" replace="">units/pira/battalion_raiders units/pira/battalion_guerrilla</Battalion>
     </tunnel>
   </AirSupportProvider>
+  <!-- Medidas do modelo 3D próprio desta facção. -->
+  <Footprint replace="">
+    <Square width="11.5" depth="29.5"/>
+    <Height>10.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="10.5" depth="28.5"/>
+  </Obstruction>
 </Entity>

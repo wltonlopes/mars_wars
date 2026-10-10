@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="units/mcc/heavy_rifleman">
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Praetorian</GenericName>
+    <SpecificName>Guard of Ares</SpecificName>
+    <Icon>units/battalion_leader.png</Icon>
+    <Tooltip>Elite guard of the Legion. Soldiers around him fight harder: more damage, fire rate, accuracy and armour.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/ares/heavy_rifle_assault.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Ranged>
+      <AttackName>12-Gauge Explosive Rounds</AttackName>
+      <Damage>
+        <Pierce>14.0</Pierce>
+        <Crush>10.0</Crush>
+      </Damage>
+      <MaxRange>50</MaxRange>
+      <PrepareTime>1200</PrepareTime>
+      <RepeatTime>1800</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.4</ImpactAnimationLifetime>
+        <Speed>220.0</Speed>
+        <Spread>2.0</Spread>
+      </Projectile>
+      <Splash>
+        <Damage>
+          <Crush>12.0</Crush>
+          <Fire>6.0</Fire>
+        </Damage>
+        <FriendlyFire>false</FriendlyFire>
+        <Range>4</Range>
+        <Shape>Circular</Shape>
+        <Knockback>
+          <Distance>2</Distance>
+          <Chance>25</Chance>
+        </Knockback>
+      </Splash>
+    </Ranged>
+  </Attack>
+  <Auras datatype="tokens">factions/ares_praetorian</Auras>
+  <Health>
+    <Max>450</Max>
+  </Health>
+  <Cost>
+    <BuildTime>35</BuildTime>
+    <Resources>
+      <food>150</food>
+      <metal>150</metal>
+      <stone>80</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

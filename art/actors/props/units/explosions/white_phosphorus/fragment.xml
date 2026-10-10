@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fragmento incandescente que cai deixando um rastro de fumaça branca. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <particles file="white_phosphorus_glow.xml"/>
+      <props>
+        <prop actor="particle/white_phosphorus_trail.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

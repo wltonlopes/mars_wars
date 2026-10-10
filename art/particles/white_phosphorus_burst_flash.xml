@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fósforo branco: clarão branco do estouro no ar. -->
+<particles>
+    <texture>art/textures/particles/flame_radiant.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="30.0"/>
+    <uniform name="lifetime" min="0.3" max="0.6"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="size" min="30.0" max="45.0"/>
+    <constant name="size.growthRate" value="30.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="1.0"/>
+    <constant name="color.b" value="0.92"/>
+</particles>

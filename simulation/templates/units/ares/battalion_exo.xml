@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="battalion_profile_assault|units/ares/exo_trooper">
+  <BattalionLeader>
+    <MemberTemplates>units/ares/battalion_member_exo_trooper:3</MemberTemplates>
+    <MemberRoles>units/ares/battalion_member_exo_trooper:3:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/ares/battalion_member_exo_trooper</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Exo Cohort</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_machine_gun.png</Icon>
+  </Identity>
+  <Cost>
+    <BuildTime>40</BuildTime>
+    <Resources>
+      <food>180</food>
+      <metal>220</metal>
+      <stone>160</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

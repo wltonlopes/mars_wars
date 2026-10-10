@@ -8,7 +8,7 @@
     <Classes datatype="tokens">SwarmMass</Classes>
   </Identity>
   <VisualActor>
-    <Actor>factions/swarm/units/mla/worker.xml</Actor>
+    <Actor>units/swarm/worker.xml</Actor>
   </VisualActor>
   <Builder>
     <Entities datatype="tokens" replace="">

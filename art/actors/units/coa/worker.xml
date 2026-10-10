@@ -12,7 +12,7 @@
     <group>
   <variant frequency="1" name="01_01">
     <textures>
-	    <texture file="factions/coa/skeletal/mcc_worker.png" name="baseTex"/>
+	    <texture file="skeletal/coa/mcc_worker.png" name="baseTex"/>
       <texture file="skeletal/mcc_worker_spec.png" name="specTex"/>
       <texture file="skeletal/mcc_worker_norm.png" name="normTex"/>
 	  </textures>

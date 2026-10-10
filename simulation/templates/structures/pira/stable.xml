@@ -6,14 +6,21 @@
     <GenericName>Chop Shop</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>factions/pira/structures/mla/stable.xml</Actor>
+    <Actor>structures/pira/garage_tent.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/vehicle_buggy
       units/{civ}/vehicle_technical
       units/{civ}/drone_kamikaze
-      units/{civ}/bm_laser_tank
     </Entities>
   </Trainer>
+  <!-- Medidas do modelo 3D próprio desta facção. -->
+  <Footprint replace="">
+    <Square width="16.0" depth="26.0"/>
+    <Height>13.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="15.0" depth="25.0"/>
+  </Obstruction>
 </Entity>

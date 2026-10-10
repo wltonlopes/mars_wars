@@ -38,6 +38,10 @@
     <Civ>gaia</Civ>
     <Classes datatype="tokens">Unit Organic ConquestCritical</Classes>
     <GenericName>Unit</GenericName>
+    <!-- Falas em inglês com efeito de rádio (audio/voice/english/civ, geradas
+         por tools/voices/gen_voices.py). Phenotype escolhe o conjunto: male
+         ou female. -->
+    <Lang>english</Lang>
     <Phenotype datatype="tokens">male</Phenotype>
     <Undeletable>false</Undeletable>
   </Identity>

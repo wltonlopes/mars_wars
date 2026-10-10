@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pequeno drone quadricóptero FPV solto pelo operador de drones
+     (units/mla/drone_operator_*, componente DroneLauncher). Voa como um
+     helicóptero: chega perto do alvo, paira no ar (StationaryDistance) e
+     atira com um fuzil leve. A bateria dura pouco: a vida cai sozinha
+     (RegenRate negativo) e o drone cai depois de uns 40 segundos. -->
+<Entity parent="units/mla/drone_kamikaze">
+  <Attack>
+    <Melee disable=""/>
+    <Ranged>
+      <AttackName>Light Rifle</AttackName>
+      <Damage>
+        <Pierce>8</Pierce>
+      </Damage>
+      <MaxRange>40</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>400</PrepareTime>
+      <RepeatTime>800</RepeatTime>
+      <PreferredClasses datatype="tokens">Human</PreferredClasses>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_rifle.xml</ActorName>
+        <GroundLifetime>2</GroundLifetime>
+        <ImpactActorName>props/units/weapons/ammo/bullet_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="0"/>
+        <Speed>300.0</Speed>
+        <Spread>1.5</Spread>
+      </Projectile>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <Population>0</Population>
+  </Cost>
+  <Health>
+    <Max>40</Max>
+    <RegenRate>-1</RegenRate>
+  </Health>
+  <Identity>
+    <Civ>mla</Civ>
+    <Classes datatype="tokens">-ConquestCritical</Classes>
+    <GenericName>FPV Drone</GenericName>
+    <SpecificName>Personal Quadcopter</SpecificName>
+    <SelectionGroupName>units/mla/drone_pvp</SelectionGroupName>
+    <Icon>units/drone.png</Icon>
+    <Tooltip>Small personal quadcopter armed with a light rifle. Hovers near its target and shoots; the battery only lasts about 40 seconds.</Tooltip>
+  </Identity>
+  <!-- Não é kamikaze: atira em vez de mergulhar no alvo. -->
+  <Kamikaze disable=""/>
+  <Loot>
+    <xp>5</xp>
+  </Loot>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/arrow_impact.xml</attack_impact_ranged>
+    </SoundGroups>
+  </Sound>
+  <UnitMotionFlying>
+    <MaxSpeed>24.0</MaxSpeed>
+    <!-- Helicóptero: para no ar ao chegar a esta distância do alvo/destino. -->
+    <StationaryDistance>28</StationaryDistance>
+    <AccelRate>20.0</AccelRate>
+    <FlyingHeight>6.0</FlyingHeight>
+    <ClimbRate>9.0</ClimbRate>
+  </UnitMotionFlying>
+  <Vision>
+    <Range>50</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/mla/drone_pvp.xml</Actor>
+  </VisualActor>
+</Entity>

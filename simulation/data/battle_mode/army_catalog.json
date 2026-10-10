@@ -167,6 +167,12 @@
 				"Category": "armor",
 				"Cost": 230,
 				"Max": 10
+			},
+			{
+				"Template": "units/ares/battalion_exo",
+				"Category": "infantry",
+				"Cost": 200,
+				"Max": 10
 			}
 		],
 		"pira": [
@@ -204,6 +210,12 @@
 				"Template": "units/pira/bm_laser_tank",
 				"Category": "armor",
 				"Cost": 300,
+				"Max": 10
+			},
+			{
+				"Template": "units/pira/battalion_guerrilla",
+				"Category": "infantry",
+				"Cost": 90,
 				"Max": 10
 			}
 		],

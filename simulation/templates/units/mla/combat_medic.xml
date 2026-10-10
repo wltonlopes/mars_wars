@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Médico de combate (unidade especial do mla, treinada no laboratório):
+     cura a infantaria e dá experiência aos batalhões por perto. -->
+<Entity parent="units/mla/rifleman">
+  <Cost>
+    <BuildTime>25</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>80</metal>
+      <stone>0</stone>
+      <wood>40</wood>
+    </Resources>
+  </Cost>
+  <ExperienceTrainer>
+    <Range>30</Range>
+    <Amount>2</Amount>
+    <Interval>2000</Interval>
+  </ExperienceTrainer>
+  <Heal>
+    <Range>14</Range>
+    <RangeOverlay>
+      <LineTexture>heal_overlay_range.png</LineTexture>
+      <LineTextureMask>heal_overlay_range_mask.png</LineTextureMask>
+      <LineThickness>0.35</LineThickness>
+    </RangeOverlay>
+    <Health>8</Health>
+    <Interval>2000</Interval>
+    <UnhealableClasses datatype="tokens"/>
+    <HealableClasses datatype="tokens">Human</HealableClasses>
+  </Heal>
+  <Identity>
+    <GenericName>Combat Medic</GenericName>
+    <SpecificName>Front Line Medic</SpecificName>
+    <Icon>units/medic.png</Icon>
+    <VisibleClasses datatype="tokens">Healer</VisibleClasses>
+    <Tooltip>Heals infantry (8 health every 2 s) and passes on combat experience: battalions within 30 m slowly gain experience.</Tooltip>
+  </Identity>
+  <VisualActor>
+    <Actor>units/mla/rifle_assalt_guerrilla.xml</Actor>
+  </VisualActor>
+</Entity>

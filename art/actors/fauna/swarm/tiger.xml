@@ -22,7 +22,7 @@
       </animations>
       <mesh>skeletal/tiger.dae</mesh>
       <textures>
-        <texture file="factions/swarm/skeletal/animal_tiger.png" name="baseTex"/>
+        <texture file="skeletal/swarm/animal_tiger.png" name="baseTex"/>
         <texture file="default_norm.png" name="normTex"/>
         <texture file="null_black.dds" name="specTex"/>
       </textures>

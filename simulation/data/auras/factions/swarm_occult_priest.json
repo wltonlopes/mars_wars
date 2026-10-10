@@ -1,0 +1,65 @@
+{
+	"type": "range",
+	"radius": 45,
+	"affects": [
+		"SwarmMass",
+		"Creature"
+	],
+	"modifications": [
+		{
+			"value": "Resistance/Entity/Damage/Hack",
+			"add": 5
+		},
+		{
+			"value": "Resistance/Entity/Damage/Pierce",
+			"add": 5
+		},
+		{
+			"value": "Resistance/Entity/Damage/Crush",
+			"add": 5
+		},
+		{
+			"value": "Attack/Melee/Damage/Hack",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Melee/Damage/Pierce",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Melee/Damage/Crush",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Melee/Damage/Fire",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Ranged/Damage/Hack",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Ranged/Damage/Pierce",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Ranged/Damage/Crush",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Ranged/Damage/Fire",
+			"multiply": 1.1
+		},
+		{
+			"value": "Attack/Melee/RepeatTime",
+			"multiply": 0.85
+		},
+		{
+			"value": "Attack/Ranged/RepeatTime",
+			"multiply": 0.85
+		}
+	],
+	"auraName": "Rites of the Occult",
+	"auraDescription": "The priest's rites harden the flesh and drive the faithful into a frenzy: +5 armour, +10% damage and +15% attack speed for the Mass and creatures around it.",
+	"overlayIcon": "art/textures/ui/session/auras/health_bonus.png"
+}

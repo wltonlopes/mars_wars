@@ -27,6 +27,18 @@ AirSupportManager.prototype.LAUNCH_MESSAGES = {
 	"sandstorm": [
 		markForTranslation("Sandstorm summoned. It dies down in %(time)s."),
 		markForTranslation("Warning: the Dune Pirates summoned a sandstorm! It dies down in %(time)s.")
+	],
+	"mine_missile": [
+		markForTranslation("Fragmentation missile launched. Mines released in %(time)s."),
+		markForTranslation("Warning: missile launch detected! Impact in %(time)s.")
+	],
+	"white_phosphorus": [
+		markForTranslation("White phosphorus missile launched. Burst in %(time)s."),
+		markForTranslation("WARNING: White phosphorus missile incoming! Burst in %(time)s.")
+	],
+	"orbital_saturation": [
+		markForTranslation("Orbital saturation strike inbound. First impacts in %(time)s."),
+		markForTranslation("WARNING: Orbital saturation strike detected! First impacts in %(time)s.")
 	]
 };
 
@@ -39,6 +51,18 @@ AirSupportManager.prototype.INTERCEPT_MESSAGES = {
 	"nuke": [
 		markForTranslation("Your nuclear missile was shot down by enemy air defense."),
 		markForTranslation("Air defense intercepted an enemy nuclear missile.")
+	],
+	"mine_missile": [
+		markForTranslation("Your fragmentation missile was shot down by enemy air defense."),
+		markForTranslation("Air defense intercepted an enemy missile.")
+	],
+	"white_phosphorus": [
+		markForTranslation("Your white phosphorus missile was shot down by enemy air defense."),
+		markForTranslation("Air defense intercepted an enemy white phosphorus missile.")
+	],
+	"vehicle_airdrop": [
+		markForTranslation("Your transport aircraft was shot down by enemy air defense. The cargo is lost."),
+		markForTranslation("Air defense shot down an enemy transport aircraft.")
 	],
 	"strategic_bomber": [
 		markForTranslation("Your bomber was shot down by enemy air defense."),
@@ -57,8 +81,12 @@ AirSupportManager.prototype.VEHICLE_INTERFACES = {
 	"strategic_bomber": "IID_StrategicBomber",
 	"icbm": "IID_IcbmMissile",
 	"nuke": "IID_IcbmMissile",
+	"mine_missile": "IID_IcbmMissile",
+	"white_phosphorus": "IID_IcbmMissile",
 	"orbital_laser": "IID_OrbitalStrike",
+	"orbital_saturation": "IID_OrbitalSaturation",
 	"sandstorm": "IID_Sandstorm",
+	"vehicle_airdrop": "IID_AirDropCarrier",
 	"drop_pod": "IID_ReinforcementDelivery",
 	"tunnel": "IID_ReinforcementDelivery"
 };
@@ -112,7 +140,17 @@ AirSupportManager.prototype.RequestMission = function(provider, owner, type, tar
 		const path = AirSupport.CreateFlightPath(target, direction, this.MAP_EDGE_MARGIN);
 		cmpVehicle.StartMission(missionId, provider, path, parameters);
 	}
-	else if (type == "icbm")
+	else if (type == "vehicle_airdrop")
+	{
+		// A aeronave vem da direção do prédio que pediu a entrega.
+		const direction = {
+			"x": target.x - parameters.origin.x,
+			"z": target.z - parameters.origin.z
+		};
+		const path = AirSupport.CreateFlightPath(target, direction, this.MAP_EDGE_MARGIN);
+		cmpVehicle.StartMission(missionId, provider, path, target, parameters.battalion);
+	}
+	else if (type == "icbm" || type == "mine_missile" || type == "white_phosphorus")
 	{
 		const flightTime = cmpVehicle.StartMission(missionId, provider, parameters.origin, target);
 		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, flightTime);
@@ -135,6 +173,11 @@ AirSupportManager.prototype.RequestMission = function(provider, owner, type, tar
 	}
 	else if (type == "orbital_laser")
 		cmpVehicle.StartMission(missionId, provider, target);
+	else if (type == "orbital_saturation")
+	{
+		const warningTime = cmpVehicle.StartMission(missionId, provider, target);
+		this.missions[missionId].notifications = this.NotifyLaunch(type, owner, warningTime);
+	}
 	else
 		cmpVehicle.StartMission(missionId, provider, target, parameters.battalion);
 
@@ -271,6 +314,7 @@ AirSupportManager.prototype.BombImpact = function(data, lateness)
 		this.SpawnEffect({
 			"actor": data.impactActor,
 			"position": data.position,
+			"height": data.height,
 			"lifetime": data.impactActorLifetime || 5
 		});
 
@@ -309,8 +353,34 @@ AirSupportManager.prototype.SpawnEffect = function(data)
 		return;
 
 	cmpPosition.JumpTo(data.position.x, data.position.z);
+	if (data.height)
+		cmpPosition.SetHeightOffset(data.height);
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).SetTimeout(
 		SYSTEM_ENTITY, IID_AirSupportManager, "RemoveEffect", data.lifetime * 1000, effect);
+};
+
+/**
+ * Submunição de um míssil de fragmentação que chegou ao solo (ex.: mina).
+ * Chamado pelo Timer; `data`: template, owner, position {x, z}, rotation.
+ */
+AirSupportManager.prototype.SpawnSubmunition = function(data)
+{
+	const entity = Engine.AddEntity(data.template);
+	if (entity == INVALID_ENTITY)
+		return;
+
+	const cmpPosition = Engine.QueryInterface(entity, IID_Position);
+	if (!cmpPosition)
+	{
+		Engine.DestroyEntity(entity);
+		return;
+	}
+	cmpPosition.JumpTo(data.position.x, data.position.z);
+	cmpPosition.SetYRotation(data.rotation || 0);
+
+	const cmpOwnership = Engine.QueryInterface(entity, IID_Ownership);
+	if (cmpOwnership)
+		cmpOwnership.SetOwner(data.owner);
 };
 
 AirSupportManager.prototype.RemoveEffect = function(entity)
