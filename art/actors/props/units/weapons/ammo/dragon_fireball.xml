@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bola de fogo roxa e dourada do Bio-Dragão do Enxame: a malha do tracer
+     (planos cruzados ao longo do voo) com miolo dourado e borda roxa,
+     emissiva, deixando rastro roxo e faíscas douradas. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>props/tracer_heavy.dae</mesh>
+      <props>
+        <prop actor="particle/dragon_fireball_trail.xml" attachpoint="root"/>
+        <prop actor="particle/dragon_fireball_sparks.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/dragon_fireball.png" name="baseTex"/>
+        <texture file="props/tracer_norm.png" name="normTex"/>
+        <texture file="props/tracer_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_glow_norm_spec.xml</material>
+</actor>

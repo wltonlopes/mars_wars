@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Roach (bioarma do Enxame). Modelo, animações e texturas de Danimal e
+     Atmostatic, OpenGameArt, CC-BY-SA 3.0 (ver CREDITS.md):
+     https://opengameart.org/content/roach-game-ready-and-animated
+     A cópia retinta do Enxame (fauna/swarm/roach.xml) é gerada por
+     tools/factions/gen_factions.py a partir deste actor. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="roach">
+      <mesh>skeletal/roach.dae</mesh>
+      <animations>
+        <animation file="quadraped/roach_idle_1.dae" name="Idle" speed="100"/>
+        <animation file="quadraped/roach_idle_2.dae" name="Idle" speed="100"/>
+        <animation file="quadraped/roach_walk.dae" name="Walk" speed="30"/>
+        <animation file="quadraped/roach_walk.dae" name="Run" speed="50"/>
+        <!-- Duas mordidas/garradas sorteadas; o dano sai em event. -->
+        <animation event="0.5" file="quadraped/roach_attack_2.dae" name="attack_melee" speed="100"/>
+        <animation event="0.5" file="quadraped/roach_attack_1.dae" name="attack_melee" speed="100"/>
+        <animation file="quadraped/roach_roar_1.dae" name="promotion" speed="100"/>
+        <animation file="quadraped/roach_death.dae" name="Death" speed="100"/>
+      </animations>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="skin">
+      <textures>
+        <texture file="skeletal/roach.png" name="baseTex"/>
+        <texture file="skeletal/roach_norm.png" name="normTex"/>
+        <texture file="skeletal/roach_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>no_trans_norm_spec.xml</material>
+</actor>

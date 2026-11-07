@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jetpack da Coalizão (tools/imported/make_jetpack.py). Em voo
+     (JetPack.js liga a seleção "flying"), os bocais soltam o jato; na
+     decolagem ("jet_takeoff"), uma labareda forte. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="jetpack">
+      <mesh>props/armor/coa/jetpack.dae</mesh>
+      <textures>
+        <texture file="props/armor/coa/jetpack.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <!-- Voo (JetPack: seleção "flying"): núcleo azul, chama laranja, brilho de
+       calor, faíscas e rastro de fumaça em cada bocal. -->
+  <group>
+    <variant frequency="1" name="ground"/>
+    <variant frequency="0" name="flying">
+      <props>
+        <prop actor="particle/jetpack_thrust.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_thrust.xml" attachpoint="jet_r"/>
+        <prop actor="particle/jetpack_flame_outer.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_flame_outer.xml" attachpoint="jet_r"/>
+        <prop actor="particle/jetpack_heat_glow.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_heat_glow.xml" attachpoint="jet_r"/>
+        <prop actor="particle/jetpack_sparks.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_sparks.xml" attachpoint="jet_r"/>
+        <prop actor="particle/jetpack_smoke_trail.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_smoke_trail.xml" attachpoint="jet_r"/>
+      </props>
+    </variant>
+  </group>
+  <!-- Decolagem (JetPack: seleção "jet_takeoff", por instantes): labareda forte. -->
+  <group>
+    <variant frequency="1" name="jet_steady"/>
+    <variant frequency="0" name="jet_takeoff">
+      <props>
+        <prop actor="particle/jetpack_burst_flame.xml" attachpoint="jet_l"/>
+        <prop actor="particle/jetpack_burst_flame.xml" attachpoint="jet_r"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="jet_landing"/>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

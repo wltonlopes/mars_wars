@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tanque de batalha (red tank, repintado com as cores da facção).
+     Modelo e textura: tools/imported/import_exo_models.py (refs/exo). -->
+<Entity parent="template_unit_vehicle_landvehicle">
+  <Attack>
+    <Capture disable=""/>
+    <Ranged>
+      <AttackName>Main Cannon 125mm</AttackName>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>40</Pierce>
+        <Crush>100</Crush>
+      </Damage>
+      <MaxRange>85</MaxRange>
+      <MinRange>6</MinRange>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>4500</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>1.2</ImpactAnimationLifetime>
+        <Speed>220</Speed>
+        <Spread>1.0</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="3"/>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>5</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>10</Pierce>
+          <Crush>30</Crush>
+        </Damage>
+      </Splash>
+      <PreferredClasses datatype="tokens">Vehicle Structure</PreferredClasses>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>50</BuildTime>
+    <Population>4</Population>
+    <Resources>
+      <food>0</food>
+      <metal>280</metal>
+      <stone>240</stone>
+      <wood>140</wood>
+      <requisition>0</requisition>
+    </Resources>
+  </Cost>
+  <Footprint replace="">
+    <Square width="7.5" depth="16.0"/>
+    <Height>6.0</Height>
+    <MaxSpawnDistance>12</MaxSpawnDistance>
+  </Footprint>
+  <!-- Não leva tropas. -->
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>1300</Max>
+  </Health>
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>MCC Battle Tank</GenericName>
+    <SpecificName>Main Battle Tank</SpecificName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Main battle tank. Heavy cannon, strong against vehicles and structures.</Tooltip>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>15</Hack>
+        <Pierce>32</Pierce>
+        <Crush>10</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Sound>
+    <SoundGroups>
+      <walk>actor/vehicle/engine_tracked.xml</walk>
+      <run>actor/vehicle/engine_tracked.xml</run>
+    </SoundGroups>
+  </Sound>
+  <TrackMarks>
+    <Template>special/tracks/track_tracked</Template>
+    <Offset>3.0</Offset>
+    <Spacing>2.6</Spacing>
+    <Lifetime>10</Lifetime>
+  </TrackMarks>
+  <UnitMotion>
+    <WalkSpeed>8.5</WalkSpeed>
+  </UnitMotion>
+  <VehicleSeparation>
+    <Radius>5.0</Radius>
+  </VehicleSeparation>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_tracked.xml</MoveSound>
+    <Interval>1450</Interval>
+  </VehicleSound>
+  <VisualActor>
+    <Actor>vehicle/mcc/red_tank.xml</Actor>
+  </VisualActor>
+</Entity>

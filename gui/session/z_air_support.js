@@ -2,9 +2,13 @@
  * Botões de apoio aéreo e reforços para estruturas com AirSupportProvider.
  *
  * Cada tipo (bombardeiro, míssil nuclear, laser orbital, saturação orbital, ICBM, cápsula
- * orbital, túnel, tempestade de areia)
+ * orbital, túnel e as aeronaves de apoio aircraft_1..8, com o retrato da aeronave)
+ * O template pode trocar nome, descrição e ícone de um poder
+ * (AirSupportProvider/<tipo>/Name, Tooltip e Icon).
  * tem seu botão; uma estrutura pode ter vários (entState.airSupport é uma
- * lista, um status por poder). O botão coloca a GUI em
+ * lista, um status por poder). Os botões ficam na mesma área dos botões de
+ * treino (painel Training, logo depois das unidades), e não na fila de
+ * comandos pequenos do meio (ver o fim deste arquivo). O botão coloca a GUI em
  * modo de mira (como Patrulhar); o clique esquerdo no terreno envia o
  * comando "air-support" para a simulação e o clique direito cancela.
  */
@@ -50,6 +54,14 @@ var g_AirSupportTypes = {
 		"readyText": markForTranslation("Choose a target: a ballistic missile devastates a wide area, including your own and allied units. All players are warned of the launch."),
 		"activeText": markForTranslation("The missile is in flight.")
 	},
+	"hypersonic": {
+		"action": 116,
+		"icon": "special/icbm.png",
+		"name": markForTranslation("Hypersonic Missile"),
+		"cursorTooltip": markForTranslation("Left-click to choose the impact point, right-click to cancel."),
+		"readyText": markForTranslation("A hypersonic missile launched from this building strikes the chosen point within seconds. It is too fast for any air defense to intercept. It also hits your own and allied units."),
+		"activeText": markForTranslation("The hypersonic missile is in flight.")
+	},
 	"mine_missile": {
 		"action": 108,
 		"icon": "special/icbm.png",
@@ -74,6 +86,46 @@ var g_AirSupportTypes = {
 		"readyText": markForTranslation("A transport aircraft flies in from the direction of this building and drops a supply container on two parachutes; it lands and releases the vehicle (%(pop)s population). The drop zone must be on land, at least %(distance)s m from enemy buildings. Enemy air defense shoots the aircraft down."),
 		"activeText": markForTranslation("The transport aircraft is on its way.")
 	},
+	"parachute_bomb": {
+		"action": 111,
+		"icon": "special/icbm.png",
+		"name": markForTranslation("Heavy Parachute Bomb"),
+		"cursorTooltip": markForTranslation("Left-click to choose the impact point, right-click to cancel."),
+		"readyText": markForTranslation("A transport aircraft flies in from the direction of this building and drops a heavy bomb on parachutes; it devastates a wide area, including your own and allied units."),
+		"activeText": markForTranslation("The aircraft is on its way.")
+	},
+	"recon_drone": {
+		"action": 112,
+		"icon": "special/strategic_bomber.png",
+		"name": markForTranslation("Reconnaissance Drone"),
+		"cursorTooltip": markForTranslation("Left-click to choose the area to watch, right-click to cancel."),
+		"readyText": markForTranslation("A reconnaissance drone flies in from the direction of this building and circles the chosen point, revealing the area around it for a while."),
+		"activeText": markForTranslation("The reconnaissance drone is in the air.")
+	},
+	"recon_aircraft": {
+		"action": 113,
+		"icon": "special/strategic_bomber.png",
+		"name": markForTranslation("Remote Sensing Aircraft"),
+		"cursorTooltip": markForTranslation("Left-click to choose the area to watch, right-click to cancel."),
+		"readyText": markForTranslation("A remote sensing aircraft circles high above the chosen point, revealing a wide area for a long time. Only long-range air defense can shoot it down."),
+		"activeText": markForTranslation("The remote sensing aircraft is in the air.")
+	},
+	"drone_strike": {
+		"action": 115,
+		"icon": "special/strategic_bomber.png",
+		"name": markForTranslation("Attack Drone"),
+		"cursorTooltip": markForTranslation("Left-click to choose the area to attack, right-click to cancel."),
+		"readyText": markForTranslation("An attack drone circles the chosen point, fires its missiles at ground targets in the area and leaves."),
+		"activeText": markForTranslation("The attack drone is in the air.")
+	},
+	"air_patrol": {
+		"action": 114,
+		"icon": "special/strategic_bomber.png",
+		"name": markForTranslation("Fighter Air Patrol"),
+		"cursorTooltip": markForTranslation("Left-click to choose the area to patrol, right-click to cancel."),
+		"readyText": markForTranslation("Fighters circle the chosen point for a while, shooting down enemy support aircraft and aircraft and attacking ground units in the area."),
+		"activeText": markForTranslation("The fighter patrol is in the air.")
+	},
 	"drop_pod": {
 		"action": 102,
 		"icon": "special/drop_pod.png",
@@ -90,6 +142,7 @@ var g_AirSupportTypes = {
 		"readyText": markForTranslation("Dig a tunnel that opens at the chosen point and releases an infantry battalion (%(pop)s population). The exit must be at least %(distance)s m from enemy buildings."),
 		"activeText": markForTranslation("The tunnel is being dug.")
 	},
+	// Mars Wars: tempestade de areia dos Piratas (centro cívico).
 	"sandstorm": {
 		"action": 106,
 		"icon": "special/sandstorm.png",
@@ -99,6 +152,18 @@ var g_AirSupportTypes = {
 		"activeText": markForTranslation("The sandstorm is raging.")
 	}
 };
+
+// Aeronaves de apoio (AirSupportProvider aircraft_1..8): cada uma tem nome,
+// descrição e retrato no template; os textos abaixo só valem se faltarem.
+for (let n = 1; n <= 8; ++n)
+	g_AirSupportTypes["aircraft_" + n] = {
+		"action": 120 + n,
+		"icon": "special/strategic_bomber.png",
+		"name": markForTranslation("Air Support"),
+		"cursorTooltip": markForTranslation("Left-click to choose the target, right-click to cancel."),
+		"readyText": markForTranslation("Choose a target: the aircraft flies in from the direction of this building."),
+		"activeText": markForTranslation("The aircraft is in the air.")
+	};
 
 /** Máximo de opções de batalhão por poder de reforço (um botão cada). */
 var g_AirSupportMaxBattalionChoices = 4;
@@ -174,9 +239,11 @@ for (const type in g_AirSupportTypes)
 				if (locked)
 					status = providers[0].requiredTechnology.startsWith("phase_city") ?
 						translate("Locked: requires the City Phase (phase 3).") :
+						providers[0].requiredTechnology.startsWith("phase_town") ?
+						translate("Locked: requires the Town Phase (phase 2).") :
 						sprintf(translate("Locked: requires the technology %(technology)s."), { "technology": providers[0].requiredTechnology });
 				else if (available)
-					status = sprintf(translate(info.readyText), {
+					status = sprintf(translate(providers[0].tooltip || info.readyText), {
 						"pop": battalion ? battalion.popCost : providers[0].popCost,
 						"distance": providers[0].minDistanceFromEnemyStructures
 					});
@@ -186,9 +253,9 @@ for (const type in g_AirSupportTypes)
 					status = sprintf(translate("Available in %(time)s."), { "time": timeToString(cooldown) });
 
 				return {
-					"tooltip": translate(info.name) + (battalion ? ": " + translate(battalion.name) : "") + "\n" + bodyFont(status),
-					"icon": info.icon,
-					"portrait": battalion && battalion.icon,
+					"tooltip": translate(providers[0].name || info.name) + (battalion ? ": " + translate(battalion.name) : "") + "\n" + bodyFont(status),
+					"icon": providers[0].icon || info.icon,
+					"portrait": battalion && battalion.icon || providers[0].portrait,
 					"count": available || locked || !cooldown ? "" : Math.ceil(cooldown / 1000),
 					"enabled": available
 				};
@@ -217,5 +284,75 @@ g_UnitActionsSortedKeys = Object.keys(g_UnitActions).sort((a, b) => g_UnitAction
 		if (data.item.portrait)
 			data.icon.sprite = "stretched:session/portraits/" + data.item.portrait;
 		return ret;
+	};
+}
+
+// ---------------------------------------------------------------------------
+// Os botões de suporte ficam na área de treino (painel da direita), depois das
+// unidades treináveis, no mesmo tamanho delas. O painel de comandos pequenos
+// do meio deixa de mostrá-los. Como entram na conta de botões do painel de
+// treino, as tecnologias (painel Research) continuam logo depois deles.
+{
+	const isSupport = name => name.startsWith("air-support-");
+
+	g_SelectionPanels.Command.getItems = function(unitEntStates)
+	{
+		const commands = [];
+		for (const command in g_EntityCommands)
+		{
+			if (isSupport(command))
+				continue;
+			const info = getCommandInfo(command, unitEntStates);
+			if (!info)
+				continue;
+			info.name = command;
+			if (commands.push(info) >= this.getMaxNumberOfItems())
+				break;
+		}
+		return commands;
+	};
+
+	const trainingGetItems = g_SelectionPanels.Training.getItems;
+	g_SelectionPanels.Training.getItems = function(unitEntStates)
+	{
+		const items = (trainingGetItems.call(this, unitEntStates) || []).slice();
+		for (const command in g_EntityCommands)
+		{
+			if (!isSupport(command))
+				continue;
+			const info = getCommandInfo(command, unitEntStates);
+			if (info)
+				items.push({ "airSupport": command, "info": info });
+		}
+		return items;
+	};
+
+	const trainingSetupButton = g_SelectionPanels.Training.setupButton;
+	g_SelectionPanels.Training.setupButton = function(data)
+	{
+		if (typeof data.item != "object" || !data.item.airSupport)
+			return trainingSetupButton.call(this, data);
+
+		const info = data.item.info;
+		const command = data.item.airSupport;
+		data.button.tooltip = info.tooltip;
+		data.button.onPress = function()
+		{
+			performCommand(data.unitEntStates, command);
+		};
+		data.button.onPressRight = function() {};
+		data.button.onPressRightDisabled = function() {};
+		data.countDisplay.caption = info.count || "";
+		data.button.enabled = info.enabled == true && controlsPlayer(data.player);
+
+		// Indisponível (em recarga, em missão ou bloqueado): cinza, como uma
+		// unidade que não pode ser treinada.
+		const modifier = data.button.enabled ? "" : "color:0 0 0 127:grayscale:";
+		data.icon.sprite = modifier + (info.portrait ?
+			"stretched:session/portraits/" + info.portrait :
+			"stretched:session/icons/" + info.icon);
+
+		setPanelObjectPosition(data.button, data.i + getNumberOfRightPanelButtons(), data.rowLength);
+		return true;
 	};
 }

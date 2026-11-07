@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Spider tank: tanque de seis pernas (marcha em tripé); Walk/Run: ciclo = 5.2 m -> speed 19.
+     Malha, esqueleto, animações e texturas: tools/imported/import_spider_tank.py
+     (modelo de terceiros, ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/spider_tank.dae</mesh>
+			<animations>
+				<animation file="vehicle/spider_tank/idle.dae" name="Idle" speed="100"/>
+				<animation file="vehicle/spider_tank/walk.dae" name="Walk" speed="19"/>
+				<animation file="vehicle/spider_tank/walk.dae" name="Run" speed="19"/>
+				<animation event="0.05" file="vehicle/spider_tank/attack.dae" name="attack_ranged" speed="100"/>
+				<animation file="vehicle/spider_tank/death.dae" name="Death" speed="100"/>
+			</animations>
+			<textures>
+				<texture file="vehicle/spider_tank.png" name="baseTex"/>
+				<texture file="vehicle/spider_tank_norm.png" name="normTex"/>
+				<texture file="vehicle/spider_tank_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/muzzleflash_1.xml" attachpoint="muzzle"/>
+			</props>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+				<prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

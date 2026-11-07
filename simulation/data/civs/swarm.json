@@ -40,8 +40,31 @@
 		"The Swarm III"
 	],
 	"SkirmishReplacements": {
+		"skirmish/units/default_support_female_citizen": "units/swarm/worker",
 		"skirmish/units/default_support_civilian": "units/swarm/worker",
-		"skirmish/units/default_infantry_ranged_b": "units/swarm/battalion_mass"
+		"skirmish/units/default_infantry_melee_b": "units/swarm/battalion_mass",
+		"skirmish/units/default_infantry_ranged_b": "units/swarm/battalion_mass",
+		"skirmish/units/default_cavalry": "units/swarm/stalker",
+		"skirmish/units/default_siege_ram": "units/swarm/behemoth",
+		"skirmish/units/default_ship_arrow": "",
+		"skirmish/units/default_ship_scout": "",
+		"skirmish/structures/default_house_5": "structures/swarm/house",
+		"skirmish/structures/default_house_10": "structures/swarm/house",
+		"skirmish/structures/default_defense_tower": "structures/swarm/sentry_tower",
+		"skirmish/structures/default_fortress": "structures/swarm/fortress",
+		"skirmish/structures/default_corral": "",
+		"skirmish/structures/default_market": "",
+		"skirmish/structures/default_temple": "",
+		"skirmish/structures/default_wonder": "",
+		"skirmish/structures/default_dock": "",
+		"skirmish/structures/default_arsenal": "",
+		"skirmish/structures/default_outpost": "",
+		"skirmish/structures/default_range": "",
+		"skirmish/structures/default_wall_gate": "",
+		"skirmish/structures/default_wall_long": "",
+		"skirmish/structures/default_wall_medium": "",
+		"skirmish/structures/default_wall_short": "",
+		"skirmish/structures/default_wall_tower": ""
 	},
 	"SelectableInGameSetup": true
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reator de energia da Legião de Ares (modelo: tools/imported/import_structures.py).
+     Gera Energia (recurso "wood") continuamente. -->
+<Entity parent="template_structure_economic">
+  <Cost>
+    <BuildTime>60</BuildTime>
+    <Resources>
+      <food>0</food>
+      <metal>100</metal>
+      <stone>200</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+  <Footprint>
+    <Square width="25.0" depth="23.0"/>
+    <Height>21.0</Height>
+  </Footprint>
+  <Health>
+    <Max>1200</Max>
+  </Health>
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Power Reactor</GenericName>
+    <SpecificName>Legion Reactor</SpecificName>
+    <Icon>structures/palace_wood.png</Icon>
+    <Tooltip>Generates Energy over time.</Tooltip>
+    <VisibleClasses datatype="tokens">Reactor</VisibleClasses>
+  </Identity>
+  <Loot>
+    <stone>40</stone>
+  </Loot>
+  <Obstruction>
+    <Static width="24.0" depth="22.0"/>
+  </Obstruction>
+  <ResourceTrickle>
+    <Rates>
+      <wood>0.75</wood>
+    </Rates>
+    <Interval>1000</Interval>
+  </ResourceTrickle>
+  <Sound>
+    <SoundGroups>
+      <select>interface/select/building/sel_storehouse.xml</select>
+      <constructed>interface/complete/building/complete_storehouse.xml</constructed>
+      <death>attack/destruction/building_collapse_large.xml</death>
+    </SoundGroups>
+  </Sound>
+  <TerritoryInfluence>
+    <Root>false</Root>
+    <Radius>20</Radius>
+    <Weight>30000</Weight>
+  </TerritoryInfluence>
+  <Vision>
+    <Range>30</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>structures/ares/reactor.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_6x6.xml</FoundationActor>
+  </VisualActor>
+</Entity>

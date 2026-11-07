@@ -49,8 +49,9 @@ ACTOR_DIR = "art/actors/structures/mars"
 # Estruturas do mcc e do mla que recebem fundação (as facções derivadas herdam).
 STRUCTURES = ["aero", "barracks", "civil_centre", "farmstead", "field", "forge", "house",
 	"sentry_tower", "air_defense_tower", "silos", "stable", "storehouse"]
-# Tamanhos extras (L x P em tiles) para estruturas com modelo próprio (Piratas).
-EXTRA_SIZES = [(3, 8), (3, 11), (4, 11), (4, 7)]
+# Tamanhos extras (L x P em tiles) para estruturas com modelo próprio (Piratas)
+# e para as estruturas importadas da Ares, da Coalizão e do Enxame (tools/imported/import_structures.py).
+EXTRA_SIZES = [(3, 8), (3, 11), (4, 11), (4, 7), (6, 6), (6, 8), (9, 8), (9, 9), (7, 6), (8, 7), (10, 9), (8, 6), (9, 10)]
 
 # ----------------------------------------------------------------- textura
 # Atlas 4x4: cada material ocupa uma célula; as faces usam a célula inteira.
@@ -177,7 +178,8 @@ class Builder:
 		self.box(mid + [0, 0, height - flange / 2], (length, width, flange), material, R)
 		self.box(mid + [0, 0, height / 2], (length, width * 0.2, height), material, R)
 
-	def write(self, path, name):
+	def write(self, path, name, props=None):
+		"""Grava o .dae. `props`: {nome: (x, y, z)} vira nós prop_<nome> (pontos de encaixe)."""
 		pos, nor, uv = np.array(self.pos), np.array(self.nor), np.array(self.uv)
 		tri = np.array(self.tri)
 		fmt = lambda a: " ".join("%.4g" % v for v in np.asarray(a).ravel())
@@ -220,13 +222,16 @@ class Builder:
       <node id="{n}" name="{n}" type="NODE">
         <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#{n}-mesh" name="{n}"/>
-      </node>
+{props}      </node>
     </visual_scene>
   </library_visual_scenes>
   <scene><instance_visual_scene url="#Scene"/></scene>
 </COLLADA>
 """.format(n=name, pc=pos.size, vc=len(pos), uc=uv.size, tc=len(tri), p=fmt(pos), nr=fmt(nor), uv=fmt(uv),
-			idx=" ".join(map(str, p))))
+			idx=" ".join(map(str, p)),
+			props="".join('        <node id="prop_{k}" name="prop_{k}" type="NODE"><matrix sid="transform">'
+				'1 0 0 {x:g} 0 1 0 {y:g} 0 0 1 {z:g} 0 0 0 1</matrix></node>\n'.format(k=k, x=v[0], y=v[1], z=v[2])
+				for k, v in (props or {}).items())))
 		return len(tri)
 
 

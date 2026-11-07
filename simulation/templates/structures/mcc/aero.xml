@@ -21,11 +21,13 @@
     <Entities datatype="tokens" replace="">
       units/{civ}/aero_02
       units/{civ}/aero_01
+      units/{civ}/helicopter
+      units/{civ}/vtol_gunship
     </Entities>
   </Trainer>
   <VisualActor>
     <Actor>structures/mcc/aeroport.xml</Actor>
-    <FoundationActor>structures/mars/fndn_mars_16x10.xml</FoundationActor>
+    <FoundationActor>structures/mars/fndn_mars_11x11.xml</FoundationActor>
   </VisualActor>
   <!-- População: aeroporto. -->
   <Population>

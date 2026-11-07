@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rover de assalto da MCC (military tank): rodas e esteiras, canhão automático.
+     Modelo e textura: tools/imported/import_exo_models.py (refs/exo). -->
+<Entity parent="template_unit_vehicle_landvehicle">
+  <Attack>
+    <Capture disable=""/>
+    <Ranged>
+      <AttackName>Autocannon 40mm</AttackName>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>22</Pierce>
+        <Crush>30</Crush>
+      </Damage>
+      <MaxRange>70</MaxRange>
+      <MinRange>6</MinRange>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>1800</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>1.2</ImpactAnimationLifetime>
+        <Speed>220</Speed>
+        <Spread>1.0</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="3"/>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>3</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>6</Pierce>
+          <Crush>12</Crush>
+        </Damage>
+      </Splash>
+      <PreferredClasses datatype="tokens">Human Vehicle</PreferredClasses>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>35</BuildTime>
+    <Population>3</Population>
+    <Resources>
+      <food>0</food>
+      <metal>180</metal>
+      <stone>150</stone>
+      <wood>90</wood>
+      <requisition>0</requisition>
+    </Resources>
+  </Cost>
+  <Footprint replace="">
+    <Square width="9.0" depth="11.0"/>
+    <Height>5.0</Height>
+    <MaxSpawnDistance>12</MaxSpawnDistance>
+  </Footprint>
+  <!-- Não leva tropas. -->
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>800</Max>
+  </Health>
+  <Identity>
+    <Civ>mcc</Civ>
+    <GenericName>MCC Assault Rover</GenericName>
+    <SpecificName>Assault Rover</SpecificName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Fast armoured rover with an autocannon. Good against infantry and light vehicles.</Tooltip>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>10</Hack>
+        <Pierce>26</Pierce>
+        <Crush>8</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Sound>
+    <SoundGroups>
+      <walk>actor/vehicle/engine_tracked.xml</walk>
+      <run>actor/vehicle/engine_tracked.xml</run>
+    </SoundGroups>
+  </Sound>
+  <TrackMarks>
+    <Template>special/tracks/track_wheeled</Template>
+    <Offset>4.2</Offset>
+    <Spacing>2.2</Spacing>
+    <Lifetime>10</Lifetime>
+  </TrackMarks>
+  <UnitMotion>
+    <WalkSpeed>11.0</WalkSpeed>
+  </UnitMotion>
+  <VehicleSeparation>
+    <Radius>5.0</Radius>
+  </VehicleSeparation>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_tracked.xml</MoveSound>
+    <Interval>1450</Interval>
+  </VehicleSound>
+  <VisualActor>
+    <Actor>vehicle/mcc/military_tank.xml</Actor>
+  </VisualActor>
+</Entity>

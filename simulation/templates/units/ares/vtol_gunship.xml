@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VTOL de ataque (Ares): o helicóptero de ataque da MCC (foguetes, paira
+     para atirar, decola e pousa na vertical) com o modelo VTOL de refs/exo
+     (tools/imported/import_exo_models.py: motores das asas inclinam no voo)
+     na textura de veículos da facção. Sem a metralhadora de queixo. -->
+<Entity parent="units/mcc/helicopter">
+  <Cost>
+    <Population>3</Population>
+    <BuildTime>50</BuildTime>
+    <Resources>
+      <food>0</food>
+      <wood>260</wood>
+      <stone>180</stone>
+      <metal>260</metal>
+    </Resources>
+  </Cost>
+  <Health>
+    <Max>800</Max>
+  </Health>
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Ares VTOL Gunship</GenericName>
+    <SpecificName>Tilt-Rotor Gunship</SpecificName>
+    <Tooltip>Tilt-rotor attack aircraft: fires rocket salvos, hovers to fire, takes off and lands vertically and sets down when idle.</Tooltip>
+    <Requirements>
+      <Techs datatype="tokens" replace="">phase_town</Techs>
+    </Requirements>
+  </Identity>
+  <TurretHolder disable=""/>
+  <VisualActor>
+    <Actor>vehicle/ares/military_aircraft.xml</Actor>
+  </VisualActor>
+</Entity>

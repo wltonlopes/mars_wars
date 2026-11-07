@@ -235,7 +235,8 @@ Resistance.prototype.ResetKnockback = function()
 Resistance.prototype.GetBlockRating = function ()
 {
     let rating = 0;
-    let block = this.template.BlockRating;
+    // Alvo destruído entre o disparo e o impacto: o componente fica sem template.
+    let block = this.template && this.template.BlockRating;
 
     if (block)
         rating = +block;

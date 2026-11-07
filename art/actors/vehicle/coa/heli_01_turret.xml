@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Metralhadora de queixo do helicóptero (torreta units/mcc/helicopter_turret),
+     gerada por tools/animation/gen_heli.py: pendurada a partir da origem. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant name="Base">
+      <mesh>vehicle/heli_01_turret.dae</mesh>
+      <props>
+        <!-- Boca dos canos: daqui saem os traçantes. -->
+        <prop actor="props/units/weapons/ammo/tracer_heavy.xml" attachpoint="projectile"/>
+      </props>
+      <textures>
+        <texture file="structural/mars_construction.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant name="attack_ranged">
+      <props>
+        <prop actor="particle/heli_rocket_flash.xml" attachpoint="projectile"/>
+      </props>
+    </variant>
+  </group>
+  <material>default.xml</material>
+</actor>

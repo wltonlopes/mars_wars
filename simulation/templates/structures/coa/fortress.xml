@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fortaleza da Coalizão (modelo: tools/imported/import_structures.py).
+     Fortaleza do 0 A.D. (fase cidade, guarnição com disparos) que treina a elite (rangers, oficial, tanque). -->
+<Entity parent="template_structure_military_fortress">
+  <Footprint replace="">
+    <Square width="39.0" depth="35.0"/>
+    <Height>22.5</Height>
+  </Footprint>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition Fortress</GenericName>
+    <SpecificName>Citadel of Earth</SpecificName>
+  </Identity>
+  <Obstruction>
+    <Static width="38.0" depth="34.0"/>
+  </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/battalion_rangers
+      units/{civ}/officer
+      units/{civ}/vehicle_mbt
+    </Entities>
+  </Trainer>
+  <VisualActor>
+    <Actor>structures/coa/fortress.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_10x9.xml</FoundationActor>
+  </VisualActor>
+</Entity>

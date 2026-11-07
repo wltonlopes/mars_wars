@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity parent="battalion_member|units/coa/jetpack_trooper">
+  <Identity>
+    <GenericName>Coalition Jump Squad Member</GenericName>
+    <SelectionGroupName>units/coa/battalion_jetpack</SelectionGroupName>
+    <Icon>units/squad_assalt.png</Icon>
+  </Identity>
+</Entity>

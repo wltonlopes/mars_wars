@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Impacto do fogo do Bio-Dragão: explosão roxa, clarão dourado e brasas.
+     A malha só carrega as partículas (textura transparente). -->
+<actor version="1">
+  <group>
+    <variant frequency="1" name="Base">
+      <mesh>props/tracer_heavy.dae</mesh>
+      <props>
+        <prop actor="particle/dragon_fire_burst.xml" attachpoint="root"/>
+        <prop actor="particle/dragon_fire_burst_gold.xml" attachpoint="root"/>
+        <prop actor="particle/dragon_embers_gold.xml" attachpoint="root"/>
+      </props>
+      <textures>
+        <texture file="props/invisible_carrier.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_trans.xml</material>
+</actor>

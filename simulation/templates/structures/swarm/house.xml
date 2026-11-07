@@ -6,6 +6,6 @@
     <GenericName>Nest</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/house.xml</Actor>
+    <Actor>structures/swarm_hive/power_node.xml</Actor>
   </VisualActor>
 </Entity>

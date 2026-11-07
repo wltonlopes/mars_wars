@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Red tank (mcc). Gerado por tools/imported/import_exo_models.py (modelo de refs/exo,
+     ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/exo/red_tank.dae</mesh>
+			<props>
+				<prop actor="props/units/weapons/ammo/tracer_heavy.xml" attachpoint="projectile"/>
+			</props>
+			<textures>
+				<texture file="vehicle/mcc/red_tank.png" name="baseTex"/>
+				<texture file="vehicle/mcc/red_tank_norm.png" name="normTex"/>
+				<texture file="vehicle/mcc/red_tank_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/muzzleflash_1.xml" attachpoint="muzzle"/>
+			</props>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sopro do foguete saindo pela traseira do casulo: fogo curto e poeira. (gen_heli.py) -->
+<particles>
+    <texture>art/textures/particles/flame.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="70.0"/>
+    <uniform name="lifetime" min="0.12" max="0.3"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-2.0" max="2.0"/>
+    <uniform name="velocity.y" min="-2.0" max="1.0"/>
+    <uniform name="velocity.z" min="-2.0" max="2.0"/>
+
+    <uniform name="size" min="0.9" max="1.62"/>
+    <constant name="size.growthRate" value="4.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.55" max="0.75"/>
+    <constant name="color.b" value="0.25"/>
+</particles>

@@ -133,6 +133,13 @@ AirDropCarrier.prototype.CheckAirDefense = function(position)
  */
 AirDropCarrier.prototype.ShotDown = function()
 {
+	const cmpAirDefense = Engine.QueryInterface(this.interception.airDefense, IID_AirDefense);
+	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).ResolveInterception(this.missionId,
+		cmpAirDefense ? cmpAirDefense.GetAccuracy() : 0.55, this.GetWorldPosition(this.travelled)) != "destroyed")
+	{
+		this.interception = null;
+		return;
+	}
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).MissionIntercepted(
 		this.missionId, this.interception.airDefense, this.GetWorldPosition(this.travelled));
 	this.FinishMission();
@@ -161,7 +168,11 @@ AirDropCarrier.prototype.ReleaseCargo = function()
 	}
 
 	cmpOwnership.SetOwner(this.GetOwner());
-	cmpDelivery.StartMission(this.missionId, this.provider, this.target, this.payload, { "standalone": true });
+	cmpDelivery.StartMission(this.missionId, this.provider, this.target, this.payload, {
+		"standalone": true,
+		// Paraquedistas saltam em fila ao longo da rota.
+		"direction": this.path.direction
+	});
 	Engine.QueryInterface(cargo, IID_Position).SetYRotation(Math.atan2(this.path.direction.x, this.path.direction.z));
 };
 

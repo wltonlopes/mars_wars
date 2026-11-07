@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Metralhadora de queixo do helicóptero do mcc (torreta, presa sob o nariz
+     por units/mcc/helicopter). Atira sozinha em quem estiver no alcance. -->
+<Entity parent="units/mcc/vehicle_heavy_tower">
+  <Attack>
+    <Ranged replace="">
+      <AttackName>Chin Gun 20mm</AttackName>
+      <Damage>
+        <Pierce>9</Pierce>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>60</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>300</PrepareTime>
+      <RepeatTime>500</RepeatTime>
+      <PreferredClasses datatype="tokens">Infantry</PreferredClasses>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <LaunchPoint y="-1"/>
+        <Speed>400</Speed>
+        <Spread>2.0</Spread>
+      </Projectile>
+    </Ranged>
+  </Attack>
+  <DeathDamage disable=""/>
+  <Health>
+    <Max>1000</Max>
+  </Health>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Chin Gun</GenericName>
+    <SpecificName>Helicopter Chin Gun 20mm</SpecificName>
+  </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/weapon/machine_gun.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/arrow_impact.xml</attack_impact_ranged>
+    </SoundGroups>
+  </Sound>
+  <Vision>
+    <Range>80</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/coa/heli_01_turret.xml</Actor>
+  </VisualActor>
+</Entity>

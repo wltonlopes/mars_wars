@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bio-Dragão do Enxame (tools/imported/import_swarm_dragon.py) -->
+<skeletons>
+	<standard_skeleton title="Swarm Bio-Dragon" id="swarm_bio_dragon">
+		<bone name="drg_root">
+			<bone name="drg_pelvis">
+				<bone name="drg_spine">
+					<bone name="drg_chest">
+						<bone name="drg_neck">
+							<bone name="drg_head">
+								<bone name="prop_projectile"></bone>
+								<bone name="prop_mouth"></bone>
+							</bone>
+						</bone>
+						<bone name="drg_arm_l">
+							<bone name="drg_forearm_l">
+								<bone name="drg_hand_l"></bone>
+							</bone>
+						</bone>
+						<bone name="drg_arm_r">
+							<bone name="drg_forearm_r">
+								<bone name="drg_hand_r"></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="drg_tail1">
+					<bone name="drg_tail2"></bone>
+				</bone>
+				<bone name="drg_thigh_l">
+					<bone name="drg_shin_l">
+						<bone name="drg_foot_l"></bone>
+					</bone>
+				</bone>
+				<bone name="drg_thigh_r">
+					<bone name="drg_shin_r">
+						<bone name="drg_foot_r"></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Swarm Bio-Dragon" target="swarm_bio_dragon">
+		<identifier>
+			<root>drg_root</root>
+		</identifier>
+		<bone name="drg_root"><target>drg_root</target>
+			<bone name="drg_pelvis"><target>drg_pelvis</target>
+				<bone name="drg_spine"><target>drg_spine</target>
+					<bone name="drg_chest"><target>drg_chest</target>
+						<bone name="drg_neck"><target>drg_neck</target>
+							<bone name="drg_head"><target>drg_head</target>
+								<bone name="prop_projectile"><target>prop_projectile</target></bone>
+								<bone name="prop_mouth"><target>prop_mouth</target></bone>
+							</bone>
+						</bone>
+						<bone name="drg_arm_l"><target>drg_arm_l</target>
+							<bone name="drg_forearm_l"><target>drg_forearm_l</target>
+								<bone name="drg_hand_l"><target>drg_hand_l</target></bone>
+							</bone>
+						</bone>
+						<bone name="drg_arm_r"><target>drg_arm_r</target>
+							<bone name="drg_forearm_r"><target>drg_forearm_r</target>
+								<bone name="drg_hand_r"><target>drg_hand_r</target></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="drg_tail1"><target>drg_tail1</target>
+					<bone name="drg_tail2"><target>drg_tail2</target></bone>
+				</bone>
+				<bone name="drg_thigh_l"><target>drg_thigh_l</target>
+					<bone name="drg_shin_l"><target>drg_shin_l</target>
+						<bone name="drg_foot_l"><target>drg_foot_l</target></bone>
+					</bone>
+				</bone>
+				<bone name="drg_thigh_r"><target>drg_thigh_r</target>
+					<bone name="drg_shin_r"><target>drg_shin_r</target>
+						<bone name="drg_foot_r"><target>drg_foot_r</target></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

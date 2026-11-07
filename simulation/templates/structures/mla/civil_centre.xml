@@ -17,10 +17,6 @@
       <!-- Liberado só na fase 3 (City Phase). -->
       <RequiredTechnology>phase_city</RequiredTechnology>
     </nuke>
-    <white_phosphorus>
-      <Cooldown>200</Cooldown>
-      <Template>special/white_phosphorus_missile</Template>
-    </white_phosphorus>
   </AirSupportProvider>
   <Footprint replace="">
     <Circle radius="16.0"/>
@@ -63,4 +59,12 @@
       automated_workforce
     </Technologies>
   </Researcher>
+  <!-- Requisição: o centro de comando rende um pouco com o tempo (os pontos de
+       controle do mapa rendem mais, ver template_control_point). -->
+  <ResourceTrickle>
+    <Rates>
+      <requisition>0.2</requisition>
+    </Rates>
+    <Interval>1000</Interval>
+  </ResourceTrickle>
 </Entity>

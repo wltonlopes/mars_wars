@@ -6,6 +6,6 @@
     <GenericName>Digestion Pit</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/storehouse.xml</Actor>
+    <Actor>structures/swarm_hive/resource_nexus.xml</Actor>
   </VisualActor>
 </Entity>

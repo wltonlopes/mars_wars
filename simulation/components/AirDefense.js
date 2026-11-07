@@ -2,11 +2,15 @@
  * Defesa aérea estratégica (torre de defesa aérea).
  *
  * Protege um raio em volta da estrutura contra ataques estratégicos de
- * jogadores inimigos (missões do AirSupportManager):
- *  - o prédio que pede o ataque não aceita alvos dentro do raio;
- *  - mísseis e bombardeiros que entram no raio são abatidos por um míssil
- *    interceptador, que explode no ar sem causar dano no solo;
- *  - bombardeiros não soltam bombas que cairiam dentro do raio.
+ * jogadores inimigos (missões do AirSupportManager): mísseis e aeronaves que
+ * entram no raio recebem um míssil interceptador, que explode no ar sem
+ * causar dano no solo.
+ *
+ * Modern Wars: a defesa é incerta. Cada interceptador acerta com chance
+ * Accuracy (padrão 0,55) e a torre só dispara outro depois de Reload ms; a
+ * aeronave ainda pode despistar o míssil com flares ou aguentar o acerto
+ * (AirEvasion; AirSupportManager.ResolveInterception). Por isso o prédio que
+ * pede o ataque aceita alvos dentro do raio (a missão corre o risco).
  *
  * Fundações não têm este componente, então só a torre pronta protege.
  */
@@ -46,6 +50,16 @@ AirDefense.prototype.Schema =
 		"<ref name='positiveDecimal'/>" +
 	"</element>" +
 	"<optional>" +
+		"<element name='Accuracy' a:help='Chance (0-1) that an interceptor hits. Default: 0.55.'>" +
+			"<ref name='nonNegativeDecimal'/>" +
+		"</element>" +
+	"</optional>" +
+	"<optional>" +
+		"<element name='Reload' a:help='Milliseconds between two interceptors. Default: 2500.'>" +
+			"<data type='nonNegativeInteger'/>" +
+		"</element>" +
+	"</optional>" +
+	"<optional>" +
 		"<element name='LaunchSound' a:help='Sound group played when an interceptor is fired.'>" +
 			"<text/>" +
 		"</element>" +
@@ -58,6 +72,19 @@ AirDefense.prototype.Schema =
 
 /** Menor tempo de voo do interceptador, em segundos. */
 AirDefense.prototype.MIN_INTERCEPT_TIME = 0.4;
+AirDefense.prototype.DEFAULT_ACCURACY = 0.55;
+AirDefense.prototype.DEFAULT_RELOAD = 2500;
+
+AirDefense.prototype.GetAccuracy = function()
+{
+	return this.template.Accuracy !== undefined ? +this.template.Accuracy : this.DEFAULT_ACCURACY;
+};
+
+/** Se a torre já recarregou e pode lançar outro interceptador. */
+AirDefense.prototype.IsReady = function()
+{
+	return !this.readyAt || Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).GetTime() >= this.readyAt;
+};
 
 AirDefense.prototype.GetRange = function()
 {
@@ -149,6 +176,8 @@ AirDefense.prototype.Engage = function(predict, maxTime)
 	if (this.template.LaunchSound)
 		Engine.QueryInterface(SYSTEM_ENTITY, IID_SoundManager).PlaySoundGroupAtPosition(this.template.LaunchSound, launch);
 
+	this.readyAt = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).GetTime() +
+		(this.template.Reload !== undefined ? +this.template.Reload : this.DEFAULT_RELOAD);
 	return time;
 };
 

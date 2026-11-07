@@ -32,8 +32,31 @@
 		"Dune Pirates III"
 	],
 	"SkirmishReplacements": {
+		"skirmish/units/default_support_female_citizen": "units/pira/worker",
 		"skirmish/units/default_support_civilian": "units/pira/worker",
-		"skirmish/units/default_infantry_ranged_b": "units/pira/battalion_raiders"
+		"skirmish/units/default_infantry_melee_b": "units/pira/battalion_guerrilla",
+		"skirmish/units/default_infantry_ranged_b": "units/pira/battalion_raiders",
+		"skirmish/units/default_cavalry": "units/pira/vehicle_buggy",
+		"skirmish/units/default_siege_ram": "units/pira/vehicle_technical",
+		"skirmish/units/default_ship_arrow": "",
+		"skirmish/units/default_ship_scout": "",
+		"skirmish/structures/default_house_5": "structures/pira/house",
+		"skirmish/structures/default_house_10": "structures/pira/house",
+		"skirmish/structures/default_defense_tower": "structures/pira/sentry_tower",
+		"skirmish/structures/default_fortress": "",
+		"skirmish/structures/default_corral": "",
+		"skirmish/structures/default_market": "",
+		"skirmish/structures/default_temple": "",
+		"skirmish/structures/default_wonder": "",
+		"skirmish/structures/default_dock": "",
+		"skirmish/structures/default_arsenal": "",
+		"skirmish/structures/default_outpost": "",
+		"skirmish/structures/default_range": "",
+		"skirmish/structures/default_wall_gate": "",
+		"skirmish/structures/default_wall_long": "",
+		"skirmish/structures/default_wall_medium": "",
+		"skirmish/structures/default_wall_short": "",
+		"skirmish/structures/default_wall_tower": ""
 	},
 	"SelectableInGameSetup": true
 }

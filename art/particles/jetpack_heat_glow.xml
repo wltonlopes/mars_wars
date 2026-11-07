@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jetpack: brilho quente e trêmulo na boca do bocal. -->
+<particles>
+    <texture>art/textures/particles/tracer_glow.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="45.0"/>
+    <uniform name="lifetime" min="0.05" max="0.1"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.y" min="-0.6" max="0.0"/>
+
+    <uniform name="size" min="0.5" max="0.75"/>
+    <constant name="size.growthRate" value="-1.5"/>
+
+    <uniform name="color.r" min="0.75" max="0.9"/>
+    <uniform name="color.g" min="0.82" max="0.95"/>
+    <constant name="color.b" value="1.0"/>
+</particles>

@@ -9,6 +9,12 @@
  * estiver perto de uma estrutura própria (ex.: granadas do granadeiro). Com
  * <RangedSecondary> no Attack, a unidade usa essa arma enquanto estiver sem
  * munição (ver Attack.prototype.IsUsingSecondary).
+ *
+ * Modern Wars: com <Reload>, a munição é uma salva. O relógio começa no
+ * primeiro disparo e, <Time> depois, a salva volta inteira, em qualquer lugar
+ * (lançador de foguetes ASTROS: dispara tudo em segundos e recarrega em 1
+ * minuto). Se a salva foi interrompida no meio, o que sobrou pode ser
+ * disparado enquanto a recarga corre.
  */
 function Ammo() {}
 
@@ -16,6 +22,11 @@ Ammo.prototype.Schema =
 	"<element name='CurrAmmo'><data type='nonNegativeInteger'/></element>" +
 	"<element name='MaxAmmo'><data type='nonNegativeInteger'/></element>" +
 	"<optional><element name='SwitchToMeleeRange'><ref name='nonNegativeDecimal'/></element></optional>" +
+	"<optional>" +
+		"<element name='Reload' a:help='Salvo weapon: the whole load comes back Time after the first shot, anywhere.'>" +
+			"<element name='Time' a:help='Milliseconds from the first shot of a salvo to the full reload.'><data type='positiveInteger'/></element>" +
+		"</element>" +
+	"</optional>" +
 	"<optional>" +
 		"<element name='Resupply' a:help='Refill ammunition near own structures.'>" +
 			"<interleave>" +
@@ -63,6 +74,7 @@ Ammo.prototype.Reduce = function(amount)
 	const spent = Math.min(this.ammo, amount);
 	this.ammo -= spent;
 	this.StartResupply();
+	this.StartReload();
 	return spent;
 };
 
@@ -70,6 +82,65 @@ Ammo.prototype.SetAmmo = function(amount)
 {
 	this.ammo = Math.max(0, Math.min(this.maxAmmo, +amount));
 	this.StartResupply();
+	this.StartReload();
+};
+
+/**
+ * Salva (<Reload>): liga o relógio no primeiro disparo; ao fim dele a carga
+ * volta inteira.
+ */
+Ammo.prototype.StartReload = function()
+{
+	if (!this.template.Reload || this.reloadTimer || this.ammo >= this.maxAmmo)
+		return;
+	const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
+	this.reloadEnd = cmpTimer.GetTime() + +this.template.Reload.Time;
+	this.reloadTimer = cmpTimer.SetTimeout(this.entity, IID_Ammo, "FinishReload", +this.template.Reload.Time, null);
+};
+
+Ammo.prototype.FinishReload = function()
+{
+	delete this.reloadTimer;
+	delete this.reloadEnd;
+	this.ammo = this.maxAmmo;
+};
+
+/**
+ * Troca de template (montar/desmontar um lançador, promoção): a nova
+ * entidade fica com a munição e a recarga que já corria; sem isso, montar e
+ * desmontar recarregaria a salva na hora.
+ */
+Ammo.prototype.OnEntityRenamed = function(msg)
+{
+	const cmpNewAmmo = Engine.QueryInterface(msg.newentity, IID_Ammo);
+	if (cmpNewAmmo)
+		cmpNewAmmo.TakeOver(this.ammo, this.GetReloadTime());
+};
+
+Ammo.prototype.TakeOver = function(ammo, reloadLeft)
+{
+	const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
+	if (this.reloadTimer)
+		cmpTimer.CancelTimer(this.reloadTimer);
+	delete this.reloadTimer;
+	delete this.reloadEnd;
+	this.ammo = Math.min(this.maxAmmo, ammo);
+	if (this.template.Reload && reloadLeft > 0 && this.ammo < this.maxAmmo)
+	{
+		this.reloadEnd = cmpTimer.GetTime() + reloadLeft;
+		this.reloadTimer = cmpTimer.SetTimeout(this.entity, IID_Ammo, "FinishReload", reloadLeft, null);
+	}
+	else
+		this.StartReload();
+	this.StartResupply();
+};
+
+/** @return {number} Milissegundos que faltam para a salva voltar (0 se não está recarregando). */
+Ammo.prototype.GetReloadTime = function()
+{
+	if (this.reloadEnd === undefined)
+		return 0;
+	return Math.max(0, this.reloadEnd - Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).GetTime());
 };
 
 /**
@@ -124,6 +195,8 @@ Ammo.prototype.ResupplyTick = function()
 
 Ammo.prototype.OnDestroy = function()
 {
+	if (this.reloadTimer)
+		Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer).CancelTimer(this.reloadTimer);
 	this.StopResupply();
 };
 

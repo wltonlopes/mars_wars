@@ -6,7 +6,7 @@
     <GenericName>Coalition Command</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/coa/civic_center.xml</Actor>
+    <Actor>structures/coa/cc_command_tower.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

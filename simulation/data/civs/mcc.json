@@ -13,10 +13,10 @@
     ],
     "CivBonuses": [],
     "TeamBonuses": [],
-	"WallSets": [
-		"structures/wallset_palisade",
-		"structures/achae/wallset_stone"
-	],
+    "WallSets": [
+        "structures/wallset_palisade",
+        "structures/achae/wallset_stone"
+    ],
     "StartEntities": [
         {
             "Template": "structures/mcc/civil_centre"
@@ -35,8 +35,31 @@
         "Player2"
     ],
     "SkirmishReplacements": {
+        "skirmish/units/default_support_female_citizen": "units/mcc/worker",
         "skirmish/units/default_support_civilian": "units/mcc/worker",
-        "skirmish/units/default_infantry_ranged_b": "units/mcc/battalion_infantry_rifleman"
+        "skirmish/units/default_infantry_melee_b": "units/mcc/battalion_infantry_heavy_shield",
+        "skirmish/units/default_infantry_ranged_b": "units/mcc/battalion_infantry_rifleman",
+        "skirmish/units/default_cavalry": "units/mcc/vehicle_special",
+        "skirmish/units/default_siege_ram": "units/mcc/vehicle_heavy",
+        "skirmish/units/default_ship_arrow": "",
+        "skirmish/units/default_ship_scout": "",
+        "skirmish/structures/default_house_5": "structures/mcc/house",
+        "skirmish/structures/default_house_10": "structures/mcc/house",
+        "skirmish/structures/default_defense_tower": "structures/mcc/sentry_tower",
+        "skirmish/structures/default_fortress": "",
+        "skirmish/structures/default_corral": "",
+        "skirmish/structures/default_market": "",
+        "skirmish/structures/default_temple": "",
+        "skirmish/structures/default_wonder": "",
+        "skirmish/structures/default_dock": "",
+        "skirmish/structures/default_arsenal": "",
+        "skirmish/structures/default_outpost": "",
+        "skirmish/structures/default_range": "",
+        "skirmish/structures/default_wall_gate": "",
+        "skirmish/structures/default_wall_long": "",
+        "skirmish/structures/default_wall_medium": "",
+        "skirmish/structures/default_wall_short": "",
+        "skirmish/structures/default_wall_tower": ""
     },
     "SelectableInGameSetup": true
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tank factory. Gerado por tools/imported/import_exo_models.py (modelo de refs/exo,
+     ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/exo/tank_factory.dae</mesh>
+			<textures>
+				<texture file="structural/exo/tank_factory.png" name="baseTex"/>
+				<texture file="vehicle/flat_norm.png" name="normTex"/>
+				<texture file="structural/exo/tank_factory_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_large.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_large.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

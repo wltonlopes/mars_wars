@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Heliponto da Legião de Ares (modelo: tools/imported/import_structures.py).
+     Herda o aeroporto do mla (comércio por carga aérea, população), menor. -->
+<Entity parent="structures/mla/aero">
+  <Footprint replace="">
+    <Square width="33.0" depth="32.0"/>
+    <Height>17.0</Height>
+  </Footprint>
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Legion Helipad</GenericName>
+    <SpecificName>Helipad</SpecificName>
+  </Identity>
+  <Obstruction>
+    <Static width="32.0" depth="31.0"/>
+  </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/vtol_gunship
+    </Entities>
+  </Trainer>
+  <VisualActor>
+    <Actor>structures/ares/helipad.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_8x8.xml</FoundationActor>
+  </VisualActor>
+</Entity>

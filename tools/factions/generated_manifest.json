@@ -17,6 +17,9 @@
 	"art/actors/fauna/swarm/rhino.xml": {
 		"hash": "02cc22ba6856953f2bea05daf717997a315d6014"
 	},
+	"art/actors/fauna/swarm/roach.xml": {
+		"hash": "82cdf49d6026fae6dd21d47534fecc338b839c4a"
+	},
 	"art/actors/fauna/swarm/tiger.xml": {
 		"hash": "145d42d2ed4917f09573960d78c0b5749b3b9478"
 	},
@@ -252,7 +255,7 @@
 		"hash": "929ad272996cf51e776db19fa8d0bf30ef15a098"
 	},
 	"art/actors/units/ares/worker.xml": {
-		"hash": "cef0f9679f80ee426685be1a5f32b53dacaa5472"
+		"hash": "f2f59b3df9ca5c49d13d4644bec0fb7dac2125e5"
 	},
 	"art/actors/units/coa/rifle_assalt.xml": {
 		"hash": "cd6748f89426c518b9c0a5de29a0d9c1af9d66c9"
@@ -264,7 +267,7 @@
 		"hash": "182fb89b224062fe4d831300d6d744eb4658c488"
 	},
 	"art/actors/units/coa/worker.xml": {
-		"hash": "802bc1190fbb630f99ae13b5704e4fe7ec80d557"
+		"hash": "9241391a4c3b6a8f934661fe4bf32df7753ba24c"
 	},
 	"art/actors/units/pira/rifle_assalt_champion_snipe_p.xml": {
 		"hash": "0eea101b5582a00d53fc370d697c17f1b1b5f8bf"
@@ -276,7 +279,7 @@
 		"hash": "e56e9cd7674ced102c5f929dea252682a2a5885c"
 	},
 	"art/actors/units/pira/worker.xml": {
-		"hash": "8c089d6492c6ae0c5451aca477f8569c5ae20eba"
+		"hash": "15a78558c4c18db7bd382442d829f9d1805f2649"
 	},
 	"art/actors/units/swarm/grenadier.xml": {
 		"hash": "355e84ffdfd479928ba18cccdb528ca9cc29920c"
@@ -294,16 +297,16 @@
 		"hash": "429328cb323eb41d184994bdec9073431dd86e26"
 	},
 	"art/actors/units/swarm/worker.xml": {
-		"hash": "90018a4ee699172d1bfb4b7b160d9f4e3469d34b"
+		"hash": "fd06e538a3e66a24d4d4cfcd976fbab096185fcd"
 	},
 	"art/actors/vehicle/ares/coyote.xml": {
-		"hash": "e44f8311b9c799b43b2d0a90beba55f00d0474ac"
+		"hash": "ca84ab5b1f08a7e2ced6e765238ee62d917ff91d"
 	},
 	"art/actors/vehicle/ares/mammoth.xml": {
 		"hash": "da793a70617c396bda5dfde744b5429e23d38186"
 	},
 	"art/actors/vehicle/coa/cavelion.xml": {
-		"hash": "b56836385e7ca6c058b4f2fc01777fba9f71b4e4"
+		"hash": "73777573b079597a2b5b735adf9485caa2f98c58"
 	},
 	"art/actors/vehicle/coa/drone_kamikaze.xml": {
 		"hash": "ffffe8593927a42b9ad2fd385399e46291e3b771"
@@ -312,13 +315,13 @@
 		"hash": "aa4d396011858477b7ca5fbd76d2bc3d8c95a2b0"
 	},
 	"art/actors/vehicle/pira/coyote.xml": {
-		"hash": "2c51d75e2aefea0cdbb7f642dad2e245bc1ebb28"
+		"hash": "1db53f0b509e5391277e3d03d1d6c35051c895a8"
 	},
 	"art/actors/vehicle/pira/drone_kamikaze.xml": {
 		"hash": "743d43d321bb54a8ac604791fdff6d69b87d6cd9"
 	},
 	"art/actors/vehicle/pira/kutu.xml": {
-		"hash": "6f7769c8dc6bad1771cbdd4d7ccb40023a62fecf"
+		"hash": "648f091889caf14fcad68078e3abea425ae44831"
 	},
 	"art/textures/skins/mechanical/coa/mcc_aero.png": {
 		"hash": "a9bd313a636806fb30348a368b691e8f83bb26a3"
@@ -469,6 +472,9 @@
 	},
 	"art/textures/skins/skeletal/swarm/mla_worker.png": {
 		"hash": "ef03962c26d5314d90f7dfacdb44925357e0b660"
+	},
+	"art/textures/skins/skeletal/swarm/roach.png": {
+		"hash": "c3e96dc086ae0c236696e62f17f1e578ad689245"
 	},
 	"art/textures/skins/skeletal/swarm/suit_02_01.png": {
 		"hash": "a113df6b5963f494761de7f16757260b67a95d73"
@@ -733,9 +739,9 @@
 		"hash": "97ced9bbd798d0c8586cd22e192e80e4c68e85da"
 	},
 	"simulation/templates/structures/swarm/barracks.xml": {
-		"actor": "structures/swarm/bunker.xml",
+		"actor": "structures/swarm_hive/spawn_chamber.xml",
 		"body": "f48259680dcbae553cb623b953c9f483729e17b9",
-		"hash": "807a71304cbeca8d712fdc81011bc2c20edcbc4e"
+		"hash": "f49abd14a5872bb61dbbb38027f1d98a0a99bf26"
 	},
 	"simulation/templates/structures/swarm/battle_deploy_point.xml": {
 		"actor": "structures/battle/deploy_point_swarm.xml",
@@ -743,44 +749,44 @@
 		"hash": "88b51a0650b74f09be5fef2e7999927e6e85fd8d"
 	},
 	"simulation/templates/structures/swarm/civil_centre.xml": {
-		"actor": "structures/swarm/civic_center.xml",
+		"actor": "structures/swarm_hive/hive_core.xml",
 		"body": "d0ba8fc9ad9bac1574e85a9f9004706a9670b395",
-		"hash": "5b15ea77d952602d738822e452c64696b8098b2f"
+		"hash": "eb0714139532e804656926f5146d90956c44c0f2"
 	},
 	"simulation/templates/structures/swarm/farmstead.xml": {
-		"actor": "structures/swarm/greenhouse.xml",
+		"actor": "structures/swarm_hive/biosphere.xml",
 		"body": "6a55f7f77f77adeb5efd1c066e01701b50e833d7",
-		"hash": "836d7b1386b024a82bdc1dcd630b435a7d57732a"
+		"hash": "49d111efe3e769dafc79aa5e80c7cdf66421bc45"
 	},
 	"simulation/templates/structures/swarm/field.xml": {
-		"actor": "structures/swarm/greenhouse.xml",
+		"actor": "structures/swarm_hive/infestation_node.xml",
 		"body": "4afad2228237275fc927c620a100f07b2a976019",
-		"hash": "a8a199476f0e3c75cbd205ee70919c61d0217128"
+		"hash": "2d0e141ff23ef6ec7304481c73a1f1ebeac06cfd"
 	},
 	"simulation/templates/structures/swarm/forge.xml": {
-		"actor": "structures/swarm/lab.xml",
+		"actor": "structures/swarm_hive/evolution_chamber.xml",
 		"body": "27bf3ff575c397163b795b25d2e7c11cbc7a31ac",
-		"hash": "1b8dcbfc5694ac99d3ed0a0d698b9ded337ef718"
+		"hash": "8c54f464d0db4d300349f67f035c5b7809da0715"
 	},
 	"simulation/templates/structures/swarm/house.xml": {
-		"actor": "structures/swarm/house.xml",
+		"actor": "structures/swarm_hive/power_node.xml",
 		"body": "611ca124c21c33b61433b1d8d7c2fd915e0dc5a1",
-		"hash": "79d464bf82521ffaee98e49830e979e76f7500f5"
+		"hash": "0673d0f3ea34799c12745ccd7b83c32daf8674af"
 	},
 	"simulation/templates/structures/swarm/sentry_tower.xml": {
-		"actor": "structures/swarm/auto_defense_tower.xml",
+		"actor": "structures/swarm_hive/defense_spire.xml",
 		"body": "ae8a87c0e9fca3b946d7563f7b6ec4e09d6a2930",
-		"hash": "6bbef1954fa8d9d67dd364fccb1f07cd69fe6803"
+		"hash": "bd748478ba7c784fe4aafc709c70b55075169b78"
 	},
 	"simulation/templates/structures/swarm/stable.xml": {
-		"actor": "structures/swarm/stable.xml",
-		"body": "e267085e3bc377d964bc482e9ee269d8c3813087",
-		"hash": "61d2049d54d47709e2853737947a6a53062cd731"
+		"actor": "structures/swarm_hive/unit_nest.xml",
+		"body": "bf8877631e69a2d080a58d0c9d39c559ae365979",
+		"hash": "417558f83431b5e17ee1bdf7438a139fee9a1f8d"
 	},
 	"simulation/templates/structures/swarm/storehouse.xml": {
-		"actor": "structures/swarm/storehouse.xml",
+		"actor": "structures/swarm_hive/resource_nexus.xml",
 		"body": "801ba9e12ab4311b32b7dba8c6ae20f1679aab35",
-		"hash": "719855721e1a6389e4e330cf36c29af9c698ef2c"
+		"hash": "2ba8ae274ffb14eb1ace58d59673767daeeac9ea"
 	},
 	"simulation/templates/units/ares/battalion_exo.xml": {
 		"actor": null,
@@ -1061,6 +1067,11 @@
 		"actor": "units/swarm/rifle_assalt_champion_hell_angels.xml",
 		"body": "2f9525057360e880b91c5308c10bbb3b84fed224",
 		"hash": "ec80808c3c15185e70492fce17e45fd825463ee7"
+	},
+	"simulation/templates/units/swarm/roach.xml": {
+		"actor": "fauna/swarm/roach.xml",
+		"body": "beb1c3f2085e20107bd8ff338c0bd50482cda843",
+		"hash": "5d6729b15d312db3602a431cb4c9aed853700f29"
 	},
 	"simulation/templates/units/swarm/scout.xml": {
 		"actor": "fauna/swarm/fox_red.xml",

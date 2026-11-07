@@ -5,14 +5,24 @@
     <Civ>coa</Civ>
     <GenericName>Airbase</GenericName>
   </Identity>
+  <!-- Modelo de tools/imported/import_structures.py: área do modelo. -->
+  <Footprint replace="">
+    <Square width="34.0" depth="35.0"/>
+    <Height>16.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="33.0" depth="34.0"/>
+  </Obstruction>
   <VisualActor>
-    <Actor>structures/coa/aeroport.xml</Actor>
+    <Actor>structures/coa/helipad.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_9x9.xml</FoundationActor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
-      units/{civ}/aero_01
+      units/{civ}/helicopter
       units/{civ}/aero_02
       units/{civ}/drone_recon
+      units/{civ}/vtol_gunship
     </Entities>
   </Trainer>
 </Entity>

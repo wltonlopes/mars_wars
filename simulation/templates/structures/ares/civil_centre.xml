@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Gerado por tools/factions/gen_factions.py -->
 <Entity parent="structures/mla/civil_centre">
+  <AirSupportProvider>
+    <white_phosphorus>
+      <Cooldown>200</Cooldown>
+      <Template>special/white_phosphorus_missile</Template>
+    </white_phosphorus>
+  </AirSupportProvider>
   <Identity>
     <Civ>ares</Civ>
     <GenericName>Legion Citadel</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/ares/civic_center.xml</Actor>
+    <Actor>structures/ares/cc_citadel.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

@@ -7,17 +7,29 @@
  *   orbital_laser    - laboratório mcc (laser orbital em fases)
  *   orbital_saturation - centro cívico da Coalizão (salva orbital sobre uma área ampla)
  *   icbm             - silos mla
+ *   hypersonic       - Modern Wars: míssil hipersônico (Fattah da rup); voa como o icbm, muito mais rápido, e nenhuma defesa aérea o intercepta
  *   mine_missile     - silos de Ares (míssil de fragmentação que espalha minas de proximidade)
  *   vehicle_airdrop  - garagem da Coalizão (aeronave lança um veículo pesado de paraquedas)
  *   drop_pod         - quartel mcc (cápsula orbital com batalhão)
  *   tunnel           - quartel mla (túnel com batalhão)
- *   sandstorm        - centro cívico dos piratas (tempestade de areia com raios)
+ *   sandstorm        - Mars Wars: centro cívico dos piratas (tempestade de areia com raios)
+ *   parachute_bomb   - Modern Wars: aeronave solta uma bomba pesada de paraquedas (bomba Trocano da rfs)
+ *   recon_drone      - Modern Wars: drone de reconhecimento orbita um ponto e dá visão dele (RQ-900 da rfs)
+ *   recon_aircraft   - Modern Wars: avião de sensoriamento remoto, o mesmo com mais alcance e mais difícil de abater (R-99 da rfs)
+ *   drone_strike     - Modern Wars: drone de ataque orbita um ponto, dispara seus mísseis contra alvos no chão e vai embora
+ *   air_patrol       - Modern Wars: caças orbitam um ponto e abatem aeronaves e apoio aéreo inimigos e atacam tropas no chão (Gripen da rfs)
+ *   aircraft_1..8    - Modern Wars: aeronaves de apoio (helicópteros, caças, aviões de ataque, enxames de drones) que eram
+ *                      unidades treinadas no hangar; cada uma faz a missão de <Mission> (drone_strike, air_patrol,
+ *                      strategic_bomber, vehicle_airdrop, recon_drone...), com o botão de <Name>/<Portrait>. Várias
+ *                      aeronaves podem ter a mesma missão no mesmo prédio.
  *
  * A missão em si é executada pelo AirSupportManager.
  */
 function AirSupportProvider() {}
 
-AirSupportProvider.prototype.TYPES = ["strategic_bomber", "nuke", "orbital_laser", "orbital_saturation", "icbm", "mine_missile", "white_phosphorus", "vehicle_airdrop", "drop_pod", "tunnel", "sandstorm"];
+AirSupportProvider.prototype.MISSIONS = ["strategic_bomber", "nuke", "orbital_laser", "orbital_saturation", "icbm", "hypersonic", "mine_missile", "white_phosphorus", "vehicle_airdrop", "drop_pod", "tunnel", "parachute_bomb", "recon_drone", "recon_aircraft", "air_patrol", "drone_strike", "sandstorm"];
+AirSupportProvider.prototype.SLOTS = ["aircraft_1", "aircraft_2", "aircraft_3", "aircraft_4", "aircraft_5", "aircraft_6", "aircraft_7", "aircraft_8"];
+AirSupportProvider.prototype.TYPES = AirSupportProvider.prototype.MISSIONS.concat(AirSupportProvider.prototype.SLOTS);
 
 AirSupportProvider.prototype.Schema =
 	"<a:help>Special powers of this structure (air strikes and reinforcements). One child element per power, named after its type.</a:help>" +
@@ -67,6 +79,31 @@ AirSupportProvider.prototype.Schema =
 					"</element>" +
 				"</optional>" +
 				"<optional>" +
+					"<element name='Name' a:help='Modern Wars: name shown on the button, replacing the default name of the type (e.g. an orbital_saturation that is a rocket artillery barrage).'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
+					"<element name='Tooltip' a:help='Modern Wars: description shown while the power is ready, replacing the default one.'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
+					"<element name='Icon' a:help='Modern Wars: button icon (art/textures/ui/session/icons/), replacing the default one.'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
+					"<element name='Mission' a:help='Modern Wars, aircraft_N: the mission this aircraft flies (default: the element name).'>" +
+						"<choice>" + AirSupportProvider.prototype.MISSIONS.map(type => "<value>" + type + "</value>").join("") + "</choice>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
+					"<element name='Portrait' a:help='Modern Wars: unit portrait (art/textures/ui/session/portraits/) shown on the button instead of an icon.'>" +
+						"<text/>" +
+					"</element>" +
+				"</optional>" +
+				"<optional>" +
 					"<element name='RequiredTechnology' a:help='The power is locked until the owner has researched this technology (e.g. phase_city).'>" +
 						"<text/>" +
 					"</element>" +
@@ -86,6 +123,12 @@ AirSupportProvider.prototype.Init = function()
 AirSupportProvider.prototype.GetTypes = function()
 {
 	return this.TYPES.filter(type => this.template[type]);
+};
+
+/** Missão que o poder executa (os slots aircraft_N dizem a sua). */
+AirSupportProvider.prototype.GetMission = function(type)
+{
+	return this.template[type] && this.template[type].Mission || type;
 };
 
 AirSupportProvider.prototype.HasType = function(type)
@@ -179,7 +222,7 @@ AirSupportProvider.prototype.RequestSupport = function(type, target, battalion)
 	const power = this.template[type];
 	const origin = cmpPosition.GetPosition2D();
 	const cmpManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager);
-	const missionId = cmpManager.RequestMission(this.entity, owner, type, target, {
+	const missionId = cmpManager.RequestMission(this.entity, owner, this.GetMission(type), target, {
 		"template": power.Template,
 		"origin": { "x": origin.x, "z": origin.y },
 		"bombCount": +(power.BombCount || 1),
@@ -204,9 +247,8 @@ AirSupportProvider.prototype.CheckTarget = function(type, owner, target, battali
 		return markForTranslation("The target is outside the map.");
 
 	const power = this.template[type];
-	const cmpManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager);
-	if (this.GetStrikePoints(type, target).some(point => cmpManager.FindAirDefense(type, owner, point) != INVALID_ENTITY))
-		return markForTranslation("The target area is protected by enemy air defense.");
+	// Modern Wars: alvos dentro da defesa aérea inimiga são aceitos; a defesa
+	// é incerta (AirDefense/Accuracy) e a missão corre o risco.
 
 	if (!battalion)
 		return "";
@@ -232,8 +274,9 @@ AirSupportProvider.prototype.CheckTarget = function(type, owner, target, battali
 AirSupportProvider.prototype.GetStrikePoints = function(type, target)
 {
 	const power = this.template[type];
-	const count = type == "strategic_bomber" ? +(power.BombCount || 1) : 1;
-	const length = type == "strategic_bomber" ? +(power.BombingLength || 0) : 0;
+	const bomber = this.GetMission(type) == "strategic_bomber";
+	const count = bomber ? +(power.BombCount || 1) : 1;
+	const length = bomber ? +(power.BombingLength || 0) : 0;
 	if (count <= 1 || !length)
 		return [target];
 
@@ -303,6 +346,11 @@ AirSupportProvider.prototype.GetStatus = function()
 {
 	return this.GetTypes().map(type => ({
 		"type": type,
+		"mission": this.GetMission(type),
+		"portrait": this.template[type].Portrait || "",
+		"name": this.template[type].Name || "",
+		"tooltip": this.template[type].Tooltip || "",
+		"icon": this.template[type].Icon || "",
 		"available": this.IsAvailable(type),
 		"locked": !this.IsUnlocked(type),
 		"requiredTechnology": this.template[type].RequiredTechnology || "",

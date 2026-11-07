@@ -49,13 +49,15 @@ AIStrategist.prototype.THREAT_MIN_UNITS = 3;
  */
 AIStrategist.prototype.POWER_PROFILES = {
 	"nuke": { "radius": 60, "minScore": 30, "friendlyFire": true, "structures": 1, "units": 1 },
+	"parachute_bomb": { "radius": 45, "minScore": 25, "friendlyFire": true, "structures": 1, "units": 1 },
 	"orbital_saturation": { "radius": 70, "minScore": 25, "friendlyFire": true, "structures": 1, "units": 1 },
 	"icbm": { "radius": 10, "minScore": 5, "friendlyFire": true, "structures": 1, "units": 0.3 },
+	"hypersonic": { "radius": 20, "minScore": 10, "friendlyFire": true, "structures": 1, "units": 0.5 },
 	"strategic_bomber": { "radius": 25, "minScore": 8, "friendlyFire": false, "structures": 1, "units": 1 },
 	"orbital_laser": { "radius": 12, "minScore": 5, "friendlyFire": false, "structures": 1.2, "units": 0.6 },
 	"white_phosphorus": { "radius": 32, "minScore": 8, "friendlyFire": true, "structures": 0.3, "units": 1.5 },
-	"sandstorm": { "radius": 60, "minScore": 10, "friendlyFire": false, "structures": 0.2, "units": 1.5 },
 	// Minas: só contam tropas no chão; o alvo é adiantado no caminho delas.
+	"sandstorm": { "radius": 60, "minScore": 10, "friendlyFire": false, "structures": 0.2, "units": 1.5 },
 	"mine_missile": { "radius": 32, "minScore": 6, "friendlyFire": false, "structures": 0, "units": 1, "lead": 12 }
 };
 
@@ -557,13 +559,13 @@ AIStrategist.prototype.UsePowers = function(player, memory, context)
 		const cmpProvider = Engine.QueryInterface(provider, IID_AirSupportProvider);
 		for (const status of cmpProvider.GetStatus())
 			if (status.available)
-				ready.push({ "provider": provider, "type": status.type });
+				ready.push({ "provider": provider, "type": status.type, "mission": status.mission || status.type });
 	}
 
 	while (ready.length)
 	{
 		const power = ready.splice(randIntExclusive(0, ready.length), 1)[0];
-		const used = this.REINFORCEMENT_POWERS.indexOf(power.type) != -1 ?
+		const used = this.REINFORCEMENT_POWERS.indexOf(power.mission || power.type) != -1 ?
 			this.UseReinforcement(player, power, context) :
 			this.UseStrike(player, power, context);
 		if (used)
@@ -615,7 +617,7 @@ AIStrategist.prototype.GetCandidates = function(profile, context)
 
 AIStrategist.prototype.UseStrike = function(player, power, context)
 {
-	const profile = this.POWER_PROFILES[power.type];
+	const profile = this.POWER_PROFILES[power.mission || power.type];
 	if (!profile)
 		return false;
 

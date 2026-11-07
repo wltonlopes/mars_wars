@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Military aircraft (ares). Gerado por tools/imported/import_exo_models.py (modelo de refs/exo,
+     ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/exo/military_aircraft.dae</mesh>
+			<animations>
+				<animation file="vehicle/vtol/idle.dae" name="Idle" speed="100"/>
+				<animation file="vehicle/vtol/walk.dae" name="Walk" speed="100"/>
+				<animation file="vehicle/vtol/walk.dae" name="Run" speed="100"/>
+				<animation event="0.1" file="vehicle/vtol/attack.dae" name="attack_ranged" speed="100"/>
+				<animation file="vehicle/vtol/death.dae" name="Death" speed="100"/>
+			</animations>
+			<props>
+				<prop actor="props/units/weapons/ammo/tracer_heavy.xml" attachpoint="projectile"/>
+			</props>
+			<textures>
+				<texture file="vehicle/exo/military_aircraft.png" name="baseTex"/>
+				<texture file="vehicle/flat_norm.png" name="normTex"/>
+				<texture file="vehicle/exo/military_aircraft_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/muzzleflash_1.xml" attachpoint="muzzle"/>
+			</props>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

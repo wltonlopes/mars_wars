@@ -32,3 +32,37 @@
 			turretHolderEjectOrKill.call(this, others);
 	};
 }
+
+// Modern Wars: torres criadas pelo template (TurretPoint com <Template>) só
+// nascem no primeiro instante de jogo. O TurretHolder do jogo base as cria
+// assim que o veículo ganha dono; num mapa aleatório, as unidades iniciais
+// ganham dono enquanto o mapa ainda está sendo carregado, e a torre criada
+// nesse momento pega o número de entidade que o mapa reservou para a peça
+// seguinte: o jogo para com 'Assertion failed: "!EntityExists(ent)"'. Isso
+// acontecia com o LMV (metralhadora em torre) entre as unidades iniciais.
+{
+	const turretHolderCreateSubunit = TurretHolder.prototype.CreateSubunit;
+	TurretHolder.prototype.CreateSubunit = function(turretPointName)
+	{
+		const cmpTimer = Engine.QueryInterface(SYSTEM_ENTITY, IID_Timer);
+		if (this.subunitsReady || !cmpTimer || cmpTimer.GetTime() > 0)
+			return turretHolderCreateSubunit.call(this, turretPointName);
+
+		if (!this.deferredSubunits)
+		{
+			this.deferredSubunits = [];
+			cmpTimer.SetTimeout(this.entity, IID_TurretHolder, "CreateDeferredSubunits", 1, null);
+		}
+		if (this.deferredSubunits.indexOf(turretPointName) == -1)
+			this.deferredSubunits.push(turretPointName);
+		return true;
+	};
+
+	TurretHolder.prototype.CreateDeferredSubunits = function()
+	{
+		this.subunitsReady = true;
+		for (const turretPointName of this.deferredSubunits || [])
+			this.CreateSubunit(turretPointName);
+		delete this.deferredSubunits;
+	};
+}

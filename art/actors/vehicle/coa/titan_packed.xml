@@ -3,7 +3,15 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/titan.dae</mesh>
+			<!-- rodas: gen_wheels.py -->
+			<mesh>vehicle/titan_rigged.dae</mesh>
+			<animations>
+				<animation file="vehicle/titan/idle.dae" name="Idle" speed="100"/>
+				<!-- Uma volta das rodas por ciclo (~11.7 m): speed 9 faz as rodas
+				     rolarem sem patinar em qualquer velocidade. -->
+				<animation file="vehicle/titan/move.dae" name="Walk" speed="9"/>
+				<animation file="vehicle/titan/move.dae" name="Run" speed="9"/>
+			</animations>
 			<props>
 			    <prop actor="vehicle/coa/titan_tower_01.xml" attachpoint="root"/>	
 			</props>

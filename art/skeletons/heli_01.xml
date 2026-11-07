@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Heli_01 com rodas animadas (art/meshes/vehicle/heli_01_rigged.dae), gerado por
+     tools/animation/gen_wheels.py. -->
+<skeletons>
+	<standard_skeleton title="Heli_01" id="heli_01">
+		<bone name="heli_01_root">
+			<bone name="rotor_01"></bone>
+			<bone name="rotor_02"></bone>
+			<bone name="prop_w_01"></bone>
+			<bone name="prop_w_02"></bone>
+			<bone name="prop_weapons_01"></bone>
+			<bone name="prop_weapons_01_001"></bone>
+			<bone name="prop_rocket_l"></bone>
+			<bone name="prop_backblast_l"></bone>
+			<bone name="prop_rocket_r"></bone>
+			<bone name="prop_backblast_r"></bone>
+			<bone name="prop_projectile"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Heli_01" target="heli_01">
+		<identifier>
+			<root>heli_01_root</root>
+		</identifier>
+		<bone name="heli_01_root"><target>heli_01_root</target>
+			<bone name="rotor_01"><target>rotor_01</target></bone>
+			<bone name="rotor_02"><target>rotor_02</target></bone>
+			<bone name="prop_w_01"><target>prop_w_01</target></bone>
+			<bone name="prop_w_02"><target>prop_w_02</target></bone>
+			<bone name="prop_weapons_01"><target>prop_weapons_01</target></bone>
+			<bone name="prop_weapons_01_001"><target>prop_weapons_01_001</target></bone>
+			<bone name="prop_rocket_l"><target>prop_rocket_l</target></bone>
+			<bone name="prop_backblast_l"><target>prop_backblast_l</target></bone>
+			<bone name="prop_rocket_r"><target>prop_rocket_r</target></bone>
+			<bone name="prop_backblast_r"><target>prop_backblast_r</target></bone>
+			<bone name="prop_projectile"><target>prop_projectile</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

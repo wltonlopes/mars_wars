@@ -1,5 +1,6 @@
 /**
- * Som de motor dos veículos: enquanto o veículo anda, toca trechos curtos de
+ * Som de motor dos veículos (e de rotor das aeronaves, enquanto estão no
+ * ar): enquanto o veículo anda, toca trechos curtos de
  * motor (que se sobrepõem um pouco, soando contínuos), posicionados no
  * veículo.
  */
@@ -52,7 +53,11 @@ VehicleSound.prototype.Tick = function()
 {
 	const cmpUnitMotion = Engine.QueryInterface(this.entity, IID_UnitMotion);
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
-	if (!cmpUnitMotion || !cmpPosition || !cmpPosition.IsInWorld() || !cmpUnitMotion.IsMoveRequested())
+	if (!cmpPosition || !cmpPosition.IsInWorld())
+		return;
+	// Aeronaves (UnitMotionFlying, sem UnitMotion): soam enquanto estão no ar.
+	if (!cmpUnitMotion ? !Engine.QueryInterface(this.entity, IID_UnitMotionFlying) || cmpPosition.GetHeightOffset() < 1 :
+		!cmpUnitMotion.IsMoveRequested())
 		return;
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_SoundManager)?.PlaySoundGroup(this.template.MoveSound, this.entity);
 };

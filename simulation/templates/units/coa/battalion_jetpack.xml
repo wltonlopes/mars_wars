@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Esquadrão de jetpack da Coalizão: líder + 4 soldados de jetpack
+     (units/coa/jetpack_trooper). Fase 2. Custa Requisição (tropa de elite). -->
+<Entity parent="battalion_profile_assault|units/coa/jetpack_trooper">
+  <BattalionLeader>
+    <MemberTemplates>units/coa/battalion_member_jetpack:4</MemberTemplates>
+    <MemberRoles>units/coa/battalion_member_jetpack:4:front</MemberRoles>
+  </BattalionLeader>
+  <Trainer>
+    <Entities datatype="tokens" replace="">units/coa/battalion_member_jetpack</Entities>
+  </Trainer>
+  <Identity>
+    <GenericName>Coalition Jump Squad</GenericName>
+    <SelectionGroupName/>
+    <Icon>units/squad_assalt.png</Icon>
+    <Requirements>
+      <Techs datatype="tokens" replace="">phase_town</Techs>
+    </Requirements>
+  </Identity>
+  <Cost>
+    <BuildTime>40</BuildTime>
+    <Resources>
+      <food>120</food>
+      <metal>160</metal>
+      <stone>0</stone>
+      <wood>80</wood>
+      <requisition>60</requisition>
+    </Resources>
+  </Cost>
+</Entity>

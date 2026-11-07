@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Granada de mão (vinda do Modern Wars; simulation/components/HandGrenade.js):
+     a infantaria de fuzil de linha carrega uma. O soldado continua atirando;
+     quando o alvo (unidade ou estrutura) fica entre MinRange e MaxRange, o
+     disparo seguinte é o arremesso. Contra estruturas ele se aproxima até o
+     alcance da granada. Volta em 2 minutos em qualquer lugar, ou em 5 s perto
+     de um Centro Cívico ou Quartel próprio. -->
+<Entity>
+  <Attack>
+    <Grenade>
+      <AttackName>Granada de mão</AttackName>
+      <Damage>
+        <Hack>20</Hack>
+        <Crush>60</Crush>
+      </Damage>
+      <MaxRange>28</MaxRange>
+      <MinRange>12</MinRange>
+      <RepeatTime>1200</RepeatTime>
+      <Projectile>
+        <Speed>22</Speed>
+        <Spread>3</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="2.5"/>
+        <ActorName>props/units/weapons/frag_grenade.xml</ActorName>
+        <ImpactActorName>props/units/explosions/large_explosion.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.2</ImpactAnimationLifetime>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>8</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Hack>10</Hack>
+          <Crush>30</Crush>
+        </Damage>
+        <Knockback>
+          <Distance>3</Distance>
+          <Chance>100</Chance>
+        </Knockback>
+      </Splash>
+    </Grenade>
+  </Attack>
+  <HandGrenade>
+    <Count>1</Count>
+    <RechargeTime>120000</RechargeTime>
+    <Resupply>
+      <Range>40</Range>
+      <Time>5000</Time>
+      <Classes>CivCentre Barracks</Classes>
+    </Resupply>
+  </HandGrenade>
+</Entity>

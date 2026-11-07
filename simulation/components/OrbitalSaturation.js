@@ -46,6 +46,11 @@ OrbitalSaturation.prototype.Schema =
 			"<optional>" +
 				"<element name='ScorchTime' a:help='Seconds.'><ref name='positiveDecimal'/></element>" +
 			"</optional>" +
+			"<optional>" +
+				"<element name='DestroyGaia' a:help='Modern Wars: the blast also removes trees, bushes, rocks and mines (Gaia without Health) within Radius.'>" +
+					"<data type='boolean'/>" +
+				"</element>" +
+			"</optional>" +
 		"</interleave>" +
 	"</element>";
 
@@ -139,6 +144,7 @@ OrbitalSaturation.prototype.FireShell = function()
 		"attacker": this.provider,
 		"attackerOwner": Engine.QueryInterface(this.entity, IID_Ownership).GetOwner(),
 		"radius": +shell.Radius,
+		"destroyGaia": shell.DestroyGaia == "true",
 		"friendlyFire": shell.FriendlyFire == "true",
 		"impactSound": shell.ImpactSound || "",
 		"impactEffects": shell.ScorchActor ? [{ "actor": shell.ScorchActor, "delay": 0, "lifetime": +(shell.ScorchTime || 20) }] : []

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bio-Dragão do Enxame: brasas douradas que sobem do fogo e caem. -->
+<particles>
+    <texture>art/textures/particles/sparks.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="25.0"/>
+    <uniform name="lifetime" min="0.8" max="1.6"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-1.5" max="1.5"/>
+    <uniform name="velocity.y" min="1.5" max="3.5"/>
+    <uniform name="velocity.z" min="-1.5" max="1.5"/>
+    <uniform name="velocity.angle" min="-3.0" max="3.0"/>
+
+    <uniform name="size" min="0.08" max="0.16"/>
+
+    <uniform name="color.r" min="1.0" max="1.0"/>
+    <uniform name="color.g" min="0.75" max="0.9"/>
+    <uniform name="color.b" min="0.25" max="0.4"/>
+
+    <force y="-1.2"/>
+</particles>

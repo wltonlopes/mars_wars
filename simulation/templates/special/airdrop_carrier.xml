@@ -10,6 +10,12 @@
     <FlightAltitude>90</FlightAltitude>
     <CargoTemplate>special/supply_drop</CargoTemplate>
   </AirDropCarrier>
+  <!-- Aguenta 2 acertos da defesa aérea e solta flares (AirEvasion, do Modern Wars). -->
+  <AirEvasion>
+    <Hits>2</Hits>
+    <Flares>2</Flares>
+    <FlareChance>0.35</FlareChance>
+  </AirEvasion>
   <Identity>
     <Civ>coa</Civ>
     <GenericName>Transport Aircraft</GenericName>

@@ -6,7 +6,7 @@
     <GenericName>Hive</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/civic_center.xml</Actor>
+    <Actor>structures/swarm/cc.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

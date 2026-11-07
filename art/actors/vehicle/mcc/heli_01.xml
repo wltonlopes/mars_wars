@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+	<castshadow/>
+  <group>
+    <variant frequency="3" name="aeroport_01">
+      <!-- rotores: gen_heli.py -->
+      <mesh>vehicle/heli_01_rigged.dae</mesh>
+      <animations>
+      	<!-- Idle: os rotores giram sempre no mesmo ritmo; andando, o
+      	     jogo usa a mesma animação. -->
+      	<animation file="vehicle/heli_01/idle.dae" name="Idle" speed="100"/>
+      	<!-- Disparo: o foguete sai em event (fração da animação) e outro
+      	     aparece no casulo em load. -->
+      	<animation event="0.1" load="0.7" file="vehicle/heli_01/attack.dae" name="attack_ranged" speed="100"/>
+      </animations>
+      <props>
+      	<!-- Foguete pronto no casulo direito (ponto de onde ele sai). -->
+      	<prop actor="props/units/weapons/rocket_shoot.xml" attachpoint="projectile"/>
+      </props>
+      <textures>
+				<texture file="vehicle/heli_02.png" name="baseTex"/>
+				<texture file="vehicle/heli_01_spec.png" name="specTex"/>
+				<texture file="vehicle/heli_01_norm.png" name="normTex"/>
+      </textures>
+    </variant>
+  </group>
+  <!-- disparo: gen_heli.py -->
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant name="attack_ranged">
+      <props>
+        <prop actor="particle/heli_rocket_flash.xml" attachpoint="rocket_l"/>
+        <prop actor="particle/heli_rocket_flash.xml" attachpoint="rocket_r"/>
+        <prop actor="particle/heli_rocket_smoke.xml" attachpoint="rocket_l"/>
+        <prop actor="particle/heli_rocket_smoke.xml" attachpoint="rocket_r"/>
+        <prop actor="particle/heli_rocket_backblast.xml" attachpoint="backblast_l"/>
+        <prop actor="particle/heli_rocket_backblast.xml" attachpoint="backblast_r"/>
+      </props>
+    </variant>
+  </group>
+  <material>basic_trans_norm_spec.xml</material>
+</actor>

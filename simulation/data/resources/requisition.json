@@ -1,0 +1,16 @@
+{
+	"code": "requisition",
+	"name": "Requisition",
+	"description": "Earned by holding control points on the map, slowly from the Civic Centre, and from the loot of destroyed enemy units. Pays for elite units, military support structures and support powers.",
+	"order": 5,
+	"subtypes": {
+		"supplies": "Supplies"
+	},
+	"properties": [
+		"barterable",
+		"tradable",
+		"tributable"
+	],
+	"truePrice": 150,
+	"aiAnalysisInfluenceGroup": "sparse"
+}

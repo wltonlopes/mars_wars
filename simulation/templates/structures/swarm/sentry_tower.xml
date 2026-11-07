@@ -6,6 +6,6 @@
     <GenericName>Spine Tower</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/auto_defense_tower.xml</Actor>
+    <Actor>structures/swarm_hive/defense_spire.xml</Actor>
   </VisualActor>
 </Entity>

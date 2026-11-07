@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fortaleza do Enxame (modelo: tools/imported/import_structures.py).
+     Fortaleza do 0 A.D. (fase cidade, guarnição com disparos) que treina a elite (abominação, behemoth, profeta). -->
+<Entity parent="template_structure_military_fortress">
+  <Footprint replace="">
+    <Square width="33.0" depth="37.0"/>
+    <Height>23.5</Height>
+  </Footprint>
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Brood Citadel</GenericName>
+    <SpecificName>Throne of the Swarm</SpecificName>
+  </Identity>
+  <Obstruction>
+    <Static width="32.0" depth="36.0"/>
+  </Obstruction>
+  <Trainer>
+    <Entities datatype="tokens" replace="">
+      units/{civ}/abomination
+      units/{civ}/behemoth
+      units/{civ}/prophet
+    </Entities>
+  </Trainer>
+  <VisualActor>
+    <Actor>structures/swarm/fortress.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_9x10.xml</FoundationActor>
+  </VisualActor>
+</Entity>

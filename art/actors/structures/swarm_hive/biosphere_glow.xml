@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Partes acesas de biosphere (gen_swarm_structures.py): material de brilho com
+     specTex de alfa 0, para a cor não sofrer sombreamento. -->
+<actor version="1">
+  <group>
+    <variant name="Base">
+      <mesh>structural/swarm_hive/biosphere_glow.dae</mesh>
+      <textures>
+        <texture file="structural/swarm_hive_glow.png" name="baseTex"/>
+        <texture file="default_norm.png" name="normTex"/>
+        <texture file="structural/swarm_hive_glow_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <material>basic_glow_norm_spec.xml</material>
+</actor>

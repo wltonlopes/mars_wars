@@ -5,13 +5,23 @@
     <Civ>coa</Civ>
     <GenericName>Garrison</GenericName>
   </Identity>
+  <!-- Modelo de tools/imported/import_structures.py: área do modelo. -->
+  <Footprint replace="">
+    <Square width="31.0" depth="27.5"/>
+    <Height>18.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="30.0" depth="26.5"/>
+  </Obstruction>
   <VisualActor>
-    <Actor>structures/coa/bunker.xml</Actor>
+    <Actor>structures/coa/barracks_garrison.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_8x7.xml</FoundationActor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/battalion_rifle
       units/{civ}/battalion_rangers
+      units/{civ}/battalion_jetpack
       units/{civ}/officer
     </Entities>
   </Trainer>

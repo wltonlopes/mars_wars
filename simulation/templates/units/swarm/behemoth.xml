@@ -3,18 +3,18 @@
 <Entity parent="units/mla/grenadier">
   <Identity>
     <Civ>swarm</Civ>
-    <GenericName>Acid Behemoth</GenericName>
+    <GenericName>Bio-Dragon</GenericName>
     <Icon>units/swarm_drone_kamikaze.png</Icon>
-    <Tooltip>Tank-sized monster that spits great amounts of acid.</Tooltip>
+    <Tooltip>Bio-weapon bred in the hive: a tank-sized dragon that spits purple-and-gold fire from afar and tears apart with claws and jaws anything that gets too close.</Tooltip>
     <Classes datatype="tokens">Creature Organic</Classes>
     <VisibleClasses datatype="tokens">Creature</VisibleClasses>
   </Identity>
   <VisualActor>
-    <Actor>fauna/swarm/elephant_african_bush.xml</Actor>
+    <Actor>units/swarm/bio_dragon.xml</Actor>
   </VisualActor>
   <Attack>
     <Ranged>
-      <AttackName>Acid</AttackName>
+      <AttackName>Dragonfire</AttackName>
       <Damage>
         <Fire>40</Fire>
         <Crush>20</Crush>
@@ -27,10 +27,35 @@
         </Damage>
         <Range>14</Range>
       </Splash>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/dragon_fireball.xml</ActorName>
+        <ImpactActorName>props/units/explosions/dragon_fire_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <Gravity>4.0</Gravity>
+        <Speed>30.0</Speed>
+      </Projectile>
     </Ranged>
     <RangedSecondary disable=""/>
+    <Melee>
+      <AttackName>Claws and Jaws</AttackName>
+      <Damage>
+        <Hack>45</Hack>
+        <Pierce>0</Pierce>
+        <Crush>25</Crush>
+      </Damage>
+      <MaxRange>7</MaxRange>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>2000</RepeatTime>
+    </Melee>
   </Attack>
-  <Ammo disable=""/>
+  <Ammo>
+    <CurrAmmo>10</CurrAmmo>
+    <MaxAmmo>10</MaxAmmo>
+    <SwitchToMeleeRange>12</SwitchToMeleeRange>
+    <Reload>
+      <Time>30000</Time>
+    </Reload>
+  </Ammo>
   <Health>
     <Max>1400</Max>
   </Health>

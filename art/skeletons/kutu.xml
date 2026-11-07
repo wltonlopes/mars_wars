@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kutu com rodas animadas (art/meshes/vehicle/kutu_rigged.dae), gerado por
+     tools/animation/gen_wheels.py. -->
+<skeletons>
+	<standard_skeleton title="Kutu" id="kutu">
+		<bone name="kutu_root">
+			<bone name="wheel_01"></bone>
+			<bone name="wheel_02"></bone>
+			<bone name="prop_w_01"></bone>
+			<bone name="prop_w_02"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Kutu" target="kutu">
+		<identifier>
+			<root>kutu_root</root>
+		</identifier>
+		<bone name="kutu_root"><target>kutu_root</target>
+			<bone name="wheel_01"><target>wheel_01</target></bone>
+			<bone name="wheel_02"><target>wheel_02</target></bone>
+			<bone name="prop_w_01"><target>prop_w_01</target></bone>
+			<bone name="prop_w_02"><target>prop_w_02</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

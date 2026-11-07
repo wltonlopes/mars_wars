@@ -5,8 +5,17 @@
     <Civ>ares</Civ>
     <GenericName>War Hall</GenericName>
   </Identity>
+  <!-- Modelo de tools/imported/import_structures.py: área do modelo. -->
+  <Footprint replace="">
+    <Square width="23.0" depth="31.0"/>
+    <Height>17.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="22.0" depth="30.0"/>
+  </Obstruction>
   <VisualActor>
-    <Actor>structures/ares/bunker.xml</Actor>
+    <Actor>structures/ares/barracks_war_hall.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_6x8.xml</FoundationActor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

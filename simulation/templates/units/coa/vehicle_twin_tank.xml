@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tanque de dois canhões da Coalizão (futuristic tank, pintura da Coalizão). Tropa de elite: custa Requisição.
+     Modelo e textura: tools/imported/import_exo_models.py (refs/exo). -->
+<Entity parent="template_unit_vehicle_landvehicle">
+  <Attack>
+    <Capture disable=""/>
+    <Ranged>
+      <AttackName>Twin Cannons 120mm</AttackName>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>50</Pierce>
+        <Crush>120</Crush>
+      </Damage>
+      <MaxRange>90</MaxRange>
+      <MinRange>6</MinRange>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>4000</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_cannon.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>1.2</ImpactAnimationLifetime>
+        <Speed>220</Speed>
+        <Spread>1.0</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="3"/>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>6</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>14</Pierce>
+          <Crush>40</Crush>
+        </Damage>
+      </Splash>
+      <PreferredClasses datatype="tokens">Vehicle Structure</PreferredClasses>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>60</BuildTime>
+    <Population>5</Population>
+    <Resources>
+      <food>0</food>
+      <metal>340</metal>
+      <stone>300</stone>
+      <wood>180</wood>
+      <requisition>80</requisition>
+    </Resources>
+  </Cost>
+  <Footprint replace="">
+    <Square width="9.0" depth="16.0"/>
+    <Height>6.0</Height>
+    <MaxSpawnDistance>12</MaxSpawnDistance>
+  </Footprint>
+  <!-- Não leva tropas. -->
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>1700</Max>
+  </Health>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Coalition Twin-Cannon Tank</GenericName>
+    <SpecificName>Twin-Cannon Tank</SpecificName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Heavy tank with twin cannons. Slow, very tough, devastating against vehicles and structures.</Tooltip>
+    <Requirements>
+      <Techs datatype="tokens" replace="">phase_town</Techs>
+    </Requirements>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>18</Hack>
+        <Pierce>35</Pierce>
+        <Crush>12</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <Sound>
+    <SoundGroups>
+      <walk>actor/vehicle/engine_tracked.xml</walk>
+      <run>actor/vehicle/engine_tracked.xml</run>
+    </SoundGroups>
+  </Sound>
+  <TrackMarks>
+    <Template>special/tracks/track_tracked</Template>
+    <Offset>3.6</Offset>
+    <Spacing>2.6</Spacing>
+    <Lifetime>10</Lifetime>
+  </TrackMarks>
+  <UnitMotion>
+    <WalkSpeed>7.0</WalkSpeed>
+  </UnitMotion>
+  <VehicleSeparation>
+    <Radius>5.5</Radius>
+  </VehicleSeparation>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_tracked.xml</MoveSound>
+    <Interval>1450</Interval>
+  </VehicleSound>
+  <VisualActor>
+    <Actor>vehicle/coa/futuristic_tank.xml</Actor>
+  </VisualActor>
+</Entity>

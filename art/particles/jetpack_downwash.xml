@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jetpack: poeira marciana levantada no chão pelo jato, debaixo do soldado em
+     voo. O emissor fica na raiz da unidade, que voa a 6 m (JetPack
+     FlightHeight): a poeira nasce 6 m abaixo, no chão, e se espalha em anel. -->
+<particles>
+    <texture>art/textures/particles/dust_256a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="14.0"/>
+    <uniform name="lifetime" min="0.8" max="1.4"/>
+
+    <uniform name="position.x" min="-0.4" max="0.4"/>
+    <uniform name="position.y" min="-6.0" max="-5.8"/>
+    <uniform name="position.z" min="-0.4" max="0.4"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="velocity.x" min="-3.5" max="3.5"/>
+    <uniform name="velocity.y" min="0.2" max="1.0"/>
+    <uniform name="velocity.z" min="-3.5" max="3.5"/>
+    <uniform name="velocity.angle" min="-0.6" max="0.6"/>
+
+    <uniform name="size" min="0.7" max="1.1"/>
+    <constant name="size.growthRate" value="1.6"/>
+
+    <uniform name="color.r" min="0.6" max="0.7"/>
+    <uniform name="color.g" min="0.4" max="0.47"/>
+    <uniform name="color.b" min="0.28" max="0.34"/>
+</particles>

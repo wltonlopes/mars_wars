@@ -22,6 +22,8 @@
       structures/{civ}/stable
       structures/{civ}/storehouse
       structures/{civ}/field
+      structures/{civ}/reactor
+      structures/{civ}/fortress
     </Entities>
   </Builder>
   <Cost>

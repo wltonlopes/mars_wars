@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XV8 Crisis (tools/imported/import_xv8.py) -->
+<skeletons>
+	<standard_skeleton title="XV8" id="xv8">
+		<bone name="pelvis">
+			<bone name="spine">
+				<bone name="neck">
+					<bone name="head"></bone>
+				</bone>
+				<bone name="clavicle_r">
+					<bone name="shoulder_r">
+						<bone name="upperarm_r">
+							<bone name="forearm_r">
+								<bone name="prop_muzzle_r"></bone>
+								<bone name="prop_projectile"></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="clavicle_l">
+					<bone name="shoulder_l">
+						<bone name="upperarm_l">
+							<bone name="forearm_l">
+								<bone name="prop_muzzle_l"></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="prop_jet"></bone>
+			</bone>
+			<bone name="hip_r">
+				<bone name="thigh_r">
+					<bone name="shin_r">
+						<bone name="foot_r"></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="hip_l">
+				<bone name="thigh_l">
+					<bone name="shin_l">
+						<bone name="foot_l"></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="XV8" target="xv8">
+		<identifier>
+			<root>pelvis</root>
+		</identifier>
+		<bone name="pelvis"><target>pelvis</target>
+			<bone name="spine"><target>spine</target>
+				<bone name="neck"><target>neck</target>
+					<bone name="head"><target>head</target></bone>
+				</bone>
+				<bone name="clavicle_r"><target>clavicle_r</target>
+					<bone name="shoulder_r"><target>shoulder_r</target>
+						<bone name="upperarm_r"><target>upperarm_r</target>
+							<bone name="forearm_r"><target>forearm_r</target>
+								<bone name="prop_muzzle_r"><target>prop_muzzle_r</target></bone>
+								<bone name="prop_projectile"><target>prop_projectile</target></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="clavicle_l"><target>clavicle_l</target>
+					<bone name="shoulder_l"><target>shoulder_l</target>
+						<bone name="upperarm_l"><target>upperarm_l</target>
+							<bone name="forearm_l"><target>forearm_l</target>
+								<bone name="prop_muzzle_l"><target>prop_muzzle_l</target></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="prop_jet"><target>prop_jet</target></bone>
+			</bone>
+			<bone name="hip_r"><target>hip_r</target>
+				<bone name="thigh_r"><target>thigh_r</target>
+					<bone name="shin_r"><target>shin_r</target>
+						<bone name="foot_r"><target>foot_r</target></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="hip_l"><target>hip_l</target>
+				<bone name="thigh_l"><target>thigh_l</target>
+					<bone name="shin_l"><target>shin_l</target>
+						<bone name="foot_l"><target>foot_l</target></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

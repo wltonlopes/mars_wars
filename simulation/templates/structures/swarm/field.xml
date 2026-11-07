@@ -6,6 +6,6 @@
     <GenericName>Biomass Bed</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/greenhouse.xml</Actor>
+    <Actor>structures/swarm_hive/infestation_node.xml</Actor>
   </VisualActor>
 </Entity>

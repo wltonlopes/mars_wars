@@ -5,8 +5,17 @@
     <Civ>coa</Civ>
     <GenericName>Research Centre</GenericName>
   </Identity>
+  <!-- Modelo de tools/imported/import_structures.py: área do modelo. -->
+  <Footprint replace="">
+    <Square width="29.5" depth="31.0"/>
+    <Height>20.0</Height>
+  </Footprint>
+  <Obstruction>
+    <Static width="28.5" depth="30.0"/>
+  </Obstruction>
   <VisualActor>
-    <Actor>structures/coa/lab.xml</Actor>
+    <Actor>structures/coa/lab_space.xml</Actor>
+    <FoundationActor>structures/mars/fndn_mars_8x8.xml</FoundationActor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">

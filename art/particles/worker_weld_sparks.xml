@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Faíscas de solda/martelada na ponta da garra. (gen_worker.py) -->
+<particles>
+    <texture>art/textures/particles/sparks.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="60.0"/>
+    <uniform name="lifetime" min="0.25" max="0.6"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-3.0" max="3.0"/>
+    <uniform name="velocity.y" min="0.5" max="4.0"/>
+    <uniform name="velocity.z" min="-3.0" max="3.0"/>
+    <uniform name="size" min="0.12" max="0.25"/>
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.75" max="0.95"/>
+    <uniform name="color.b" min="0.35" max="0.6"/>
+    <force y="-9.0"/>
+</particles>

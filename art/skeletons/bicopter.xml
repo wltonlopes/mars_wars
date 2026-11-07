@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BiCopter (tools/imported/import_bicopter.py) -->
+<skeletons>
+	<standard_skeleton title="BiCopter" id="bicopter">
+		<bone name="bicopter_root">
+			<bone name="body">
+				<bone name="rotor_l">
+					<bone name="prop_rotor_l"></bone>
+				</bone>
+				<bone name="rotor_r">
+					<bone name="prop_rotor_r"></bone>
+				</bone>
+				<bone name="prop_projectile"></bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="BiCopter" target="bicopter">
+		<identifier>
+			<root>bicopter_root</root>
+		</identifier>
+		<bone name="bicopter_root"><target>bicopter_root</target>
+			<bone name="body"><target>body</target>
+				<bone name="rotor_l"><target>rotor_l</target>
+					<bone name="prop_rotor_l"><target>prop_rotor_l</target></bone>
+				</bone>
+				<bone name="rotor_r"><target>rotor_r</target>
+					<bone name="prop_rotor_r"><target>prop_rotor_r</target></bone>
+				</bone>
+				<bone name="prop_projectile"><target>prop_projectile</target></bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

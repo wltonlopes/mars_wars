@@ -6,12 +6,13 @@
     <GenericName>Incubator</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/stable.xml</Actor>
+    <Actor>structures/swarm/vehicle_garage.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/scout
       units/{civ}/stalker
+      units/{civ}/roach
       units/{civ}/spitter
       units/{civ}/brute
       units/{civ}/synapse

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mech5 (tools/imported/import_mech5.py) -->
+<skeletons>
+	<standard_skeleton title="Mech5" id="mech5">
+		<bone name="Root">
+			<bone name="Hip">
+				<bone name="Torso">
+					<bone name="Weapon_R">
+						<bone name="prop_muzzle_r"></bone>
+						<bone name="prop_projectile"></bone>
+					</bone>
+					<bone name="Weapon_L">
+						<bone name="prop_muzzle_l"></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="Hip2_L">
+				<bone name="Upleg_L">
+					<bone name="Lowleg_L">
+						<bone name="Foot_L"></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="Hip2_R">
+				<bone name="Upleg_R">
+					<bone name="Lowleg_R">
+						<bone name="Foot_R"></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="prop_root"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Mech5" target="mech5">
+		<identifier>
+			<root>Root</root>
+		</identifier>
+		<bone name="Root"><target>Root</target>
+			<bone name="Hip"><target>Hip</target>
+				<bone name="Torso"><target>Torso</target>
+					<bone name="Weapon_R"><target>Weapon_R</target>
+						<bone name="prop_muzzle_r"><target>prop_muzzle_r</target></bone>
+						<bone name="prop_projectile"><target>prop_projectile</target></bone>
+					</bone>
+					<bone name="Weapon_L"><target>Weapon_L</target>
+						<bone name="prop_muzzle_l"><target>prop_muzzle_l</target></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="Hip2_L"><target>Hip2_L</target>
+				<bone name="Upleg_L"><target>Upleg_L</target>
+					<bone name="Lowleg_L"><target>Lowleg_L</target>
+						<bone name="Foot_L"><target>Foot_L</target></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="Hip2_R"><target>Hip2_R</target>
+				<bone name="Upleg_R"><target>Upleg_R</target>
+					<bone name="Lowleg_R"><target>Lowleg_R</target>
+						<bone name="Foot_R"><target>Foot_R</target></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="prop_root"><target>prop_root</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

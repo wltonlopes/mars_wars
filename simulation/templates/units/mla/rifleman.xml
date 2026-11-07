@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Entity parent="ranged_combat|rifle_Infantry|template_unit_champion_infantry_archer">
+<Entity parent="hand_grenade|ranged_combat|rifle_Infantry|template_unit_champion_infantry_archer">
   <Identity>
     <Civ>mla</Civ>
     <GenericName>Commandos Ceberus</GenericName>

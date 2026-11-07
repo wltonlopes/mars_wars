@@ -32,6 +32,14 @@
         <Icon>gaia/special_obelisk.png</Icon>
     </Identity>
 
+    <!-- Requisição: cada ponto de controle rende 1 por segundo a quem o tem. -->
+    <ResourceTrickle>
+        <Rates>
+            <requisition>1.0</requisition>
+        </Rates>
+        <Interval>1000</Interval>
+    </ResourceTrickle>
+
     <ControlPoint>
         <Weight>1</Weight>
         <Region>Unknown</Region>

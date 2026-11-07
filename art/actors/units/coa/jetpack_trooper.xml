@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soldado de jetpack da Coalizão: o fuzileiro com o jetpack no lugar da
+     mochila. Em voo (JetPack.js, seleção "flying") fica de pé, parado no ar:
+     "Walk"/"Run"/"Idle" e o tiro trocam pelos do soldado em pé, para não
+     "andar" no ar; as chamas ficam no actor do jetpack. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant file="biped/assault_rifle/crouched_1.xml">
+      <mesh>skeletal/new/m_space_suite_armor_03.dae</mesh>
+      <props>
+        <prop actor="props/units/helmets/coa/mcc_helmet_01.xml" attachpoint="helmet"/>
+        <prop actor="props/units/armor/coa/jetpack.xml" attachpoint="back"/>
+        <prop actor="props/units/weapons/rifle_auto.xml" attachpoint="weapon_R"/>
+        <prop actor="props/units/armor/coa/pauldron_R_02.xml" attachpoint="shoulderpad_R"/>
+        <prop actor="props/units/armor/coa/pauldron_L_02.xml" attachpoint="shoulderpad_L"/>
+      </props>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="tunic_01_01">
+      <textures>
+        <texture file="skeletal/coa/suit_01_01.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant frequency="1" name="tunic_01_02">
+      <textures>
+        <texture file="skeletal/coa/suit_01_02.png" name="baseTex"/>
+      </textures>
+    </variant>
+    <variant frequency="1" name="tunic_01_03">
+      <textures>
+        <texture file="skeletal/coa/suit_01_03.png" name="baseTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant file="biped/assault_rifle/ready_1.xml" name="ready"/>
+      <variant file="biped/assault_rifle/attack_melee_rifleman.xml">
+      <props>
+        <prop actor="props/units/weapons/xiphos.xml" attachpoint="weapon_R"/>
+      </props>
+    </variant>
+    <variant file="biped/attack_capture.xml"/>
+    <variant file="biped/build.xml"/>
+    <variant file="biped/build_farm.xml"/>
+    <variant file="biped/death_infantry.xml"/>
+    <variant file="biped/jump_infantry.xml"/>
+  </group>
+  <group>
+    <variant frequency="1" name="ground"/>
+    <variant frequency="0" name="flying">
+      <animations>
+        <animation file="biped/assault_rifle/ready/idle_1.dae" name="Idle" speed="30"/>
+        <animation file="biped/assault_rifle/ready/idle_1.dae" name="Walk" speed="30"/>
+        <animation file="biped/assault_rifle/ready/idle_1.dae" name="Run" speed="30"/>
+        <animation event="0.35" file="biped/assault_rifle/shooting/stand_1.dae" load="0.75" name="attack_ranged" speed="200"/>
+      </animations>
+      <props>
+        <!-- Poeira levantada no chão, 6 m abaixo, pelo jato. -->
+        <prop actor="particle/jetpack_downwash.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <!-- Decolagem e pouso (JetPack: seleções "jet_takeoff"/"jet_landing", só
+       perto do chão): rajada de poeira em anel. -->
+  <group>
+    <variant frequency="1" name="jet_steady"/>
+    <variant frequency="0" name="jet_takeoff">
+      <props>
+        <prop actor="particle/jetpack_burst_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+    <variant frequency="0" name="jet_landing">
+      <props>
+        <prop actor="particle/jetpack_burst_dust.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>player_trans.xml</material>
+</actor>

@@ -6,6 +6,6 @@
     <GenericName>Biomass Vat</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/swarm/greenhouse.xml</Actor>
+    <Actor>structures/swarm_hive/biosphere.xml</Actor>
   </VisualActor>
 </Entity>

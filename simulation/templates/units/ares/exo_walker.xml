@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Exo Walker da Legião de Ares: exorobô pesado pilotado, com um canhão
+     automático em cada braço. Lento e muito resistente; esmaga a infantaria
+     no caminho (Trample, do veículo terrestre). Modelo e animações:
+     tools/imported/import_ares_exo.py. -->
+<Entity parent="template_unit_vehicle_landvehicle">
+  <Attack>
+    <Ranged>
+      <AttackName>Twin arm autocannons</AttackName>
+      <Damage>
+        <Hack>0</Hack>
+        <Pierce>32</Pierce>
+        <Crush>18</Crush>
+      </Damage>
+      <MaxRange>70</MaxRange>
+      <MinRange>0</MinRange>
+      <PrepareTime>1000</PrepareTime>
+      <RepeatTime>2500</RepeatTime>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/tracer_heavy.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/heavy_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <Speed>320</Speed>
+        <Spread>1.5</Spread>
+        <Gravity>9.81</Gravity>
+        <FriendlyFire>false</FriendlyFire>
+        <LaunchPoint y="3"/>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>3</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>8</Pierce>
+          <Crush>10</Crush>
+        </Damage>
+      </Splash>
+      <PreferredClasses datatype="tokens">Human Vehicle</PreferredClasses>
+    </Ranged>
+  </Attack>
+  <Cost>
+    <BuildTime>50</BuildTime>
+    <Population>4</Population>
+    <Resources>
+      <food>0</food>
+      <metal>300</metal>
+      <stone>250</stone>
+      <wood>150</wood>
+      <requisition>80</requisition>
+    </Resources>
+  </Cost>
+  <Footprint replace="">
+    <Square width="6.5" depth="6.5"/>
+    <Height>8.5</Height>
+    <MaxSpawnDistance>10</MaxSpawnDistance>
+  </Footprint>
+  <!-- Não leva tropas. -->
+  <GarrisonHolder disable=""/>
+  <Health>
+    <Max>1400</Max>
+  </Health>
+  <Identity>
+    <Civ>ares</Civ>
+    <GenericName>Ares Exo Walker</GenericName>
+    <SpecificName>Heavy Exo-Robot</SpecificName>
+    <Icon>units/armored.png</Icon>
+    <Tooltip>Piloted heavy exo-robot with an autocannon on each arm. Slow and very tough; crushes infantry in its path.</Tooltip>
+    <Requirements>
+      <Techs datatype="tokens" replace="">phase_town</Techs>
+    </Requirements>
+  </Identity>
+  <Resistance>
+    <Entity>
+      <Damage>
+        <Hack>20</Hack>
+        <Pierce>30</Pierce>
+        <Crush>12</Crush>
+      </Damage>
+    </Entity>
+  </Resistance>
+  <UnitMotion>
+    <WalkSpeed>7</WalkSpeed>
+  </UnitMotion>
+  <VehicleSeparation>
+    <Radius>4.5</Radius>
+  </VehicleSeparation>
+  <VehicleSound>
+    <MoveSound>actor/vehicle/engine_tracked.xml</MoveSound>
+    <Interval>1450</Interval>
+  </VehicleSound>
+  <Vision>
+    <Range>80</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>units/ares/exo_walker.xml</Actor>
+  </VisualActor>
+</Entity>

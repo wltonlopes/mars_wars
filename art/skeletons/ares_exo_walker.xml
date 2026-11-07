@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Exo Walker da Ares (tools/imported/import_ares_exo.py) -->
+<skeletons>
+	<standard_skeleton title="Ares Exo Walker" id="ares_exo_walker">
+		<bone name="exo_root">
+			<bone name="exo_pelvis">
+				<bone name="exo_torso">
+					<bone name="exo_upperarm_l">
+						<bone name="exo_forearm_l">
+							<bone name="prop_muzzle_l"></bone>
+						</bone>
+					</bone>
+					<bone name="exo_upperarm_r">
+						<bone name="exo_forearm_r">
+							<bone name="prop_muzzle_r"></bone>
+							<bone name="prop_projectile"></bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="exo_thigh_l">
+					<bone name="exo_shin_l">
+						<bone name="exo_foot_l"></bone>
+					</bone>
+				</bone>
+				<bone name="exo_thigh_r">
+					<bone name="exo_shin_r">
+						<bone name="exo_foot_r"></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Ares Exo Walker" target="ares_exo_walker">
+		<identifier>
+			<root>exo_root</root>
+		</identifier>
+		<bone name="exo_root"><target>exo_root</target>
+			<bone name="exo_pelvis"><target>exo_pelvis</target>
+				<bone name="exo_torso"><target>exo_torso</target>
+					<bone name="exo_upperarm_l"><target>exo_upperarm_l</target>
+						<bone name="exo_forearm_l"><target>exo_forearm_l</target>
+							<bone name="prop_muzzle_l"><target>prop_muzzle_l</target></bone>
+						</bone>
+					</bone>
+					<bone name="exo_upperarm_r"><target>exo_upperarm_r</target>
+						<bone name="exo_forearm_r"><target>exo_forearm_r</target>
+							<bone name="prop_muzzle_r"><target>prop_muzzle_r</target></bone>
+							<bone name="prop_projectile"><target>prop_projectile</target></bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="exo_thigh_l"><target>exo_thigh_l</target>
+					<bone name="exo_shin_l"><target>exo_shin_l</target>
+						<bone name="exo_foot_l"><target>exo_foot_l</target></bone>
+					</bone>
+				</bone>
+				<bone name="exo_thigh_r"><target>exo_thigh_r</target>
+					<bone name="exo_shin_r"><target>exo_shin_r</target>
+						<bone name="exo_foot_r"><target>exo_foot_r</target></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

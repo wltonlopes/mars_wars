@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Soldado de jetpack da Coalizão (simulation/components/JetPack.js): voa
+     quando anda ou ataca, mais rápido e enxergando mais longe, mas exposto
+     (3 níveis de armadura a menos); ocioso, pousa e recarrega o combustível.
+     Base: o fuzileiro da Coalizão (fuzil e granada de mão). -->
+<Entity parent="units/coa/soldier">
+  <Identity>
+    <GenericName>Coalition Jump Trooper</GenericName>
+    <SpecificName>Jetpack Infantry</SpecificName>
+    <Icon>units/squad_assalt.png</Icon>
+    <Tooltip>Jetpack infantry. Flies while moving and attacking: faster and sees farther, but exposed (takes about 37% more damage in the air). Lands when idle to save fuel; the thin bar above the health bar is the fuel.</Tooltip>
+  </Identity>
+  <JetPack>
+    <FlightHeight>6</FlightHeight>
+    <ClimbRate>6</ClimbRate>
+    <Fuel>40</Fuel>
+    <Refuel>2</Refuel>
+    <MinTakeOff>0.3</MinTakeOff>
+    <SpeedMultiplier>1.45</SpeedMultiplier>
+    <VisionMultiplier>1.25</VisionMultiplier>
+    <ArmourPenalty>3</ArmourPenalty>
+    <BlockMultiplier>0.5</BlockMultiplier>
+  </JetPack>
+  <VisualActor>
+    <Actor>units/coa/jetpack_trooper.xml</Actor>
+  </VisualActor>
+</Entity>

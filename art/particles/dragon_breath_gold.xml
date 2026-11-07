@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bio-Dragão do Enxame: miolo dourado e quente do fogo na boca. -->
+<particles>
+    <texture>art/textures/particles/dragon_flame.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="45.0"/>
+    <uniform name="lifetime" min="0.2" max="0.4"/>
+
+    <uniform name="angle" min="-0.5" max="0.5"/>
+    <uniform name="velocity.x" min="-0.8" max="0.8"/>
+    <uniform name="velocity.y" min="0.4" max="1.4"/>
+    <uniform name="velocity.z" min="-0.8" max="0.8"/>
+
+    <uniform name="size" min="0.35" max="0.6"/>
+    <constant name="size.growthRate" value="0.6"/>
+
+    <uniform name="color.r" min="0.95" max="1.0"/>
+    <uniform name="color.g" min="0.7" max="0.85"/>
+    <uniform name="color.b" min="0.18" max="0.32"/>
+
+    <force y="1.0"/>
+</particles>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mech5: andador bípede; Walk/Run: um passo duplo = 7.2 m -> speed 14.
+     Malha, esqueleto, animações e texturas: tools/imported/import_mech5.py
+     (modelo de terceiros, ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/mech5.dae</mesh>
+			<animations>
+				<animation file="vehicle/mech5/idle.dae" name="Idle" speed="100"/>
+				<animation file="vehicle/mech5/walk.dae" name="Walk" speed="14"/>
+				<animation file="vehicle/mech5/walk.dae" name="Run" speed="14"/>
+				<animation event="0.08" file="vehicle/mech5/attack.dae" name="attack_ranged" speed="100"/>
+				<animation file="vehicle/mech5/death.dae" name="Death" speed="100"/>
+			</animations>
+			<textures>
+				<texture file="vehicle/mech5.png" name="baseTex"/>
+				<texture file="vehicle/mech5_norm.png" name="normTex"/>
+				<texture file="vehicle/mech5_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+		<variant name="attack_ranged">
+			<props>
+				<prop actor="particle/muzzleflash_1.xml" attachpoint="muzzle_l"/>
+				<prop actor="particle/muzzleflash_1.xml" attachpoint="muzzle_r"/>
+			</props>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+				<prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

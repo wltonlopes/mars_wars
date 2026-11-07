@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="roacharm" id="roacharm">
+    <bone name="MasterBone">
+      <bone name="SpineHigh">
+        <bone name="Shoulder">
+          <bone name="Neck">
+            <bone name="Head" />
+            <bone name="TongeRoot">
+              <bone name="Tongue">
+                <bone name="Tongue2">
+                  <bone name="Tongue3">
+                    <bone name="Tongue4">
+                      <bone name="TongueEnd" />
+                    </bone>
+                  </bone>
+                </bone>
+              </bone>
+            </bone>
+            <bone name="JawRootL">
+              <bone name="JawL" />
+            </bone>
+            <bone name="JawRootR">
+              <bone name="JawR" />
+            </bone>
+            <bone name="JR" />
+            <bone name="JL" />
+            <bone name="TongueEndM" />
+          </bone>
+        </bone>
+        <bone name="ArmRootL">
+          <bone name="ArmL">
+            <bone name="ForearmFrontL">
+              <bone name="ClawFrontL" />
+            </bone>
+          </bone>
+        </bone>
+        <bone name="ArmRootR">
+          <bone name="ArmR">
+            <bone name="ForearmFrontR">
+              <bone name="ClawFrontR" />
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="SpineLow">
+        <bone name="Tail">
+          <bone name="Tail2">
+            <bone name="Tail3">
+              <bone name="TailEnd" />
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="LegRootL">
+        <bone name="LegL">
+          <bone name="ForeLegL">
+            <bone name="ClawBackL" />
+          </bone>
+        </bone>
+      </bone>
+      <bone name="LegRootR">
+        <bone name="LegR">
+          <bone name="ForeLegR">
+            <bone name="ClawBackR" />
+          </bone>
+        </bone>
+      </bone>
+      <bone name="TailEndM" />
+      <bone name="LH.001" />
+    </bone>
+    <bone name="Floor" />
+    <bone name="FloorLH">
+      <bone name="LH">
+        <bone name="ClawFrontLH" />
+      </bone>
+    </bone>
+    <bone name="FloorRH">
+      <bone name="RH">
+        <bone name="ClawFrontRH" />
+      </bone>
+    </bone>
+    <bone name="FloorLL">
+      <bone name="LL">
+        <bone name="ClawBackLL" />
+      </bone>
+    </bone>
+    <bone name="FloorRL">
+      <bone name="RL">
+        <bone name="ClawBackRL" />
+      </bone>
+    </bone>
+    <bone name="roach" />
+  </standard_skeleton>
+  <skeleton title="roacharm" target="roacharm">
+    <identifier>
+      <root>MasterBone</root>
+    </identifier>
+    <bone name="MasterBone">
+      <target>MasterBone</target>
+      <bone name="SpineHigh">
+        <target>SpineHigh</target>
+        <bone name="Shoulder">
+          <target>Shoulder</target>
+          <bone name="Neck">
+            <target>Neck</target>
+            <bone name="Head">
+              <target>Head</target>
+            </bone>
+            <bone name="TongeRoot">
+              <target>TongeRoot</target>
+              <bone name="Tongue">
+                <target>Tongue</target>
+                <bone name="Tongue2">
+                  <target>Tongue2</target>
+                  <bone name="Tongue3">
+                    <target>Tongue3</target>
+                    <bone name="Tongue4">
+                      <target>Tongue4</target>
+                      <bone name="TongueEnd">
+                        <target>TongueEnd</target>
+                      </bone>
+                    </bone>
+                  </bone>
+                </bone>
+              </bone>
+            </bone>
+            <bone name="JawRootL">
+              <target>JawRootL</target>
+              <bone name="JawL">
+                <target>JawL</target>
+              </bone>
+            </bone>
+            <bone name="JawRootR">
+              <target>JawRootR</target>
+              <bone name="JawR">
+                <target>JawR</target>
+              </bone>
+            </bone>
+            <bone name="JR">
+              <target>JR</target>
+            </bone>
+            <bone name="JL">
+              <target>JL</target>
+            </bone>
+            <bone name="TongueEndM">
+              <target>TongueEndM</target>
+            </bone>
+          </bone>
+        </bone>
+        <bone name="ArmRootL">
+          <target>ArmRootL</target>
+          <bone name="ArmL">
+            <target>ArmL</target>
+            <bone name="ForearmFrontL">
+              <target>ForearmFrontL</target>
+              <bone name="ClawFrontL">
+                <target>ClawFrontL</target>
+              </bone>
+            </bone>
+          </bone>
+        </bone>
+        <bone name="ArmRootR">
+          <target>ArmRootR</target>
+          <bone name="ArmR">
+            <target>ArmR</target>
+            <bone name="ForearmFrontR">
+              <target>ForearmFrontR</target>
+              <bone name="ClawFrontR">
+                <target>ClawFrontR</target>
+              </bone>
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="SpineLow">
+        <target>SpineLow</target>
+        <bone name="Tail">
+          <target>Tail</target>
+          <bone name="Tail2">
+            <target>Tail2</target>
+            <bone name="Tail3">
+              <target>Tail3</target>
+              <bone name="TailEnd">
+                <target>TailEnd</target>
+              </bone>
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="LegRootL">
+        <target>LegRootL</target>
+        <bone name="LegL">
+          <target>LegL</target>
+          <bone name="ForeLegL">
+            <target>ForeLegL</target>
+            <bone name="ClawBackL">
+              <target>ClawBackL</target>
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="LegRootR">
+        <target>LegRootR</target>
+        <bone name="LegR">
+          <target>LegR</target>
+          <bone name="ForeLegR">
+            <target>ForeLegR</target>
+            <bone name="ClawBackR">
+              <target>ClawBackR</target>
+            </bone>
+          </bone>
+        </bone>
+      </bone>
+      <bone name="TailEndM">
+        <target>TailEndM</target>
+      </bone>
+      <bone name="LH.001">
+        <target>LH.001</target>
+      </bone>
+    </bone>
+    <bone name="Floor">
+      <target>Floor</target>
+    </bone>
+    <bone name="FloorLH">
+      <target>FloorLH</target>
+      <bone name="LH">
+        <target>LH</target>
+        <bone name="ClawFrontLH">
+          <target>ClawFrontLH</target>
+        </bone>
+      </bone>
+    </bone>
+    <bone name="FloorRH">
+      <target>FloorRH</target>
+      <bone name="RH">
+        <target>RH</target>
+        <bone name="ClawFrontRH">
+          <target>ClawFrontRH</target>
+        </bone>
+      </bone>
+    </bone>
+    <bone name="FloorLL">
+      <target>FloorLL</target>
+      <bone name="LL">
+        <target>LL</target>
+        <bone name="ClawBackLL">
+          <target>ClawBackLL</target>
+        </bone>
+      </bone>
+    </bone>
+    <bone name="FloorRL">
+      <target>FloorRL</target>
+      <bone name="RL">
+        <target>RL</target>
+        <bone name="ClawBackRL">
+          <target>ClawBackRL</target>
+        </bone>
+      </bone>
+    </bone>
+    <bone name="roach">
+      <target>roach</target>
+    </bone>
+  </skeleton>
+</skeletons>

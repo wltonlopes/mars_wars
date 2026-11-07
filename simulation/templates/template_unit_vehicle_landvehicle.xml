@@ -50,6 +50,26 @@
     <Acceleration op="mul">2.8</Acceleration>
   </UnitMotion>
   <!-- Ronco do motor enquanto anda (simulation/components/VehicleSound.js). -->
+  <!-- Atropelamento (simulation/components/Trample.js): em alta velocidade,
+       infantaria inimiga debaixo do casco leva dano e é jogada para o lado. O
+       dano cresce com o tamanho do casco (raio do VehicleSeparation / 4,5). -->
+  <Trample>
+    <!-- Da borda do casco: o veículo desvia da infantaria e passa a uns
+         6 m dela; só quem está à frente (a investida). -->
+    <Radius>7.0</Radius>
+    <FrontOnly>true</FrontOnly>
+    <MinSpeedRatio>0.75</MinSpeedRatio>
+    <Interval>300</Interval>
+    <Cooldown>1500</Cooldown>
+    <Damage>
+      <Hack>15</Hack>
+      <Crush>35</Crush>
+    </Damage>
+    <Classes datatype="tokens">Human</Classes>
+    <RestrictedClasses datatype="tokens">Structure Vehicle Aircraft</RestrictedClasses>
+    <ScaleWithHull>4.5</ScaleWithHull>
+    <Knockback>5</Knockback>
+  </Trample>
   <VehicleSound>
     <MoveSound>actor/vehicle/engine_wheeled.xml</MoveSound>
     <Interval>1250</Interval>

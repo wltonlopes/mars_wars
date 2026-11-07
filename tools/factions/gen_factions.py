@@ -614,7 +614,7 @@ FACTIONS = {
 			"civil_centre": ("Hive", ["worker", "battalion_mass", "conductor"]),
 			"house": ("Nest", []),
 			"barracks": ("Spawning Chamber", ["battalion_mass", "servant", "abomination", "conductor", "hierophant", "prophet"]),
-			"stable": ("Incubator", ["scout", "stalker", "spitter", "brute", "synapse", "oracle", "behemoth"]),
+			"stable": ("Incubator", ["scout", "stalker", "roach", "spitter", "brute", "synapse", "oracle", "behemoth"]),
 			"storehouse": ("Digestion Pit", []), "farmstead": ("Biomass Vat", []), "field": ("Biomass Bed", []),
 			"forge": ("Gene Temple", ["occult_priest"]), "sentry_tower": ("Spine Tower", []),
 		},
@@ -653,6 +653,11 @@ FACTIONS = {
 		"creatures": {
 			"scout": dict(actor="fauna/fox_red.xml", name="Scout", tooltip="Dog-sized scouting creature.",
 				hp=90, walk=15, dmg=5, rep=1000, vision=100, cost=cost(food=40, time=8, pop=1)),
+			# Bioarma corpo a corpo: modelo e animações próprios (art/actors/fauna/roach.xml,
+			# de Danimal e Atmostatic, CC-BY-SA 3.0 - ver CREDITS.md).
+			"roach": dict(actor="fauna/roach.xml", name="Roach",
+				tooltip="Bioweapon bred for close combat: armoured, fast and vicious. Tears through infantry with jaws and claws.",
+				hp=320, walk=11, dmg=24, rep=1100, crush=6, cost=cost(food=110, water=50, time=18, pop=1)),
 			"stalker": dict(actor="fauna/tiger.xml", name="Stalker", tooltip="Predator bred for the hunt.",
 				hp=220, walk=12, dmg=16, rep=1000, cost=cost(food=90, water=30, time=16, pop=1)),
 			"brute": dict(actor="fauna/bear_brown.xml", name="Brute", tooltip="Heavy combat creature.",
@@ -666,9 +671,17 @@ FACTIONS = {
 			"spitter": dict(actor="fauna/crocodile.xml", name="Spitter", tooltip="Creature that spits acid from a distance.",
 				hp=200, walk=7.5, ranged=dict(dmg=14, range=35, rep=2500, splash=6),
 				cost=cost(food=100, water=60, time=18, pop=1)),
-			"behemoth": dict(actor="fauna/elephant_african_bush.xml", name="Acid Behemoth",
-				tooltip="Tank-sized monster that spits great amounts of acid.",
-				hp=1400, walk=6, ranged=dict(dmg=40, range=45, rep=4000, splash=14), big=True,
+			# Bio-Dragão (tools/imported/import_swarm_dragon.py): arte própria, não retinta.
+			"behemoth": dict(actor="units/swarm/bio_dragon.xml", own_actor=True, name="Bio-Dragon",
+				tooltip="Bio-weapon bred in the hive: a tank-sized dragon that spits purple-and-gold fire from afar and tears apart with claws and jaws anything that gets too close.",
+				hp=1400, walk=6, big=True,
+				# Fogo roxo e dourado: bola de fogo, explosão no impacto (art/particles/dragon_*).
+				ranged=dict(dmg=40, range=45, rep=4000, splash=14, name="Dragonfire", projectile=(
+					"      <Projectile>\n        <ActorName>props/units/weapons/ammo/dragon_fireball.xml</ActorName>\n"
+					"        <ImpactActorName>props/units/explosions/dragon_fire_impact.xml</ImpactActorName>\n"
+					"        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>\n        <Gravity>4.0</Gravity>\n"
+					"        <Speed>30.0</Speed>\n      </Projectile>\n")),
+				melee=dict(dmg=45, crush=25, range=7, rep=2000, switch=12, ammo=10, reload=30000),
 				cost=cost(food=300, water=200, energy=100, time=50, pop=5)),
 		},
 		"battalions": {
@@ -742,13 +755,29 @@ def generate(civ, faction):
 		if "ranged" in c:
 			parent = "units/mla/grenadier"
 			r = c["ranged"]
-			attack = ("  <Attack>\n    <Ranged>\n      <AttackName>Acid</AttackName>\n      <Damage>\n"
+			attack = ("  <Attack>\n    <Ranged>\n      <AttackName>" + r.get("name", "Acid") + "</AttackName>\n      <Damage>\n"
 				"        <Fire>" + str(r["dmg"]) + "</Fire>\n        <Crush>" + str(r["dmg"] // 2) + "</Crush>\n"
 				"      </Damage>\n      <MaxRange>" + str(r["range"]) + "</MaxRange>\n"
 				"      <RepeatTime>" + str(r["rep"]) + "</RepeatTime>\n      <Splash>\n        <Damage>\n"
 				"          <Fire>" + str(r["dmg"] // 2) + "</Fire>\n        </Damage>\n"
-				"        <Range>" + str(r["splash"]) + "</Range>\n      </Splash>\n    </Ranged>\n"
-				"    <RangedSecondary disable=\"\"/>\n  </Attack>\n  <Ammo disable=\"\"/>\n")
+				"        <Range>" + str(r["splash"]) + "</Range>\n      </Splash>\n" + r.get("projectile", "") + "    </Ranged>\n"
+				"    <RangedSecondary disable=\"\"/>\n")
+			# Com "melee": cuspe à distância de preferência; com o inimigo a
+			# menos de "switch" m (ou as glândulas vazias) troca para o corpo
+			# a corpo (Ammo: "ammo" cuspes, que voltam todos "reload" ms
+			# depois do primeiro).
+			m = c.get("melee")
+			if m:
+				attack += ("    <Melee>\n      <AttackName>Claws and Jaws</AttackName>\n      <Damage>\n"
+					"        <Hack>" + str(m["dmg"]) + "</Hack>\n        <Pierce>0</Pierce>\n"
+					"        <Crush>" + str(m["crush"]) + "</Crush>\n      </Damage>\n"
+					"      <MaxRange>" + str(m["range"]) + "</MaxRange>\n      <PrepareTime>" + str(m["rep"] // 2) + "</PrepareTime>\n"
+					"      <RepeatTime>" + str(m["rep"]) + "</RepeatTime>\n    </Melee>\n  </Attack>\n"
+					"  <Ammo>\n    <CurrAmmo>" + str(m["ammo"]) + "</CurrAmmo>\n    <MaxAmmo>" + str(m["ammo"]) + "</MaxAmmo>\n"
+					"    <SwitchToMeleeRange>" + str(m["switch"]) + "</SwitchToMeleeRange>\n"
+					"    <Reload>\n      <Time>" + str(m["reload"]) + "</Time>\n    </Reload>\n  </Ammo>\n")
+			else:
+				attack += "  </Attack>\n  <Ammo disable=\"\"/>\n"
 		else:
 			parent = "template_unit_champion_infantry_swordsman"
 			attack = ("  <Attack>\n    <Melee>\n      <AttackName>Claws</AttackName>\n      <Damage>\n"
@@ -757,7 +786,7 @@ def generate(civ, faction):
 				"      <MaxRange>4</MaxRange>\n      <RepeatTime>" + str(c["rep"]) + "</RepeatTime>\n"
 				"    </Melee>\n  </Attack>\n")
 		body = identity(civ, c["name"], None, "units/swarm_drone_kamikaze.png", c["tooltip"], classes, "Creature")
-		body += actor(tinted_actor(c["actor"], civ)) + attack + health(c["hp"]) + speed(c["walk"]) + c["cost"]
+		body += actor(c["actor"] if c.get("own_actor") else tinted_actor(c["actor"], civ)) + attack + health(c["hp"]) + speed(c["walk"]) + c["cost"]
 		if "vision" in c:
 			body += vision(c["vision"])
 		if c.get("auras"):
@@ -887,7 +916,7 @@ def update_battle_catalog():
 			("vehicle_technical", "armor", 140), ("drone_kamikaze", "air", 50), ("bm_laser_tank", "armor", 300)],
 		"coa": [("battalion_rifle", "infantry", 130), ("battalion_rangers", "infantry", 150), ("officer", "infantry", 90),
 			("vehicle_ifv", "armor", 260), ("vehicle_mbt", "armor", 280), ("aero_01", "air", 190), ("drone_recon", "air", 70)],
-		"swarm": [("battalion_mass", "infantry", 60), ("conductor", "infantry", 70), ("stalker", "infantry", 60),
+		"swarm": [("battalion_mass", "infantry", 60), ("conductor", "infantry", 70), ("stalker", "infantry", 60), ("roach", "infantry", 90),
 			("brute", "infantry", 110), ("spitter", "infantry", 80), ("synapse", "infantry", 120), ("behemoth", "armor", 280)],
 	}
 	# Só acrescenta o que falta: custos e limites ajustados à mão são mantidos.

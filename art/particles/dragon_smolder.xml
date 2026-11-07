@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bio-Dragão do Enxame: fumaça roxa fraca saindo da boca (parado). -->
+<particles>
+    <texture>art/textures/particles/dragon_flame.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="5.0"/>
+    <uniform name="lifetime" min="1.0" max="1.8"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-0.2" max="0.2"/>
+    <uniform name="velocity.y" min="0.3" max="0.8"/>
+    <uniform name="velocity.z" min="-0.2" max="0.2"/>
+    <uniform name="velocity.angle" min="-0.5" max="0.5"/>
+
+    <uniform name="size" min="0.25" max="0.4"/>
+    <constant name="size.growthRate" value="0.5"/>
+
+    <uniform name="color.r" min="0.22" max="0.32"/>
+    <uniform name="color.g" min="0.05" max="0.1"/>
+    <uniform name="color.b" min="0.32" max="0.45"/>
+</particles>

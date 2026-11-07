@@ -9,7 +9,6 @@
         <prop actor="props/structures/solar_01.xml" attachpoint="002" maxheight="20" minheight="-20"/>
         <prop actor="props/structures/solar_01.xml" attachpoint="003" maxheight="20" minheight="-20"/>
         <prop actor="props/structures/solar_01.xml" attachpoint="004" maxheight="20" minheight="-20"/>
-        <prop actor="props/structures/decals/mars_cc_decal.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>

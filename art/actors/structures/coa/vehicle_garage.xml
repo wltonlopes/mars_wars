@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coalizão: Garagem de veículos. Malha de tools/imported/import_structures.py
+     (modelo de ref/coa/, ver CREDITS.md), textura no atlas coa_structures.png
+     (estilo coa_struct, tools/imported/structures_texture.py). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/coa/vehicle_garage.dae</mesh>
+			<textures>
+				<texture file="structural/coa_structures.png" name="baseTex"/>
+				<texture file="structural/coa_structures_norm.png" name="normTex"/>
+				<texture file="structural/coa_structures_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="100" name="Idle"/>
+		<variant name="garrisoned">
+			<props>
+				<prop actor="props/special/common/garrison_flag_mcc.xml" attachpoint="garrisoned_01"/>
+				<prop actor="props/special/common/garrison_flag_mcc.xml" attachpoint="garrisoned_02"/>
+			</props>
+		</variant>
+		<variant name="death">
+			<props>
+				<prop attachpoint="garrisoned_01"/>
+				<prop attachpoint="garrisoned_02"/>
+				<prop actor="particle/destruction_smoke_med.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_med.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_med_gray.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

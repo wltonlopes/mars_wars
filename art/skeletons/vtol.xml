@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- VTOL dos modelos de refs/exo (tools/imported/import_exo_models.py) -->
+<skeletons>
+	<standard_skeleton title="VTOL" id="vtol">
+		<bone name="vtol_root">
+			<bone name="vtol_body">
+				<bone name="vtol_nacelle_l"></bone>
+				<bone name="vtol_nacelle_r"></bone>
+				<bone name="prop_projectile"></bone>
+				<bone name="prop_muzzle"></bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="VTOL" target="vtol">
+		<identifier>
+			<root>vtol_root</root>
+		</identifier>
+		<bone name="vtol_root"><target>vtol_root</target>
+			<bone name="vtol_body"><target>vtol_body</target>
+				<bone name="vtol_nacelle_l"><target>vtol_nacelle_l</target></bone>
+				<bone name="vtol_nacelle_r"><target>vtol_nacelle_r</target></bone>
+				<bone name="prop_projectile"><target>prop_projectile</target></bone>
+				<bone name="prop_muzzle"><target>prop_muzzle</target></bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

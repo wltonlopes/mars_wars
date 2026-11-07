@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clarão na boca do casulo ao disparar o foguete. (gen_heli.py) -->
+<particles>
+    <texture>art/textures/particles/flame_radiant.png</texture>
+    <blend mode="add"/>
+    <start_full/>
+
+    <constant name="emissionrate" value="40.0"/>
+    <uniform name="lifetime" min="0.08" max="0.18"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+
+    <uniform name="size" min="1.8" max="2.88"/>
+    <constant name="size.growthRate" value="8.0"/>
+
+    <constant name="color.r" value="1.0"/>
+    <constant name="color.g" value="0.82"/>
+    <constant name="color.b" value="0.45"/>
+</particles>

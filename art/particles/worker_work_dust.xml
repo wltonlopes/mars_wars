@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Poeira levantada pelo trabalho. (gen_worker.py) -->
+<particles>
+    <texture>art/textures/particles/dust_256a.png</texture>
+    <blend mode="over"/>
+
+    <constant name="emissionrate" value="6.0"/>
+    <uniform name="lifetime" min="1.2" max="2.2"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-0.6" max="0.6"/>
+    <uniform name="velocity.y" min="0.2" max="0.9"/>
+    <uniform name="velocity.z" min="-0.6" max="0.6"/>
+    <uniform name="size" min="0.8" max="1.4"/>
+    <constant name="size.growthRate" value="1.0"/>
+    <uniform name="color.r" min="0.6" max="0.7"/>
+    <uniform name="color.g" min="0.46" max="0.54"/>
+    <uniform name="color.b" min="0.36" max="0.42"/>
+</particles>

@@ -3,7 +3,22 @@
   <castshadow/>
   <group>
     <variant name="worker_01" frequency="1">
-      <mesh>skeletal/worker_01.dae</mesh>
+      <!-- animações: gen_worker.py -->
+      <mesh>skeletal/worker_01_rigged.dae</mesh>
+      <animations>
+      	<animation file="units/worker/idle.dae" name="Idle" speed="100"/>
+      	<!-- Uma volta das rodinhas por ciclo: speed 69 faz a esteira não patinar. -->
+      	<animation file="units/worker/move.dae" name="Walk" speed="69"/>
+      	<animation file="units/worker/move.dae" name="Run" speed="69"/>
+      	<animation event="0.5" file="units/worker/build.dae" name="build" speed="100"/>
+      	<animation event="0.4" file="units/worker/work_drill.dae" name="gather_rock" speed="100"/>
+      	<animation event="0.4" file="units/worker/work_drill.dae" name="gather_ore" speed="100"/>
+      	<animation event="0.4" file="units/worker/work_drill.dae" name="gather_ruins" speed="100"/>
+      	<animation event="0.4" file="units/worker/work_drill.dae" name="gather_tree" speed="100"/>
+      	<animation event="0.5" file="units/worker/work_pick.dae" name="gather_grain" speed="100"/>
+      	<animation event="0.5" file="units/worker/work_pick.dae" name="gather_fruit" speed="100"/>
+      	<animation event="0.5" file="units/worker/work_pick.dae" name="gather_meat" speed="100"/>
+      </animations>
       <props>
         <prop actor="props/units/worker_glass.xml" attachpoint="root"/>
       </props>
@@ -28,5 +43,61 @@
 			</props>
 		</variant>
 	</group>
+  <!-- efeitos de trabalho: gen_worker.py -->
+  <group>
+    <variant frequency="1" name="Idle"/>
+    <variant name="build">
+      <props>
+        <prop actor="particle/worker_weld_sparks.xml" attachpoint="braco"/>
+        <prop actor="particle/worker_weld_glow.xml" attachpoint="braco"/>
+        <prop actor="particle/worker_drill_debris.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+    <variant name="gather_rock">
+      <props>
+        <prop actor="particle/worker_drill_debris.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_weld_sparks.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+    <variant name="gather_ore">
+      <props>
+        <prop actor="particle/worker_drill_debris.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_weld_sparks.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+    <variant name="gather_ruins">
+      <props>
+        <prop actor="particle/worker_drill_debris.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_weld_sparks.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+    <variant name="gather_tree">
+      <props>
+        <prop actor="particle/worker_drill_debris.xml" attachpoint="furadeira"/>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+    <variant name="gather_grain">
+      <props>
+        <prop actor="particle/worker_harvest_mist.xml" attachpoint="braco"/>
+        <prop actor="particle/worker_harvest_mist.xml" attachpoint="furadeira"/>
+      </props>
+    </variant>
+    <variant name="gather_fruit">
+      <props>
+        <prop actor="particle/worker_harvest_mist.xml" attachpoint="braco"/>
+        <prop actor="particle/worker_harvest_mist.xml" attachpoint="furadeira"/>
+      </props>
+    </variant>
+    <variant name="gather_meat">
+      <props>
+        <prop actor="particle/worker_work_dust.xml" attachpoint="dust"/>
+      </props>
+    </variant>
+  </group>
   <material>basic_trans_parallax_spec.xml</material>
 </actor>

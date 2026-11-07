@@ -182,6 +182,13 @@ StrategicBomber.prototype.CheckAirDefense = function(position)
  */
 StrategicBomber.prototype.ShotDown = function()
 {
+	const cmpAirDefense = Engine.QueryInterface(this.interception.airDefense, IID_AirDefense);
+	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).ResolveInterception(this.missionId,
+		cmpAirDefense ? cmpAirDefense.GetAccuracy() : 0.55, this.GetWorldPosition(this.travelled)) != "destroyed")
+	{
+		this.interception = null;
+		return;
+	}
 	this.nextBomb = this.impacts.length;
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).MissionIntercepted(
 		this.missionId, this.interception.airDefense, this.GetWorldPosition(this.travelled));
@@ -194,10 +201,8 @@ StrategicBomber.prototype.DropBomb = function(impactDistance)
 	const launchPoint = cmpPosition.GetPosition();
 	const impact = AirSupport.Offset(this.path.entry, this.path.direction, impactDistance);
 
-	// Área protegida por defesa aérea inimiga: a bomba não é solta.
-	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).FindAirDefense(
-		"strategic_bomber", this.GetOwner(), impact) != INVALID_ENTITY)
-		return;
+	// Modern Wars: a defesa aérea não impede a bomba; ela precisa derrubar
+	// o bombardeiro (e pode errar).
 	const cmpTerrain = Engine.QueryInterface(SYSTEM_ENTITY, IID_Terrain);
 	const targetPoint = new Vector3D(impact.x, cmpTerrain.GetGroundLevel(impact.x, impact.z), impact.z);
 

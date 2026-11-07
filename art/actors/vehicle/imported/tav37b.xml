@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TAV-37B: nave orbital; voo com inclinação lateral.
+     Malha, esqueleto, animações e texturas: tools/imported/import_tav37b.py
+     (modelo de terceiros, ver CREDITS.md). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>vehicle/tav37b.dae</mesh>
+			<animations>
+				<animation file="vehicle/tav37b/idle.dae" name="Idle" speed="100"/>
+				<animation file="vehicle/tav37b/walk.dae" name="Walk" speed="2"/>
+				<animation file="vehicle/tav37b/walk.dae" name="Run" speed="2"/>
+				<animation file="vehicle/tav37b/death.dae" name="Death" speed="100"/>
+			</animations>
+			<textures>
+				<texture file="vehicle/tav37b.png" name="baseTex"/>
+				<texture file="vehicle/flat_norm.png" name="normTex"/>
+				<texture file="vehicle/tav37b_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="1" name="Idle"/>
+	</group>
+	<group>
+		<variant frequency="1" name="alive"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_small.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_small.xml" attachpoint="root"/>
+				<prop actor="particle/flame_med.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

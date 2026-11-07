@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coyote com rodas animadas (art/meshes/vehicle/coyote_rigged.dae), gerado por
+     tools/animation/gen_wheels.py. -->
+<skeletons>
+	<standard_skeleton title="Coyote" id="coyote">
+		<bone name="coyote_root">
+			<bone name="wheel_01"></bone>
+			<bone name="wheel_02"></bone>
+			<bone name="wheel_03"></bone>
+			<bone name="prop_w_01"></bone>
+			<bone name="prop_w_02"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Coyote" target="coyote">
+		<identifier>
+			<root>coyote_root</root>
+		</identifier>
+		<bone name="coyote_root"><target>coyote_root</target>
+			<bone name="wheel_01"><target>wheel_01</target></bone>
+			<bone name="wheel_02"><target>wheel_02</target></bone>
+			<bone name="wheel_03"><target>wheel_03</target></bone>
+			<bone name="prop_w_01"><target>prop_w_01</target></bone>
+			<bone name="prop_w_02"><target>prop_w_02</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

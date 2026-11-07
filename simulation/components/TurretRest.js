@@ -2,6 +2,12 @@
  * Torreta montada em veículo: sem alvo, gira suavemente de volta para a
  * frente do veículo (a rotação da torreta é absoluta, então sem isto ela
  * ficava apontada para o último alvo enquanto o casco virava).
+ *
+ * Modern Wars: sem alvo, a torreta também toca a animação "walk" enquanto o
+ * veículo anda e "idle" quando ele para. É o que faz o atirador da
+ * metralhadora do LMV (um prop do actor da torre) se segurar com o veículo
+ * em movimento e voltar à posição de tiro parado. Atirando, vale a animação
+ * de ataque do UnitAI.
  */
 function TurretRest() {}
 
@@ -64,8 +70,23 @@ TurretRest.prototype.IsEngaged = function()
 TurretRest.prototype.Tick = function()
 {
 	const holder = Engine.QueryInterface(this.entity, IID_Turretable)?.HolderID();
-	if (!holder || holder == INVALID_ENTITY || this.IsEngaged())
+	if (!holder || holder == INVALID_ENTITY)
 		return;
+	if (this.IsEngaged())
+	{
+		// O UnitAI troca a animação ao atirar: a próxima volta é refeita.
+		delete this.animation;
+		return;
+	}
+
+	const cmpHolderMotion = Engine.QueryInterface(holder, IID_UnitMotion);
+	const moving = !!cmpHolderMotion && (cmpHolderMotion.IsMoveRequested() || cmpHolderMotion.GetCurrentSpeed() > 0);
+	const animation = moving ? "walk" : "idle";
+	if (animation != this.animation)
+	{
+		Engine.QueryInterface(this.entity, IID_Visual)?.SelectAnimation(animation, false, 1);
+		this.animation = animation;
+	}
 
 	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
 	const cmpHolderPosition = Engine.QueryInterface(holder, IID_Position);

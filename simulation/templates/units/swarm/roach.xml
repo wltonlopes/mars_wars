@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gerado por tools/factions/gen_factions.py -->
+<Entity parent="template_unit_champion_infantry_swordsman">
+  <Identity>
+    <Civ>swarm</Civ>
+    <GenericName>Roach</GenericName>
+    <Icon>units/swarm_drone_kamikaze.png</Icon>
+    <Tooltip>Bioweapon bred for close combat: armoured, fast and vicious. Tears through infantry with jaws and claws.</Tooltip>
+    <Classes datatype="tokens">Creature Organic</Classes>
+    <VisibleClasses datatype="tokens">Creature</VisibleClasses>
+  </Identity>
+  <VisualActor>
+    <Actor>fauna/swarm/roach.xml</Actor>
+  </VisualActor>
+  <Attack>
+    <Melee>
+      <AttackName>Claws</AttackName>
+      <Damage>
+        <Hack>24</Hack>
+        <Pierce>0</Pierce>
+        <Crush>6</Crush>
+      </Damage>
+      <MaxRange>4</MaxRange>
+      <RepeatTime>1100</RepeatTime>
+    </Melee>
+  </Attack>
+  <Health>
+    <Max>320</Max>
+  </Health>
+  <UnitMotion>
+    <WalkSpeed>11</WalkSpeed>
+  </UnitMotion>
+  <Cost>
+    <Population>1</Population>
+    <BuildTime>18</BuildTime>
+    <Resources>
+      <food>110</food>
+      <metal>50</metal>
+      <stone>0</stone>
+      <wood>0</wood>
+    </Resources>
+  </Cost>
+</Entity>

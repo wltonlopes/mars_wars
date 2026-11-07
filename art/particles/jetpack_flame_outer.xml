@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jetpack: chama externa laranja em volta do núcleo azul (jetpack_thrust). -->
+<particles>
+    <texture>art/textures/particles/flame_radiant.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="70.0"/>
+    <uniform name="lifetime" min="0.12" max="0.22"/>
+
+    <uniform name="position.x" min="-0.06" max="0.06"/>
+    <uniform name="position.z" min="-0.06" max="0.06"/>
+
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-0.6" max="0.6"/>
+    <uniform name="velocity.y" min="-6.5" max="-4.0"/>
+    <uniform name="velocity.z" min="-0.6" max="0.6"/>
+    <uniform name="velocity.angle" min="-3.0" max="3.0"/>
+
+    <uniform name="size" min="0.35" max="0.55"/>
+    <constant name="size.growthRate" value="2.2"/>
+
+    <constant name="color.r" value="1.0"/>
+    <uniform name="color.g" min="0.5" max="0.68"/>
+    <uniform name="color.b" min="0.18" max="0.3"/>
+</particles>

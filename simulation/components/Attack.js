@@ -177,6 +177,9 @@ Attack.prototype.Schema =
 				"<optional>" +
 					"<element name='MinRange' a:help='Minimum attack range (in meters). Defaults to 0.'><ref name='nonNegativeDecimal'/></element>" +
 				"</optional>" +
+				"<optional>" +
+					"<element name='RequireStationary' a:help='Modern Wars: the weapon only fires while the entity (and the vehicle carrying it, for a turret) stands still.'><data type='boolean'/></element>" +
+				"</optional>" +
 				"<optional>"+
 					"<element name='Origin' a:help='The offset from which the attack occurs, relative to the entity position. Defaults to {0,0,0}.'>" +
 						"<interleave>" +
@@ -331,6 +334,10 @@ Attack.prototype.IsUsingSecondary = function(type)
 
 Attack.prototype.GetTypeTemplate = function(type)
 {
+	// Granada de mão (HandGrenade): só durante o arremesso, o ataque "Ranged"
+	// usa os valores de <Grenade> (ver TryThrowGrenade).
+	if (type == "Ranged" && this.throwingGrenade)
+		return this.template.Grenade;
 	return this.IsUsingSecondary(type) ? this.template.RangedSecondary : this.template[type];
 };
 
@@ -615,6 +622,12 @@ Attack.prototype.GetRange = function(type)
 	if (!type || !this.GetTypeTemplate(type))
 		return this.GetFullAttackRange();
 
+	// Com granada na mão e ordem de atacar uma estrutura, o soldado chega ao
+	// alcance do arremesso antes de abrir fogo; depois de arremessar volta a
+	// valer o alcance do fuzil.
+	if (type == "Ranged" && this.IsCarryingGrenadeToStructure())
+		return { "max": +this.template.Grenade.MaxRange, "min": 0 };
+
 	let max = +this.GetTypeTemplate(type).MaxRange;
 	max = ApplyValueModificationsToEntity("Attack/" + type + "/MaxRange", max, this.entity);
 
@@ -622,6 +635,84 @@ Attack.prototype.GetRange = function(type)
 	min = ApplyValueModificationsToEntity("Attack/" + type + "/MinRange", min, this.entity);
 
 	return { "max": max, "min": min };
+};
+
+/**
+ * Esta entidade, ou o veículo que a carrega se ela é uma torre, está andando?
+ */
+Attack.prototype.IsMoving = function()
+{
+	const cmpTurretable = Engine.QueryInterface(this.entity, IID_Turretable);
+	const holder = cmpTurretable ? cmpTurretable.HolderID() : INVALID_ENTITY;
+	for (const ent of holder != INVALID_ENTITY ? [this.entity, holder] : [this.entity])
+	{
+		const cmpUnitMotion = Engine.QueryInterface(ent, IID_UnitMotion);
+		if (cmpUnitMotion && (cmpUnitMotion.IsMoveRequested() || cmpUnitMotion.GetCurrentSpeed() > 0))
+			return true;
+	}
+	return false;
+};
+
+/**
+ * Granada de mão: o soldado tem ordem de atacar uma estrutura e ainda tem a
+ * granada (as estruturas não chegam perto sozinhas, como as unidades).
+ */
+Attack.prototype.IsCarryingGrenadeToStructure = function()
+{
+	if (!this.template.Grenade || this.throwingGrenade)
+		return false;
+	const cmpHandGrenade = Engine.QueryInterface(this.entity, IID_HandGrenade);
+	if (!cmpHandGrenade || !cmpHandGrenade.HasGrenade())
+		return false;
+	const cmpUnitAI = Engine.QueryInterface(this.entity, IID_UnitAI);
+	const target = cmpUnitAI && cmpUnitAI.order && cmpUnitAI.order.type == "Attack" &&
+		cmpUnitAI.order.data && cmpUnitAI.order.data.target;
+	if (!target)
+		return false;
+	const cmpIdentity = Engine.QueryInterface(target, IID_Identity);
+	if (!cmpIdentity || !cmpIdentity.HasClass("Structure"))
+		return false;
+	const restricted = this.template.Grenade.RestrictedClasses && this.template.Grenade.RestrictedClasses._string;
+	return !restricted || !MatchesClassList(cmpIdentity.GetClassesList(), restricted);
+};
+
+/**
+ * Granada de mão: se o soldado tem uma e o alvo está no alcance dela, o
+ * disparo desta vez é o arremesso (dano, estilhaços e projétil de <Grenade>).
+ * @return {boolean} - Se a granada foi arremessada no lugar do tiro.
+ */
+Attack.prototype.TryThrowGrenade = function(target)
+{
+	const cmpHandGrenade = Engine.QueryInterface(this.entity, IID_HandGrenade);
+	if (!cmpHandGrenade || !cmpHandGrenade.HasGrenade())
+		return false;
+
+	const cmpPosition = Engine.QueryInterface(this.entity, IID_Position);
+	const cmpTargetPosition = Engine.QueryInterface(target, IID_Position);
+	if (!cmpPosition || !cmpPosition.IsInWorld() || !cmpTargetPosition || !cmpTargetPosition.IsInWorld())
+		return false;
+
+	const grenade = this.template.Grenade;
+	const distance = PositionHelper.DistanceBetweenEntities(this.entity, target);
+	if (distance > +grenade.MaxRange || distance < +(grenade.MinRange || 0))
+		return false;
+
+	const cmpIdentity = Engine.QueryInterface(target, IID_Identity);
+	if (!cmpIdentity || grenade.RestrictedClasses && grenade.RestrictedClasses._string &&
+		MatchesClassList(cmpIdentity.GetClassesList(), grenade.RestrictedClasses._string))
+		return false;
+
+	cmpHandGrenade.Use();
+	this.throwingGrenade = true;
+	try
+	{
+		this.PerformAttack("Ranged", target);
+	}
+	finally
+	{
+		delete this.throwingGrenade;
+	}
+	return true;
 };
 
 Attack.prototype.GetAttackYOrigin = function(type)
@@ -820,8 +911,16 @@ Attack.prototype.Attack = function(type, lateness)
  */
 Attack.prototype.PerformAttack = function(type, target)
 {
+	// Arma que só dispara parada (lançador de foguetes): com o veículo
+	// andando o disparo é pulado, sem gastar munição, e sai quando ele parar.
+	if (this.GetTypeTemplate(type).RequireStationary == "true" && this.IsMoving())
+		return;
+
+	if (type == "Ranged" && this.template.Grenade && !this.throwingGrenade && this.TryThrowGrenade(target))
+		return;
+
 	const cmpAmmo = Engine.QueryInterface(this.entity, IID_Ammo);
-	if (type == "Ranged" && cmpAmmo && !this.IsUsingSecondary(type))
+	if (type == "Ranged" && cmpAmmo && !this.throwingGrenade && !this.IsUsingSecondary(type))
 	{
 		if (!cmpAmmo.HasAmmo() || this.template.Melee && this.IsTargetWithinWeaponSwitchRange(target, cmpAmmo))
 		{

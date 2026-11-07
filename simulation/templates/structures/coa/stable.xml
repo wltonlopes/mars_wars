@@ -6,12 +6,14 @@
     <GenericName>Motor Pool</GenericName>
   </Identity>
   <VisualActor>
-    <Actor>structures/coa/stable.xml</Actor>
+    <Actor>structures/coa/vehicle_garage.xml</Actor>
   </VisualActor>
   <Trainer>
     <Entities datatype="tokens" replace="">
       units/{civ}/vehicle_ifv
       units/{civ}/vehicle_mbt
+      units/{civ}/vehicle_battle_tank
+      units/{civ}/vehicle_twin_tank
       units/{civ}/vehicle_titan_packed
     </Entities>
   </Trainer>

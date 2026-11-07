@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Spider tank (tools/imported/import_spider_tank.py) -->
+<skeletons>
+	<standard_skeleton title="Spider tank" id="spider_tank">
+		<bone name="tts">
+			<bone name="base">
+				<bone name="body">
+					<bone name="head2">
+						<bone name="head3">
+							<bone name="prop_projectile"></bone>
+							<bone name="prop_muzzle"></bone>
+						</bone>
+						<bone name="turret_base">
+							<bone name="turret"></bone>
+						</bone>
+					</bone>
+					<bone name="gun_base">
+						<bone name="gun">
+							<bone name="prop_chin_gun"></bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_back">
+					<bone name="L_leg_back1">
+						<bone name="L_leg_back2"></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_middle">
+					<bone name="R_leg_middle1">
+						<bone name="R_leg_middle2"></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_front">
+					<bone name="R_leg_front1">
+						<bone name="R_leg_front2"></bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_front">
+					<bone name="L_leg_front1">
+						<bone name="L_leg_front2"></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_back">
+					<bone name="R_leg_back1">
+						<bone name="R_leg_back2"></bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_middle">
+					<bone name="L_leg_middle1">
+						<bone name="L_leg_middle2"></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Spider tank" target="spider_tank">
+		<identifier>
+			<root>tts</root>
+		</identifier>
+		<bone name="tts"><target>tts</target>
+			<bone name="base"><target>base</target>
+				<bone name="body"><target>body</target>
+					<bone name="head2"><target>head2</target>
+						<bone name="head3"><target>head3</target>
+							<bone name="prop_projectile"><target>prop_projectile</target></bone>
+							<bone name="prop_muzzle"><target>prop_muzzle</target></bone>
+						</bone>
+						<bone name="turret_base"><target>turret_base</target>
+							<bone name="turret"><target>turret</target></bone>
+						</bone>
+					</bone>
+					<bone name="gun_base"><target>gun_base</target>
+						<bone name="gun"><target>gun</target>
+							<bone name="prop_chin_gun"><target>prop_chin_gun</target></bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_back"><target>L_leg_back</target>
+					<bone name="L_leg_back1"><target>L_leg_back1</target>
+						<bone name="L_leg_back2"><target>L_leg_back2</target></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_middle"><target>R_leg_middle</target>
+					<bone name="R_leg_middle1"><target>R_leg_middle1</target>
+						<bone name="R_leg_middle2"><target>R_leg_middle2</target></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_front"><target>R_leg_front</target>
+					<bone name="R_leg_front1"><target>R_leg_front1</target>
+						<bone name="R_leg_front2"><target>R_leg_front2</target></bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_front"><target>L_leg_front</target>
+					<bone name="L_leg_front1"><target>L_leg_front1</target>
+						<bone name="L_leg_front2"><target>L_leg_front2</target></bone>
+					</bone>
+				</bone>
+				<bone name="R_leg_back"><target>R_leg_back</target>
+					<bone name="R_leg_back1"><target>R_leg_back1</target>
+						<bone name="R_leg_back2"><target>R_leg_back2</target></bone>
+					</bone>
+				</bone>
+				<bone name="L_leg_middle"><target>L_leg_middle</target>
+					<bone name="L_leg_middle1"><target>L_leg_middle1</target>
+						<bone name="L_leg_middle2"><target>L_leg_middle2</target></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Enxame: Ninho de pouso (heliponto). Malha de tools/imported/import_structures.py
+     (modelo de ref/swarm/, ver CREDITS.md), textura no atlas swarm_structures.png
+     (cores do próprio modelo, tools/imported/structures_texture.py). -->
+<actor version="1">
+	<castshadow/>
+	<group>
+		<variant frequency="1" name="Base">
+			<mesh>structural/swarm/landing_pad.dae</mesh>
+			<textures>
+				<texture file="structural/swarm_structures.png" name="baseTex"/>
+				<texture file="structural/swarm_structures_norm.png" name="normTex"/>
+				<texture file="structural/swarm_structures_spec.png" name="specTex"/>
+			</textures>
+		</variant>
+	</group>
+	<group>
+		<variant frequency="100" name="Idle"/>
+		<variant name="death">
+			<props>
+				<prop actor="particle/destruction_smoke_med.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_med.xml" attachpoint="root"/>
+				<prop actor="particle/destruction_dust_med_gray.xml" attachpoint="root"/>
+			</props>
+		</variant>
+	</group>
+	<material>basic_trans_norm_spec.xml</material>
+</actor>

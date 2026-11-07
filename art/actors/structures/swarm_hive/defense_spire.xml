@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Defense Spire do Enxame (13.5 x 13.5 m), gerado por tools/structures/gen_swarm_structures.py
+     a partir do atlas de referência Mars 2150 - Swarm. O brilho (fendas e veias
+     acesas) é um prop com material de brilho próprio. -->
+<actor version="1">
+  <castshadow/>
+  <group>
+    <variant frequency="1" name="Base">
+      <mesh>structural/swarm_hive/defense_spire.dae</mesh>
+      <props>
+        <prop actor="structures/swarm_hive/defense_spire_glow.xml" attachpoint="root"/>
+        <prop actor="structures/swarm_hive/defense_spire_decal.xml" attachpoint="root"/>
+        <prop actor="props/units/weapons/ammo/tracer_cannon.xml" attachpoint="projectile"/>
+      </props>
+      <textures>
+        <texture file="structural/swarm_hive.png" name="baseTex"/>
+        <texture file="structural/swarm_hive_norm.png" name="normTex"/>
+        <texture file="structural/swarm_hive_spec.png" name="specTex"/>
+      </textures>
+    </variant>
+  </group>
+  <group>
+    <variant frequency="100" name="Idle"/>
+    <variant name="death">
+      <props>
+        <prop actor="particle/destruction_smoke_large.xml" attachpoint="root"/>
+        <prop actor="particle/destruction_dust_large.xml" attachpoint="root"/>
+        <prop actor="particle/destruction_dust_large_gray.xml" attachpoint="root"/>
+      </props>
+    </variant>
+  </group>
+  <material>player_trans_norm_spec.xml</material>
+</actor>

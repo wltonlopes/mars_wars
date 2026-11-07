@@ -92,6 +92,11 @@ IcbmMissile.prototype.Schema =
 					"<text/>" +
 				"</element>" +
 			"</optional>" +
+			"<optional>" +
+				"<element name='DestroyGaia' a:help='Modern Wars: the blast also removes trees, bushes, rocks and mines (Gaia without Health) within Radius.'>" +
+					"<data type='boolean'/>" +
+				"</element>" +
+			"</optional>" +
 		"</interleave>" +
 	"</element>";
 
@@ -233,6 +238,13 @@ IcbmMissile.prototype.CheckAirDefense = function()
 
 IcbmMissile.prototype.Intercepted = function()
 {
+	const cmpAirDefense = Engine.QueryInterface(this.interception.airDefense, IID_AirDefense);
+	if (Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).ResolveInterception(this.missionId,
+		cmpAirDefense ? cmpAirDefense.GetAccuracy() : 0.55, this.GetWorldPosition(this.elapsed / this.flightTime)) != "destroyed")
+	{
+		this.interception = null;
+		return;
+	}
 	Engine.QueryInterface(SYSTEM_ENTITY, IID_AirSupportManager).MissionIntercepted(
 		this.missionId, this.interception.airDefense, this.GetWorldPosition(this.elapsed / this.flightTime));
 	this.FinishMission();
@@ -320,6 +332,7 @@ IcbmMissile.prototype.Detonate = function()
 		"attacker": this.provider,
 		"attackerOwner": Engine.QueryInterface(this.entity, IID_Ownership).GetOwner(),
 		"radius": +warhead.Radius,
+		"destroyGaia": warhead.DestroyGaia == "true",
 		"friendlyFire": warhead.FriendlyFire == "true",
 		"impactSound": warhead.ImpactSound || "",
 		"impactActor": warhead.ImpactActorName || "",

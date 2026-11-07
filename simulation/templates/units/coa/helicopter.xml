@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Helicóptero de ataque do mcc (treinado no aeroporto).
+     - Casulos de foguetes sob as asas (ataque principal) e uma metralhadora de
+       queixo (torreta units/mcc/helicopter_turret, que atira sozinha).
+     - Paira: chega a StationaryDistance do alvo e para no ar para atirar
+       (ZZ_HoverUnitMotionFlying.js).
+     - Decola e pousa na vertical (VerticalFlight): sobe parado antes de seguir
+       e, ocioso por LandDelay segundos, desce parado até o chão.
+     - Rotores girando: art/actors/vehicle/mcc/heli_01.xml (gen_heli.py). -->
+<Entity parent="units/mcc/aero_02">
+  <Attack>
+    <Ranged replace="">
+      <AttackName>Rocket Pods</AttackName>
+      <Damage>
+        <Pierce>20</Pierce>
+        <Crush>45</Crush>
+      </Damage>
+      <EffectDelay>0</EffectDelay>
+      <MaxRange>80</MaxRange>
+      <MinRange>8</MinRange>
+      <PrepareTime>600</PrepareTime>
+      <RepeatTime>2200</RepeatTime>
+      <PreferredClasses datatype="tokens">Vehicle Structure Infantry</PreferredClasses>
+      <Projectile>
+        <ActorName>props/units/weapons/ammo/sam_interceptor.xml</ActorName>
+        <ImpactActorName>props/units/weapons/ammo/cannon_impact.xml</ImpactActorName>
+        <ImpactAnimationLifetime>0.6</ImpactAnimationLifetime>
+        <FriendlyFire>false</FriendlyFire>
+        <Gravity>9.81</Gravity>
+        <!-- O foguete sai do ponto "projectile" do actor (boca do casulo
+             direito, a 1,8 m); esta altura só vale se o actor não tiver o ponto. -->
+        <LaunchPoint y="1.8"/>
+        <Speed>90</Speed>
+        <Spread>2.5</Spread>
+      </Projectile>
+      <Splash>
+        <Shape>Circular</Shape>
+        <Range>5</Range>
+        <FriendlyFire>false</FriendlyFire>
+        <Damage>
+          <Pierce>10</Pierce>
+          <Crush>20</Crush>
+        </Damage>
+        <Knockback>
+          <Distance>2</Distance>
+          <Chance>40</Chance>
+        </Knockback>
+      </Splash>
+    </Ranged>
+  </Attack>
+  <BuildingAI disable=""/>
+  <Cost>
+    <Population>3</Population>
+    <BuildTime>45</BuildTime>
+    <Resources>
+      <food>0</food>
+      <wood>250</wood>
+      <stone>150</stone>
+      <metal>250</metal>
+    </Resources>
+  </Cost>
+  <Health>
+    <Max>700</Max>
+  </Health>
+  <Identity>
+    <Civ>coa</Civ>
+    <GenericName>Attack Helicopter</GenericName>
+    <SpecificName>Hornet Gunship</SpecificName>
+    <Icon>units/vtol.png</Icon>
+    <VisibleClasses datatype="tokens">Ranged</VisibleClasses>
+    <Tooltip>Attack helicopter: fires rocket salvos from its wing pods while a chin machine gun shoots on its own. Hovers to fire, takes off and lands vertically, and sets down when idle.</Tooltip>
+  </Identity>
+  <Sound>
+    <SoundGroups>
+      <attack_ranged>attack/siege/ballist_attack.xml</attack_ranged>
+      <attack_impact_ranged>attack/impact/siegeprojectilehit.xml</attack_impact_ranged>
+    </SoundGroups>
+  </Sound>
+  <TurretHolder>
+    <TurretPoints>
+      <Chin>
+        <!-- Sob o nariz: X = lado, Y = altura, Z = frente. -->
+        <X>0.0</X>
+        <Y>2.4</Y>
+        <Z>8.0</Z>
+        <Template>units/mcc/helicopter_turret</Template>
+        <Ejectable>false</Ejectable>
+      </Chin>
+    </TurretPoints>
+  </TurretHolder>
+  <UnitMotionFlying>
+    <MaxSpeed>22.0</MaxSpeed>
+    <!-- Para no ar ao chegar a esta distância do alvo (alcance dos foguetes: 80). -->
+    <StationaryDistance>60</StationaryDistance>
+    <FlyingHeight>18.0</FlyingHeight>
+    <!-- Subida e descida verticais, em metros por segundo. -->
+    <ClimbRate>6.0</ClimbRate>
+  </UnitMotionFlying>
+  <VerticalFlight>
+    <LandDelay>6</LandDelay>
+  </VerticalFlight>
+  <Vision>
+    <Range>100</Range>
+  </Vision>
+  <VisualActor>
+    <Actor>vehicle/coa/heli_01.xml</Actor>
+  </VisualActor>
+</Entity>

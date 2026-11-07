@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TAV-37B (tools/imported/import_tav37b.py) -->
+<skeletons>
+	<standard_skeleton title="TAV-37B" id="tav37b">
+		<bone name="tav37b_root">
+			<bone name="body">
+				<bone name="prop_engine_l"></bone>
+				<bone name="prop_engine_r"></bone>
+				<bone name="prop_projectile"></bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="TAV-37B" target="tav37b">
+		<identifier>
+			<root>tav37b_root</root>
+		</identifier>
+		<bone name="tav37b_root"><target>tav37b_root</target>
+			<bone name="body"><target>body</target>
+				<bone name="prop_engine_l"><target>prop_engine_l</target></bone>
+				<bone name="prop_engine_r"><target>prop_engine_r</target></bone>
+				<bone name="prop_projectile"><target>prop_projectile</target></bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

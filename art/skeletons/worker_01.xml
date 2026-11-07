@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Robô operário (art/meshes/skeletal/worker_01_rigged.dae), gerado por
+     tools/animation/gen_worker.py. -->
+<skeletons>
+	<standard_skeleton title="Worker" id="worker_01">
+		<bone name="worker_root">
+			<bone name="arm_l">
+				<bone name="claw_l">
+					<bone name="drill">
+						<bone name="prop_furadeira"></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="arm_r">
+				<bone name="claw_r">
+					<bone name="prop_braco"></bone>
+				</bone>
+			</bone>
+			<bone name="track_01"></bone>
+			<bone name="track_02"></bone>
+			<bone name="track_03"></bone>
+			<bone name="track_04"></bone>
+			<bone name="track_05"></bone>
+			<bone name="track_06"></bone>
+			<bone name="track_07"></bone>
+			<bone name="prop_dust"></bone>
+			<bone name="prop_back"></bone>
+			<bone name="prop_back_01"></bone>
+			<bone name="prop_back_02"></bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Worker" target="worker_01">
+		<identifier>
+			<root>worker_root</root>
+		</identifier>
+		<bone name="worker_root"><target>worker_root</target>
+			<bone name="arm_l"><target>arm_l</target>
+				<bone name="claw_l"><target>claw_l</target>
+					<bone name="drill"><target>drill</target>
+						<bone name="prop_furadeira"><target>prop_furadeira</target></bone>
+					</bone>
+				</bone>
+			</bone>
+			<bone name="arm_r"><target>arm_r</target>
+				<bone name="claw_r"><target>claw_r</target>
+					<bone name="prop_braco"><target>prop_braco</target></bone>
+				</bone>
+			</bone>
+			<bone name="track_01"><target>track_01</target></bone>
+			<bone name="track_02"><target>track_02</target></bone>
+			<bone name="track_03"><target>track_03</target></bone>
+			<bone name="track_04"><target>track_04</target></bone>
+			<bone name="track_05"><target>track_05</target></bone>
+			<bone name="track_06"><target>track_06</target></bone>
+			<bone name="track_07"><target>track_07</target></bone>
+			<bone name="prop_dust"><target>prop_dust</target></bone>
+			<bone name="prop_back"><target>prop_back</target></bone>
+			<bone name="prop_back_01"><target>prop_back_01</target></bone>
+			<bone name="prop_back_02"><target>prop_back_02</target></bone>
+		</bone>
+	</skeleton>
+</skeletons>

@@ -3,7 +3,15 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/coyote.dae</mesh>
+			<!-- rodas: gen_wheels.py -->
+			<mesh>vehicle/coyote_rigged.dae</mesh>
+			<animations>
+				<animation file="vehicle/coyote/idle.dae" name="Idle" speed="100"/>
+				<!-- Uma volta das rodas por ciclo (~9.9 m): speed 10 faz as rodas
+				     rolarem sem patinar em qualquer velocidade. -->
+				<animation file="vehicle/coyote/move.dae" name="Walk" speed="10"/>
+				<animation file="vehicle/coyote/move.dae" name="Run" speed="10"/>
+			</animations>
 			<!-- <props>
 			    <prop actor="props/structures/decals/pira/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>

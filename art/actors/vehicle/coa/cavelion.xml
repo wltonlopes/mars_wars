@@ -3,7 +3,15 @@
 	<castshadow/>
 	<group>
 		<variant frequency="1" name="Base">
-			<mesh>vehicle/cavelion.dae</mesh>
+			<!-- rodas: gen_wheels.py -->
+			<mesh>vehicle/cavelion_rigged.dae</mesh>
+			<animations>
+				<animation file="vehicle/cavelion/idle.dae" name="Idle" speed="100"/>
+				<!-- Uma volta das rodas por ciclo (~8.9 m): speed 11 faz as rodas
+				     rolarem sem patinar em qualquer velocidade. -->
+				<animation file="vehicle/cavelion/move.dae" name="Walk" speed="11"/>
+				<animation file="vehicle/cavelion/move.dae" name="Run" speed="11"/>
+			</animations>
 			<!-- <props>
 			    <prop actor="props/structures/decals/coa/mars_cc_decal.xml" attachpoint="root"/>
 				<prop actor="props/units/weapons/arrow_front.xml" attachpoint="projectile"/>

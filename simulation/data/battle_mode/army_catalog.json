@@ -305,6 +305,12 @@
 				"Category": "armor",
 				"Cost": 280,
 				"Max": 10
+			},
+			{
+				"Template": "units/swarm/roach",
+				"Category": "infantry",
+				"Cost": 90,
+				"Max": 10
 			}
 		]
 	}

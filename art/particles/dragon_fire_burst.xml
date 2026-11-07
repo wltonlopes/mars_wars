@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bio-Dragão do Enxame: explosão de fogo roxo no impacto. -->
+<particles>
+    <texture>art/textures/particles/dragon_flame.png</texture>
+    <blend mode="add"/>
+
+    <constant name="emissionrate" value="220.0"/>
+    <uniform name="lifetime" min="0.4" max="0.9"/>
+
+    <uniform name="position.x" min="-0.8" max="0.8"/>
+    <uniform name="position.z" min="-0.8" max="0.8"/>
+    <uniform name="angle" min="-3.14" max="3.14"/>
+    <uniform name="velocity.x" min="-4.0" max="4.0"/>
+    <uniform name="velocity.y" min="1.0" max="5.0"/>
+    <uniform name="velocity.z" min="-4.0" max="4.0"/>
+    <uniform name="velocity.angle" min="-1.5" max="1.5"/>
+
+    <uniform name="size" min="1.0" max="1.8"/>
+    <constant name="size.growthRate" value="1.2"/>
+
+    <uniform name="color.r" min="0.55" max="0.75"/>
+    <uniform name="color.g" min="0.08" max="0.22"/>
+    <uniform name="color.b" min="0.85" max="1.0"/>
+
+    <force y="2.0"/>
+</particles>
