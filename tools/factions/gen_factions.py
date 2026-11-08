@@ -658,7 +658,8 @@ FACTIONS = {
 			"roach": dict(actor="fauna/roach.xml", name="Roach",
 				tooltip="Bioweapon bred for close combat: armoured, fast and vicious. Tears through infantry with jaws and claws.",
 				hp=320, walk=11, dmg=24, rep=1100, crush=6, cost=cost(food=110, water=50, time=18, pop=1)),
-			"stalker": dict(actor="fauna/tiger.xml", name="Stalker", tooltip="Predator bred for the hunt.",
+			# Demônio caçador (tools/imported/import_swarm_stalker.py): arte própria, não retinta.
+			"stalker": dict(actor="units/swarm/stalker.xml", own_actor=True, name="Stalker", tooltip="Predator bred for the hunt.",
 				hp=220, walk=12, dmg=16, rep=1000, cost=cost(food=90, water=30, time=16, pop=1)),
 			"brute": dict(actor="fauna/bear_brown.xml", name="Brute", tooltip="Heavy combat creature.",
 				hp=480, walk=8.5, dmg=26, rep=1500, crush=8, cost=cost(food=150, water=60, time=24, pop=2)),

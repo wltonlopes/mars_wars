@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stalker do Enxame (tools/imported/import_swarm_stalker.py) -->
+<skeletons>
+	<standard_skeleton title="Swarm Stalker" id="swarm_stalker">
+		<bone name="stk_root">
+			<bone name="stk_pelvis">
+				<bone name="stk_spine">
+					<bone name="stk_chest">
+						<bone name="stk_neck">
+							<bone name="stk_head"></bone>
+						</bone>
+						<bone name="stk_upperarm_l">
+							<bone name="stk_forearm_l">
+								<bone name="stk_hand_l"></bone>
+							</bone>
+						</bone>
+						<bone name="stk_upperarm_r">
+							<bone name="stk_forearm_r">
+								<bone name="stk_hand_r"></bone>
+								<bone name="stk_hand2_r"></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="stk_thigh_l">
+					<bone name="stk_shin_l">
+						<bone name="stk_foot_l"></bone>
+					</bone>
+				</bone>
+				<bone name="stk_thigh_r">
+					<bone name="stk_shin_r">
+						<bone name="stk_foot_r"></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</standard_skeleton>
+
+	<skeleton title="Swarm Stalker" target="swarm_stalker">
+		<identifier>
+			<root>stk_root</root>
+		</identifier>
+		<bone name="stk_root"><target>stk_root</target>
+			<bone name="stk_pelvis"><target>stk_pelvis</target>
+				<bone name="stk_spine"><target>stk_spine</target>
+					<bone name="stk_chest"><target>stk_chest</target>
+						<bone name="stk_neck"><target>stk_neck</target>
+							<bone name="stk_head"><target>stk_head</target></bone>
+						</bone>
+						<bone name="stk_upperarm_l"><target>stk_upperarm_l</target>
+							<bone name="stk_forearm_l"><target>stk_forearm_l</target>
+								<bone name="stk_hand_l"><target>stk_hand_l</target></bone>
+							</bone>
+						</bone>
+						<bone name="stk_upperarm_r"><target>stk_upperarm_r</target>
+							<bone name="stk_forearm_r"><target>stk_forearm_r</target>
+								<bone name="stk_hand_r"><target>stk_hand_r</target></bone>
+								<bone name="stk_hand2_r"><target>stk_hand2_r</target></bone>
+							</bone>
+						</bone>
+					</bone>
+				</bone>
+				<bone name="stk_thigh_l"><target>stk_thigh_l</target>
+					<bone name="stk_shin_l"><target>stk_shin_l</target>
+						<bone name="stk_foot_l"><target>stk_foot_l</target></bone>
+					</bone>
+				</bone>
+				<bone name="stk_thigh_r"><target>stk_thigh_r</target>
+					<bone name="stk_shin_r"><target>stk_shin_r</target>
+						<bone name="stk_foot_r"><target>stk_foot_r</target></bone>
+					</bone>
+				</bone>
+			</bone>
+		</bone>
+	</skeleton>
+</skeletons>

@@ -10,7 +10,7 @@
     <VisibleClasses datatype="tokens">Creature</VisibleClasses>
   </Identity>
   <VisualActor>
-    <Actor>fauna/swarm/tiger.xml</Actor>
+    <Actor>units/swarm/stalker.xml</Actor>
   </VisualActor>
   <Attack>
     <Melee>

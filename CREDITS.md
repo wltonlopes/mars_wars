@@ -125,3 +125,13 @@ bola de fogo `props/units/weapons/ammo/dragon_fireball.xml` (malha e textura do 
 pesado do mod, recoloridas) e impacto `props/units/explosions/dragon_fire_impact.xml`.
 Substitui o elefante provisório do Acid Behemoth (`units/swarm/behemoth`).
 **Confirmar os termos de uso do Tripo antes de distribuir o mod.**
+
+## Stalker do Enxame (`refs/exo/purple demon 3d model.zip`)
+
+Modelo OBJ gerado no Tripo, convertido por `tools/imported/import_swarm_stalker.py`:
+malha inteira, esqueleto bípede (pernas digitígradas) e animações novos (idle, walk, run,
+dois ataques corpo a corpo e death), textura do Tripo.
+Arquivos: `art/meshes/skeletal/swarm_stalker.dae`, `art/skeletons/swarm_stalker.xml`,
+`art/animation/units/swarm_stalker/`, `art/textures/skins/skeletal/swarm/stalker*.png`,
+actor `units/swarm/stalker.xml`. Substitui o tigre provisório do Stalker (`units/swarm/stalker`).
+**Confirmar os termos de uso do Tripo antes de distribuir o mod.**
